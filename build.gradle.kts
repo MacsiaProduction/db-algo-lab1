@@ -61,7 +61,7 @@ if (profile) {
         group = "benchmark"
         doLast {
             val profDir = profileDir.get().asFile
-            val jfrFiles = profDir.listFiles()?.filter { it.extension == "jfr" } ?: emptyList()
+            val jfrFiles = profDir.walkTopDown().filter { it.extension == "jfr" }.toList()
             if (jfrFiles.isEmpty()) {
                 logger.warn("No .jfr files found in $profDir")
                 return@doLast
@@ -70,7 +70,7 @@ if (profile) {
             val jsonDir = profDir.resolve("json").apply { mkdirs() }
 
             jfrFiles.forEach { jfr ->
-                val name = jfr.nameWithoutExtension
+                val name = jfr.parentFile.name
                 logger.lifecycle("  $name → flame graph + JSON")
                 project.exec {
                     commandLine(
