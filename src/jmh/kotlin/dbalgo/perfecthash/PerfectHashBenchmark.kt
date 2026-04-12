@@ -26,13 +26,17 @@ open class PerfectHashBenchmark {
 
     private lateinit var ph: PerfectHashMap<Int>
     private lateinit var keys: Array<String>
+    private lateinit var buildKeys: Array<String>
+    private lateinit var buildValues: Array<Int>
     private var opIdx = 0
 
     private var heapBytesPerEntry = 0L
 
     @Setup(Level.Trial)
     fun setup() {
-        keys = Array(dataSize) { "key_$it" }
+        keys = Array(dataSize, ::fixedKey)
+        buildKeys = Array(dataSize, ::buildKey)
+        buildValues = Array(dataSize) { it }
         val values = Array(dataSize) { it }
         val rt = Runtime.getRuntime()
         System.gc(); System.gc()
@@ -52,10 +56,7 @@ open class PerfectHashBenchmark {
     @Warmup(iterations = 1, time = 1)
     @Measurement(iterations = 2, time = 1)
     fun benchBuild(): PerfectHashMap<Int> {
-        return PerfectHashMap.build(
-            Array(dataSize) { "k$it" },
-            Array(dataSize) { it }
-        )
+        return PerfectHashMap.build(buildKeys, buildValues)
     }
 
     @Benchmark
@@ -73,5 +74,15 @@ open class PerfectHashBenchmark {
     fun benchHeapBytesPerEntry(c: StructSizeCounters): Long {
         c.heapBytesPerEntry += heapBytesPerEntry
         return heapBytesPerEntry
+    }
+
+    private fun fixedKey(index: Int): String = buildString(12) {
+        append("key_")
+        append(index.toString().padStart(8, '0'))
+    }
+
+    private fun buildKey(index: Int): String = buildString(12) {
+        append("src_")
+        append(index.toString().padStart(8, '0'))
     }
 }

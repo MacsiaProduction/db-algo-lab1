@@ -25,8 +25,10 @@ open class HashTableBenchmark {
     private lateinit var dir: Path
     private lateinit var ht: ExtendibleHashTable
     private lateinit var keys: Array<String>
+    private lateinit var insertKeys: Array<String>
     private lateinit var values: Array<ByteArray>
     private lateinit var deleted: BooleanArray
+    private lateinit var updateValue: ByteArray
     private var opIdx = 0
     private var diskBytesPerEntry = 0L
 
@@ -34,8 +36,10 @@ open class HashTableBenchmark {
     fun setup() {
         dir = Files.createTempDirectory("ht_bench")
         ht = ExtendibleHashTable(dir, bucketCapacity = 64, maxOpenChannels = dataSize / 16 + 128)
-        keys = Array(dataSize) { "key_${it}_${System.nanoTime()}" }
-        values = Array(dataSize) { "value_$it".toByteArray() }
+        keys = Array(dataSize, ::baseKey)
+        insertKeys = Array(dataSize / 2, ::insertKey)
+        values = Array(dataSize, ::valueBytes)
+        updateValue = fixedString("patch", 0).toByteArray()
         for (i in 0 until dataSize / 2) ht.insert(keys[i], values[i])
         deleted = BooleanArray(dataSize) { i -> i >= dataSize / 2 }
         val totalDiskBytes = Files.walk(dir).filter(Files::isRegularFile).mapToLong(Files::size).sum()
@@ -57,13 +61,13 @@ open class HashTableBenchmark {
     @Benchmark
     fun benchInsert() {
         val i = opIdx++
-        ht.insert("ins_${i % (dataSize / 2)}", values[i % dataSize])
+        ht.insert(insertKeys[i % insertKeys.size], values[i % dataSize])
     }
 
     @Benchmark
     fun benchUpdate() {
         val key = keys[opIdx++ % dataSize]
-        ht.update(key, "updated".toByteArray())
+        ht.update(key, updateValue)
     }
 
     @Benchmark
@@ -78,5 +82,17 @@ open class HashTableBenchmark {
     fun benchDiskBytesPerEntry(c: DiskUsageCounters): Long {
         c.diskBytesPerEntry += diskBytesPerEntry
         return diskBytesPerEntry
+    }
+
+    private fun baseKey(index: Int): String = fixedString("key", index)
+
+    private fun insertKey(index: Int): String = fixedString("ins", index)
+
+    private fun valueBytes(index: Int): ByteArray = fixedString("value", index).toByteArray()
+
+    private fun fixedString(prefix: String, index: Int): String = buildString(16) {
+        append(prefix)
+        append('_')
+        append(index.toString().padStart(8, '0'))
     }
 }

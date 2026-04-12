@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1224" height="698" viewBox="0 0 1224 698">
+<style>text{font-family:Menlo,Consolas,monospace;fill:#1f1f1f}.title{font-size:16px;font-weight:700}.meta{font-size:11px;fill:#555}.frame{stroke:#ffffff;stroke-width:0.5}.label{font-size:11px;dominant-baseline:middle}</style>
+<rect width="100%" height="100%" fill="#fffdf8"/>
+<text class="title" x="12" y="20">RandomProjectionLshIndex.findNear() — flamegraph (N=1M)</text>
+<text class="meta" x="12" y="32">async-profiler collapsed stacks, total samples: 607</text>
+<g><title>java/lang/Thread.run:1575_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="672.00" width="1172.32" height="17" fill="#ee92aa"/>
+<text class="label" x="15.00" y="680.50">java/lang/Thread.run:1575_[j]</text>
+</g>
+<g><title>java/lang/Thread.runWith:1588_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="654.00" width="1172.32" height="17" fill="#65e1b7"/>
+<text class="label" x="15.00" y="662.50">java/lang/Thread.runWith:1588_[j]</text>
+</g>
+<g><title>java/util/concurrent/ThreadPoolExecutor$Worker.run:642_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="636.00" width="1172.32" height="17" fill="#e57863"/>
+<text class="label" x="15.00" y="644.50">java/util/concurrent/ThreadPoolExecutor$Worker.run:642_[j]</text>
+</g>
+<g><title>java/util/concurrent/ThreadPoolExecutor.runWorker:1144_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="618.00" width="1172.32" height="17" fill="#e2de6e"/>
+<text class="label" x="15.00" y="626.50">java/util/concurrent/ThreadPoolExecutor.runWorker:1144_[j]</text>
+</g>
+<g><title>java/util/concurrent/FutureTask.run:317_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="600.00" width="1172.32" height="17" fill="#e0a979"/>
+<text class="label" x="15.00" y="608.50">java/util/concurrent/FutureTask.run:317_[j]</text>
+</g>
+<g><title>java/util/concurrent/Executors$RunnableAdapter.call:572_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="582.00" width="1172.32" height="17" fill="#686bdb"/>
+<text class="label" x="15.00" y="590.50">java/util/concurrent/Executors$RunnableAdapter.call:572_[j]</text>
+</g>
+<g><title>java/util/concurrent/FutureTask.run:317_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="564.00" width="1172.32" height="17" fill="#e0a979"/>
+<text class="label" x="15.00" y="572.50">java/util/concurrent/FutureTask.run:317_[j]</text>
+</g>
+<g><title>org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:504_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="546.00" width="1172.32" height="17" fill="#e6e590"/>
+<text class="label" x="15.00" y="554.50">org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:504_[j]</text>
+</g>
+<g><title>org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:527_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="528.00" width="1172.32" height="17" fill="#6befe4"/>
+<text class="label" x="15.00" y="536.50">org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:527_[j]</text>
+</g>
+<g><title>java/lang/reflect/Method.invoke:580_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="510.00" width="1172.32" height="17" fill="#e4da61"/>
+<text class="label" x="15.00" y="518.50">java/lang/reflect/Method.invoke:580_[j]</text>
+</g>
+<g><title>jdk/internal/reflect/DirectMethodHandleAccessor.invoke:103_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="492.00" width="1172.32" height="17" fill="#ef7984"/>
+<text class="label" x="15.00" y="500.50">jdk/internal/reflect/DirectMethodHandleAccessor.invoke:103_[j]</text>
+</g>
+<g><title>jdk/internal/reflect/DirectMethodHandleAccessor.invokeImpl:155_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="474.00" width="1172.32" height="17" fill="#9767df"/>
+<text class="label" x="15.00" y="482.50">jdk/internal/reflect/DirectMethodHandleAccessor.invokeImpl:155_[j]</text>
+</g>
+<g><title>java/lang/invoke/LambdaForm$MH.0x00001fc001025400.invokeExact_MT_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="456.00" width="1172.32" height="17" fill="#deee88"/>
+<text class="label" x="15.00" y="464.50">java/lang/invoke/LambdaForm$MH.0x00001fc001025400.invokeExact_MT_[j]</text>
+</g>
+<g><title>java/lang/invoke/LambdaForm$MH.0x00001fc001025000.invoke_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="438.00" width="1172.32" height="17" fill="#625fe2"/>
+<text class="label" x="15.00" y="446.50">java/lang/invoke/LambdaForm$MH.0x00001fc001025000.invoke_[j]</text>
+</g>
+<g><title>java/lang/invoke/DirectMethodHandle$Holder.invokeSpecial_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="420.00" width="1172.32" height="17" fill="#c493e6"/>
+<text class="label" x="15.00" y="428.50">java/lang/invoke/DirectMethodHandle$Holder.invokeSpecial_[j]</text>
+</g>
+<g><title>dbalgo/lsh/jmh_generated/LshBenchmark_benchRpFindNear_jmhTest.benchRpFindNear_Throughput:84_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="402.00" width="1172.32" height="17" fill="#55a868"/>
+<text class="label" x="15.00" y="410.50">dbalgo/lsh/jmh_generated/LshBenchmark_benchRpFindNear_jmhTest.benchRpFindNear_Throughput:84_[j]</text>
+</g>
+<g><title>dbalgo/lsh/jmh_generated/LshBenchmark_benchRpFindNear_jmhTest.benchRpFindNear_thrpt_jmhStub:144_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="384.00" width="1172.32" height="17" fill="#55a868"/>
+<text class="label" x="15.00" y="392.50">dbalgo/lsh/jmh_generated/LshBenchmark_benchRpFindNear_jmhTest.benchRpFindNear_thrpt_jmhStub:144_[j]</text>
+</g>
+<g><title>dbalgo/lsh/LshBenchmark.benchRpFindNear:56_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="366.00" width="1172.32" height="17" fill="#4c72b0"/>
+<text class="label" x="15.00" y="374.50">dbalgo/lsh/LshBenchmark.benchRpFindNear:56_[j]</text>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.findNear:159_[j] | 292 samples | 48.1%</title><rect class="frame" x="12.00" y="348.00" width="577.27" height="17" fill="#4c72b0"/>
+<text class="label" x="15.00" y="356.50">dbalgo/lsh/RandomProjectionLshIndex.findNear:159_[j]</text>
+</g>
+<g><title>java/util/HashSet.iterator:183_[i] | 210 samples | 34.6%</title><rect class="frame" x="12.00" y="330.00" width="415.16" height="17" fill="#cb8ad9"/>
+<text class="label" x="15.00" y="338.50">java/util/HashSet.iterator:183_[i]</text>
+</g>
+<g><title>java/lang/Integer.hashCode:1146_[j] | 12 samples | 2.0%</title><rect class="frame" x="12.00" y="312.00" width="23.72" height="17" fill="#85e36c"/>
+</g>
+<g><title>java/util/HashMap$KeyIterator.next:1629_[i] | 82 samples | 13.5%</title><rect class="frame" x="427.16" y="330.00" width="162.11" height="17" fill="#dd8452"/>
+<text class="label" x="430.16" y="338.50">java/util/HashMap$KeyIt…</text>
+</g>
+<g><title>java/util/HashMap$HashIterator.nextNode:1610_[i] | 73 samples | 12.0%</title><rect class="frame" x="427.16" y="312.00" width="144.32" height="17" fill="#dd8452"/>
+<text class="label" x="430.16" y="320.50">java/util/HashMap$Ha…</text>
+</g>
+<g><title>java/util/HashMap$HashIterator.nextNode:1604_[i] | 8 samples | 1.3%</title><rect class="frame" x="571.47" y="312.00" width="15.82" height="17" fill="#dd8452"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.findNear:66_[j] | 179 samples | 29.5%</title><rect class="frame" x="589.27" y="348.00" width="353.87" height="17" fill="#4c72b0"/>
+<text class="label" x="592.27" y="356.50">dbalgo/lsh/RandomProjectionLshIndex.findNear:66_[j]</text>
+</g>
+<g><title>java/util/AbstractCollection.addAll:338_[j] | 173 samples | 28.5%</title><rect class="frame" x="589.27" y="330.00" width="342.01" height="17" fill="#de72a2"/>
+<text class="label" x="592.27" y="338.50">java/util/AbstractCollection.addAll:338_[j]</text>
+</g>
+<g><title>java/util/HashSet.add:230_[j] | 173 samples | 28.5%</title><rect class="frame" x="589.27" y="312.00" width="342.01" height="17" fill="#c186d9"/>
+<text class="label" x="592.27" y="320.50">java/util/HashSet.add:230_[j]</text>
+</g>
+<g><title>java/util/HashMap.put:619_[j] | 173 samples | 28.5%</title><rect class="frame" x="589.27" y="294.00" width="342.01" height="17" fill="#dd8452"/>
+<text class="label" x="592.27" y="302.50">java/util/HashMap.put:619_[j]</text>
+</g>
+<g><title>java/util/HashMap.putVal:638_[j] | 55 samples | 9.1%</title><rect class="frame" x="589.27" y="276.00" width="108.73" height="17" fill="#dd8452"/>
+<text class="label" x="592.27" y="284.50">java/util/HashM…</text>
+</g>
+<g><title>java/util/LinkedHashMap.newNode:281_[i] | 44 samples | 7.2%</title><rect class="frame" x="589.27" y="258.00" width="86.99" height="17" fill="#dd8452"/>
+<text class="label" x="592.27" y="266.50">java/util/L…</text>
+</g>
+<g><title>java/util/LinkedHashMap$Entry.&lt;init&gt;:208_[i] | 44 samples | 7.2%</title><rect class="frame" x="589.27" y="240.00" width="86.99" height="17" fill="#dd8452"/>
+<text class="label" x="592.27" y="248.50">java/util/L…</text>
+</g>
+<g><title>java/util/HashMap$Node.&lt;init&gt;:289_[i] | 43 samples | 7.1%</title><rect class="frame" x="589.27" y="222.00" width="85.01" height="17" fill="#dd8452"/>
+<text class="label" x="592.27" y="230.50">java/util/H…</text>
+</g>
+<g><title>java/util/HashMap$Node.&lt;init&gt;:290_[i] | 1 samples | 0.2%</title><rect class="frame" x="674.27" y="222.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/HashMap.newNode:1910_[i] | 4 samples | 0.7%</title><rect class="frame" x="676.25" y="258.00" width="7.91" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/HashMap.putVal:648_[j] | 31 samples | 5.1%</title><rect class="frame" x="698.00" y="276.00" width="61.29" height="17" fill="#dd8452"/>
+<text class="label" x="701.00" y="284.50">java/ut…</text>
+</g>
+<g><title>java/util/HashMap.putVal:670_[j] | 27 samples | 4.4%</title><rect class="frame" x="759.28" y="276.00" width="53.38" height="17" fill="#dd8452"/>
+<text class="label" x="762.28" y="284.50">java/u…</text>
+</g>
+<g><title>java/util/HashMap.resize:712_[j] | 16 samples | 2.6%</title><rect class="frame" x="759.28" y="258.00" width="31.63" height="17" fill="#dd8452"/>
+<text class="label" x="762.28" y="266.50">jav…</text>
+</g>
+<g><title>zero_blocks | 3 samples | 0.5%</title><rect class="frame" x="759.28" y="240.00" width="5.93" height="17" fill="#79a5e8"/>
+</g>
+<g><title>java/util/HashMap.resize:714_[j] | 5 samples | 0.8%</title><rect class="frame" x="790.91" y="258.00" width="9.88" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/HashMap.resize:717_[j] | 3 samples | 0.5%</title><rect class="frame" x="800.80" y="258.00" width="5.93" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/HashMap.resize:742_[j] | 2 samples | 0.3%</title><rect class="frame" x="806.73" y="258.00" width="3.95" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/HashMap.resize:727_[j] | 1 samples | 0.2%</title><rect class="frame" x="810.68" y="258.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/HashMap.putVal:641_[j] | 20 samples | 3.3%</title><rect class="frame" x="812.66" y="276.00" width="39.54" height="17" fill="#dd8452"/>
+<text class="label" x="815.66" y="284.50">java…</text>
+</g>
+<g><title>java/util/HashMap.putVal:642_[j] | 18 samples | 3.0%</title><rect class="frame" x="852.20" y="276.00" width="35.58" height="17" fill="#dd8452"/>
+<text class="label" x="855.20" y="284.50">jav…</text>
+</g>
+<g><title>java/lang/Integer.equals:1173_[j] | 1 samples | 0.2%</title><rect class="frame" x="852.20" y="258.00" width="1.98" height="17" fill="#e9796d"/>
+</g>
+<g><title>java/lang/Integer.equals:1174_[j] | 1 samples | 0.2%</title><rect class="frame" x="854.17" y="258.00" width="1.98" height="17" fill="#eeed66"/>
+</g>
+<g><title>java/util/HashMap.putVal:649_[j] | 17 samples | 2.8%</title><rect class="frame" x="887.78" y="276.00" width="33.61" height="17" fill="#dd8452"/>
+<text class="label" x="890.78" y="284.50">jav…</text>
+</g>
+<g><title>java/util/HashMap.newNode:1910_[i] | 4 samples | 0.7%</title><rect class="frame" x="887.78" y="258.00" width="7.91" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/HashMap.putVal:635_[j] | 3 samples | 0.5%</title><rect class="frame" x="921.39" y="276.00" width="5.93" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/HashMap.hash:338_[i] | 1 samples | 0.2%</title><rect class="frame" x="927.32" y="276.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/HashMap.putVal:636_[j] | 1 samples | 0.2%</title><rect class="frame" x="929.30" y="276.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/HashMap.resize:712_[j] | 1 samples | 0.2%</title><rect class="frame" x="929.30" y="258.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>zero_blocks | 1 samples | 0.2%</title><rect class="frame" x="929.30" y="240.00" width="1.98" height="17" fill="#79a5e8"/>
+</g>
+<g><title>java/util/HashMap.get:565_[i] | 5 samples | 0.8%</title><rect class="frame" x="931.28" y="330.00" width="9.88" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/HashMap.getNode:581_[i] | 5 samples | 0.8%</title><rect class="frame" x="931.28" y="312.00" width="9.88" height="17" fill="#dd8452"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.findNear:163_[j] | 85 samples | 14.0%</title><rect class="frame" x="943.14" y="348.00" width="168.04" height="17" fill="#4c72b0"/>
+<text class="label" x="946.14" y="356.50">dbalgo/lsh/RandomProject…</text>
+</g>
+<g><title>kotlin/collections/CollectionsKt___CollectionsKt.sortedWith:1101_[j] | 82 samples | 13.5%</title><rect class="frame" x="943.14" y="330.00" width="162.11" height="17" fill="#cbd98a"/>
+<text class="label" x="946.14" y="338.50">kotlin/collections/Coll…</text>
+</g>
+<g><title>kotlin/collections/ArraysKt___ArraysJvmKt.sortWith:2206_[j] | 82 samples | 13.5%</title><rect class="frame" x="943.14" y="312.00" width="162.11" height="17" fill="#dd8452"/>
+<text class="label" x="946.14" y="320.50">kotlin/collections/Arra…</text>
+</g>
+<g><title>java/util/Arrays.sort:1233_[j] | 82 samples | 13.5%</title><rect class="frame" x="943.14" y="294.00" width="162.11" height="17" fill="#dd8452"/>
+<text class="label" x="946.14" y="302.50">java/util/Arrays.sort:1…</text>
+</g>
+<g><title>java/util/TimSort.sort:239_[j] | 47 samples | 7.7%</title><rect class="frame" x="943.14" y="276.00" width="92.92" height="17" fill="#dd8452"/>
+<text class="label" x="946.14" y="284.50">java/util/Ti…</text>
+</g>
+<g><title>java/util/TimSort.binarySort:296_[i] | 24 samples | 4.0%</title><rect class="frame" x="943.14" y="258.00" width="47.45" height="17" fill="#dd8452"/>
+<text class="label" x="946.14" y="266.50">java/…</text>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex$findNear$$inlined$sortedBy$1.compare:102_[i] | 19 samples | 3.1%</title><rect class="frame" x="943.14" y="240.00" width="37.56" height="17" fill="#4c72b0"/>
+<text class="label" x="946.14" y="248.50">dba…</text>
+</g>
+<g><title>kotlin/comparisons/ComparisonsKt__ComparisonsKt.compareValues:78_[i] | 18 samples | 3.0%</title><rect class="frame" x="943.14" y="222.00" width="35.58" height="17" fill="#ae8cdc"/>
+<text class="label" x="946.14" y="230.50">kot…</text>
+</g>
+<g><title>java/lang/Double.compareTo:360_[i] | 18 samples | 3.0%</title><rect class="frame" x="943.14" y="204.00" width="35.58" height="17" fill="#87a5e3"/>
+<text class="label" x="946.14" y="212.50">jav…</text>
+</g>
+<g><title>java/lang/Double.compareTo:1407_[i] | 18 samples | 3.0%</title><rect class="frame" x="943.14" y="186.00" width="35.58" height="17" fill="#bde862"/>
+<text class="label" x="946.14" y="194.50">jav…</text>
+</g>
+<g><title>java/lang/Double.compare:1431_[i] | 17 samples | 2.8%</title><rect class="frame" x="943.14" y="168.00" width="33.61" height="17" fill="#90e5a2"/>
+<text class="label" x="946.14" y="176.50">jav…</text>
+</g>
+<g><title>java/lang/Double.compare:1429_[i] | 1 samples | 0.2%</title><rect class="frame" x="976.74" y="168.00" width="1.98" height="17" fill="#6ddcac"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex$findNear$$inlined$sortedBy$1.compare:329_[i] | 3 samples | 0.5%</title><rect class="frame" x="980.70" y="240.00" width="5.93" height="17" fill="#4c72b0"/>
+</g>
+<g><title>java/util/TimSort.binarySort:300_[i] | 9 samples | 1.5%</title><rect class="frame" x="990.58" y="258.00" width="17.79" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.binarySort:315_[i] | 9 samples | 1.5%</title><rect class="frame" x="1008.38" y="258.00" width="17.79" height="17" fill="#dd8452"/>
+</g>
+<g><title>arrayof_oop_arraycopy | 7 samples | 1.2%</title><rect class="frame" x="1008.38" y="240.00" width="13.84" height="17" fill="#8095da"/>
+</g>
+<g><title>G1BarrierSet::write_region | 2 samples | 0.3%</title><rect class="frame" x="1008.38" y="222.00" width="3.95" height="17" fill="#55a868"/>
+</g>
+<g><title>_tlv_get_addr | 1 samples | 0.2%</title><rect class="frame" x="1012.33" y="222.00" width="1.98" height="17" fill="#dfc680"/>
+</g>
+<g><title>G1BarrierSet::write_region | 1 samples | 0.2%</title><rect class="frame" x="1022.21" y="240.00" width="1.98" height="17" fill="#55a868"/>
+</g>
+<g><title>java/util/TimSort.binarySort:283_[i] | 3 samples | 0.5%</title><rect class="frame" x="1026.17" y="258.00" width="5.93" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.binarySort:294_[i] | 1 samples | 0.2%</title><rect class="frame" x="1032.10" y="258.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.binarySort:295_[i] | 1 samples | 0.2%</title><rect class="frame" x="1034.08" y="258.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.sort:254_[j] | 16 samples | 2.6%</title><rect class="frame" x="1036.05" y="276.00" width="31.63" height="17" fill="#dd8452"/>
+<text class="label" x="1039.05" y="284.50">jav…</text>
+</g>
+<g><title>java/util/TimSort.mergeForceCollapse:461_[j] | 16 samples | 2.6%</title><rect class="frame" x="1036.05" y="258.00" width="31.63" height="17" fill="#dd8452"/>
+<text class="label" x="1039.05" y="266.50">jav…</text>
+</g>
+<g><title>java/util/TimSort.mergeAt:520_[j] | 13 samples | 2.1%</title><rect class="frame" x="1036.05" y="240.00" width="25.70" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.mergeHi:841_[j] | 7 samples | 1.2%</title><rect class="frame" x="1036.05" y="222.00" width="13.84" height="17" fill="#dd8452"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex$findNear$$inlined$sortedBy$1.compare:102_[i] | 3 samples | 0.5%</title><rect class="frame" x="1036.05" y="204.00" width="5.93" height="17" fill="#4c72b0"/>
+</g>
+<g><title>kotlin/comparisons/ComparisonsKt__ComparisonsKt.compareValues:78_[i] | 3 samples | 0.5%</title><rect class="frame" x="1036.05" y="186.00" width="5.93" height="17" fill="#ae8cdc"/>
+</g>
+<g><title>java/lang/Double.compareTo:360_[i] | 3 samples | 0.5%</title><rect class="frame" x="1036.05" y="168.00" width="5.93" height="17" fill="#87a5e3"/>
+</g>
+<g><title>java/lang/Double.compareTo:1407_[i] | 3 samples | 0.5%</title><rect class="frame" x="1036.05" y="150.00" width="5.93" height="17" fill="#bde862"/>
+</g>
+<g><title>java/lang/Double.compare:1431_[i] | 3 samples | 0.5%</title><rect class="frame" x="1036.05" y="132.00" width="5.93" height="17" fill="#90e5a2"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex$findNear$$inlined$sortedBy$1.compare:329_[i] | 1 samples | 0.2%</title><rect class="frame" x="1041.98" y="204.00" width="1.98" height="17" fill="#4c72b0"/>
+</g>
+<g><title>java/util/TimSort.mergeHi:845_[j] | 3 samples | 0.5%</title><rect class="frame" x="1049.89" y="222.00" width="5.93" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.mergeHi:808_[j] | 1 samples | 0.2%</title><rect class="frame" x="1055.82" y="222.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>G1BarrierSet::write_region | 1 samples | 0.2%</title><rect class="frame" x="1055.82" y="204.00" width="1.98" height="17" fill="#55a868"/>
+</g>
+<g><title>java/util/TimSort.mergeHi:848_[j] | 1 samples | 0.2%</title><rect class="frame" x="1057.80" y="222.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.mergeHi:870_[j] | 1 samples | 0.2%</title><rect class="frame" x="1059.78" y="222.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.mergeAt:500_[j] | 1 samples | 0.2%</title><rect class="frame" x="1061.75" y="240.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.gallopRight:635_[j] | 1 samples | 0.2%</title><rect class="frame" x="1061.75" y="222.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.mergeAt:511_[j] | 1 samples | 0.2%</title><rect class="frame" x="1063.73" y="240.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.gallopLeft:563_[j] | 1 samples | 0.2%</title><rect class="frame" x="1063.73" y="222.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.mergeAt:518_[j] | 1 samples | 0.2%</title><rect class="frame" x="1065.71" y="240.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.mergeLo:722_[j] | 1 samples | 0.2%</title><rect class="frame" x="1065.71" y="222.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.sort:245_[j] | 15 samples | 2.5%</title><rect class="frame" x="1067.68" y="276.00" width="29.65" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.mergeCollapse:448_[j] | 15 samples | 2.5%</title><rect class="frame" x="1067.68" y="258.00" width="29.65" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.mergeAt:520_[j] | 8 samples | 1.3%</title><rect class="frame" x="1067.68" y="240.00" width="15.82" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.mergeHi:845_[j] | 4 samples | 0.7%</title><rect class="frame" x="1067.68" y="222.00" width="7.91" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.mergeHi:841_[j] | 2 samples | 0.3%</title><rect class="frame" x="1075.59" y="222.00" width="3.95" height="17" fill="#dd8452"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex$findNear$$inlined$sortedBy$1.compare:329_[i] | 1 samples | 0.2%</title><rect class="frame" x="1075.59" y="204.00" width="1.98" height="17" fill="#4c72b0"/>
+</g>
+<g><title>java/util/TimSort.mergeHi:854_[j] | 2 samples | 0.3%</title><rect class="frame" x="1079.55" y="222.00" width="3.95" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.mergeAt:518_[j] | 7 samples | 1.2%</title><rect class="frame" x="1083.50" y="240.00" width="13.84" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.mergeLo:721_[j] | 5 samples | 0.8%</title><rect class="frame" x="1083.50" y="222.00" width="9.88" height="17" fill="#dd8452"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex$findNear$$inlined$sortedBy$1.compare:102_[i] | 4 samples | 0.7%</title><rect class="frame" x="1083.50" y="204.00" width="7.91" height="17" fill="#4c72b0"/>
+</g>
+<g><title>kotlin/comparisons/ComparisonsKt__ComparisonsKt.compareValues:78_[i] | 4 samples | 0.7%</title><rect class="frame" x="1083.50" y="186.00" width="7.91" height="17" fill="#ae8cdc"/>
+</g>
+<g><title>java/lang/Double.compareTo:360_[i] | 4 samples | 0.7%</title><rect class="frame" x="1083.50" y="168.00" width="7.91" height="17" fill="#87a5e3"/>
+</g>
+<g><title>java/lang/Double.compareTo:1407_[i] | 4 samples | 0.7%</title><rect class="frame" x="1083.50" y="150.00" width="7.91" height="17" fill="#bde862"/>
+</g>
+<g><title>java/lang/Double.compare:1431_[i] | 3 samples | 0.5%</title><rect class="frame" x="1083.50" y="132.00" width="5.93" height="17" fill="#90e5a2"/>
+</g>
+<g><title>java/lang/Double.compare:1429_[i] | 1 samples | 0.2%</title><rect class="frame" x="1089.43" y="132.00" width="1.98" height="17" fill="#6ddcac"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex$findNear$$inlined$sortedBy$1.compare:329_[i] | 1 samples | 0.2%</title><rect class="frame" x="1091.41" y="204.00" width="1.98" height="17" fill="#4c72b0"/>
+</g>
+<g><title>java/util/TimSort.mergeLo:722_[j] | 1 samples | 0.2%</title><rect class="frame" x="1093.38" y="222.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.mergeLo:756_[j] | 1 samples | 0.2%</title><rect class="frame" x="1095.36" y="222.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.gallopLeft:548_[j] | 1 samples | 0.2%</title><rect class="frame" x="1095.36" y="204.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.sort:234_[j] | 2 samples | 0.3%</title><rect class="frame" x="1097.34" y="276.00" width="3.95" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.countRunAndMakeAscending:356_[j] | 1 samples | 0.2%</title><rect class="frame" x="1097.34" y="258.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.countRunAndMakeAscending:360_[j] | 1 samples | 0.2%</title><rect class="frame" x="1099.31" y="258.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex$findNear$$inlined$sortedBy$1.compare:102_[i] | 1 samples | 0.2%</title><rect class="frame" x="1099.31" y="240.00" width="1.98" height="17" fill="#4c72b0"/>
+</g>
+<g><title>kotlin/comparisons/ComparisonsKt__ComparisonsKt.compareValues:78_[i] | 1 samples | 0.2%</title><rect class="frame" x="1099.31" y="222.00" width="1.98" height="17" fill="#ae8cdc"/>
+</g>
+<g><title>java/lang/Double.compareTo:360_[i] | 1 samples | 0.2%</title><rect class="frame" x="1099.31" y="204.00" width="1.98" height="17" fill="#87a5e3"/>
+</g>
+<g><title>java/lang/Double.compareTo:1407_[i] | 1 samples | 0.2%</title><rect class="frame" x="1099.31" y="186.00" width="1.98" height="17" fill="#bde862"/>
+</g>
+<g><title>java/lang/Double.compare:1431_[i] | 1 samples | 0.2%</title><rect class="frame" x="1099.31" y="168.00" width="1.98" height="17" fill="#90e5a2"/>
+</g>
+<g><title>java/util/TimSort.sort:230_[j] | 1 samples | 0.2%</title><rect class="frame" x="1101.29" y="276.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.&lt;init&gt;:157_[i] | 1 samples | 0.2%</title><rect class="frame" x="1101.29" y="258.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/lang/reflect/Array.newInstance:76_[i] | 1 samples | 0.2%</title><rect class="frame" x="1101.29" y="240.00" width="1.98" height="17" fill="#8cc1ea"/>
+</g>
+<g><title>zero_blocks | 1 samples | 0.2%</title><rect class="frame" x="1101.29" y="222.00" width="1.98" height="17" fill="#79a5e8"/>
+</g>
+<g><title>java/util/TimSort.sort:244_[j] | 1 samples | 0.2%</title><rect class="frame" x="1103.27" y="276.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>java/util/TimSort.pushRun:418_[i] | 1 samples | 0.2%</title><rect class="frame" x="1103.27" y="258.00" width="1.98" height="17" fill="#dd8452"/>
+</g>
+<g><title>kotlin/collections/CollectionsKt___CollectionsKt.sortedWith:3879_[j] | 3 samples | 0.5%</title><rect class="frame" x="1105.25" y="330.00" width="5.93" height="17" fill="#be8ce0"/>
+</g>
+<g><title>java/util/ArrayList.toArray:401_[j] | 3 samples | 0.5%</title><rect class="frame" x="1105.25" y="312.00" width="5.93" height="17" fill="#aa82db"/>
+</g>
+<g><title>OptoRuntime::new_array_C | 1 samples | 0.2%</title><rect class="frame" x="1105.25" y="294.00" width="1.98" height="17" fill="#8dc8db"/>
+</g>
+<g><title>InstanceKlass::allocate_objArray | 1 samples | 0.2%</title><rect class="frame" x="1105.25" y="276.00" width="1.98" height="17" fill="#6aec8f"/>
+</g>
+<g><title>CollectedHeap::array_allocate | 1 samples | 0.2%</title><rect class="frame" x="1105.25" y="258.00" width="1.98" height="17" fill="#8f7fe2"/>
+</g>
+<g><title>MemAllocator::allocate | 1 samples | 0.2%</title><rect class="frame" x="1105.25" y="240.00" width="1.98" height="17" fill="#ddb570"/>
+</g>
+<g><title>MemAllocator::Allocation::notify_allocation | 1 samples | 0.2%</title><rect class="frame" x="1105.25" y="222.00" width="1.98" height="17" fill="#e7a390"/>
+</g>
+<g><title>AllocTracer::send_allocation_in_new_tlab | 1 samples | 0.2%</title><rect class="frame" x="1105.25" y="204.00" width="1.98" height="17" fill="#e781cc"/>
+</g>
+<g><title>JfrObjectAllocationSample::send_event | 1 samples | 0.2%</title><rect class="frame" x="1105.25" y="186.00" width="1.98" height="17" fill="#d85c70"/>
+</g>
+<g><title>arrayof_jint_disjoint_arraycopy | 1 samples | 0.2%</title><rect class="frame" x="1107.22" y="294.00" width="1.98" height="17" fill="#aa70eb"/>
+</g>
+<g><title>forward_copy_longs | 1 samples | 0.2%</title><rect class="frame" x="1109.20" y="294.00" width="1.98" height="17" fill="#89b6d9"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.findNear:158_[j] | 17 samples | 2.8%</title><rect class="frame" x="1111.18" y="348.00" width="33.61" height="17" fill="#4c72b0"/>
+<text class="label" x="1114.18" y="356.50">dba…</text>
+</g>
+<g><title>java/util/ArrayList.add:497_[j] | 17 samples | 2.8%</title><rect class="frame" x="1111.18" y="330.00" width="33.61" height="17" fill="#ca72e3"/>
+<text class="label" x="1114.18" y="338.50">jav…</text>
+</g>
+<g><title>java/util/ArrayList.add:484_[j] | 13 samples | 2.1%</title><rect class="frame" x="1111.18" y="312.00" width="25.70" height="17" fill="#dd6f89"/>
+</g>
+<g><title>java/util/ArrayList.grow:245_[j] | 13 samples | 2.1%</title><rect class="frame" x="1111.18" y="294.00" width="25.70" height="17" fill="#f08e9b"/>
+</g>
+<g><title>java/util/ArrayList.grow:238_[j] | 13 samples | 2.1%</title><rect class="frame" x="1111.18" y="276.00" width="25.70" height="17" fill="#d0dc7d"/>
+</g>
+<g><title>java/util/Arrays.copyOf:3481_[j] | 13 samples | 2.1%</title><rect class="frame" x="1111.18" y="258.00" width="25.70" height="17" fill="#dd8452"/>
+</g>
+<g><title>zero_blocks | 7 samples | 1.2%</title><rect class="frame" x="1111.18" y="240.00" width="13.84" height="17" fill="#79a5e8"/>
+</g>
+<g><title>OptoRuntime::new_array_C | 1 samples | 0.2%</title><rect class="frame" x="1125.01" y="240.00" width="1.98" height="17" fill="#8dc8db"/>
+</g>
+<g><title>InstanceKlass::allocate_objArray | 1 samples | 0.2%</title><rect class="frame" x="1125.01" y="222.00" width="1.98" height="17" fill="#6aec8f"/>
+</g>
+<g><title>CollectedHeap::array_allocate | 1 samples | 0.2%</title><rect class="frame" x="1125.01" y="204.00" width="1.98" height="17" fill="#8f7fe2"/>
+</g>
+<g><title>MemAllocator::allocate | 1 samples | 0.2%</title><rect class="frame" x="1125.01" y="186.00" width="1.98" height="17" fill="#ddb570"/>
+</g>
+<g><title>ObjArrayAllocator::initialize | 1 samples | 0.2%</title><rect class="frame" x="1125.01" y="168.00" width="1.98" height="17" fill="#7edc64"/>
+</g>
+<g><title>java/util/ArrayList.add:485_[i] | 1 samples | 0.2%</title><rect class="frame" x="1136.88" y="312.00" width="1.98" height="17" fill="#6ae8c6"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.findNear:62_[j] | 9 samples | 1.5%</title><rect class="frame" x="1144.78" y="348.00" width="17.79" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.computeHash:111_[i] | 9 samples | 1.5%</title><rect class="frame" x="1144.78" y="330.00" width="17.79" height="17" fill="#4c72b0"/>
+</g>
+<g><title>java/util/HashMap.putVal:635_[j] | 4 samples | 0.7%</title><rect class="frame" x="1144.78" y="312.00" width="7.91" height="17" fill="#dd8452"/>
+</g>
+<g><title>zero_blocks | 1 samples | 0.2%</title><rect class="frame" x="1152.69" y="312.00" width="1.98" height="17" fill="#79a5e8"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.findNear:70_[j] | 6 samples | 1.0%</title><rect class="frame" x="1162.58" y="348.00" width="11.86" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex$Entry.getPoint:40_[i] | 2 samples | 0.3%</title><rect class="frame" x="1162.58" y="330.00" width="3.95" height="17" fill="#4c72b0"/>
+</g>
+<g><title>java/util/ArrayList.get:428_[i] | 2 samples | 0.3%</title><rect class="frame" x="1166.53" y="330.00" width="3.95" height="17" fill="#82cedc"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex$Point3D.distanceTo:35_[i] | 1 samples | 0.2%</title><rect class="frame" x="1170.48" y="330.00" width="1.98" height="17" fill="#4c72b0"/>
+</g>
+<g><title>java/util/ArrayList.get:429_[i] | 1 samples | 0.2%</title><rect class="frame" x="1172.46" y="330.00" width="1.98" height="17" fill="#d3d97c"/>
+</g>
+<g><title>java/util/ArrayList.elementData:412_[i] | 1 samples | 0.2%</title><rect class="frame" x="1172.46" y="312.00" width="1.98" height="17" fill="#79f1dc"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.findNear:71_[j] | 5 samples | 0.8%</title><rect class="frame" x="1174.44" y="348.00" width="9.88" height="17" fill="#4c72b0"/>
+</g>
+<g><title>java/lang/Double.valueOf:924_[i] | 5 samples | 0.8%</title><rect class="frame" x="1174.44" y="330.00" width="9.88" height="17" fill="#da8da1"/>
+</g>
+<g><title>thread_start | 10 samples | 1.6%</title><rect class="frame" x="1184.32" y="672.00" width="19.77" height="17" fill="#e89f63"/>
+</g>
+<g><title>_pthread_start | 10 samples | 1.6%</title><rect class="frame" x="1184.32" y="654.00" width="19.77" height="17" fill="#e86f99"/>
+</g>
+<g><title>thread_native_entry | 10 samples | 1.6%</title><rect class="frame" x="1184.32" y="636.00" width="19.77" height="17" fill="#71e6df"/>
+</g>
+<g><title>Thread::call_run | 10 samples | 1.6%</title><rect class="frame" x="1184.32" y="618.00" width="19.77" height="17" fill="#9ddb88"/>
+</g>
+<g><title>WorkerThread::run | 4 samples | 0.7%</title><rect class="frame" x="1184.32" y="600.00" width="7.91" height="17" fill="#8feade"/>
+</g>
+<g><title>semaphore_wait_trap | 3 samples | 0.5%</title><rect class="frame" x="1184.32" y="582.00" width="5.93" height="17" fill="#88aeee"/>
+</g>
+<g><title>G1BatchedTask::work | 1 samples | 0.2%</title><rect class="frame" x="1190.25" y="582.00" width="1.98" height="17" fill="#55a868"/>
+</g>
+<g><title>G1PostEvacuateCollectionSetCleanupTask2::FreeCollectionSetTask::do_work | 1 samples | 0.2%</title><rect class="frame" x="1190.25" y="564.00" width="1.98" height="17" fill="#55a868"/>
+</g>
+<g><title>G1CollectedHeap::par_iterate_regions_array | 1 samples | 0.2%</title><rect class="frame" x="1190.25" y="546.00" width="1.98" height="17" fill="#55a868"/>
+</g>
+<g><title>JavaThread::thread_main_inner | 2 samples | 0.3%</title><rect class="frame" x="1192.23" y="600.00" width="3.95" height="17" fill="#ec6c72"/>
+</g>
+<g><title>CompileBroker::compiler_thread_loop | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="582.00" width="1.98" height="17" fill="#cddd8c"/>
+</g>
+<g><title>CompileBroker::invoke_compiler_on_method | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="564.00" width="1.98" height="17" fill="#79b4eb"/>
+</g>
+<g><title>C2Compiler::compile_method | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="546.00" width="1.98" height="17" fill="#64c6de"/>
+</g>
+<g><title>Compile::Compile | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="528.00" width="1.98" height="17" fill="#e18682"/>
+</g>
+<g><title>ParseGenerator::generate | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="510.00" width="1.98" height="17" fill="#d169ef"/>
+</g>
+<g><title>Parse::Parse | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="492.00" width="1.98" height="17" fill="#8bc7d9"/>
+</g>
+<g><title>Parse::do_all_blocks | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="474.00" width="1.98" height="17" fill="#7de4a1"/>
+</g>
+<g><title>Parse::do_one_block | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="456.00" width="1.98" height="17" fill="#83e3d9"/>
+</g>
+<g><title>Parse::do_call | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="438.00" width="1.98" height="17" fill="#e36ced"/>
+</g>
+<g><title>PredictedCallGenerator::generate | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="420.00" width="1.98" height="17" fill="#86a9e9"/>
+</g>
+<g><title>ParseGenerator::generate | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="402.00" width="1.98" height="17" fill="#d169ef"/>
+</g>
+<g><title>Parse::Parse | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="384.00" width="1.98" height="17" fill="#8bc7d9"/>
+</g>
+<g><title>Parse::do_all_blocks | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="366.00" width="1.98" height="17" fill="#7de4a1"/>
+</g>
+<g><title>Parse::do_one_block | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="348.00" width="1.98" height="17" fill="#83e3d9"/>
+</g>
+<g><title>Parse::do_call | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="330.00" width="1.98" height="17" fill="#e36ced"/>
+</g>
+<g><title>Compile::call_generator | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="312.00" width="1.98" height="17" fill="#8a8fee"/>
+</g>
+<g><title>InlineTree::ok_to_inline | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="294.00" width="1.98" height="17" fill="#796cdb"/>
+</g>
+<g><title>ciMethod::get_flow_analysis | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="276.00" width="1.98" height="17" fill="#e6779c"/>
+</g>
+<g><title>ciTypeFlow::do_flow | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="258.00" width="1.98" height="17" fill="#9bf0e5"/>
+</g>
+<g><title>ciTypeFlow::flow_types | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="240.00" width="1.98" height="17" fill="#e0958d"/>
+</g>
+<g><title>ciTypeFlow::df_flow_types | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="222.00" width="1.98" height="17" fill="#7dda67"/>
+</g>
+<g><title>ciTypeFlow::flow_block | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="204.00" width="1.98" height="17" fill="#91e16d"/>
+</g>
+<g><title>ciTypeFlow::StateVector::apply_one_bytecode | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="186.00" width="1.98" height="17" fill="#dd789e"/>
+</g>
+<g><title>ciTypeFlow::StateVector::do_invoke | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="168.00" width="1.98" height="17" fill="#c8ec65"/>
+</g>
+<g><title>ciBytecodeStream::get_method | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="150.00" width="1.98" height="17" fill="#66bbdf"/>
+</g>
+<g><title>ciEnv::get_method_by_index_impl | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="132.00" width="1.98" height="17" fill="#eee588"/>
+</g>
+<g><title>ciEnv::lookup_method | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="114.00" width="1.98" height="17" fill="#e8c868"/>
+</g>
+<g><title>LinkResolver::linktime_resolve_interface_method_or_null | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="96.00" width="1.98" height="17" fill="#91d2e2"/>
+</g>
+<g><title>LinkResolver::resolve_interface_method | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="78.00" width="1.98" height="17" fill="#5febd6"/>
+</g>
+<g><title>InstanceKlass::uncached_lookup_method | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="60.00" width="1.98" height="17" fill="#6cdeeb"/>
+</g>
+<g><title>InstanceKlass::find_method_index | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="42.00" width="1.98" height="17" fill="#eb6881"/>
+</g>
+<g><title>MonitorDeflationThread::monitor_deflation_thread_entry | 1 samples | 0.2%</title><rect class="frame" x="1194.21" y="582.00" width="1.98" height="17" fill="#7f83d9"/>
+</g>
+<g><title>PlatformMonitor::wait | 1 samples | 0.2%</title><rect class="frame" x="1194.21" y="564.00" width="1.98" height="17" fill="#bdd882"/>
+</g>
+<g><title>WatcherThread::run | 2 samples | 0.3%</title><rect class="frame" x="1196.18" y="600.00" width="3.95" height="17" fill="#85d0db"/>
+</g>
+<g><title>WatcherThread::sleep | 2 samples | 0.3%</title><rect class="frame" x="1196.18" y="582.00" width="3.95" height="17" fill="#a5f162"/>
+</g>
+<g><title>Monitor::wait_without_safepoint_check | 2 samples | 0.3%</title><rect class="frame" x="1196.18" y="564.00" width="3.95" height="17" fill="#98ec91"/>
+</g>
+<g><title>PlatformMonitor::wait | 2 samples | 0.3%</title><rect class="frame" x="1196.18" y="546.00" width="3.95" height="17" fill="#bdd882"/>
+</g>
+<g><title>__psynch_cvwait | 2 samples | 0.3%</title><rect class="frame" x="1196.18" y="528.00" width="3.95" height="17" fill="#c16be9"/>
+</g>
+<g><title>ConcurrentGCThread::run | 1 samples | 0.2%</title><rect class="frame" x="1200.14" y="600.00" width="1.98" height="17" fill="#e1b65a"/>
+</g>
+<g><title>G1ConcurrentRefineThread::run_service | 1 samples | 0.2%</title><rect class="frame" x="1200.14" y="582.00" width="1.98" height="17" fill="#55a868"/>
+</g>
+<g><title>G1PrimaryConcurrentRefineThread::wait_for_completed_buffers | 1 samples | 0.2%</title><rect class="frame" x="1200.14" y="564.00" width="1.98" height="17" fill="#55a868"/>
+</g>
+<g><title>Monitor::wait_without_safepoint_check | 1 samples | 0.2%</title><rect class="frame" x="1200.14" y="546.00" width="1.98" height="17" fill="#98ec91"/>
+</g>
+<g><title>PlatformMonitor::wait | 1 samples | 0.2%</title><rect class="frame" x="1200.14" y="528.00" width="1.98" height="17" fill="#bdd882"/>
+</g>
+<g><title>__psynch_cvwait | 1 samples | 0.2%</title><rect class="frame" x="1200.14" y="510.00" width="1.98" height="17" fill="#c16be9"/>
+</g>
+<g><title>VMThread::run | 1 samples | 0.2%</title><rect class="frame" x="1202.12" y="600.00" width="1.98" height="17" fill="#c969e1"/>
+</g>
+<g><title>VMThread::inner_execute | 1 samples | 0.2%</title><rect class="frame" x="1202.12" y="582.00" width="1.98" height="17" fill="#88e5af"/>
+</g>
+<g><title>VMThread::evaluate_operation | 1 samples | 0.2%</title><rect class="frame" x="1202.12" y="564.00" width="1.98" height="17" fill="#e48cc6"/>
+</g>
+<g><title>VM_Operation::evaluate | 1 samples | 0.2%</title><rect class="frame" x="1202.12" y="546.00" width="1.98" height="17" fill="#6cdb89"/>
+</g>
+<g><title>VM_G1CollectForAllocation::doit | 1 samples | 0.2%</title><rect class="frame" x="1202.12" y="528.00" width="1.98" height="17" fill="#55a868"/>
+</g>
+<g><title>G1CollectedHeap::do_collection_pause_at_safepoint | 1 samples | 0.2%</title><rect class="frame" x="1202.12" y="510.00" width="1.98" height="17" fill="#55a868"/>
+</g>
+<g><title>G1CollectedHeap::do_collection_pause_at_safepoint_helper | 1 samples | 0.2%</title><rect class="frame" x="1202.12" y="492.00" width="1.98" height="17" fill="#55a868"/>
+</g>
+<g><title>G1YoungCollector::collect | 1 samples | 0.2%</title><rect class="frame" x="1202.12" y="474.00" width="1.98" height="17" fill="#55a868"/>
+</g>
+<g><title>G1YoungCollector::evacuate_initial_collection_set | 1 samples | 0.2%</title><rect class="frame" x="1202.12" y="456.00" width="1.98" height="17" fill="#55a868"/>
+</g>
+<g><title>G1RemSet::merge_heap_roots | 1 samples | 0.2%</title><rect class="frame" x="1202.12" y="438.00" width="1.98" height="17" fill="#55a868"/>
+</g>
+<g><title>G1MergeHeapRootsTask::G1MergeHeapRootsTask | 1 samples | 0.2%</title><rect class="frame" x="1202.12" y="420.00" width="1.98" height="17" fill="#55a868"/>
+</g>
+<g><title>org/openjdk/jmh/runner/ForkedMain.main:86_[j] | 2 samples | 0.3%</title><rect class="frame" x="1204.09" y="672.00" width="3.95" height="17" fill="#f06266"/>
+</g>
+<g><title>org/openjdk/jmh/runner/ForkedRunner.run:72_[j] | 2 samples | 0.3%</title><rect class="frame" x="1204.09" y="654.00" width="3.95" height="17" fill="#7adca4"/>
+</g>
+<g><title>org/openjdk/jmh/runner/BaseRunner.runBenchmarksForked:75_[j] | 2 samples | 0.3%</title><rect class="frame" x="1204.09" y="636.00" width="3.95" height="17" fill="#6edbae"/>
+</g>
+<g><title>org/openjdk/jmh/runner/BaseRunner.doSingle:138_[j] | 2 samples | 0.3%</title><rect class="frame" x="1204.09" y="618.00" width="3.95" height="17" fill="#816bed"/>
+</g>
+<g><title>org/openjdk/jmh/runner/BaseRunner.runBenchmark:233_[j] | 2 samples | 0.3%</title><rect class="frame" x="1204.09" y="600.00" width="3.95" height="17" fill="#70bbef"/>
+</g>
+<g><title>org/openjdk/jmh/runner/BaseRunner.runBenchmark:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="1204.09" y="582.00" width="3.95" height="17" fill="#7aecde"/>
+</g>
+<g><title>org/openjdk/jmh/runner/BenchmarkHandler.runIteration:335_[j] | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="564.00" width="1.98" height="17" fill="#e683ea"/>
+</g>
+<g><title>org/openjdk/jmh/runner/BenchmarkHandler.startProfilers:255_[j] | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="546.00" width="1.98" height="17" fill="#e55cc6"/>
+</g>
+<g><title>org/openjdk/jmh/profile/AsyncProfiler.beforeIteration:326_[j] | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="528.00" width="1.98" height="17" fill="#dba477"/>
+</g>
+<g><title>org/openjdk/jmh/profile/AsyncProfiler.start:334_[j] | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="510.00" width="1.98" height="17" fill="#71c1db"/>
+</g>
+<g><title>org/openjdk/jmh/profile/AsyncProfiler.execute:433_[j] | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="492.00" width="1.98" height="17" fill="#73ddc5"/>
+</g>
+<g><title>org/openjdk/jmh/profile/AsyncProfiler$JavaApi.execute:591_[j] | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="474.00" width="1.98" height="17" fill="#65e8b8"/>
+</g>
+<g><title>org/openjdk/jmh/profile/AsyncProfiler$JavaApi.execute0_[0] | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="456.00" width="1.98" height="17" fill="#6cf1bd"/>
+</g>
+<g><title>Java_one_profiler_AsyncProfiler_execute0 | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="438.00" width="1.98" height="17" fill="#ece98c"/>
+</g>
+<g><title>Profiler::runInternal | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="420.00" width="1.98" height="17" fill="#c962e3"/>
+</g>
+<g><title>Profiler::start | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="402.00" width="1.98" height="17" fill="#e263f1"/>
+</g>
+<g><title>Profiler::startTimer | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="384.00" width="1.98" height="17" fill="#83a1e4"/>
+</g>
+<g><title>JNIEnv_::NewObject | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="366.00" width="1.98" height="17" fill="#f188b5"/>
+</g>
+<g><title>jni_NewObjectV | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="348.00" width="1.98" height="17" fill="#7fbceb"/>
+</g>
+<g><title>jni_invoke_nonstatic | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="330.00" width="1.98" height="17" fill="#7866e5"/>
+</g>
+<g><title>JavaCalls::call_helper | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="312.00" width="1.98" height="17" fill="#b1e470"/>
+</g>
+<g><title>org/openjdk/jmh/runner/BenchmarkHandler.runIteration:354_[j] | 1 samples | 0.2%</title><rect class="frame" x="1206.07" y="564.00" width="1.98" height="17" fill="#db788a"/>
+</g>
+<g><title>java/util/concurrent/ExecutorCompletionService.poll:211_[j] | 1 samples | 0.2%</title><rect class="frame" x="1206.07" y="546.00" width="1.98" height="17" fill="#7ee085"/>
+</g>
+<g><title>java/util/concurrent/LinkedBlockingQueue.poll:460_[j] | 1 samples | 0.2%</title><rect class="frame" x="1206.07" y="528.00" width="1.98" height="17" fill="#75dec4"/>
+</g>
+<g><title>java/util/concurrent/locks/AbstractQueuedSynchronizer$ConditionObject.awaitNanos:1763_[j] | 1 samples | 0.2%</title><rect class="frame" x="1206.07" y="510.00" width="1.98" height="17" fill="#e1a37e"/>
+</g>
+<g><title>java/util/concurrent/locks/LockSupport.parkNanos:269_[j] | 1 samples | 0.2%</title><rect class="frame" x="1206.07" y="492.00" width="1.98" height="17" fill="#d291e2"/>
+</g>
+<g><title>jdk/internal/misc/Unsafe.park_[0] | 1 samples | 0.2%</title><rect class="frame" x="1206.07" y="474.00" width="1.98" height="17" fill="#93e5c5"/>
+</g>
+<g><title>unknown_Java | 2 samples | 0.3%</title><rect class="frame" x="1208.05" y="672.00" width="3.95" height="17" fill="#95e6a4"/>
+</g>
+<g><title>forward_copy_longs | 2 samples | 0.3%</title><rect class="frame" x="1208.05" y="654.00" width="3.95" height="17" fill="#89b6d9"/>
+</g>
+</svg>

@@ -21,19 +21,30 @@ open class LshBenchmark {
     var dataSize: Int = 0
 
     private lateinit var rpIndex: RandomProjectionLshIndex
-    private val rng = java.util.Random(123)
+    private lateinit var queryPoints: Array<RandomProjectionLshIndex.Point3D>
     private var heapBytesPerEntry = 0L
+    private var queryIdx = 0
 
     @Setup(Level.Trial)
     fun setup() {
+        val rng = java.util.Random(123)
         val rt = Runtime.getRuntime()
         System.gc(); System.gc()
         val heapBefore = rt.totalMemory() - rt.freeMemory()
         rpIndex = RandomProjectionLshIndex(numHashes = 64, numBands = 8)
-        for (i in 0 until dataSize) {
-            rpIndex.add("pt$i", RandomProjectionLshIndex.Point3D(
-                rng.nextDouble() * 100, rng.nextDouble() * 100, rng.nextDouble() * 100
-            ))
+        val points = Array(dataSize) {
+            RandomProjectionLshIndex.Point3D(
+                rng.nextDouble() * 100,
+                rng.nextDouble() * 100,
+                rng.nextDouble() * 100
+            )
+        }
+        points.forEachIndexed { i, point ->
+            rpIndex.add("pt_${i.toString().padStart(8, '0')}", point)
+        }
+        val queryCount = minOf(points.size, 1024)
+        queryPoints = Array(queryCount) { i ->
+            points[i * points.size / queryCount]
         }
         System.gc(); System.gc()
         val heapAfter = rt.totalMemory() - rt.freeMemory()
@@ -42,9 +53,7 @@ open class LshBenchmark {
 
     @Benchmark
     fun benchRpFindNear(): List<Pair<String, Double>> {
-        return rpIndex.findNear(
-            RandomProjectionLshIndex.Point3D(50.0, 50.0, 50.0), 5.0
-        )
+        return rpIndex.findNear(queryPoints[queryIdx++ % queryPoints.size], 5.0)
     }
 
     @Benchmark

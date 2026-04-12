@@ -34,6 +34,8 @@ val profile = project.hasProperty("profile")
 val apVersion = "4.0"
 val apDir = layout.buildDirectory.dir("async-profiler")
 val profileDir = layout.buildDirectory.dir("reports/profile")
+val jmhInclude = providers.gradleProperty("jmhInclude").orNull
+val jmhDataSize = providers.gradleProperty("jmhDataSize").orNull
 
 if (profile) {
     val apLib = apDir.get().file("lib/libasyncProfiler.dylib").asFile
@@ -57,7 +59,7 @@ if (profile) {
     }
 
     val processProfiles by tasks.registering {
-        description = "Converts JFR profiles to flame graphs (HTML) and AI-readable JSON"
+        description = "Converts JFR profiles to flame graphs, collapsed stacks, and JSON"
         group = "benchmark"
         doLast {
             val profDir = profileDir.get().asFile
@@ -67,11 +69,12 @@ if (profile) {
                 return@doLast
             }
             val flamegraphDir = profDir.resolve("flamegraphs").apply { mkdirs() }
+            val collapsedDir = profDir.resolve("collapsed").apply { mkdirs() }
             val jsonDir = profDir.resolve("json").apply { mkdirs() }
 
             jfrFiles.forEach { jfr ->
                 val name = jfr.parentFile.name
-                logger.lifecycle("  $name → flame graph + JSON")
+                logger.lifecycle("  $name → flame graph + collapsed + JSON")
                 project.exec {
                     commandLine(
                         jfrconv.absolutePath, "--cpu", "--lines",
@@ -81,11 +84,20 @@ if (profile) {
                     )
                 }
                 project.exec {
+                    commandLine(
+                        jfrconv.absolutePath, "--cpu", "--lines",
+                        "-o", "collapsed",
+                        jfr.absolutePath,
+                        collapsedDir.resolve("$name.txt").absolutePath
+                    )
+                }
+                project.exec {
                     commandLine("jfr", "print", "--json", "--stack-depth", "64", jfr.absolutePath)
                     standardOutput = jsonDir.resolve("$name.json").outputStream()
                 }
             }
             logger.lifecycle("Flame graphs → ${flamegraphDir.absolutePath}")
+            logger.lifecycle("Collapsed stacks → ${collapsedDir.absolutePath}")
             logger.lifecycle("JSON profiles → ${jsonDir.absolutePath}")
         }
     }
@@ -102,6 +114,15 @@ jmh {
     fork = 1
     benchmarkMode = listOf("thrpt", "sample")
     resultFormat = "JSON"
+    if (jmhInclude != null) {
+        includes.add(jmhInclude)
+    }
+    if (jmhDataSize != null) {
+        benchmarkParameters.put(
+            "dataSize",
+            objects.listProperty(String::class.java).apply { set(listOf(jmhDataSize)) }
+        )
+    }
     if (profile) {
         val libPath = apDir.get().file("lib/libasyncProfiler.dylib").asFile.absolutePath
         val outDir = profileDir.get().asFile.absolutePath

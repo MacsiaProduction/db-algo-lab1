@@ -172,7 +172,8 @@ class ExtendibleHashTable(
         }
         ioBuf.flip()
         val ch = channel(id)
-        ch.truncate(ioBuf.limit().toLong())
+        val newSize = ioBuf.limit().toLong()
+        if (newSize < ch.size()) ch.truncate(newSize)
         ch.write(ioBuf, 0)
     }
 
