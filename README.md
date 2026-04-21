@@ -1,29 +1,74 @@
 # Database Algorithms Lab 1
 
-Реализация и исследование трёх алгоритмов работы с данными на Kotlin/JVM.
+Реализация и benchmark-исследование трёх структур данных на Kotlin/JVM:
 
-## Алгоритмы
-
-1. **File-based Hash Table** — персистентная хеш-таблица с bucket-файлами, append-only записями и auto-compaction
-2. **Perfect Hash (FKS)** — двухуровневое идеальное хеширование, O(1) worst-case lookup без коллизий
-3. **LSH** — RandomProjection LSH для 3D-точек
+1. `ExtendibleHashTable` — file-based hash table со slotted bucket pages
+2. `PerfectHashMap` — статическая FKS-таблица
+3. `RandomProjectionLshIndex` — LSH для 3D-точек
 
 ## Быстрый старт
 
 ```bash
-# Тесты
+# Unit tests
 ./gradlew test
 
-# Полные JMH-результаты (build/results/jmh/results.json)
+# Базовый JMH прогон (единый results.json)
 ./gradlew jmh
 
-# Профили async-profiler для representative N=1M бенчмарков
-./gradlew jmh -Pprofile -PjmhInclude='dbalgo.hashtable.HashTableBenchmark.bench(Get|Insert|Update|Delete)$' -PjmhDataSize=1000000
-./gradlew jmh -Pprofile -PjmhInclude='dbalgo.lsh.LshBenchmark.benchRpFindNear$' -PjmhDataSize=1000000
-./gradlew jmh -Pprofile -PjmhInclude='dbalgo.perfecthash.PerfectHashBenchmark.benchLookup$' -PjmhDataSize=1000000
+# HashTable quick: короткий цикл для phase drift / batch tuning
+./gradlew jmh -PjmhPreset=quick -PjmhResultFile=build/results/jmh/ht_quick.json \
+  -PjmhInclude='dbalgo.hashtable.HashTableIntervalBenchmark.bench(GetHit|GetMiss|UpdateHit|UpdateMiss|InsertOverwrite|InsertGrowthNoSplit|InsertGrowthSplit|DeleteDense|DeleteSparse)$'
 
-# Графики и SVG flamegraphs в docs/img
-python3 docs/gen_charts.py
+# HashTable strict gate: полный strict tier, N=1M
+./gradlew jmh -PjmhPreset=gate -PjmhResultFile=build/results/jmh/ht_gate.json \
+  -PjmhInclude='dbalgo.hashtable.HashTableIntervalBenchmark.bench(GetHit|GetMiss|UpdateHit|UpdateMiss|InsertOverwrite|InsertGrowthNoSplit|DeleteDense)$'
+
+# HashTable diagnostic tier
+./gradlew jmh -PjmhPreset=diag -PjmhResultFile=build/results/jmh/ht_diag.json \
+  -PjmhInclude='dbalgo.hashtable.HashTableIntervalBenchmark.bench(InsertGrowthSplit|DeleteSparse)$'
+
+# LSH CI-only interval suite
+./gradlew jmh -PjmhPreset=lshGate -PjmhResultFile=build/results/jmh/lsh_ci.json \
+  -PjmhInclude='dbalgo.lsh.LshIntervalBenchmark.benchFindNear$'
+
+# PerfectHash lookup CI-only interval suite
+./gradlew jmh -PjmhPreset=phLookupGate -PjmhResultFile=build/results/jmh/ph_lookup_ci.json \
+  -PjmhInclude='dbalgo.perfecthash.PerfectHashLookupIntervalBenchmark.benchLookup$'
+
+# PerfectHash build CI-only interval suite
+./gradlew jmh -PjmhPreset=phBuildGate -PjmhResultFile=build/results/jmh/ph_build_ci.json \
+  -PjmhInclude='dbalgo.perfecthash.PerfectHashBuildIntervalBenchmark.benchBuild$'
+
+# Manifest-driven confidence summaries
+python3 docs/jmh_confidence.py --manifest docs/report_manifest.json --prefix dbalgo.hashtable.HashTableIntervalBenchmark --unit us --markdown
+python3 docs/jmh_confidence.py --manifest docs/report_manifest.json --prefix dbalgo.lsh.LshIntervalBenchmark --unit us --markdown
+python3 docs/jmh_confidence.py --manifest docs/report_manifest.json --prefix dbalgo.perfecthash.PerfectHashLookupIntervalBenchmark --unit ns --markdown
+python3 docs/jmh_confidence.py --manifest docs/report_manifest.json --prefix dbalgo.perfecthash.PerfectHashBuildIntervalBenchmark --unit ms --markdown
+
+# Генерация charts + sync числовых таблиц в BENCHMARK_REPORT.md
+python3 docs/gen_charts.py --manifest docs/report_manifest.json
 ```
 
-Сводный отчёт по результатам находится в `BENCHMARK_REPORT.md`.
+## CI policy
+
+- `HashTableIntervalBenchmark`
+  - strict: `getHit`, `getMiss`, `updateHit`, `updateMiss`, `insertOverwrite`, `deleteDense` -> `95% CI half-width <= 2%`
+  - structural strict: `insertGrowthNoSplit` -> `<= 3%`
+  - diagnostic: `insertGrowthSplit`, `deleteSparse`
+- `LshIntervalBenchmark.benchFindNear` -> `<= 2%`
+- `PerfectHashLookupIntervalBenchmark.benchLookup` -> `<= 2%`
+- `PerfectHashBuildIntervalBenchmark.benchBuild` -> `<= 3%`
+
+## Reporting workflow
+
+`docs/report_manifest.json` — единственный источник правды для published snapshot. `docs/jmh_confidence.py` и `docs/gen_charts.py` читают только manifest-listed JSON-файлы и больше не сканируют весь `build/results/jmh/*.json`.
+
+`docs/gen_charts.py`:
+
+- строит `ht_confidence.png`, `lsh_confidence.png`, `ph_confidence.png`
+- обновляет таблицы в `BENCHMARK_REPORT.md` между generated block markers
+- падает, если в pinned snapshot нет обязательного dataset или обязательного размера
+
+`docs/jmh_confidence.py --results ...` остаётся ad-hoc режимом для разовых проверок вне pinned snapshot.
+
+Сводный manifest-driven отчёт находится в `BENCHMARK_REPORT.md`.

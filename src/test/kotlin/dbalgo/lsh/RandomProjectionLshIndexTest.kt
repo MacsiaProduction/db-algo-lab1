@@ -84,6 +84,18 @@ class RandomProjectionLshIndexTest {
     }
 
     @Test
+    fun `findNear results stay sorted by distance`() {
+        val idx = newIndex()
+        idx.add("a", Point3D(0.0, 0.0, 0.0))
+        idx.add("b", Point3D(1.0, 0.0, 0.0))
+        idx.add("c", Point3D(2.0, 0.0, 0.0))
+
+        val near = idx.findNear(Point3D(0.0, 0.0, 0.0), 10.0)
+        assertEquals(listOf("a", "b", "c"), near.map { it.first })
+        assertTrue(near.zipWithNext().all { (left, right) -> left.second <= right.second })
+    }
+
+    @Test
     fun `расстояние точно вычисляется`() {
         val a = Point3D(0.0, 0.0, 0.0)
         val b = Point3D(3.0, 4.0, 0.0)

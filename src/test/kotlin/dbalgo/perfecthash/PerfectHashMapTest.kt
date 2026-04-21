@@ -69,6 +69,17 @@ class PerfectHashMapTest {
     }
 
     @Test
+    fun `lookup preserves utf8 semantics for malformed surrogate strings`() {
+        val malformed = "\uD800"
+        val valid = "ok"
+        val ph = PerfectHashMap.build(arrayOf(malformed, valid), arrayOf(7, 9))
+
+        assertEquals(7, ph.lookup(malformed))
+        assertEquals(9, ph.lookup(valid))
+        assertNull(ph.lookup("\uD801"))
+    }
+
+    @Test
     fun `похожие ключи не путаются`() {
         val keys = arrayOf("abc", "abd", "aec", "bbc")
         val values = arrayOf(1, 2, 3, 4)

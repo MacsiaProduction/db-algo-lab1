@@ -1,807 +1,619 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1224" height="644" viewBox="0 0 1224 644">
+<svg xmlns="http://www.w3.org/2000/svg" width="1224" height="1076" viewBox="0 0 1224 1076">
 <style>text{font-family:Menlo,Consolas,monospace;fill:#1f1f1f}.title{font-size:16px;font-weight:700}.meta{font-size:11px;fill:#555}.frame{stroke:#ffffff;stroke-width:0.5}.label{font-size:11px;dominant-baseline:middle}</style>
 <rect width="100%" height="100%" fill="#fffdf8"/>
 <text class="title" x="12" y="20">ExtendibleHashTable.update() — flamegraph (N=1M)</text>
-<text class="meta" x="12" y="32">async-profiler collapsed stacks, total samples: 727</text>
-<g><title>java/lang/Thread.run:1575_[j] | 695 samples | 95.6%</title><rect class="frame" x="12.00" y="618.00" width="1147.18" height="17" fill="#ee92aa"/>
-<text class="label" x="15.00" y="626.50">java/lang/Thread.run:1575_[j]</text>
+<text class="meta" x="12" y="32">async-profiler collapsed stacks, total samples: 670</text>
+<g><title>java/lang/Thread.run:1575_[j] | 660 samples | 98.5%</title><rect class="frame" x="12.00" y="1050.00" width="1182.09" height="17" fill="#ee92aa"/>
+<text class="label" x="15.00" y="1058.50">java/lang/Thread.run:1575_[j]</text>
 </g>
-<g><title>java/lang/Thread.runWith:1588_[j] | 695 samples | 95.6%</title><rect class="frame" x="12.00" y="600.00" width="1147.18" height="17" fill="#65e1b7"/>
-<text class="label" x="15.00" y="608.50">java/lang/Thread.runWith:1588_[j]</text>
+<g><title>java/lang/Thread.runWith:1588_[j] | 660 samples | 98.5%</title><rect class="frame" x="12.00" y="1032.00" width="1182.09" height="17" fill="#65e1b7"/>
+<text class="label" x="15.00" y="1040.50">java/lang/Thread.runWith:1588_[j]</text>
 </g>
-<g><title>java/util/concurrent/ThreadPoolExecutor$Worker.run:642_[j] | 695 samples | 95.6%</title><rect class="frame" x="12.00" y="582.00" width="1147.18" height="17" fill="#e57863"/>
-<text class="label" x="15.00" y="590.50">java/util/concurrent/ThreadPoolExecutor$Worker.run:642_[j]</text>
+<g><title>java/util/concurrent/ThreadPoolExecutor$Worker.run:642_[j] | 660 samples | 98.5%</title><rect class="frame" x="12.00" y="1014.00" width="1182.09" height="17" fill="#e57863"/>
+<text class="label" x="15.00" y="1022.50">java/util/concurrent/ThreadPoolExecutor$Worker.run:642_[j]</text>
 </g>
-<g><title>java/util/concurrent/ThreadPoolExecutor.runWorker:1144_[j] | 695 samples | 95.6%</title><rect class="frame" x="12.00" y="564.00" width="1147.18" height="17" fill="#e2de6e"/>
-<text class="label" x="15.00" y="572.50">java/util/concurrent/ThreadPoolExecutor.runWorker:1144_[j]</text>
+<g><title>java/util/concurrent/ThreadPoolExecutor.runWorker:1144_[j] | 660 samples | 98.5%</title><rect class="frame" x="12.00" y="996.00" width="1182.09" height="17" fill="#e2de6e"/>
+<text class="label" x="15.00" y="1004.50">java/util/concurrent/ThreadPoolExecutor.runWorker:1144_[j]</text>
 </g>
-<g><title>java/util/concurrent/FutureTask.run:317_[j] | 695 samples | 95.6%</title><rect class="frame" x="12.00" y="546.00" width="1147.18" height="17" fill="#e0a979"/>
-<text class="label" x="15.00" y="554.50">java/util/concurrent/FutureTask.run:317_[j]</text>
+<g><title>java/util/concurrent/FutureTask.run:317_[j] | 660 samples | 98.5%</title><rect class="frame" x="12.00" y="978.00" width="1182.09" height="17" fill="#e0a979"/>
+<text class="label" x="15.00" y="986.50">java/util/concurrent/FutureTask.run:317_[j]</text>
 </g>
-<g><title>java/util/concurrent/Executors$RunnableAdapter.call:572_[j] | 695 samples | 95.6%</title><rect class="frame" x="12.00" y="528.00" width="1147.18" height="17" fill="#686bdb"/>
-<text class="label" x="15.00" y="536.50">java/util/concurrent/Executors$RunnableAdapter.call:572_[j]</text>
+<g><title>java/util/concurrent/Executors$RunnableAdapter.call:572_[j] | 660 samples | 98.5%</title><rect class="frame" x="12.00" y="960.00" width="1182.09" height="17" fill="#686bdb"/>
+<text class="label" x="15.00" y="968.50">java/util/concurrent/Executors$RunnableAdapter.call:572_[j]</text>
 </g>
-<g><title>java/util/concurrent/FutureTask.run:317_[j] | 695 samples | 95.6%</title><rect class="frame" x="12.00" y="510.00" width="1147.18" height="17" fill="#e0a979"/>
-<text class="label" x="15.00" y="518.50">java/util/concurrent/FutureTask.run:317_[j]</text>
+<g><title>java/util/concurrent/FutureTask.run:317_[j] | 660 samples | 98.5%</title><rect class="frame" x="12.00" y="942.00" width="1182.09" height="17" fill="#e0a979"/>
+<text class="label" x="15.00" y="950.50">java/util/concurrent/FutureTask.run:317_[j]</text>
 </g>
-<g><title>org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:504_[j] | 695 samples | 95.6%</title><rect class="frame" x="12.00" y="492.00" width="1147.18" height="17" fill="#e6e590"/>
-<text class="label" x="15.00" y="500.50">org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:504_[j]</text>
+<g><title>org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:504_[j] | 660 samples | 98.5%</title><rect class="frame" x="12.00" y="924.00" width="1182.09" height="17" fill="#e6e590"/>
+<text class="label" x="15.00" y="932.50">org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:504_[j]</text>
 </g>
-<g><title>org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:527_[j] | 695 samples | 95.6%</title><rect class="frame" x="12.00" y="474.00" width="1147.18" height="17" fill="#6befe4"/>
-<text class="label" x="15.00" y="482.50">org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:527_[j]</text>
+<g><title>org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:527_[j] | 660 samples | 98.5%</title><rect class="frame" x="12.00" y="906.00" width="1182.09" height="17" fill="#6befe4"/>
+<text class="label" x="15.00" y="914.50">org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:527_[j]</text>
 </g>
-<g><title>java/lang/reflect/Method.invoke:580_[j] | 695 samples | 95.6%</title><rect class="frame" x="12.00" y="456.00" width="1147.18" height="17" fill="#e4da61"/>
-<text class="label" x="15.00" y="464.50">java/lang/reflect/Method.invoke:580_[j]</text>
+<g><title>java/lang/reflect/Method.invoke:580_[j] | 660 samples | 98.5%</title><rect class="frame" x="12.00" y="888.00" width="1182.09" height="17" fill="#e4da61"/>
+<text class="label" x="15.00" y="896.50">java/lang/reflect/Method.invoke:580_[j]</text>
 </g>
-<g><title>jdk/internal/reflect/DirectMethodHandleAccessor.invoke:103_[j] | 695 samples | 95.6%</title><rect class="frame" x="12.00" y="438.00" width="1147.18" height="17" fill="#ef7984"/>
-<text class="label" x="15.00" y="446.50">jdk/internal/reflect/DirectMethodHandleAccessor.invoke:103_[j]</text>
+<g><title>jdk/internal/reflect/DirectMethodHandleAccessor.invoke:103_[j] | 660 samples | 98.5%</title><rect class="frame" x="12.00" y="870.00" width="1182.09" height="17" fill="#ef7984"/>
+<text class="label" x="15.00" y="878.50">jdk/internal/reflect/DirectMethodHandleAccessor.invoke:103_[j]</text>
 </g>
-<g><title>jdk/internal/reflect/DirectMethodHandleAccessor.invokeImpl:155_[j] | 695 samples | 95.6%</title><rect class="frame" x="12.00" y="420.00" width="1147.18" height="17" fill="#9767df"/>
-<text class="label" x="15.00" y="428.50">jdk/internal/reflect/DirectMethodHandleAccessor.invokeImpl:155_[j]</text>
+<g><title>jdk/internal/reflect/DirectMethodHandleAccessor.invokeImpl:155_[j] | 660 samples | 98.5%</title><rect class="frame" x="12.00" y="852.00" width="1182.09" height="17" fill="#9767df"/>
+<text class="label" x="15.00" y="860.50">jdk/internal/reflect/DirectMethodHandleAccessor.invokeImpl:155_[j]</text>
 </g>
-<g><title>java/lang/invoke/LambdaForm$MH.0x00000c0001025400.invokeExact_MT_[j] | 695 samples | 95.6%</title><rect class="frame" x="12.00" y="402.00" width="1147.18" height="17" fill="#8e8ced"/>
-<text class="label" x="15.00" y="410.50">java/lang/invoke/LambdaForm$MH.0x00000c0001025400.invokeExact_MT_[j]</text>
+<g><title>java/lang/invoke/LambdaForm$MH.0x00001e0001025400.invokeExact_MT_[j] | 660 samples | 98.5%</title><rect class="frame" x="12.00" y="834.00" width="1182.09" height="17" fill="#73eea7"/>
+<text class="label" x="15.00" y="842.50">java/lang/invoke/LambdaForm$MH.0x00001e0001025400.invokeExact_MT_[j]</text>
 </g>
-<g><title>java/lang/invoke/LambdaForm$MH.0x00000c0001025000.invoke_[j] | 695 samples | 95.6%</title><rect class="frame" x="12.00" y="384.00" width="1147.18" height="17" fill="#a6e474"/>
-<text class="label" x="15.00" y="392.50">java/lang/invoke/LambdaForm$MH.0x00000c0001025000.invoke_[j]</text>
+<g><title>java/lang/invoke/LambdaForm$MH.0x00001e0001025000.invoke_[j] | 660 samples | 98.5%</title><rect class="frame" x="12.00" y="816.00" width="1182.09" height="17" fill="#bb90f1"/>
+<text class="label" x="15.00" y="824.50">java/lang/invoke/LambdaForm$MH.0x00001e0001025000.invoke_[j]</text>
 </g>
-<g><title>java/lang/invoke/DirectMethodHandle$Holder.invokeSpecial_[j] | 695 samples | 95.6%</title><rect class="frame" x="12.00" y="366.00" width="1147.18" height="17" fill="#c493e6"/>
-<text class="label" x="15.00" y="374.50">java/lang/invoke/DirectMethodHandle$Holder.invokeSpecial_[j]</text>
+<g><title>java/lang/invoke/DirectMethodHandle$Holder.invokeSpecial_[j] | 660 samples | 98.5%</title><rect class="frame" x="12.00" y="798.00" width="1182.09" height="17" fill="#c493e6"/>
+<text class="label" x="15.00" y="806.50">java/lang/invoke/DirectMethodHandle$Holder.invokeSpecial_[j]</text>
 </g>
-<g><title>dbalgo/hashtable/jmh_generated/HashTableBenchmark_benchUpdate_jmhTest.benchUpdate_Throughput:84_[j] | 593 samples | 81.6%</title><rect class="frame" x="12.00" y="348.00" width="978.82" height="17" fill="#55a868"/>
-<text class="label" x="15.00" y="356.50">dbalgo/hashtable/jmh_generated/HashTableBenchmark_benchUpdate_jmhTest.benchUpdate_Throughput:84_[j]</text>
+<g><title>dbalgo/hashtable/jmh_generated/HashTableBenchmark_benchUpdate_jmhTest.benchUpdate_Throughput:84_[j] | 587 samples | 87.6%</title><rect class="frame" x="12.00" y="780.00" width="1051.34" height="17" fill="#55a868"/>
+<text class="label" x="15.00" y="788.50">dbalgo/hashtable/jmh_generated/HashTableBenchmark_benchUpdate_jmhTest.benchUpdate_Throughput:84_[j]</text>
 </g>
-<g><title>dbalgo/hashtable/jmh_generated/HashTableBenchmark_benchUpdate_jmhTest.benchUpdate_thrpt_jmhStub:145_[j] | 593 samples | 81.6%</title><rect class="frame" x="12.00" y="330.00" width="978.82" height="17" fill="#55a868"/>
-<text class="label" x="15.00" y="338.50">dbalgo/hashtable/jmh_generated/HashTableBenchmark_benchUpdate_jmhTest.benchUpdate_thrpt_jmhStub:145_[j]</text>
+<g><title>dbalgo/hashtable/jmh_generated/HashTableBenchmark_benchUpdate_jmhTest.benchUpdate_thrpt_jmhStub:145_[j] | 587 samples | 87.6%</title><rect class="frame" x="12.00" y="762.00" width="1051.34" height="17" fill="#55a868"/>
+<text class="label" x="15.00" y="770.50">dbalgo/hashtable/jmh_generated/HashTableBenchmark_benchUpdate_jmhTest.benchUpdate_thrpt_jmhStub:145_[j]</text>
 </g>
-<g><title>dbalgo/hashtable/HashTableBenchmark.benchUpdate:70_[j] | 593 samples | 81.6%</title><rect class="frame" x="12.00" y="312.00" width="978.82" height="17" fill="#4c72b0"/>
-<text class="label" x="15.00" y="320.50">dbalgo/hashtable/HashTableBenchmark.benchUpdate:70_[j]</text>
+<g><title>dbalgo/hashtable/HashTableBenchmark.benchUpdate:70_[j] | 587 samples | 87.6%</title><rect class="frame" x="12.00" y="744.00" width="1051.34" height="17" fill="#4c72b0"/>
+<text class="label" x="15.00" y="752.50">dbalgo/hashtable/HashTableBenchmark.benchUpdate:70_[j]</text>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.update:47_[j] | 441 samples | 60.7%</title><rect class="frame" x="12.00" y="294.00" width="727.92" height="17" fill="#4c72b0"/>
-<text class="label" x="15.00" y="302.50">dbalgo/hashtable/ExtendibleHashTable.update:47_[j]</text>
+<g><title>dbalgo/hashtable/ExtendibleHashTable.update:80_[j] | 337 samples | 50.3%</title><rect class="frame" x="12.00" y="726.00" width="603.58" height="17" fill="#4c72b0"/>
+<text class="label" x="15.00" y="734.50">dbalgo/hashtable/ExtendibleHashTable.update:80_[j]</text>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.readBucket:139_[j] | 130 samples | 17.9%</title><rect class="frame" x="12.00" y="276.00" width="214.58" height="17" fill="#4c72b0"/>
-<text class="label" x="15.00" y="284.50">dbalgo/hashtable/ExtendibleHash…</text>
+<g><title>dbalgo/hashtable/ExtendibleHashTable.readPage:379_[j] | 337 samples | 50.3%</title><rect class="frame" x="12.00" y="708.00" width="603.58" height="17" fill="#4c72b0"/>
+<text class="label" x="15.00" y="716.50">dbalgo/hashtable/ExtendibleHashTable.readPage:379_[j]</text>
 </g>
-<g><title>sun/nio/ch/FileChannelImpl.size:521_[j] | 130 samples | 17.9%</title><rect class="frame" x="12.00" y="258.00" width="214.58" height="17" fill="#ec64ca"/>
-<text class="label" x="15.00" y="266.50">sun/nio/ch/FileChannelImpl.size…</text>
+<g><title>dbalgo/hashtable/ExtendibleHashTable.readFully:665_[j] | 335 samples | 50.0%</title><rect class="frame" x="12.00" y="690.00" width="600.00" height="17" fill="#4c72b0"/>
+<text class="label" x="15.00" y="698.50">dbalgo/hashtable/ExtendibleHashTable.readFully:665_[j]</text>
 </g>
-<g><title>sun/nio/ch/UnixFileDispatcherImpl.size:93_[j] | 130 samples | 17.9%</title><rect class="frame" x="12.00" y="240.00" width="214.58" height="17" fill="#c44e52"/>
-<text class="label" x="15.00" y="248.50">sun/nio/ch/UnixFileDispatcherIm…</text>
+<g><title>sun/nio/ch/FileChannelImpl.read:1134_[j] | 335 samples | 50.0%</title><rect class="frame" x="12.00" y="672.00" width="600.00" height="17" fill="#e188c5"/>
+<text class="label" x="15.00" y="680.50">sun/nio/ch/FileChannelImpl.read:1134_[j]</text>
 </g>
-<g><title>sun/nio/ch/UnixFileDispatcherImpl.size0_[j] | 130 samples | 17.9%</title><rect class="frame" x="12.00" y="222.00" width="214.58" height="17" fill="#c44e52"/>
-<text class="label" x="15.00" y="230.50">sun/nio/ch/UnixFileDispatcherIm…</text>
+<g><title>sun/nio/ch/FileChannelImpl.implRead:1152_[j] | 334 samples | 49.9%</title><rect class="frame" x="12.00" y="654.00" width="598.21" height="17" fill="#ce82e1"/>
+<text class="label" x="15.00" y="662.50">sun/nio/ch/FileChannelImpl.implRead:1152_[j]</text>
 </g>
-<g><title>fstat | 129 samples | 17.7%</title><rect class="frame" x="12.00" y="204.00" width="212.93" height="17" fill="#c44e52"/>
-<text class="label" x="15.00" y="212.50">fstat</text>
+<g><title>sun/nio/ch/FileChannelImpl.readInternal:1188_[j] | 298 samples | 44.5%</title><rect class="frame" x="12.00" y="636.00" width="533.73" height="17" fill="#b2e36c"/>
+<text class="label" x="15.00" y="644.50">sun/nio/ch/FileChannelImpl.readInternal:1188_[j]</text>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.readBucket:138_[j] | 127 samples | 17.5%</title><rect class="frame" x="226.58" y="276.00" width="209.63" height="17" fill="#4c72b0"/>
-<text class="label" x="229.58" y="284.50">dbalgo/hashtable/ExtendibleHas…</text>
+<g><title>sun/nio/ch/IOUtil.read:284_[j] | 298 samples | 44.5%</title><rect class="frame" x="12.00" y="618.00" width="533.73" height="17" fill="#8bcdec"/>
+<text class="label" x="15.00" y="626.50">sun/nio/ch/IOUtil.read:284_[j]</text>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.channel:135_[i] | 102 samples | 14.0%</title><rect class="frame" x="226.58" y="258.00" width="168.36" height="17" fill="#4c72b0"/>
-<text class="label" x="229.58" y="266.50">dbalgo/hashtable/Extendi…</text>
+<g><title>sun/nio/ch/IOUtil.read:307_[j] | 295 samples | 44.0%</title><rect class="frame" x="12.00" y="600.00" width="528.36" height="17" fill="#9767d9"/>
+<text class="label" x="15.00" y="608.50">sun/nio/ch/IOUtil.read:307_[j]</text>
 </g>
-<g><title>jbyte_disjoint_arraycopy | 8 samples | 1.1%</title><rect class="frame" x="226.58" y="240.00" width="13.20" height="17" fill="#e4697a"/>
+<g><title>sun/nio/ch/IOUtil.readIntoNativeBuffer:339_[j] | 295 samples | 44.0%</title><rect class="frame" x="12.00" y="582.00" width="528.36" height="17" fill="#b8d970"/>
+<text class="label" x="15.00" y="590.50">sun/nio/ch/IOUtil.readIntoNativeBuffer:339_[j]</text>
 </g>
-<g><title>java/lang/String.&lt;init&gt;:553_[j] | 5 samples | 0.7%</title><rect class="frame" x="239.79" y="240.00" width="8.25" height="17" fill="#e4c680"/>
+<g><title>sun/nio/ch/UnixFileDispatcherImpl.pread:57_[j] | 295 samples | 44.0%</title><rect class="frame" x="12.00" y="564.00" width="528.36" height="17" fill="#c44e52"/>
+<text class="label" x="15.00" y="572.50">sun/nio/ch/UnixFileDispatcherImpl.pread:57_[j]</text>
 </g>
-<g><title>jbyte_arraycopy | 3 samples | 0.4%</title><rect class="frame" x="248.04" y="240.00" width="4.95" height="17" fill="#d965c7"/>
+<g><title>sun/nio/ch/UnixFileDispatcherImpl.pread0_[j] | 295 samples | 44.0%</title><rect class="frame" x="12.00" y="546.00" width="528.36" height="17" fill="#c44e52"/>
+<text class="label" x="15.00" y="554.50">sun/nio/ch/UnixFileDispatcherImpl.pread0_[j]</text>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.bucketFile:131_[i] | 1 samples | 0.1%</title><rect class="frame" x="252.99" y="240.00" width="1.65" height="17" fill="#4c72b0"/>
+<g><title>pread | 294 samples | 43.9%</title><rect class="frame" x="12.00" y="528.00" width="526.57" height="17" fill="#c44e52"/>
+<text class="label" x="15.00" y="536.50">pread</text>
 </g>
-<g><title>java/lang/invoke/Invokers$Holder.linkToTargetMethod_[i] | 1 samples | 0.1%</title><rect class="frame" x="252.99" y="222.00" width="1.65" height="17" fill="#9783ec"/>
+<g><title>sun/nio/ch/IOUtil.read:304_[i] | 2 samples | 0.3%</title><rect class="frame" x="540.36" y="600.00" width="3.58" height="17" fill="#de68c6"/>
 </g>
-<g><title>java/lang/invoke/LambdaForm$MH.0x00000c0001029000.invoke_[i] | 1 samples | 0.1%</title><rect class="frame" x="252.99" y="204.00" width="1.65" height="17" fill="#9f7be0"/>
+<g><title>sun/nio/ch/Util.getTemporaryDirectBuffer:230_[i] | 1 samples | 0.1%</title><rect class="frame" x="540.36" y="582.00" width="1.79" height="17" fill="#9186e0"/>
 </g>
-<g><title>java/lang/invoke/LambdaForm$MH.0x00000c0001028400.invoke_[i] | 1 samples | 0.1%</title><rect class="frame" x="252.99" y="186.00" width="1.65" height="17" fill="#8bb0e6"/>
+<g><title>sun/nio/ch/Util.getTemporaryDirectBuffer:231_[i] | 1 samples | 0.1%</title><rect class="frame" x="542.15" y="582.00" width="1.79" height="17" fill="#98ead6"/>
 </g>
-<g><title>java/lang/invoke/DirectMethodHandle$Holder.invokeStatic_[i] | 1 samples | 0.1%</title><rect class="frame" x="252.99" y="168.00" width="1.65" height="17" fill="#b5f166"/>
+<g><title>sun/nio/ch/Util$BufferCache.get:145_[i] | 1 samples | 0.1%</title><rect class="frame" x="542.15" y="564.00" width="1.79" height="17" fill="#dcbf73"/>
 </g>
-<g><title>java/lang/StringConcatHelper.newArrayWithSuffix:430_[i] | 1 samples | 0.1%</title><rect class="frame" x="252.99" y="150.00" width="1.65" height="17" fill="#81f28f"/>
+<g><title>sun/nio/ch/IOUtil.read:310_[i] | 1 samples | 0.1%</title><rect class="frame" x="543.94" y="600.00" width="1.79" height="17" fill="#7ceb8e"/>
 </g>
-<g><title>java/lang/Integer.equals:1173_[j] | 1 samples | 0.1%</title><rect class="frame" x="254.64" y="240.00" width="1.65" height="17" fill="#e9796d"/>
+<g><title>java/nio/HeapByteBuffer.put:250_[i] | 1 samples | 0.1%</title><rect class="frame" x="543.94" y="582.00" width="1.79" height="17" fill="#ae89df"/>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.channel:204_[i] | 25 samples | 3.4%</title><rect class="frame" x="394.94" y="258.00" width="41.27" height="17" fill="#4c72b0"/>
-<text class="label" x="397.94" y="266.50">dbal…</text>
+<g><title>java/nio/ByteBuffer.put:1046_[i] | 1 samples | 0.1%</title><rect class="frame" x="543.94" y="564.00" width="1.79" height="17" fill="#7f9ee3"/>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable$channels$1.get:25_[i] | 25 samples | 3.4%</title><rect class="frame" x="394.94" y="240.00" width="41.27" height="17" fill="#4c72b0"/>
-<text class="label" x="397.94" y="248.50">dbal…</text>
+<g><title>java/nio/ByteBuffer.putBuffer:1127_[i] | 1 samples | 0.1%</title><rect class="frame" x="543.94" y="546.00" width="1.79" height="17" fill="#e68879"/>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable$channels$1.get:25_[i] | 25 samples | 3.4%</title><rect class="frame" x="394.94" y="222.00" width="41.27" height="17" fill="#4c72b0"/>
-<text class="label" x="397.94" y="230.50">dbal…</text>
+<g><title>sun/nio/ch/FileChannelImpl.readInternal:1181_[i] | 30 samples | 4.5%</title><rect class="frame" x="545.73" y="636.00" width="53.73" height="17" fill="#e687e9"/>
+<text class="label" x="548.73" y="644.50">sun/ni…</text>
 </g>
-<g><title>java/util/LinkedHashMap.get:537_[i] | 25 samples | 3.4%</title><rect class="frame" x="394.94" y="204.00" width="41.27" height="17" fill="#dd8452"/>
-<text class="label" x="397.94" y="212.50">java…</text>
+<g><title>sun/nio/ch/FileChannelImpl.beginBlocking:177_[i] | 30 samples | 4.5%</title><rect class="frame" x="545.73" y="618.00" width="53.73" height="17" fill="#67b2e7"/>
+<text class="label" x="548.73" y="626.50">sun/ni…</text>
 </g>
-<g><title>java/util/HashMap.getNode:588_[i] | 25 samples | 3.4%</title><rect class="frame" x="394.94" y="186.00" width="41.27" height="17" fill="#dd8452"/>
-<text class="label" x="397.94" y="194.50">java…</text>
+<g><title>java/nio/channels/spi/AbstractInterruptibleChannel.begin:177_[i] | 25 samples | 3.7%</title><rect class="frame" x="545.73" y="600.00" width="44.78" height="17" fill="#78cbf2"/>
+<text class="label" x="548.73" y="608.50">java/…</text>
 </g>
-<g><title>OptoRuntime::new_instance_C | 1 samples | 0.1%</title><rect class="frame" x="394.94" y="168.00" width="1.65" height="17" fill="#9076e6"/>
+<g><title>java/nio/channels/spi/AbstractInterruptibleChannel.blockedOn:224_[i] | 21 samples | 3.1%</title><rect class="frame" x="545.73" y="582.00" width="37.61" height="17" fill="#f09d96"/>
+<text class="label" x="548.73" y="590.50">jav…</text>
 </g>
-<g><title>InstanceKlass::allocate_instance | 1 samples | 0.1%</title><rect class="frame" x="394.94" y="150.00" width="1.65" height="17" fill="#dd93ed"/>
+<g><title>java/lang/System$2.blockedOn:2456_[i] | 20 samples | 3.0%</title><rect class="frame" x="545.73" y="564.00" width="35.82" height="17" fill="#5c7ade"/>
+<text class="label" x="548.73" y="572.50">jav…</text>
 </g>
-<g><title>MemAllocator::allocate | 1 samples | 0.1%</title><rect class="frame" x="394.94" y="132.00" width="1.65" height="17" fill="#ddb570"/>
+<g><title>forward_copy_longs | 13 samples | 1.9%</title><rect class="frame" x="545.73" y="546.00" width="23.28" height="17" fill="#89b6d9"/>
 </g>
-<g><title>G1CollectedHeap::unsafe_max_tlab_alloc | 1 samples | 0.1%</title><rect class="frame" x="394.94" y="114.00" width="1.65" height="17" fill="#55a868"/>
+<g><title>java/lang/Thread.blockedOn:362_[i] | 5 samples | 0.7%</title><rect class="frame" x="569.01" y="546.00" width="8.96" height="17" fill="#a2da75"/>
 </g>
-<g><title>kotlin/jvm/internal/Intrinsics.checkNotNullParameter:130_[j] | 1 samples | 0.1%</title><rect class="frame" x="396.59" y="168.00" width="1.65" height="17" fill="#e08764"/>
+<g><title>unsafe_arraycopy | 1 samples | 0.1%</title><rect class="frame" x="577.97" y="546.00" width="1.79" height="17" fill="#e98f96"/>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.readBucket:143_[j] | 126 samples | 17.3%</title><rect class="frame" x="436.21" y="276.00" width="207.98" height="17" fill="#4c72b0"/>
-<text class="label" x="439.21" y="284.50">dbalgo/hashtable/ExtendibleHas…</text>
+<g><title>sun/nio/ch/FileChannelImpl.readInternal:1182_[i] | 5 samples | 0.7%</title><rect class="frame" x="599.46" y="636.00" width="8.96" height="17" fill="#ecd164"/>
 </g>
-<g><title>sun/nio/ch/FileChannelImpl.read:1134_[j] | 126 samples | 17.3%</title><rect class="frame" x="436.21" y="258.00" width="207.98" height="17" fill="#e188c5"/>
-<text class="label" x="439.21" y="266.50">sun/nio/ch/FileChannelImpl.rea…</text>
+<g><title>sun/nio/ch/NativeThreadSet.add:57_[i] | 2 samples | 0.3%</title><rect class="frame" x="599.46" y="618.00" width="3.58" height="17" fill="#8385dd"/>
 </g>
-<g><title>sun/nio/ch/FileChannelImpl.implRead:1152_[j] | 126 samples | 17.3%</title><rect class="frame" x="436.21" y="240.00" width="207.98" height="17" fill="#ce82e1"/>
-<text class="label" x="439.21" y="248.50">sun/nio/ch/FileChannelImpl.imp…</text>
+<g><title>sun/nio/ch/NativeThreadSet.add:48_[j] | 1 samples | 0.1%</title><rect class="frame" x="603.04" y="618.00" width="1.79" height="17" fill="#e96a6a"/>
 </g>
-<g><title>sun/nio/ch/FileChannelImpl.readInternal:1188_[j] | 123 samples | 16.9%</title><rect class="frame" x="436.21" y="222.00" width="203.03" height="17" fill="#b2e36c"/>
-<text class="label" x="439.21" y="230.50">sun/nio/ch/FileChannelImpl.re…</text>
+<g><title>sun/nio/ch/NativeThread.current:51_[j] | 1 samples | 0.1%</title><rect class="frame" x="603.04" y="600.00" width="1.79" height="17" fill="#ef7cc5"/>
 </g>
-<g><title>sun/nio/ch/IOUtil.read:284_[j] | 123 samples | 16.9%</title><rect class="frame" x="436.21" y="204.00" width="203.03" height="17" fill="#8bcdec"/>
-<text class="label" x="439.21" y="212.50">sun/nio/ch/IOUtil.read:284_[j]</text>
+<g><title>sun/nio/ch/NativeThread.current0_[j] | 1 samples | 0.1%</title><rect class="frame" x="603.04" y="582.00" width="1.79" height="17" fill="#68c8dc"/>
 </g>
-<g><title>sun/nio/ch/IOUtil.read:307_[j] | 122 samples | 16.8%</title><rect class="frame" x="436.21" y="186.00" width="201.38" height="17" fill="#9767d9"/>
-<text class="label" x="439.21" y="194.50">sun/nio/ch/IOUtil.read:307_[j]</text>
+<g><title>sun/nio/ch/NativeThreadSet.add:59_[i] | 1 samples | 0.1%</title><rect class="frame" x="604.84" y="618.00" width="1.79" height="17" fill="#da87c0"/>
 </g>
-<g><title>sun/nio/ch/IOUtil.readIntoNativeBuffer:339_[j] | 122 samples | 16.8%</title><rect class="frame" x="436.21" y="168.00" width="201.38" height="17" fill="#b8d970"/>
-<text class="label" x="439.21" y="176.50">sun/nio/ch/IOUtil.readIntoNat…</text>
+<g><title>sun/nio/ch/NativeThreadSet.add:67_[i] | 1 samples | 0.1%</title><rect class="frame" x="606.63" y="618.00" width="1.79" height="17" fill="#86e691"/>
 </g>
-<g><title>sun/nio/ch/UnixFileDispatcherImpl.pread:57_[j] | 122 samples | 16.8%</title><rect class="frame" x="436.21" y="150.00" width="201.38" height="17" fill="#c44e52"/>
-<text class="label" x="439.21" y="158.50">sun/nio/ch/UnixFileDispatcher…</text>
+<g><title>sun/nio/ch/FileChannelImpl.readInternal:1196_[i] | 1 samples | 0.1%</title><rect class="frame" x="608.42" y="636.00" width="1.79" height="17" fill="#6395da"/>
 </g>
-<g><title>sun/nio/ch/UnixFileDispatcherImpl.pread0_[j] | 122 samples | 16.8%</title><rect class="frame" x="436.21" y="132.00" width="201.38" height="17" fill="#c44e52"/>
-<text class="label" x="439.21" y="140.50">sun/nio/ch/UnixFileDispatcher…</text>
+<g><title>sun/nio/ch/FileChannelImpl.endBlocking:181_[i] | 1 samples | 0.1%</title><rect class="frame" x="608.42" y="618.00" width="1.79" height="17" fill="#ca6bde"/>
 </g>
-<g><title>pread | 122 samples | 16.8%</title><rect class="frame" x="436.21" y="114.00" width="201.38" height="17" fill="#c44e52"/>
-<text class="label" x="439.21" y="122.50">pread</text>
+<g><title>sun/nio/ch/FileChannelImpl.implRead:1143_[i] | 1 samples | 0.1%</title><rect class="frame" x="610.21" y="654.00" width="1.79" height="17" fill="#86b1de"/>
 </g>
-<g><title>sun/nio/ch/IOUtil.read:310_[i] | 1 samples | 0.1%</title><rect class="frame" x="637.58" y="186.00" width="1.65" height="17" fill="#7ceb8e"/>
+<g><title>dbalgo/hashtable/ExtendibleHashTable.channel:594_[j] | 1 samples | 0.1%</title><rect class="frame" x="612.00" y="690.00" width="1.79" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/nio/HeapByteBuffer.put:250_[i] | 1 samples | 0.1%</title><rect class="frame" x="637.58" y="168.00" width="1.65" height="17" fill="#ae89df"/>
+<g><title>java/lang/Integer.equals:1173_[j] | 1 samples | 0.1%</title><rect class="frame" x="612.00" y="672.00" width="1.79" height="17" fill="#e9796d"/>
 </g>
-<g><title>java/nio/ByteBuffer.put:1048_[i] | 1 samples | 0.1%</title><rect class="frame" x="637.58" y="150.00" width="1.65" height="17" fill="#cd93e5"/>
+<g><title>dbalgo/hashtable/ExtendibleHashTable.channel:740_[j] | 1 samples | 0.1%</title><rect class="frame" x="613.79" y="690.00" width="1.79" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/nio/ByteBuffer.position:1557_[i] | 1 samples | 0.1%</title><rect class="frame" x="637.58" y="132.00" width="1.65" height="17" fill="#e55f91"/>
+<g><title>dbalgo/hashtable/ExtendibleHashTable$channels$1.get:31_[j] | 1 samples | 0.1%</title><rect class="frame" x="613.79" y="672.00" width="1.79" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/nio/Buffer.position:329_[i] | 1 samples | 0.1%</title><rect class="frame" x="637.58" y="114.00" width="1.65" height="17" fill="#e27bbc"/>
+<g><title>dbalgo/hashtable/ExtendibleHashTable$channels$1.get:31_[j] | 1 samples | 0.1%</title><rect class="frame" x="613.79" y="654.00" width="1.79" height="17" fill="#4c72b0"/>
 </g>
-<g><title>sun/nio/ch/FileChannelImpl.readInternal:1182_[i] | 2 samples | 0.3%</title><rect class="frame" x="639.24" y="222.00" width="3.30" height="17" fill="#ecd164"/>
+<g><title>java/util/LinkedHashMap.get:537_[j] | 1 samples | 0.1%</title><rect class="frame" x="613.79" y="636.00" width="1.79" height="17" fill="#dd8452"/>
 </g>
-<g><title>sun/nio/ch/NativeThreadSet.add:57_[i] | 1 samples | 0.1%</title><rect class="frame" x="639.24" y="204.00" width="1.65" height="17" fill="#8385dd"/>
+<g><title>java/util/HashMap.getNode:579_[j] | 1 samples | 0.1%</title><rect class="frame" x="613.79" y="618.00" width="1.79" height="17" fill="#dd8452"/>
 </g>
-<g><title>sun/nio/ch/NativeThreadSet.add:71_[i] | 1 samples | 0.1%</title><rect class="frame" x="640.89" y="204.00" width="1.65" height="17" fill="#ef966a"/>
+<g><title>sun/nio/ch/NativeThread.current0_[j] | 1 samples | 0.1%</title><rect class="frame" x="613.79" y="600.00" width="1.79" height="17" fill="#68c8dc"/>
 </g>
-<g><title>sun/nio/ch/FileChannelImpl.readInternal:1181_[i] | 1 samples | 0.1%</title><rect class="frame" x="642.54" y="222.00" width="1.65" height="17" fill="#e687e9"/>
+<g><title>dbalgo/hashtable/ExtendibleHashTable.update:87_[j] | 226 samples | 33.7%</title><rect class="frame" x="615.58" y="726.00" width="404.78" height="17" fill="#4c72b0"/>
+<text class="label" x="618.58" y="734.50">dbalgo/hashtable/ExtendibleHashTable.update:87_[j]</text>
 </g>
-<g><title>sun/nio/ch/FileChannelImpl.beginBlocking:177_[i] | 1 samples | 0.1%</title><rect class="frame" x="642.54" y="204.00" width="1.65" height="17" fill="#67b2e7"/>
+<g><title>dbalgo/hashtable/ExtendibleHashTable.writeBytes:525_[j] | 226 samples | 33.7%</title><rect class="frame" x="615.58" y="708.00" width="404.78" height="17" fill="#4c72b0"/>
+<text class="label" x="618.58" y="716.50">dbalgo/hashtable/ExtendibleHashTable.writeBytes:525_[j]</text>
 </g>
-<g><title>java/nio/channels/spi/AbstractInterruptibleChannel.begin:177_[i] | 1 samples | 0.1%</title><rect class="frame" x="642.54" y="186.00" width="1.65" height="17" fill="#78cbf2"/>
+<g><title>dbalgo/hashtable/ExtendibleHashTable.writeFully:674_[j] | 226 samples | 33.7%</title><rect class="frame" x="615.58" y="690.00" width="404.78" height="17" fill="#4c72b0"/>
+<text class="label" x="618.58" y="698.50">dbalgo/hashtable/ExtendibleHashTable.writeFully:674_[j]</text>
 </g>
-<g><title>java/nio/channels/spi/AbstractInterruptibleChannel.blockedOn:224_[i] | 1 samples | 0.1%</title><rect class="frame" x="642.54" y="168.00" width="1.65" height="17" fill="#f09d96"/>
+<g><title>sun/nio/ch/FileChannelImpl.write:1206_[j] | 226 samples | 33.7%</title><rect class="frame" x="615.58" y="672.00" width="404.78" height="17" fill="#e57070"/>
+<text class="label" x="618.58" y="680.50">sun/nio/ch/FileChannelImpl.write:1206_[j]</text>
 </g>
-<g><title>java/lang/System$2.blockedOn:2456_[i] | 1 samples | 0.1%</title><rect class="frame" x="642.54" y="150.00" width="1.65" height="17" fill="#5c7ade"/>
+<g><title>sun/nio/ch/FileChannelImpl.implWrite:1224_[j] | 226 samples | 33.7%</title><rect class="frame" x="615.58" y="654.00" width="404.78" height="17" fill="#74ddad"/>
+<text class="label" x="618.58" y="662.50">sun/nio/ch/FileChannelImpl.implWrite:1224_[j]</text>
 </g>
-<g><title>arrayof_jlong_disjoint_arraycopy | 1 samples | 0.1%</title><rect class="frame" x="642.54" y="132.00" width="1.65" height="17" fill="#e49890"/>
+<g><title>sun/nio/ch/FileChannelImpl.writeInternal:1256_[j] | 223 samples | 33.3%</title><rect class="frame" x="615.58" y="636.00" width="399.40" height="17" fill="#e891d5"/>
+<text class="label" x="618.58" y="644.50">sun/nio/ch/FileChannelImpl.writeInternal:1256_[j]</text>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.readBucket:151_[j] | 40 samples | 5.5%</title><rect class="frame" x="644.19" y="276.00" width="66.02" height="17" fill="#4c72b0"/>
-<text class="label" x="647.19" y="284.50">dbalgo/h…</text>
+<g><title>sun/nio/ch/IOUtil.write:72_[j] | 223 samples | 33.3%</title><rect class="frame" x="615.58" y="618.00" width="399.40" height="17" fill="#8fdfb0"/>
+<text class="label" x="618.58" y="626.50">sun/nio/ch/IOUtil.write:72_[j]</text>
 </g>
-<g><title>java/lang/String.&lt;init&gt;:1490_[j] | 26 samples | 3.6%</title><rect class="frame" x="644.19" y="258.00" width="42.92" height="17" fill="#94e9e2"/>
-<text class="label" x="647.19" y="266.50">java…</text>
+<g><title>sun/nio/ch/IOUtil.write:102_[j] | 221 samples | 33.0%</title><rect class="frame" x="615.58" y="600.00" width="395.82" height="17" fill="#d975d5"/>
+<text class="label" x="618.58" y="608.50">sun/nio/ch/IOUtil.write:102_[j]</text>
 </g>
-<g><title>java/lang/String.&lt;init&gt;:561_[j] | 14 samples | 1.9%</title><rect class="frame" x="644.19" y="240.00" width="23.11" height="17" fill="#c4ef93"/>
+<g><title>sun/nio/ch/IOUtil.writeFromNativeBuffer:135_[j] | 221 samples | 33.0%</title><rect class="frame" x="615.58" y="582.00" width="395.82" height="17" fill="#e96c69"/>
+<text class="label" x="618.58" y="590.50">sun/nio/ch/IOUtil.writeFromNativeBuffer:135_[j]</text>
 </g>
-<g><title>arrayof_jlong_disjoint_arraycopy | 3 samples | 0.4%</title><rect class="frame" x="644.19" y="222.00" width="4.95" height="17" fill="#e49890"/>
+<g><title>sun/nio/ch/UnixFileDispatcherImpl.pwrite:71_[j] | 221 samples | 33.0%</title><rect class="frame" x="615.58" y="564.00" width="395.82" height="17" fill="#c44e52"/>
+<text class="label" x="618.58" y="572.50">sun/nio/ch/UnixFileDispatcherImpl.pwrite:71_[j]</text>
 </g>
-<g><title>java/util/Arrays.copyOfRange:3845_[i] | 3 samples | 0.4%</title><rect class="frame" x="649.14" y="222.00" width="4.95" height="17" fill="#dd8452"/>
+<g><title>sun/nio/ch/UnixFileDispatcherImpl.pwrite0_[j] | 221 samples | 33.0%</title><rect class="frame" x="615.58" y="546.00" width="395.82" height="17" fill="#c44e52"/>
+<text class="label" x="618.58" y="554.50">sun/nio/ch/UnixFileDispatcherImpl.pwrite0_[j]</text>
 </g>
-<g><title>java/lang/String.&lt;init&gt;:559_[j] | 11 samples | 1.5%</title><rect class="frame" x="667.30" y="240.00" width="18.16" height="17" fill="#a5ec92"/>
+<g><title>pwrite | 219 samples | 32.7%</title><rect class="frame" x="615.58" y="528.00" width="392.24" height="17" fill="#c44e52"/>
+<text class="label" x="618.58" y="536.50">pwrite</text>
 </g>
-<g><title>java/lang/String.&lt;init&gt;:557_[j] | 1 samples | 0.1%</title><rect class="frame" x="685.45" y="240.00" width="1.65" height="17" fill="#ec7297"/>
+<g><title>sun/nio/ch/IOUtil.write:100_[i] | 2 samples | 0.3%</title><rect class="frame" x="1011.40" y="600.00" width="3.58" height="17" fill="#72f199"/>
 </g>
-<g><title>java/util/HashMap.put:619_[i] | 13 samples | 1.8%</title><rect class="frame" x="687.10" y="258.00" width="21.46" height="17" fill="#dd8452"/>
+<g><title>java/nio/ByteBuffer.position:1557_[i] | 2 samples | 0.3%</title><rect class="frame" x="1011.40" y="582.00" width="3.58" height="17" fill="#e55f91"/>
 </g>
-<g><title>java/util/HashMap.hash:338_[i] | 5 samples | 0.7%</title><rect class="frame" x="687.10" y="240.00" width="8.25" height="17" fill="#dd8452"/>
+<g><title>java/nio/Buffer.position:328_[i] | 2 samples | 0.3%</title><rect class="frame" x="1011.40" y="564.00" width="3.58" height="17" fill="#73e6d7"/>
 </g>
-<g><title>java/lang/String.hashCode:2457_[i] | 3 samples | 0.4%</title><rect class="frame" x="687.10" y="222.00" width="4.95" height="17" fill="#a1dd83"/>
+<g><title>sun/nio/ch/FileChannelImpl.writeInternal:1249_[i] | 2 samples | 0.3%</title><rect class="frame" x="1014.99" y="636.00" width="3.58" height="17" fill="#c790ed"/>
 </g>
-<g><title>java/lang/String.hashCode:2458_[i] | 2 samples | 0.3%</title><rect class="frame" x="692.06" y="222.00" width="3.30" height="17" fill="#6dbada"/>
+<g><title>sun/nio/ch/FileChannelImpl.beginBlocking:177_[i] | 2 samples | 0.3%</title><rect class="frame" x="1014.99" y="618.00" width="3.58" height="17" fill="#67b2e7"/>
 </g>
-<g><title>java/lang/StringLatin1.hashCode:306_[i] | 2 samples | 0.3%</title><rect class="frame" x="692.06" y="204.00" width="3.30" height="17" fill="#ec616a"/>
+<g><title>java/nio/channels/spi/AbstractInterruptibleChannel.begin:177_[i] | 2 samples | 0.3%</title><rect class="frame" x="1014.99" y="600.00" width="3.58" height="17" fill="#78cbf2"/>
 </g>
-<g><title>jdk/internal/util/ArraysSupport.hashCodeOfUnsigned:276_[i] | 2 samples | 0.3%</title><rect class="frame" x="692.06" y="186.00" width="3.30" height="17" fill="#dd8452"/>
+<g><title>java/nio/channels/spi/AbstractInterruptibleChannel.blockedOn:224_[i] | 2 samples | 0.3%</title><rect class="frame" x="1014.99" y="582.00" width="3.58" height="17" fill="#f09d96"/>
 </g>
-<g><title>jdk/internal/util/ArraysSupport.vectorizedHashCode:365_[i] | 2 samples | 0.3%</title><rect class="frame" x="692.06" y="168.00" width="3.30" height="17" fill="#dd8452"/>
+<g><title>java/lang/System$2.blockedOn:2456_[i] | 2 samples | 0.3%</title><rect class="frame" x="1014.99" y="564.00" width="3.58" height="17" fill="#5c7ade"/>
 </g>
-<g><title>jdk/internal/util/ArraysSupport.unsignedHashCode:379_[i] | 2 samples | 0.3%</title><rect class="frame" x="692.06" y="150.00" width="3.30" height="17" fill="#dd8452"/>
+<g><title>sun/nio/ch/UnixFileDispatcherImpl.pwrite0_[j] | 1 samples | 0.1%</title><rect class="frame" x="1014.99" y="546.00" width="1.79" height="17" fill="#c44e52"/>
 </g>
-<g><title>java/util/HashMap.putVal:635_[i] | 2 samples | 0.3%</title><rect class="frame" x="695.36" y="240.00" width="3.30" height="17" fill="#dd8452"/>
+<g><title>sun/nio/ch/FileChannelImpl.writeInternal:1250_[i] | 1 samples | 0.1%</title><rect class="frame" x="1018.57" y="636.00" width="1.79" height="17" fill="#aa64f1"/>
 </g>
-<g><title>java/util/HashMap.putVal:638_[i] | 2 samples | 0.3%</title><rect class="frame" x="698.66" y="240.00" width="3.30" height="17" fill="#dd8452"/>
+<g><title>sun/nio/ch/NativeThreadSet.add:71_[i] | 1 samples | 0.1%</title><rect class="frame" x="1018.57" y="618.00" width="1.79" height="17" fill="#ef966a"/>
 </g>
-<g><title>java/util/HashMap.newNode:1910_[i] | 2 samples | 0.3%</title><rect class="frame" x="698.66" y="222.00" width="3.30" height="17" fill="#dd8452"/>
+<g><title>dbalgo/hashtable/ExtendibleHashTable.update:78_[j] | 13 samples | 1.9%</title><rect class="frame" x="1020.36" y="726.00" width="23.28" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/HashMap$Node.&lt;init&gt;:289_[i] | 1 samples | 0.1%</title><rect class="frame" x="698.66" y="204.00" width="1.65" height="17" fill="#dd8452"/>
+<g><title>dbalgo/hashtable/ExtendibleHashTable.metadata:346_[i] | 13 samples | 1.9%</title><rect class="frame" x="1020.36" y="708.00" width="23.28" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/HashMap.putVal:648_[i] | 2 samples | 0.3%</title><rect class="frame" x="701.96" y="240.00" width="3.30" height="17" fill="#dd8452"/>
+<g><title>java/lang/Integer.valueOf:1018_[i] | 1 samples | 0.1%</title><rect class="frame" x="1020.36" y="690.00" width="1.79" height="17" fill="#86e5a5"/>
 </g>
-<g><title>java/util/HashMap.putVal:637_[i] | 1 samples | 0.1%</title><rect class="frame" x="705.26" y="240.00" width="1.65" height="17" fill="#dd8452"/>
+<g><title>dbalgo/hashtable/ExtendibleHashTable.update:79_[j] | 9 samples | 1.3%</title><rect class="frame" x="1043.64" y="726.00" width="16.12" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/HashMap.putVal:669_[i] | 1 samples | 0.1%</title><rect class="frame" x="706.91" y="240.00" width="1.65" height="17" fill="#dd8452"/>
+<g><title>dbalgo/hashtable/ExtendibleHashTable.channel:740_[j] | 6 samples | 0.9%</title><rect class="frame" x="1043.64" y="708.00" width="10.75" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.readBucket:150_[j] | 13 samples | 1.8%</title><rect class="frame" x="710.21" y="276.00" width="21.46" height="17" fill="#4c72b0"/>
+<g><title>dbalgo/hashtable/ExtendibleHashTable$channels$1.get:31_[i] | 6 samples | 0.9%</title><rect class="frame" x="1043.64" y="690.00" width="10.75" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/nio/ByteBuffer.get:861_[i] | 12 samples | 1.7%</title><rect class="frame" x="710.21" y="258.00" width="19.81" height="17" fill="#8589e5"/>
+<g><title>dbalgo/hashtable/ExtendibleHashTable$channels$1.get:31_[i] | 6 samples | 0.9%</title><rect class="frame" x="1043.64" y="672.00" width="10.75" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/nio/HeapByteBuffer.get:192_[i] | 3 samples | 0.4%</title><rect class="frame" x="710.21" y="240.00" width="4.95" height="17" fill="#6dd1dd"/>
+<g><title>java/util/LinkedHashMap.get:537_[i] | 5 samples | 0.7%</title><rect class="frame" x="1043.64" y="654.00" width="8.96" height="17" fill="#dd8452"/>
 </g>
-<g><title>java/nio/ByteBuffer.position:1557_[i] | 3 samples | 0.4%</title><rect class="frame" x="710.21" y="222.00" width="4.95" height="17" fill="#e55f91"/>
+<g><title>java/util/HashMap.getNode:588_[i] | 5 samples | 0.7%</title><rect class="frame" x="1043.64" y="636.00" width="8.96" height="17" fill="#dd8452"/>
 </g>
-<g><title>java/nio/Buffer.position:328_[i] | 3 samples | 0.4%</title><rect class="frame" x="710.21" y="204.00" width="4.95" height="17" fill="#73e6d7"/>
+<g><title>java/util/LinkedHashMap.get:540_[i] | 1 samples | 0.1%</title><rect class="frame" x="1052.60" y="654.00" width="1.79" height="17" fill="#dd8452"/>
 </g>
-<g><title>java/nio/HeapByteBuffer.get:191_[i] | 1 samples | 0.1%</title><rect class="frame" x="715.16" y="240.00" width="1.65" height="17" fill="#ea81ad"/>
+<g><title>java/util/LinkedHashMap.afterNodeAccess:358_[i] | 1 samples | 0.1%</title><rect class="frame" x="1052.60" y="636.00" width="1.79" height="17" fill="#dd8452"/>
 </g>
-<g><title>java/nio/HeapByteBuffer.ix:162_[i] | 1 samples | 0.1%</title><rect class="frame" x="715.16" y="222.00" width="1.65" height="17" fill="#5a93df"/>
+<g><title>dbalgo/hashtable/ExtendibleHashTable.channel:594_[j] | 3 samples | 0.4%</title><rect class="frame" x="1054.39" y="708.00" width="5.37" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/nio/HeapByteBuffer.getInt:498_[i] | 1 samples | 0.1%</title><rect class="frame" x="730.02" y="258.00" width="1.65" height="17" fill="#d87377"/>
+<g><title>dbalgo/hashtable/ExtendibleHashTable.update:81_[j] | 2 samples | 0.3%</title><rect class="frame" x="1059.76" y="726.00" width="3.58" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/nio/Buffer.nextGetIndex:719_[i] | 1 samples | 0.1%</title><rect class="frame" x="730.02" y="240.00" width="1.65" height="17" fill="#e98672"/>
+<g><title>dbalgo/hashtable/ExtendibleHashTable.findLiveSlot:414_[i] | 2 samples | 0.3%</title><rect class="frame" x="1059.76" y="708.00" width="3.58" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.readBucket:149_[j] | 4 samples | 0.6%</title><rect class="frame" x="731.67" y="276.00" width="6.60" height="17" fill="#4c72b0"/>
+<g><title>dbalgo/hashtable/ExtendibleHashTable.scanSlots:404_[i] | 2 samples | 0.3%</title><rect class="frame" x="1059.76" y="690.00" width="3.58" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/nio/ByteBuffer.get:861_[i] | 4 samples | 0.6%</title><rect class="frame" x="731.67" y="258.00" width="6.60" height="17" fill="#8589e5"/>
+<g><title>dbalgo/hashtable/ExtendibleHashTable.matchesUtf8:539_[j] | 1 samples | 0.1%</title><rect class="frame" x="1059.76" y="672.00" width="1.79" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/nio/HeapByteBuffer.get:192_[i] | 3 samples | 0.4%</title><rect class="frame" x="731.67" y="240.00" width="4.95" height="17" fill="#6dd1dd"/>
+<g><title>java/lang/String.charAt:1629_[i] | 1 samples | 0.1%</title><rect class="frame" x="1059.76" y="654.00" width="1.79" height="17" fill="#75dbb3"/>
 </g>
-<g><title>java/nio/ByteBuffer.position:1557_[i] | 3 samples | 0.4%</title><rect class="frame" x="731.67" y="222.00" width="4.95" height="17" fill="#e55f91"/>
+<g><title>java/lang/StringLatin1.charAt:47_[i] | 1 samples | 0.1%</title><rect class="frame" x="1059.76" y="636.00" width="1.79" height="17" fill="#e8c96c"/>
 </g>
-<g><title>java/nio/Buffer.position:328_[i] | 3 samples | 0.4%</title><rect class="frame" x="731.67" y="204.00" width="4.95" height="17" fill="#73e6d7"/>
+<g><title>dbalgo/hashtable/jmh_generated/HashTableBenchmark_benchUpdate_jmhTest.benchUpdate_Throughput:103_[j] | 73 samples | 10.9%</title><rect class="frame" x="1063.34" y="780.00" width="130.75" height="17" fill="#55a868"/>
+<text class="label" x="1066.34" y="788.50">dbalgo/hashtable/j…</text>
 </g>
-<g><title>java/nio/HeapByteBuffer.get:191_[i] | 1 samples | 0.1%</title><rect class="frame" x="736.62" y="240.00" width="1.65" height="17" fill="#ea81ad"/>
+<g><title>dbalgo/hashtable/HashTableBenchmark.tearDown:52_[j] | 62 samples | 9.3%</title><rect class="frame" x="1063.34" y="762.00" width="111.04" height="17" fill="#4c72b0"/>
+<text class="label" x="1066.34" y="770.50">dbalgo/hashtabl…</text>
 </g>
-<g><title>java/nio/HeapByteBuffer.ix:162_[i] | 1 samples | 0.1%</title><rect class="frame" x="736.62" y="222.00" width="1.65" height="17" fill="#5a93df"/>
+<g><title>kotlin/io/FilesKt__UtilsKt.deleteRecursively:352_[j] | 55 samples | 8.2%</title><rect class="frame" x="1063.34" y="744.00" width="98.51" height="17" fill="#a663f0"/>
+<text class="label" x="1066.34" y="752.50">kotlin/io/Fil…</text>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.update:50_[j] | 147 samples | 20.2%</title><rect class="frame" x="739.92" y="294.00" width="242.64" height="17" fill="#4c72b0"/>
-<text class="label" x="742.92" y="302.50">dbalgo/hashtable/ExtendibleHashTable…</text>
+<g><title>java/io/File.delete:1075_[j] | 55 samples | 8.2%</title><rect class="frame" x="1063.34" y="726.00" width="98.51" height="17" fill="#6288e9"/>
+<text class="label" x="1066.34" y="734.50">java/io/File.…</text>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.writeBucket:177_[j] | 75 samples | 10.3%</title><rect class="frame" x="739.92" y="276.00" width="123.80" height="17" fill="#4c72b0"/>
-<text class="label" x="742.92" y="284.50">dbalgo/hashtable/…</text>
+<g><title>java/io/UnixFileSystem.delete:224_[j] | 55 samples | 8.2%</title><rect class="frame" x="1063.34" y="708.00" width="98.51" height="17" fill="#f0da62"/>
+<text class="label" x="1066.34" y="716.50">java/io/UnixF…</text>
 </g>
-<g><title>sun/nio/ch/FileChannelImpl.write:1206_[j] | 75 samples | 10.3%</title><rect class="frame" x="739.92" y="258.00" width="123.80" height="17" fill="#e57070"/>
-<text class="label" x="742.92" y="266.50">sun/nio/ch/FileCh…</text>
+<g><title>java/io/UnixFileSystem.delete0_[j] | 55 samples | 8.2%</title><rect class="frame" x="1063.34" y="690.00" width="98.51" height="17" fill="#88e97d"/>
+<text class="label" x="1066.34" y="698.50">java/io/UnixF…</text>
 </g>
-<g><title>sun/nio/ch/FileChannelImpl.implWrite:1224_[j] | 75 samples | 10.3%</title><rect class="frame" x="739.92" y="240.00" width="123.80" height="17" fill="#74ddad"/>
-<text class="label" x="742.92" y="248.50">sun/nio/ch/FileCh…</text>
+<g><title>Java_java_io_UnixFileSystem_delete0 | 55 samples | 8.2%</title><rect class="frame" x="1063.34" y="672.00" width="98.51" height="17" fill="#da7ca6"/>
+<text class="label" x="1066.34" y="680.50">Java_java_io_…</text>
 </g>
-<g><title>sun/nio/ch/FileChannelImpl.writeInternal:1256_[j] | 75 samples | 10.3%</title><rect class="frame" x="739.92" y="222.00" width="123.80" height="17" fill="#e891d5"/>
-<text class="label" x="742.92" y="230.50">sun/nio/ch/FileCh…</text>
+<g><title>remove | 51 samples | 7.6%</title><rect class="frame" x="1063.34" y="654.00" width="91.34" height="17" fill="#e3a07c"/>
+<text class="label" x="1066.34" y="662.50">remove</text>
 </g>
-<g><title>sun/nio/ch/IOUtil.write:72_[j] | 75 samples | 10.3%</title><rect class="frame" x="739.92" y="204.00" width="123.80" height="17" fill="#8fdfb0"/>
-<text class="label" x="742.92" y="212.50">sun/nio/ch/IOUtil…</text>
+<g><title>__unlink | 51 samples | 7.6%</title><rect class="frame" x="1063.34" y="636.00" width="91.34" height="17" fill="#c44e52"/>
+<text class="label" x="1066.34" y="644.50">__unlink</text>
 </g>
-<g><title>sun/nio/ch/IOUtil.write:102_[j] | 75 samples | 10.3%</title><rect class="frame" x="739.92" y="186.00" width="123.80" height="17" fill="#d975d5"/>
-<text class="label" x="742.92" y="194.50">sun/nio/ch/IOUtil…</text>
+<g><title>lstat | 3 samples | 0.4%</title><rect class="frame" x="1154.69" y="654.00" width="5.37" height="17" fill="#e577aa"/>
 </g>
-<g><title>sun/nio/ch/IOUtil.writeFromNativeBuffer:135_[j] | 75 samples | 10.3%</title><rect class="frame" x="739.92" y="168.00" width="123.80" height="17" fill="#e96c69"/>
-<text class="label" x="742.92" y="176.50">sun/nio/ch/IOUtil…</text>
+<g><title>getStringPlatformChars0 | 1 samples | 0.1%</title><rect class="frame" x="1160.06" y="654.00" width="1.79" height="17" fill="#95e98c"/>
 </g>
-<g><title>sun/nio/ch/UnixFileDispatcherImpl.pwrite:71_[j] | 75 samples | 10.3%</title><rect class="frame" x="739.92" y="150.00" width="123.80" height="17" fill="#c44e52"/>
-<text class="label" x="742.92" y="158.50">sun/nio/ch/UnixFi…</text>
+<g><title>pthread_jit_write_protect_np | 1 samples | 0.1%</title><rect class="frame" x="1160.06" y="636.00" width="1.79" height="17" fill="#bb73ee"/>
 </g>
-<g><title>sun/nio/ch/UnixFileDispatcherImpl.pwrite0_[j] | 75 samples | 10.3%</title><rect class="frame" x="739.92" y="132.00" width="123.80" height="17" fill="#c44e52"/>
-<text class="label" x="742.92" y="140.50">sun/nio/ch/UnixFi…</text>
+<g><title>kotlin/io/FilesKt__UtilsKt.deleteRecursively:481_[j] | 6 samples | 0.9%</title><rect class="frame" x="1161.85" y="744.00" width="10.75" height="17" fill="#59c7da"/>
 </g>
-<g><title>pwrite | 72 samples | 9.9%</title><rect class="frame" x="739.92" y="114.00" width="118.84" height="17" fill="#c44e52"/>
-<text class="label" x="742.92" y="122.50">pwrite</text>
+<g><title>kotlin/collections/AbstractIterator.hasNext:34_[j] | 6 samples | 0.9%</title><rect class="frame" x="1161.85" y="726.00" width="10.75" height="17" fill="#71f264"/>
 </g>
-<g><title>Java_sun_nio_ch_UnixFileDispatcherImpl_pwrite0 | 1 samples | 0.1%</title><rect class="frame" x="858.77" y="114.00" width="1.65" height="17" fill="#c44e52"/>
+<g><title>kotlin/collections/AbstractIterator.tryToComputeNext:55_[j] | 6 samples | 0.9%</title><rect class="frame" x="1161.85" y="708.00" width="10.75" height="17" fill="#d5dd5c"/>
 </g>
-<g><title>convertReturnVal | 1 samples | 0.1%</title><rect class="frame" x="860.42" y="114.00" width="1.65" height="17" fill="#63d6e4"/>
+<g><title>kotlin/io/FileTreeWalk$FileTreeWalkIterator.computeNext:80_[j] | 6 samples | 0.9%</title><rect class="frame" x="1161.85" y="690.00" width="10.75" height="17" fill="#e794e1"/>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.writeBucket:174_[j] | 28 samples | 3.9%</title><rect class="frame" x="863.72" y="276.00" width="46.22" height="17" fill="#4c72b0"/>
-<text class="label" x="866.72" y="284.50">dbalg…</text>
+<g><title>kotlin/io/FileTreeWalk$FileTreeWalkIterator.gotoNext:105_[j] | 5 samples | 0.7%</title><rect class="frame" x="1161.85" y="672.00" width="8.96" height="17" fill="#87ade7"/>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.channel:135_[i] | 28 samples | 3.9%</title><rect class="frame" x="863.72" y="258.00" width="46.22" height="17" fill="#4c72b0"/>
-<text class="label" x="866.72" y="266.50">dbalg…</text>
+<g><title>java/io/File.isDirectory:867_[j] | 4 samples | 0.6%</title><rect class="frame" x="1161.85" y="654.00" width="7.16" height="17" fill="#ca8ae8"/>
 </g>
-<g><title>jbyte_disjoint_arraycopy | 4 samples | 0.6%</title><rect class="frame" x="863.72" y="240.00" width="6.60" height="17" fill="#e4697a"/>
+<g><title>java/io/UnixFileSystem.hasBooleanAttributes:179_[j] | 4 samples | 0.6%</title><rect class="frame" x="1161.85" y="636.00" width="7.16" height="17" fill="#95a4e6"/>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.writeBucket:176_[j] | 24 samples | 3.3%</title><rect class="frame" x="909.94" y="276.00" width="39.61" height="17" fill="#4c72b0"/>
-<text class="label" x="912.94" y="284.50">dbal…</text>
+<g><title>java/io/UnixFileSystem.getBooleanAttributes0_[j] | 4 samples | 0.6%</title><rect class="frame" x="1161.85" y="618.00" width="7.16" height="17" fill="#e169b5"/>
 </g>
-<g><title>sun/nio/ch/FileChannelImpl.size:521_[j] | 24 samples | 3.3%</title><rect class="frame" x="909.94" y="258.00" width="39.61" height="17" fill="#ec64ca"/>
-<text class="label" x="912.94" y="266.50">sun/…</text>
+<g><title>stat64 | 4 samples | 0.6%</title><rect class="frame" x="1161.85" y="600.00" width="7.16" height="17" fill="#7c7fe9"/>
 </g>
-<g><title>sun/nio/ch/UnixFileDispatcherImpl.size:93_[j] | 24 samples | 3.3%</title><rect class="frame" x="909.94" y="240.00" width="39.61" height="17" fill="#c44e52"/>
-<text class="label" x="912.94" y="248.50">sun/…</text>
+<g><title>kotlin/jvm/internal/Intrinsics.areEqual:169_[j] | 1 samples | 0.1%</title><rect class="frame" x="1169.01" y="654.00" width="1.79" height="17" fill="#8edeac"/>
 </g>
-<g><title>sun/nio/ch/UnixFileDispatcherImpl.size0_[j] | 24 samples | 3.3%</title><rect class="frame" x="909.94" y="222.00" width="39.61" height="17" fill="#c44e52"/>
-<text class="label" x="912.94" y="230.50">sun/…</text>
+<g><title>java/io/File.equals:2291_[j] | 1 samples | 0.1%</title><rect class="frame" x="1169.01" y="636.00" width="1.79" height="17" fill="#dd70cf"/>
 </g>
-<g><title>fstat | 24 samples | 3.3%</title><rect class="frame" x="909.94" y="204.00" width="39.61" height="17" fill="#c44e52"/>
-<text class="label" x="912.94" y="212.50">fstat</text>
+<g><title>java/io/File.compareTo:2265_[j] | 1 samples | 0.1%</title><rect class="frame" x="1169.01" y="618.00" width="1.79" height="17" fill="#c67cdb"/>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.writeBucket:162_[j] | 17 samples | 2.3%</title><rect class="frame" x="949.55" y="276.00" width="28.06" height="17" fill="#4c72b0"/>
+<g><title>java/io/UnixFileSystem.compare:297_[j] | 1 samples | 0.1%</title><rect class="frame" x="1169.01" y="600.00" width="1.79" height="17" fill="#e076c8"/>
 </g>
-<g><title>java/util/HashMap$EntryIterator.next:1637_[i] | 13 samples | 1.8%</title><rect class="frame" x="949.55" y="258.00" width="21.46" height="17" fill="#dd8452"/>
+<g><title>java/io/File.getPath:517_[1] | 1 samples | 0.1%</title><rect class="frame" x="1169.01" y="582.00" width="1.79" height="17" fill="#e880c7"/>
 </g>
-<g><title>java/util/HashMap$EntryIterator.next:1639_[i] | 13 samples | 1.8%</title><rect class="frame" x="949.55" y="240.00" width="21.46" height="17" fill="#dd8452"/>
+<g><title>kotlin/io/FileTreeWalk$FileTreeWalkIterator.gotoNext:98_[j] | 1 samples | 0.1%</title><rect class="frame" x="1170.81" y="672.00" width="1.79" height="17" fill="#ec619f"/>
 </g>
-<g><title>java/util/HashMap$HashIterator.nextNode:1610_[i] | 11 samples | 1.5%</title><rect class="frame" x="949.55" y="222.00" width="18.16" height="17" fill="#dd8452"/>
+<g><title>kotlin/io/FileTreeWalk$FileTreeWalkIterator$BottomUpDirectoryState.step:134_[j] | 1 samples | 0.1%</title><rect class="frame" x="1170.81" y="654.00" width="1.79" height="17" fill="#887ce2"/>
 </g>
-<g><title>java/util/HashMap$HashIterator.nextNode:1604_[i] | 2 samples | 0.3%</title><rect class="frame" x="967.71" y="222.00" width="3.30" height="17" fill="#dd8452"/>
+<g><title>java/io/File.listFiles:1271_[j] | 1 samples | 0.1%</title><rect class="frame" x="1170.81" y="636.00" width="1.79" height="17" fill="#a7e190"/>
 </g>
-<g><title>java/util/HashMap$Node.getKey:294_[i] | 1 samples | 0.1%</title><rect class="frame" x="971.01" y="258.00" width="1.65" height="17" fill="#dd8452"/>
+<g><title>java/io/File.normalizedList:1178_[j] | 1 samples | 0.1%</title><rect class="frame" x="1170.81" y="618.00" width="1.79" height="17" fill="#ea8bf0"/>
 </g>
-<g><title>java/util/HashMap.entrySet:1100_[i] | 1 samples | 0.1%</title><rect class="frame" x="972.66" y="258.00" width="1.65" height="17" fill="#dd8452"/>
+<g><title>java/io/UnixFileSystem.list:230_[j] | 1 samples | 0.1%</title><rect class="frame" x="1170.81" y="600.00" width="1.79" height="17" fill="#a5de73"/>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.writeBucket:163_[j] | 2 samples | 0.3%</title><rect class="frame" x="977.61" y="276.00" width="3.30" height="17" fill="#4c72b0"/>
+<g><title>java/io/UnixFileSystem.list0_[0] | 1 samples | 0.1%</title><rect class="frame" x="1170.81" y="582.00" width="1.79" height="17" fill="#9bb1f2"/>
 </g>
-<g><title>java/lang/String.getBytes:1892_[i] | 2 samples | 0.3%</title><rect class="frame" x="977.61" y="258.00" width="3.30" height="17" fill="#f07171"/>
+<g><title>Java_java_io_UnixFileSystem_list0 | 1 samples | 0.1%</title><rect class="frame" x="1170.81" y="564.00" width="1.79" height="17" fill="#a0e88f"/>
 </g>
-<g><title>java/lang/String.encode:879_[i] | 2 samples | 0.3%</title><rect class="frame" x="977.61" y="240.00" width="3.30" height="17" fill="#61e57d"/>
+<g><title>newStringPlatform | 1 samples | 0.1%</title><rect class="frame" x="1170.81" y="546.00" width="1.79" height="17" fill="#ab9af2"/>
 </g>
-<g><title>java/lang/String.encodeUTF8:1315_[i] | 2 samples | 0.3%</title><rect class="frame" x="977.61" y="222.00" width="3.30" height="17" fill="#6896db"/>
+<g><title>__CFStringAppendBytes | 1 samples | 0.1%</title><rect class="frame" x="1170.81" y="528.00" width="1.79" height="17" fill="#98ea98"/>
 </g>
-<g><title>arrayof_jlong_disjoint_arraycopy | 2 samples | 0.3%</title><rect class="frame" x="977.61" y="204.00" width="3.30" height="17" fill="#e49890"/>
+<g><title>__CFStringChangeSizeMultiple | 1 samples | 0.1%</title><rect class="frame" x="1170.81" y="510.00" width="1.79" height="17" fill="#c563e1"/>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.writeBucket:168_[j] | 1 samples | 0.1%</title><rect class="frame" x="980.91" y="276.00" width="1.65" height="17" fill="#4c72b0"/>
+<g><title>__CFStrAllocateMutableContents | 1 samples | 0.1%</title><rect class="frame" x="1170.81" y="492.00" width="1.79" height="17" fill="#a78ceb"/>
 </g>
-<g><title>java/nio/HeapByteBuffer.putShort:457_[i] | 1 samples | 0.1%</title><rect class="frame" x="980.91" y="258.00" width="1.65" height="17" fill="#f16ab3"/>
+<g><title>szone_malloc_should_clear | 1 samples | 0.1%</title><rect class="frame" x="1170.81" y="474.00" width="1.79" height="17" fill="#689eda"/>
 </g>
-<g><title>jdk/internal/misc/ScopedMemoryAccess.putShortUnaligned:982_[i] | 1 samples | 0.1%</title><rect class="frame" x="980.91" y="240.00" width="1.65" height="17" fill="#a6da89"/>
+<g><title>tiny_malloc_should_clear | 1 samples | 0.1%</title><rect class="frame" x="1170.81" y="456.00" width="1.79" height="17" fill="#7465e0"/>
 </g>
-<g><title>jdk/internal/misc/ScopedMemoryAccess.putShortUnalignedInternal:994_[i] | 1 samples | 0.1%</title><rect class="frame" x="980.91" y="222.00" width="1.65" height="17" fill="#b5f27f"/>
+<g><title>java/lang/ClassLoader.loadClass:528_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="744.00" width="1.79" height="17" fill="#7cefc2"/>
 </g>
-<g><title>jdk/internal/misc/Unsafe.putShortUnaligned:3715_[i] | 1 samples | 0.1%</title><rect class="frame" x="980.91" y="204.00" width="1.65" height="17" fill="#8d65e8"/>
+<g><title>jdk/internal/loader/ClassLoaders$AppClassLoader.loadClass:188_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="726.00" width="1.79" height="17" fill="#f08faa"/>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.update:46_[i] | 4 samples | 0.6%</title><rect class="frame" x="982.56" y="294.00" width="6.60" height="17" fill="#4c72b0"/>
+<g><title>jdk/internal/loader/BuiltinClassLoader.loadClass:639_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="708.00" width="1.79" height="17" fill="#93ec87"/>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.dirIndex:125_[i] | 4 samples | 0.6%</title><rect class="frame" x="982.56" y="276.00" width="6.60" height="17" fill="#4c72b0"/>
+<g><title>jdk/internal/loader/BuiltinClassLoader.loadClassOrNull:681_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="690.00" width="1.79" height="17" fill="#90d0f0"/>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.hash:127_[i] | 3 samples | 0.4%</title><rect class="frame" x="982.56" y="258.00" width="4.95" height="17" fill="#4c72b0"/>
+<g><title>jdk/internal/loader/BuiltinClassLoader.findClassOnClassPathOrNull:760_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="672.00" width="1.79" height="17" fill="#8771ea"/>
 </g>
-<g><title>java/lang/String.hashCode:2458_[i] | 2 samples | 0.3%</title><rect class="frame" x="982.56" y="240.00" width="3.30" height="17" fill="#6dbada"/>
+<g><title>jdk/internal/loader/BuiltinClassLoader.defineClass:862_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="654.00" width="1.79" height="17" fill="#e0636c"/>
 </g>
-<g><title>java/lang/StringLatin1.hashCode:306_[i] | 2 samples | 0.3%</title><rect class="frame" x="982.56" y="222.00" width="3.30" height="17" fill="#ec616a"/>
+<g><title>java/security/SecureClassLoader.defineClass:150_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="636.00" width="1.79" height="17" fill="#9294ef"/>
 </g>
-<g><title>jdk/internal/util/ArraysSupport.hashCodeOfUnsigned:276_[i] | 2 samples | 0.3%</title><rect class="frame" x="982.56" y="204.00" width="3.30" height="17" fill="#dd8452"/>
+<g><title>java/lang/ClassLoader.defineClass:1026_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="618.00" width="1.79" height="17" fill="#84e9d0"/>
 </g>
-<g><title>jdk/internal/util/ArraysSupport.vectorizedHashCode:365_[i] | 2 samples | 0.3%</title><rect class="frame" x="982.56" y="186.00" width="3.30" height="17" fill="#dd8452"/>
+<g><title>java/lang/ClassLoader.defineClass1_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="600.00" width="1.79" height="17" fill="#dd90e9"/>
 </g>
-<g><title>jdk/internal/util/ArraysSupport.unsignedHashCode:379_[i] | 2 samples | 0.3%</title><rect class="frame" x="982.56" y="168.00" width="3.30" height="17" fill="#dd8452"/>
+<g><title>java/lang/ClassLoader.loadClass:528_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="582.00" width="1.79" height="17" fill="#7cefc2"/>
 </g>
-<g><title>java/lang/String.hashCode:2466_[i] | 1 samples | 0.1%</title><rect class="frame" x="985.87" y="240.00" width="1.65" height="17" fill="#8eeccc"/>
+<g><title>jdk/internal/loader/ClassLoaders$AppClassLoader.loadClass:188_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="564.00" width="1.79" height="17" fill="#f08faa"/>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.update:49_[j] | 1 samples | 0.1%</title><rect class="frame" x="989.17" y="294.00" width="1.65" height="17" fill="#4c72b0"/>
+<g><title>jdk/internal/loader/BuiltinClassLoader.loadClass:639_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="546.00" width="1.79" height="17" fill="#93ec87"/>
 </g>
-<g><title>java/util/HashMap.put:619_[j] | 1 samples | 0.1%</title><rect class="frame" x="989.17" y="276.00" width="1.65" height="17" fill="#dd8452"/>
+<g><title>jdk/internal/loader/BuiltinClassLoader.loadClassOrNull:681_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="528.00" width="1.79" height="17" fill="#90d0f0"/>
 </g>
-<g><title>java/util/HashMap.putVal:642_[j] | 1 samples | 0.1%</title><rect class="frame" x="989.17" y="258.00" width="1.65" height="17" fill="#dd8452"/>
+<g><title>jdk/internal/loader/BuiltinClassLoader.findClassOnClassPathOrNull:760_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="510.00" width="1.79" height="17" fill="#8771ea"/>
 </g>
-<g><title>java/lang/String.equals:1950_[j] | 1 samples | 0.1%</title><rect class="frame" x="989.17" y="240.00" width="1.65" height="17" fill="#e8b48b"/>
+<g><title>jdk/internal/loader/BuiltinClassLoader.defineClass:862_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="492.00" width="1.79" height="17" fill="#e0636c"/>
 </g>
-<g><title>dbalgo/hashtable/jmh_generated/HashTableBenchmark_benchUpdate_jmhTest.benchUpdate_Throughput:103_[j] | 101 samples | 13.9%</title><rect class="frame" x="990.82" y="348.00" width="166.71" height="17" fill="#55a868"/>
-<text class="label" x="993.82" y="356.50">dbalgo/hashtable/jmh_gen…</text>
+<g><title>java/security/SecureClassLoader.defineClass:150_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="474.00" width="1.79" height="17" fill="#9294ef"/>
 </g>
-<g><title>dbalgo/hashtable/HashTableBenchmark.tearDown:52_[j] | 89 samples | 12.2%</title><rect class="frame" x="990.82" y="330.00" width="146.91" height="17" fill="#4c72b0"/>
-<text class="label" x="993.82" y="338.50">dbalgo/hashtable/Hash…</text>
+<g><title>java/lang/ClassLoader.defineClass:1026_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="456.00" width="1.79" height="17" fill="#84e9d0"/>
 </g>
-<g><title>kotlin/io/FilesKt__UtilsKt.deleteRecursively:352_[j] | 73 samples | 10.0%</title><rect class="frame" x="990.82" y="312.00" width="120.50" height="17" fill="#a663f0"/>
-<text class="label" x="993.82" y="320.50">kotlin/io/FilesK…</text>
+<g><title>java/lang/ClassLoader.defineClass1_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="438.00" width="1.79" height="17" fill="#dd90e9"/>
 </g>
-<g><title>java/io/File.delete:1075_[j] | 73 samples | 10.0%</title><rect class="frame" x="990.82" y="294.00" width="120.50" height="17" fill="#6288e9"/>
-<text class="label" x="993.82" y="302.50">java/io/File.del…</text>
+<g><title>java/lang/ClassLoader.loadClass:528_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="420.00" width="1.79" height="17" fill="#7cefc2"/>
 </g>
-<g><title>java/io/UnixFileSystem.delete:224_[j] | 73 samples | 10.0%</title><rect class="frame" x="990.82" y="276.00" width="120.50" height="17" fill="#f0da62"/>
-<text class="label" x="993.82" y="284.50">java/io/UnixFile…</text>
+<g><title>jdk/internal/loader/ClassLoaders$AppClassLoader.loadClass:188_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="402.00" width="1.79" height="17" fill="#f08faa"/>
 </g>
-<g><title>java/io/UnixFileSystem.delete0_[j] | 73 samples | 10.0%</title><rect class="frame" x="990.82" y="258.00" width="120.50" height="17" fill="#88e97d"/>
-<text class="label" x="993.82" y="266.50">java/io/UnixFile…</text>
+<g><title>jdk/internal/loader/BuiltinClassLoader.loadClass:639_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="384.00" width="1.79" height="17" fill="#93ec87"/>
 </g>
-<g><title>Java_java_io_UnixFileSystem_delete0 | 73 samples | 10.0%</title><rect class="frame" x="990.82" y="240.00" width="120.50" height="17" fill="#da7ca6"/>
-<text class="label" x="993.82" y="248.50">Java_java_io_Uni…</text>
+<g><title>jdk/internal/loader/BuiltinClassLoader.loadClassOrNull:681_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="366.00" width="1.79" height="17" fill="#90d0f0"/>
 </g>
-<g><title>remove | 62 samples | 8.5%</title><rect class="frame" x="990.82" y="222.00" width="102.34" height="17" fill="#e3a07c"/>
-<text class="label" x="993.82" y="230.50">remove</text>
+<g><title>jdk/internal/loader/BuiltinClassLoader.findClassOnClassPathOrNull:760_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="348.00" width="1.79" height="17" fill="#8771ea"/>
 </g>
-<g><title>__unlink | 62 samples | 8.5%</title><rect class="frame" x="990.82" y="204.00" width="102.34" height="17" fill="#c44e52"/>
-<text class="label" x="993.82" y="212.50">__unlink</text>
+<g><title>jdk/internal/loader/BuiltinClassLoader.defineClass:862_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="330.00" width="1.79" height="17" fill="#e0636c"/>
 </g>
-<g><title>lstat | 9 samples | 1.2%</title><rect class="frame" x="1093.16" y="222.00" width="14.86" height="17" fill="#e577aa"/>
+<g><title>java/security/SecureClassLoader.defineClass:150_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="312.00" width="1.79" height="17" fill="#9294ef"/>
 </g>
-<g><title>__stpncpy_chk.cold.1 | 1 samples | 0.1%</title><rect class="frame" x="1108.01" y="222.00" width="1.65" height="17" fill="#c3dd86"/>
+<g><title>java/lang/ClassLoader.defineClass:1026_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="294.00" width="1.79" height="17" fill="#84e9d0"/>
 </g>
-<g><title>getStringPlatformChars0 | 1 samples | 0.1%</title><rect class="frame" x="1109.66" y="222.00" width="1.65" height="17" fill="#95e98c"/>
+<g><title>java/lang/ClassLoader.defineClass1_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="276.00" width="1.79" height="17" fill="#dd90e9"/>
 </g>
-<g><title>pthread_jit_write_protect_np | 1 samples | 0.1%</title><rect class="frame" x="1109.66" y="204.00" width="1.65" height="17" fill="#bb73ee"/>
+<g><title>java/lang/ClassLoader.loadClass:528_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="258.00" width="1.79" height="17" fill="#7cefc2"/>
 </g>
-<g><title>kotlin/io/FilesKt__UtilsKt.deleteRecursively:481_[j] | 16 samples | 2.2%</title><rect class="frame" x="1111.31" y="312.00" width="26.41" height="17" fill="#59c7da"/>
+<g><title>jdk/internal/loader/ClassLoaders$AppClassLoader.loadClass:188_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="240.00" width="1.79" height="17" fill="#f08faa"/>
 </g>
-<g><title>kotlin/collections/AbstractIterator.hasNext:34_[j] | 16 samples | 2.2%</title><rect class="frame" x="1111.31" y="294.00" width="26.41" height="17" fill="#71f264"/>
+<g><title>jdk/internal/loader/BuiltinClassLoader.loadClass:639_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="222.00" width="1.79" height="17" fill="#93ec87"/>
 </g>
-<g><title>kotlin/collections/AbstractIterator.tryToComputeNext:55_[j] | 16 samples | 2.2%</title><rect class="frame" x="1111.31" y="276.00" width="26.41" height="17" fill="#d5dd5c"/>
+<g><title>jdk/internal/loader/BuiltinClassLoader.loadClassOrNull:681_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="204.00" width="1.79" height="17" fill="#90d0f0"/>
 </g>
-<g><title>kotlin/io/FileTreeWalk$FileTreeWalkIterator.computeNext:80_[j] | 16 samples | 2.2%</title><rect class="frame" x="1111.31" y="258.00" width="26.41" height="17" fill="#e794e1"/>
+<g><title>jdk/internal/loader/BuiltinClassLoader.findClassOnClassPathOrNull:760_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="186.00" width="1.79" height="17" fill="#8771ea"/>
 </g>
-<g><title>kotlin/io/FileTreeWalk$FileTreeWalkIterator.gotoNext:105_[j] | 14 samples | 1.9%</title><rect class="frame" x="1111.31" y="240.00" width="23.11" height="17" fill="#87ade7"/>
+<g><title>jdk/internal/loader/BuiltinClassLoader.defineClass:859_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="168.00" width="1.79" height="17" fill="#eb8fdb"/>
 </g>
-<g><title>java/io/File.isDirectory:867_[j] | 14 samples | 1.9%</title><rect class="frame" x="1111.31" y="222.00" width="23.11" height="17" fill="#ca8ae8"/>
+<g><title>jdk/internal/loader/URLClassPath$JarLoader$2.getBytes:851_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="150.00" width="1.79" height="17" fill="#e35d86"/>
 </g>
-<g><title>java/io/UnixFileSystem.hasBooleanAttributes:179_[j] | 14 samples | 1.9%</title><rect class="frame" x="1111.31" y="204.00" width="23.11" height="17" fill="#95a4e6"/>
+<g><title>jdk/internal/loader/Resource.getBytes:126_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="132.00" width="1.79" height="17" fill="#dc59d2"/>
 </g>
-<g><title>java/io/UnixFileSystem.getBooleanAttributes0_[j] | 14 samples | 1.9%</title><rect class="frame" x="1111.31" y="186.00" width="23.11" height="17" fill="#e169b5"/>
+<g><title>java/util/zip/InflaterInputStream.read:178_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="114.00" width="1.79" height="17" fill="#8b68e5"/>
 </g>
-<g><title>stat64 | 12 samples | 1.7%</title><rect class="frame" x="1111.31" y="168.00" width="19.81" height="17" fill="#7c7fe9"/>
+<g><title>java/util/zip/Inflater.inflate:381_[j] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="96.00" width="1.79" height="17" fill="#90b3e1"/>
 </g>
-<g><title>Java_java_io_UnixFileSystem_getBooleanAttributes0 | 2 samples | 0.3%</title><rect class="frame" x="1131.12" y="168.00" width="3.30" height="17" fill="#da635e"/>
+<g><title>java/util/zip/Inflater.inflateBytesBytes_[0] | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="78.00" width="1.79" height="17" fill="#99dd87"/>
 </g>
-<g><title>AccessInternal::PostRuntimeDispatch&lt;G1BarrierSet::AccessBarrier&lt;401510ull, G1BarrierSet&gt;, (AccessInternal::BarrierType)3, 401510ull&gt;::oop_access_barrier | 1 samples | 0.1%</title><rect class="frame" x="1131.12" y="150.00" width="1.65" height="17" fill="#55a868"/>
+<g><title>Java_java_util_zip_Inflater_inflateBytesBytes | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="60.00" width="1.79" height="17" fill="#7af063"/>
 </g>
-<g><title>jni_GetObjectField | 1 samples | 0.1%</title><rect class="frame" x="1132.77" y="150.00" width="1.65" height="17" fill="#e0cf7e"/>
+<g><title>inflate_fast | 1 samples | 0.1%</title><rect class="frame" x="1172.60" y="42.00" width="1.79" height="17" fill="#e4897d"/>
 </g>
-<g><title>JNIHandleBlock::allocate_handle | 1 samples | 0.1%</title><rect class="frame" x="1132.77" y="132.00" width="1.65" height="17" fill="#8cdc61"/>
+<g><title>dbalgo/hashtable/HashTableBenchmark.tearDown:51_[j] | 11 samples | 1.6%</title><rect class="frame" x="1174.39" y="762.00" width="19.70" height="17" fill="#4c72b0"/>
 </g>
-<g><title>kotlin/io/FileTreeWalk$FileTreeWalkIterator.gotoNext:98_[j] | 2 samples | 0.3%</title><rect class="frame" x="1134.42" y="240.00" width="3.30" height="17" fill="#ec619f"/>
+<g><title>dbalgo/hashtable/ExtendibleHashTable.close:163_[j] | 11 samples | 1.6%</title><rect class="frame" x="1174.39" y="744.00" width="19.70" height="17" fill="#4c72b0"/>
 </g>
-<g><title>kotlin/io/FileTreeWalk$FileTreeWalkIterator$BottomUpDirectoryState.step:134_[j] | 2 samples | 0.3%</title><rect class="frame" x="1134.42" y="222.00" width="3.30" height="17" fill="#887ce2"/>
+<g><title>java/nio/channels/spi/AbstractInterruptibleChannel.close:129_[j] | 10 samples | 1.5%</title><rect class="frame" x="1174.39" y="726.00" width="17.91" height="17" fill="#648fe8"/>
 </g>
-<g><title>java/io/File.listFiles:1271_[j] | 2 samples | 0.3%</title><rect class="frame" x="1134.42" y="204.00" width="3.30" height="17" fill="#a7e190"/>
+<g><title>sun/nio/ch/FileChannelImpl.implCloseChannel:219_[j] | 10 samples | 1.5%</title><rect class="frame" x="1174.39" y="708.00" width="17.91" height="17" fill="#ecca79"/>
 </g>
-<g><title>java/io/File.normalizedList:1178_[j] | 2 samples | 0.3%</title><rect class="frame" x="1134.42" y="186.00" width="3.30" height="17" fill="#ea8bf0"/>
+<g><title>jdk/internal/ref/PhantomCleanable.clean:133_[j] | 10 samples | 1.5%</title><rect class="frame" x="1174.39" y="690.00" width="17.91" height="17" fill="#dd5f5f"/>
 </g>
-<g><title>java/io/UnixFileSystem.list:230_[j] | 2 samples | 0.3%</title><rect class="frame" x="1134.42" y="168.00" width="3.30" height="17" fill="#a5de73"/>
+<g><title>jdk/internal/ref/CleanerImpl$PhantomCleanableRef.performCleanup:178_[j] | 10 samples | 1.5%</title><rect class="frame" x="1174.39" y="672.00" width="17.91" height="17" fill="#c6da69"/>
 </g>
-<g><title>java/io/UnixFileSystem.list0_[0] | 2 samples | 0.3%</title><rect class="frame" x="1134.42" y="150.00" width="3.30" height="17" fill="#9bb1f2"/>
+<g><title>sun/nio/ch/FileChannelImpl$Closer.run:123_[j] | 10 samples | 1.5%</title><rect class="frame" x="1174.39" y="654.00" width="17.91" height="17" fill="#ee7e6f"/>
 </g>
-<g><title>Java_java_io_UnixFileSystem_list0 | 2 samples | 0.3%</title><rect class="frame" x="1134.42" y="132.00" width="3.30" height="17" fill="#a0e88f"/>
+<g><title>java/io/FileDescriptor$1.close:89_[j] | 10 samples | 1.5%</title><rect class="frame" x="1174.39" y="636.00" width="17.91" height="17" fill="#d4df8b"/>
 </g>
-<g><title>JNU_CopyObjectArray | 1 samples | 0.1%</title><rect class="frame" x="1134.42" y="114.00" width="1.65" height="17" fill="#84ede7"/>
+<g><title>java/io/FileDescriptor.close:304_[j] | 10 samples | 1.5%</title><rect class="frame" x="1174.39" y="618.00" width="17.91" height="17" fill="#bc5be4"/>
 </g>
-<g><title>pthread_jit_write_protect_np | 1 samples | 0.1%</title><rect class="frame" x="1134.42" y="96.00" width="1.65" height="17" fill="#bb73ee"/>
+<g><title>java/io/FileDescriptor.close0_[j] | 10 samples | 1.5%</title><rect class="frame" x="1174.39" y="600.00" width="17.91" height="17" fill="#db7592"/>
 </g>
-<g><title>newStringPlatform | 1 samples | 0.1%</title><rect class="frame" x="1136.07" y="114.00" width="1.65" height="17" fill="#ab9af2"/>
+<g><title>close | 9 samples | 1.3%</title><rect class="frame" x="1174.39" y="582.00" width="16.12" height="17" fill="#7be3bf"/>
 </g>
-<g><title>_CFRelease | 1 samples | 0.1%</title><rect class="frame" x="1136.07" y="96.00" width="1.65" height="17" fill="#66de59"/>
+<g><title>thread_start | 7 samples | 1.0%</title><rect class="frame" x="1194.09" y="1050.00" width="12.54" height="17" fill="#e89f63"/>
 </g>
-<g><title>free_tiny | 1 samples | 0.1%</title><rect class="frame" x="1136.07" y="78.00" width="1.65" height="17" fill="#e5c290"/>
+<g><title>_pthread_start | 7 samples | 1.0%</title><rect class="frame" x="1194.09" y="1032.00" width="12.54" height="17" fill="#e86f99"/>
 </g>
-<g><title>tiny_free_no_lock | 1 samples | 0.1%</title><rect class="frame" x="1136.07" y="60.00" width="1.65" height="17" fill="#ace97f"/>
+<g><title>thread_native_entry | 7 samples | 1.0%</title><rect class="frame" x="1194.09" y="1014.00" width="12.54" height="17" fill="#71e6df"/>
 </g>
-<g><title>tiny_free_list_add_ptr | 1 samples | 0.1%</title><rect class="frame" x="1136.07" y="42.00" width="1.65" height="17" fill="#7de4cd"/>
+<g><title>Thread::call_run | 7 samples | 1.0%</title><rect class="frame" x="1194.09" y="996.00" width="12.54" height="17" fill="#9ddb88"/>
 </g>
-<g><title>dbalgo/hashtable/HashTableBenchmark.tearDown:51_[j] | 12 samples | 1.7%</title><rect class="frame" x="1137.72" y="330.00" width="19.81" height="17" fill="#4c72b0"/>
+<g><title>JavaThread::thread_main_inner | 4 samples | 0.6%</title><rect class="frame" x="1194.09" y="978.00" width="7.16" height="17" fill="#ec6c72"/>
 </g>
-<g><title>dbalgo/hashtable/ExtendibleHashTable.close:70_[j] | 12 samples | 1.7%</title><rect class="frame" x="1137.72" y="312.00" width="19.81" height="17" fill="#4c72b0"/>
+<g><title>CompileBroker::compiler_thread_loop | 4 samples | 0.6%</title><rect class="frame" x="1194.09" y="960.00" width="7.16" height="17" fill="#cddd8c"/>
 </g>
-<g><title>java/nio/channels/spi/AbstractInterruptibleChannel.close:129_[j] | 12 samples | 1.7%</title><rect class="frame" x="1137.72" y="294.00" width="19.81" height="17" fill="#648fe8"/>
+<g><title>CompileBroker::invoke_compiler_on_method | 4 samples | 0.6%</title><rect class="frame" x="1194.09" y="942.00" width="7.16" height="17" fill="#79b4eb"/>
 </g>
-<g><title>sun/nio/ch/FileChannelImpl.implCloseChannel:219_[j] | 12 samples | 1.7%</title><rect class="frame" x="1137.72" y="276.00" width="19.81" height="17" fill="#ecca79"/>
+<g><title>C2Compiler::compile_method | 4 samples | 0.6%</title><rect class="frame" x="1194.09" y="924.00" width="7.16" height="17" fill="#64c6de"/>
 </g>
-<g><title>jdk/internal/ref/PhantomCleanable.clean:133_[j] | 9 samples | 1.2%</title><rect class="frame" x="1137.72" y="258.00" width="14.86" height="17" fill="#dd5f5f"/>
+<g><title>Compile::Compile | 4 samples | 0.6%</title><rect class="frame" x="1194.09" y="906.00" width="7.16" height="17" fill="#e18682"/>
 </g>
-<g><title>jdk/internal/ref/CleanerImpl$PhantomCleanableRef.performCleanup:178_[j] | 9 samples | 1.2%</title><rect class="frame" x="1137.72" y="240.00" width="14.86" height="17" fill="#c6da69"/>
+<g><title>Compile::Code_Gen | 3 samples | 0.4%</title><rect class="frame" x="1194.09" y="888.00" width="5.37" height="17" fill="#9ee88d"/>
 </g>
-<g><title>sun/nio/ch/FileChannelImpl$Closer.run:123_[j] | 9 samples | 1.2%</title><rect class="frame" x="1137.72" y="222.00" width="14.86" height="17" fill="#ee7e6f"/>
+<g><title>Matcher::match | 2 samples | 0.3%</title><rect class="frame" x="1194.09" y="870.00" width="3.58" height="17" fill="#e977d0"/>
 </g>
-<g><title>java/io/FileDescriptor$1.close:89_[j] | 9 samples | 1.2%</title><rect class="frame" x="1137.72" y="204.00" width="14.86" height="17" fill="#d4df8b"/>
+<g><title>Matcher::find_shared | 1 samples | 0.1%</title><rect class="frame" x="1194.09" y="852.00" width="1.79" height="17" fill="#94ef96"/>
 </g>
-<g><title>java/io/FileDescriptor.close:304_[j] | 9 samples | 1.2%</title><rect class="frame" x="1137.72" y="186.00" width="14.86" height="17" fill="#bc5be4"/>
+<g><title>Matcher::xform | 1 samples | 0.1%</title><rect class="frame" x="1195.88" y="852.00" width="1.79" height="17" fill="#85eec1"/>
 </g>
-<g><title>java/io/FileDescriptor.close0_[j] | 9 samples | 1.2%</title><rect class="frame" x="1137.72" y="168.00" width="14.86" height="17" fill="#db7592"/>
+<g><title>Matcher::match_tree | 1 samples | 0.1%</title><rect class="frame" x="1195.88" y="834.00" width="1.79" height="17" fill="#e1da8b"/>
 </g>
-<g><title>close | 9 samples | 1.2%</title><rect class="frame" x="1137.72" y="150.00" width="14.86" height="17" fill="#7be3bf"/>
+<g><title>Matcher::Label_Root | 1 samples | 0.1%</title><rect class="frame" x="1195.88" y="816.00" width="1.79" height="17" fill="#c692ea"/>
 </g>
-<g><title>jdk/internal/ref/PhantomCleanable.clean:132_[i] | 2 samples | 0.3%</title><rect class="frame" x="1152.58" y="258.00" width="3.30" height="17" fill="#76d865"/>
+<g><title>Matcher::Label_Root | 1 samples | 0.1%</title><rect class="frame" x="1195.88" y="798.00" width="1.79" height="17" fill="#c692ea"/>
 </g>
-<g><title>java/lang/ref/Reference.clear:406_[i] | 2 samples | 0.3%</title><rect class="frame" x="1152.58" y="240.00" width="3.30" height="17" fill="#65e88a"/>
+<g><title>Matcher::Label_Root | 1 samples | 0.1%</title><rect class="frame" x="1195.88" y="780.00" width="1.79" height="17" fill="#c692ea"/>
 </g>
-<g><title>java/lang/ref/Reference.clear0_[i] | 2 samples | 0.3%</title><rect class="frame" x="1152.58" y="222.00" width="3.30" height="17" fill="#6ce786"/>
+<g><title>Matcher::Label_Root | 1 samples | 0.1%</title><rect class="frame" x="1195.88" y="762.00" width="1.79" height="17" fill="#c692ea"/>
 </g>
-<g><title>pthread_jit_write_protect_np | 2 samples | 0.3%</title><rect class="frame" x="1152.58" y="204.00" width="3.30" height="17" fill="#bb73ee"/>
+<g><title>Matcher::Label_Root | 1 samples | 0.1%</title><rect class="frame" x="1195.88" y="744.00" width="1.79" height="17" fill="#c692ea"/>
 </g>
-<g><title>jdk/internal/ref/PhantomCleanable.clean:131_[j] | 1 samples | 0.1%</title><rect class="frame" x="1155.88" y="258.00" width="1.65" height="17" fill="#a76bf1"/>
+<g><title>State::DFA | 1 samples | 0.1%</title><rect class="frame" x="1195.88" y="726.00" width="1.79" height="17" fill="#d1e28f"/>
 </g>
-<g><title>jdk/internal/ref/PhantomCleanable.remove:102_[1] | 1 samples | 0.1%</title><rect class="frame" x="1155.88" y="240.00" width="1.65" height="17" fill="#65da5c"/>
+<g><title>State::_sub_Op_ConL | 1 samples | 0.1%</title><rect class="frame" x="1195.88" y="708.00" width="1.79" height="17" fill="#63e4af"/>
 </g>
-<g><title>dbalgo/hashtable/jmh_generated/HashTableBenchmark_benchUpdate_jmhTest.benchUpdate_Throughput:99_[0] | 1 samples | 0.1%</title><rect class="frame" x="1157.53" y="348.00" width="1.65" height="17" fill="#55a868"/>
+<g><title>Assembler::operand_valid_for_logical_immediate | 1 samples | 0.1%</title><rect class="frame" x="1195.88" y="690.00" width="1.79" height="17" fill="#dac562"/>
 </g>
-<g><title>InterpreterRuntime::resolve_from_cache | 1 samples | 0.1%</title><rect class="frame" x="1157.53" y="330.00" width="1.65" height="17" fill="#ed73d7"/>
+<g><title>encoding_for_logical_immediate | 1 samples | 0.1%</title><rect class="frame" x="1195.88" y="672.00" width="1.79" height="17" fill="#8772e4"/>
 </g>
-<g><title>InterpreterRuntime::resolve_invoke | 1 samples | 0.1%</title><rect class="frame" x="1157.53" y="312.00" width="1.65" height="17" fill="#e4a290"/>
+<g><title>bsearch | 1 samples | 0.1%</title><rect class="frame" x="1195.88" y="654.00" width="1.79" height="17" fill="#b9e486"/>
 </g>
-<g><title>LinkResolver::resolve_invoke | 1 samples | 0.1%</title><rect class="frame" x="1157.53" y="294.00" width="1.65" height="17" fill="#9b8df0"/>
+<g><title>PhaseChaitin::Register_Allocate | 1 samples | 0.1%</title><rect class="frame" x="1197.67" y="870.00" width="1.79" height="17" fill="#b97de7"/>
 </g>
-<g><title>LinkInfo::LinkInfo | 1 samples | 0.1%</title><rect class="frame" x="1157.53" y="276.00" width="1.65" height="17" fill="#ea92d7"/>
+<g><title>PhaseAggressiveCoalesce::insert_copies | 1 samples | 0.1%</title><rect class="frame" x="1197.67" y="852.00" width="1.79" height="17" fill="#f09c76"/>
 </g>
-<g><title>ConstantPool::klass_ref_at | 1 samples | 0.1%</title><rect class="frame" x="1157.53" y="258.00" width="1.65" height="17" fill="#93df7e"/>
+<g><title>ParseGenerator::generate | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="888.00" width="1.79" height="17" fill="#d169ef"/>
 </g>
-<g><title>ConstantPool::klass_at_impl | 1 samples | 0.1%</title><rect class="frame" x="1157.53" y="240.00" width="1.65" height="17" fill="#dd657c"/>
+<g><title>Parse::Parse | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="870.00" width="1.79" height="17" fill="#8bc7d9"/>
 </g>
-<g><title>SystemDictionary::resolve_or_fail | 1 samples | 0.1%</title><rect class="frame" x="1157.53" y="222.00" width="1.65" height="17" fill="#9a7eea"/>
+<g><title>Parse::do_all_blocks | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="852.00" width="1.79" height="17" fill="#7de4a1"/>
 </g>
-<g><title>SystemDictionary::resolve_instance_class_or_null | 1 samples | 0.1%</title><rect class="frame" x="1157.53" y="204.00" width="1.65" height="17" fill="#85ef85"/>
+<g><title>Parse::do_one_block | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="834.00" width="1.79" height="17" fill="#83e3d9"/>
 </g>
-<g><title>Dictionary::find | 1 samples | 0.1%</title><rect class="frame" x="1157.53" y="186.00" width="1.65" height="17" fill="#70bee6"/>
+<g><title>Parse::do_call | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="816.00" width="1.79" height="17" fill="#e36ced"/>
 </g>
-<g><title>thread_start | 29 samples | 4.0%</title><rect class="frame" x="1159.18" y="618.00" width="47.87" height="17" fill="#e89f63"/>
-<text class="label" x="1162.18" y="626.50">threa…</text>
+<g><title>ParseGenerator::generate | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="798.00" width="1.79" height="17" fill="#d169ef"/>
 </g>
-<g><title>_pthread_start | 29 samples | 4.0%</title><rect class="frame" x="1159.18" y="600.00" width="47.87" height="17" fill="#e86f99"/>
-<text class="label" x="1162.18" y="608.50">_pthr…</text>
+<g><title>Parse::Parse | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="780.00" width="1.79" height="17" fill="#8bc7d9"/>
 </g>
-<g><title>thread_native_entry | 29 samples | 4.0%</title><rect class="frame" x="1159.18" y="582.00" width="47.87" height="17" fill="#71e6df"/>
-<text class="label" x="1162.18" y="590.50">threa…</text>
+<g><title>Parse::do_all_blocks | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="762.00" width="1.79" height="17" fill="#7de4a1"/>
 </g>
-<g><title>Thread::call_run | 29 samples | 4.0%</title><rect class="frame" x="1159.18" y="564.00" width="47.87" height="17" fill="#9ddb88"/>
-<text class="label" x="1162.18" y="572.50">Threa…</text>
+<g><title>Parse::do_one_block | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="744.00" width="1.79" height="17" fill="#83e3d9"/>
 </g>
-<g><title>JavaThread::thread_main_inner | 12 samples | 1.7%</title><rect class="frame" x="1159.18" y="546.00" width="19.81" height="17" fill="#ec6c72"/>
+<g><title>Parse::do_call | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="726.00" width="1.79" height="17" fill="#e36ced"/>
 </g>
-<g><title>CompileBroker::compiler_thread_loop | 11 samples | 1.5%</title><rect class="frame" x="1159.18" y="528.00" width="18.16" height="17" fill="#cddd8c"/>
+<g><title>ParseGenerator::generate | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="708.00" width="1.79" height="17" fill="#d169ef"/>
 </g>
-<g><title>CompileBroker::invoke_compiler_on_method | 7 samples | 1.0%</title><rect class="frame" x="1159.18" y="510.00" width="11.55" height="17" fill="#79b4eb"/>
+<g><title>Parse::Parse | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="690.00" width="1.79" height="17" fill="#8bc7d9"/>
 </g>
-<g><title>C2Compiler::compile_method | 7 samples | 1.0%</title><rect class="frame" x="1159.18" y="492.00" width="11.55" height="17" fill="#64c6de"/>
+<g><title>Parse::do_all_blocks | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="672.00" width="1.79" height="17" fill="#7de4a1"/>
 </g>
-<g><title>Compile::Compile | 7 samples | 1.0%</title><rect class="frame" x="1159.18" y="474.00" width="11.55" height="17" fill="#e18682"/>
+<g><title>Parse::do_one_block | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="654.00" width="1.79" height="17" fill="#83e3d9"/>
 </g>
-<g><title>Compile::Code_Gen | 4 samples | 0.6%</title><rect class="frame" x="1159.18" y="456.00" width="6.60" height="17" fill="#9ee88d"/>
+<g><title>Parse::do_call | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="636.00" width="1.79" height="17" fill="#e36ced"/>
 </g>
-<g><title>PhaseChaitin::Register_Allocate | 3 samples | 0.4%</title><rect class="frame" x="1159.18" y="438.00" width="4.95" height="17" fill="#b97de7"/>
+<g><title>ParseGenerator::generate | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="618.00" width="1.79" height="17" fill="#d169ef"/>
 </g>
-<g><title>PhaseChaitin::build_ifg_virtual | 1 samples | 0.1%</title><rect class="frame" x="1159.18" y="420.00" width="1.65" height="17" fill="#848bdd"/>
+<g><title>Parse::Parse | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="600.00" width="1.79" height="17" fill="#8bc7d9"/>
 </g>
-<g><title>PhaseChaitin::interfere_with_live | 1 samples | 0.1%</title><rect class="frame" x="1159.18" y="402.00" width="1.65" height="17" fill="#8beda9"/>
+<g><title>Parse::do_all_blocks | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="582.00" width="1.79" height="17" fill="#7de4a1"/>
 </g>
-<g><title>PhaseChaitin::merge_multidefs | 1 samples | 0.1%</title><rect class="frame" x="1160.83" y="420.00" width="1.65" height="17" fill="#da79f2"/>
+<g><title>Parse::do_one_block | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="564.00" width="1.79" height="17" fill="#83e3d9"/>
 </g>
-<g><title>PhaseChaitin::post_allocate_copy_removal | 1 samples | 0.1%</title><rect class="frame" x="1162.48" y="420.00" width="1.65" height="17" fill="#8791db"/>
+<g><title>Parse::do_call | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="546.00" width="1.79" height="17" fill="#e36ced"/>
 </g>
-<g><title>PhaseChaitin::elide_copy | 1 samples | 0.1%</title><rect class="frame" x="1162.48" y="402.00" width="1.65" height="17" fill="#5877dc"/>
+<g><title>ciBytecodeStream::get_method | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="528.00" width="1.79" height="17" fill="#66bbdf"/>
 </g>
-<g><title>PhaseCFG::do_global_code_motion | 1 samples | 0.1%</title><rect class="frame" x="1164.13" y="438.00" width="1.65" height="17" fill="#ddc568"/>
+<g><title>ciEnv::get_method_by_index_impl | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="510.00" width="1.79" height="17" fill="#eee588"/>
 </g>
-<g><title>PhaseCFG::global_code_motion | 1 samples | 0.1%</title><rect class="frame" x="1164.13" y="420.00" width="1.65" height="17" fill="#cedb74"/>
+<g><title>ciEnv::lookup_method | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="492.00" width="1.79" height="17" fill="#e8c868"/>
 </g>
-<g><title>PhaseCFG::partial_latency_of_defs | 1 samples | 0.1%</title><rect class="frame" x="1164.13" y="402.00" width="1.65" height="17" fill="#885ce1"/>
+<g><title>LinkResolver::linktime_resolve_virtual_method_or_null | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="474.00" width="1.79" height="17" fill="#ea829a"/>
 </g>
-<g><title>Compile::Optimize | 2 samples | 0.3%</title><rect class="frame" x="1165.78" y="456.00" width="3.30" height="17" fill="#ee896e"/>
+<g><title>LinkResolver::linktime_resolve_virtual_method | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="456.00" width="1.79" height="17" fill="#94b2e9"/>
 </g>
-<g><title>Compile::optimize_loops | 1 samples | 0.1%</title><rect class="frame" x="1165.78" y="438.00" width="1.65" height="17" fill="#ec9e8f"/>
+<g><title>LinkResolver::resolve_method | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="438.00" width="1.79" height="17" fill="#f287e4"/>
 </g>
-<g><title>PhaseIdealLoop::optimize | 1 samples | 0.1%</title><rect class="frame" x="1165.78" y="420.00" width="1.65" height="17" fill="#ee61c4"/>
+<g><title>InstanceKlass::uncached_lookup_method | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="420.00" width="1.79" height="17" fill="#6cdeeb"/>
 </g>
-<g><title>PhaseIdealLoop::PhaseIdealLoop | 1 samples | 0.1%</title><rect class="frame" x="1165.78" y="402.00" width="1.65" height="17" fill="#f2e579"/>
+<g><title>InstanceKlass::find_method_index | 1 samples | 0.1%</title><rect class="frame" x="1199.46" y="402.00" width="1.79" height="17" fill="#eb6881"/>
 </g>
-<g><title>PhaseIdealLoop::build_and_optimize | 1 samples | 0.1%</title><rect class="frame" x="1165.78" y="384.00" width="1.65" height="17" fill="#d8ee73"/>
+<g><title>ConcurrentGCThread::run | 2 samples | 0.3%</title><rect class="frame" x="1201.25" y="978.00" width="3.58" height="17" fill="#e1b65a"/>
 </g>
-<g><title>PhaseIdealLoop::build_loop_tree | 1 samples | 0.1%</title><rect class="frame" x="1165.78" y="366.00" width="1.65" height="17" fill="#c6da75"/>
+<g><title>G1ConcurrentRefineThread::run_service | 2 samples | 0.3%</title><rect class="frame" x="1201.25" y="960.00" width="3.58" height="17" fill="#55a868"/>
 </g>
-<g><title>PhaseIdealLoop::build_loop_tree_impl | 1 samples | 0.1%</title><rect class="frame" x="1165.78" y="348.00" width="1.65" height="17" fill="#82e8ad"/>
+<g><title>G1PrimaryConcurrentRefineThread::do_refinement_step | 1 samples | 0.1%</title><rect class="frame" x="1201.25" y="942.00" width="1.79" height="17" fill="#55a868"/>
 </g>
-<g><title>PhaseIdealLoop::optimize | 1 samples | 0.1%</title><rect class="frame" x="1167.43" y="438.00" width="1.65" height="17" fill="#ee61c4"/>
+<g><title>G1ConcurrentRefine::adjust_threads_periodically | 1 samples | 0.1%</title><rect class="frame" x="1201.25" y="924.00" width="1.79" height="17" fill="#55a868"/>
 </g>
-<g><title>PhaseIdealLoop::PhaseIdealLoop | 1 samples | 0.1%</title><rect class="frame" x="1167.43" y="420.00" width="1.65" height="17" fill="#f2e579"/>
+<g><title>G1Policy::revise_young_list_target_length | 1 samples | 0.1%</title><rect class="frame" x="1201.25" y="906.00" width="1.79" height="17" fill="#55a868"/>
 </g>
-<g><title>PhaseIdealLoop::build_and_optimize | 1 samples | 0.1%</title><rect class="frame" x="1167.43" y="402.00" width="1.65" height="17" fill="#d8ee73"/>
+<g><title>G1Policy::calculate_young_desired_length | 1 samples | 0.1%</title><rect class="frame" x="1201.25" y="888.00" width="1.79" height="17" fill="#55a868"/>
 </g>
-<g><title>IdealLoopTree::iteration_split | 1 samples | 0.1%</title><rect class="frame" x="1167.43" y="384.00" width="1.65" height="17" fill="#e277dc"/>
+<g><title>G1Policy::predict_base_time_ms | 1 samples | 0.1%</title><rect class="frame" x="1201.25" y="870.00" width="1.79" height="17" fill="#55a868"/>
 </g>
-<g><title>IdealLoopTree::iteration_split | 1 samples | 0.1%</title><rect class="frame" x="1167.43" y="366.00" width="1.65" height="17" fill="#e277dc"/>
+<g><title>G1PrimaryConcurrentRefineThread::wait_for_completed_buffers | 1 samples | 0.1%</title><rect class="frame" x="1203.04" y="942.00" width="1.79" height="17" fill="#55a868"/>
 </g>
-<g><title>IdealLoopTree::iteration_split | 1 samples | 0.1%</title><rect class="frame" x="1167.43" y="348.00" width="1.65" height="17" fill="#e277dc"/>
+<g><title>Monitor::wait_without_safepoint_check | 1 samples | 0.1%</title><rect class="frame" x="1203.04" y="924.00" width="1.79" height="17" fill="#98ec91"/>
 </g>
-<g><title>IdealLoopTree::iteration_split_impl | 1 samples | 0.1%</title><rect class="frame" x="1167.43" y="330.00" width="1.65" height="17" fill="#e7b492"/>
+<g><title>PlatformMonitor::wait | 1 samples | 0.1%</title><rect class="frame" x="1203.04" y="906.00" width="1.79" height="17" fill="#bdd882"/>
 </g>
-<g><title>PhaseIdealLoop::insert_pre_post_loops | 1 samples | 0.1%</title><rect class="frame" x="1167.43" y="312.00" width="1.65" height="17" fill="#eb877c"/>
+<g><title>__psynch_cvwait | 1 samples | 0.1%</title><rect class="frame" x="1203.04" y="888.00" width="1.79" height="17" fill="#c16be9"/>
 </g>
-<g><title>PhaseIdealLoop::copy_assertion_predicates_to_main_loop | 1 samples | 0.1%</title><rect class="frame" x="1167.43" y="294.00" width="1.65" height="17" fill="#7cefb5"/>
+<g><title>WatcherThread::run | 1 samples | 0.1%</title><rect class="frame" x="1204.84" y="978.00" width="1.79" height="17" fill="#85d0db"/>
 </g>
-<g><title>PhaseIdealLoop::copy_assertion_predicates_to_main_loop_helper | 1 samples | 0.1%</title><rect class="frame" x="1167.43" y="276.00" width="1.65" height="17" fill="#80eeb9"/>
+<g><title>WatcherThread::sleep | 1 samples | 0.1%</title><rect class="frame" x="1204.84" y="960.00" width="1.79" height="17" fill="#a5f162"/>
 </g>
-<g><title>PhaseIdealLoop::clone_assertion_predicate_and_initialize | 1 samples | 0.1%</title><rect class="frame" x="1167.43" y="258.00" width="1.65" height="17" fill="#e78f5f"/>
+<g><title>Monitor::wait_without_safepoint_check | 1 samples | 0.1%</title><rect class="frame" x="1204.84" y="942.00" width="1.79" height="17" fill="#98ec91"/>
 </g>
-<g><title>TemplateAssertionPredicateExpression::clone_and_replace_init_and_stride | 1 samples | 0.1%</title><rect class="frame" x="1167.43" y="240.00" width="1.65" height="17" fill="#f07c73"/>
+<g><title>PlatformMonitor::wait | 1 samples | 0.1%</title><rect class="frame" x="1204.84" y="924.00" width="1.79" height="17" fill="#bdd882"/>
 </g>
-<g><title>TemplateAssertionPredicateExpression::clone | 1 samples | 0.1%</title><rect class="frame" x="1167.43" y="222.00" width="1.65" height="17" fill="#db5f8b"/>
+<g><title>__psynch_cvwait | 1 samples | 0.1%</title><rect class="frame" x="1204.84" y="906.00" width="1.79" height="17" fill="#c16be9"/>
 </g>
-<g><title>_platform_memset | 1 samples | 0.1%</title><rect class="frame" x="1167.43" y="204.00" width="1.65" height="17" fill="#d788d8"/>
+<g><title>unknown_Java | 2 samples | 0.3%</title><rect class="frame" x="1206.63" y="1050.00" width="3.58" height="17" fill="#95e6a4"/>
 </g>
-<g><title>ParseGenerator::generate | 1 samples | 0.1%</title><rect class="frame" x="1169.08" y="456.00" width="1.65" height="17" fill="#d169ef"/>
+<g><title>Interpreter | 1 samples | 0.1%</title><rect class="frame" x="1206.63" y="1032.00" width="1.79" height="17" fill="#e680cd"/>
 </g>
-<g><title>Parse::Parse | 1 samples | 0.1%</title><rect class="frame" x="1169.08" y="438.00" width="1.65" height="17" fill="#8bc7d9"/>
+<g><title>forward_copy_longs | 1 samples | 0.1%</title><rect class="frame" x="1208.42" y="1032.00" width="1.79" height="17" fill="#89b6d9"/>
 </g>
-<g><title>Parse::do_all_blocks | 1 samples | 0.1%</title><rect class="frame" x="1169.08" y="420.00" width="1.65" height="17" fill="#7de4a1"/>
+<g><title>org/openjdk/jmh/runner/ForkedMain.main:86_[j] | 1 samples | 0.1%</title><rect class="frame" x="1210.21" y="1050.00" width="1.79" height="17" fill="#f06266"/>
 </g>
-<g><title>Parse::do_one_block | 1 samples | 0.1%</title><rect class="frame" x="1169.08" y="402.00" width="1.65" height="17" fill="#83e3d9"/>
+<g><title>org/openjdk/jmh/runner/ForkedRunner.run:72_[j] | 1 samples | 0.1%</title><rect class="frame" x="1210.21" y="1032.00" width="1.79" height="17" fill="#7adca4"/>
 </g>
-<g><title>Parse::do_call | 1 samples | 0.1%</title><rect class="frame" x="1169.08" y="384.00" width="1.65" height="17" fill="#e36ced"/>
+<g><title>org/openjdk/jmh/runner/BaseRunner.runBenchmarksForked:75_[j] | 1 samples | 0.1%</title><rect class="frame" x="1210.21" y="1014.00" width="1.79" height="17" fill="#6edbae"/>
 </g>
-<g><title>PredictedCallGenerator::generate | 1 samples | 0.1%</title><rect class="frame" x="1169.08" y="366.00" width="1.65" height="17" fill="#86a9e9"/>
+<g><title>org/openjdk/jmh/runner/BaseRunner.doSingle:138_[j] | 1 samples | 0.1%</title><rect class="frame" x="1210.21" y="996.00" width="1.79" height="17" fill="#816bed"/>
 </g>
-<g><title>ParseGenerator::generate | 1 samples | 0.1%</title><rect class="frame" x="1169.08" y="348.00" width="1.65" height="17" fill="#d169ef"/>
+<g><title>org/openjdk/jmh/runner/BaseRunner.runBenchmark:233_[j] | 1 samples | 0.1%</title><rect class="frame" x="1210.21" y="978.00" width="1.79" height="17" fill="#70bbef"/>
 </g>
-<g><title>Parse::Parse | 1 samples | 0.1%</title><rect class="frame" x="1169.08" y="330.00" width="1.65" height="17" fill="#8bc7d9"/>
+<g><title>org/openjdk/jmh/runner/BaseRunner.runBenchmark:283_[j] | 1 samples | 0.1%</title><rect class="frame" x="1210.21" y="960.00" width="1.79" height="17" fill="#7aecde"/>
 </g>
-<g><title>Parse::do_all_blocks | 1 samples | 0.1%</title><rect class="frame" x="1169.08" y="312.00" width="1.65" height="17" fill="#7de4a1"/>
+<g><title>org/openjdk/jmh/runner/BenchmarkHandler.runIteration:354_[j] | 1 samples | 0.1%</title><rect class="frame" x="1210.21" y="942.00" width="1.79" height="17" fill="#db788a"/>
 </g>
-<g><title>Parse::do_one_block | 1 samples | 0.1%</title><rect class="frame" x="1169.08" y="294.00" width="1.65" height="17" fill="#83e3d9"/>
+<g><title>java/util/concurrent/ExecutorCompletionService.poll:211_[j] | 1 samples | 0.1%</title><rect class="frame" x="1210.21" y="924.00" width="1.79" height="17" fill="#7ee085"/>
 </g>
-<g><title>Parse::do_exceptions | 1 samples | 0.1%</title><rect class="frame" x="1169.08" y="276.00" width="1.65" height="17" fill="#7799e5"/>
+<g><title>java/util/concurrent/LinkedBlockingQueue.poll:460_[j] | 1 samples | 0.1%</title><rect class="frame" x="1210.21" y="906.00" width="1.79" height="17" fill="#75dec4"/>
 </g>
-<g><title>Node::disconnect_inputs | 1 samples | 0.1%</title><rect class="frame" x="1169.08" y="258.00" width="1.65" height="17" fill="#ea9595"/>
-</g>
-<g><title>CompileQueue::get | 4 samples | 0.6%</title><rect class="frame" x="1170.73" y="510.00" width="6.60" height="17" fill="#73e98f"/>
-</g>
-<g><title>Monitor::wait | 4 samples | 0.6%</title><rect class="frame" x="1170.73" y="492.00" width="6.60" height="17" fill="#ee76bc"/>
-</g>
-<g><title>PlatformMonitor::wait | 4 samples | 0.6%</title><rect class="frame" x="1170.73" y="474.00" width="6.60" height="17" fill="#bdd882"/>
-</g>
-<g><title>__psynch_cvwait | 4 samples | 0.6%</title><rect class="frame" x="1170.73" y="456.00" width="6.60" height="17" fill="#c16be9"/>
-</g>
-<g><title>JvmtiAgentThread::start_function_wrapper | 1 samples | 0.1%</title><rect class="frame" x="1177.34" y="528.00" width="1.65" height="17" fill="#c480e4"/>
-</g>
-<g><title>Profiler::timerLoop | 1 samples | 0.1%</title><rect class="frame" x="1177.34" y="510.00" width="1.65" height="17" fill="#d88cf1"/>
-</g>
-<g><title>OS::micros | 1 samples | 0.1%</title><rect class="frame" x="1177.34" y="492.00" width="1.65" height="17" fill="#e27894"/>
-</g>
-<g><title>__commpage_gettimeofday_internal | 1 samples | 0.1%</title><rect class="frame" x="1177.34" y="474.00" width="1.65" height="17" fill="#beda68"/>
-</g>
-<g><title>WorkerThread::run | 8 samples | 1.1%</title><rect class="frame" x="1178.99" y="546.00" width="13.20" height="17" fill="#8feade"/>
-</g>
-<g><title>semaphore_wait_trap | 6 samples | 0.8%</title><rect class="frame" x="1178.99" y="528.00" width="9.90" height="17" fill="#88aeee"/>
-</g>
-<g><title>G1EvacuateRegionsBaseTask::work | 1 samples | 0.1%</title><rect class="frame" x="1188.89" y="528.00" width="1.65" height="17" fill="#55a868"/>
-</g>
-<g><title>G1EvacuateRegionsTask::evacuate_live_objects | 1 samples | 0.1%</title><rect class="frame" x="1188.89" y="510.00" width="1.65" height="17" fill="#55a868"/>
-</g>
-<g><title>G1ParEvacuateFollowersClosure::do_void | 1 samples | 0.1%</title><rect class="frame" x="1188.89" y="492.00" width="1.65" height="17" fill="#55a868"/>
-</g>
-<g><title>TaskTerminator::offer_termination | 1 samples | 0.1%</title><rect class="frame" x="1188.89" y="474.00" width="1.65" height="17" fill="#dd909a"/>
-</g>
-<g><title>swtch_pri | 1 samples | 0.1%</title><rect class="frame" x="1188.89" y="456.00" width="1.65" height="17" fill="#dee26e"/>
-</g>
-<g><title>G1STWRefProcProxyTask::work | 1 samples | 0.1%</title><rect class="frame" x="1190.54" y="528.00" width="1.65" height="17" fill="#55a868"/>
-</g>
-<g><title>RefProcPhantomPhaseTask::rp_work | 1 samples | 0.1%</title><rect class="frame" x="1190.54" y="510.00" width="1.65" height="17" fill="#c7f06f"/>
-</g>
-<g><title>G1ParEvacuateFollowersClosure::do_void | 1 samples | 0.1%</title><rect class="frame" x="1190.54" y="492.00" width="1.65" height="17" fill="#55a868"/>
-</g>
-<g><title>TaskTerminator::offer_termination | 1 samples | 0.1%</title><rect class="frame" x="1190.54" y="474.00" width="1.65" height="17" fill="#dd909a"/>
-</g>
-<g><title>swtch_pri | 1 samples | 0.1%</title><rect class="frame" x="1190.54" y="456.00" width="1.65" height="17" fill="#dee26e"/>
-</g>
-<g><title>WatcherThread::run | 5 samples | 0.7%</title><rect class="frame" x="1192.19" y="546.00" width="8.25" height="17" fill="#85d0db"/>
-</g>
-<g><title>WatcherThread::sleep | 4 samples | 0.6%</title><rect class="frame" x="1192.19" y="528.00" width="6.60" height="17" fill="#a5f162"/>
-</g>
-<g><title>Monitor::wait_without_safepoint_check | 4 samples | 0.6%</title><rect class="frame" x="1192.19" y="510.00" width="6.60" height="17" fill="#98ec91"/>
-</g>
-<g><title>PlatformMonitor::wait | 4 samples | 0.6%</title><rect class="frame" x="1192.19" y="492.00" width="6.60" height="17" fill="#bdd882"/>
-</g>
-<g><title>__psynch_cvwait | 4 samples | 0.6%</title><rect class="frame" x="1192.19" y="474.00" width="6.60" height="17" fill="#c16be9"/>
-</g>
-<g><title>os::javaTimeNanos | 1 samples | 0.1%</title><rect class="frame" x="1198.80" y="528.00" width="1.65" height="17" fill="#e96398"/>
-</g>
-<g><title>ConcurrentGCThread::run | 2 samples | 0.3%</title><rect class="frame" x="1200.45" y="546.00" width="3.30" height="17" fill="#e1b65a"/>
-</g>
-<g><title>G1ConcurrentRefineThread::run_service | 2 samples | 0.3%</title><rect class="frame" x="1200.45" y="528.00" width="3.30" height="17" fill="#55a868"/>
-</g>
-<g><title>G1PrimaryConcurrentRefineThread::wait_for_completed_buffers | 2 samples | 0.3%</title><rect class="frame" x="1200.45" y="510.00" width="3.30" height="17" fill="#55a868"/>
-</g>
-<g><title>Monitor::wait_without_safepoint_check | 2 samples | 0.3%</title><rect class="frame" x="1200.45" y="492.00" width="3.30" height="17" fill="#98ec91"/>
-</g>
-<g><title>PlatformMonitor::wait | 2 samples | 0.3%</title><rect class="frame" x="1200.45" y="474.00" width="3.30" height="17" fill="#bdd882"/>
-</g>
-<g><title>__psynch_cvwait | 2 samples | 0.3%</title><rect class="frame" x="1200.45" y="456.00" width="3.30" height="17" fill="#c16be9"/>
-</g>
-<g><title>VMThread::run | 2 samples | 0.3%</title><rect class="frame" x="1203.75" y="546.00" width="3.30" height="17" fill="#c969e1"/>
-</g>
-<g><title>VMThread::inner_execute | 2 samples | 0.3%</title><rect class="frame" x="1203.75" y="528.00" width="3.30" height="17" fill="#88e5af"/>
-</g>
-<g><title>VMThread::evaluate_operation | 2 samples | 0.3%</title><rect class="frame" x="1203.75" y="510.00" width="3.30" height="17" fill="#e48cc6"/>
-</g>
-<g><title>VM_Operation::evaluate | 2 samples | 0.3%</title><rect class="frame" x="1203.75" y="492.00" width="3.30" height="17" fill="#6cdb89"/>
-</g>
-<g><title>VM_G1CollectForAllocation::doit | 2 samples | 0.3%</title><rect class="frame" x="1203.75" y="474.00" width="3.30" height="17" fill="#55a868"/>
-</g>
-<g><title>G1CollectedHeap::do_collection_pause_at_safepoint | 2 samples | 0.3%</title><rect class="frame" x="1203.75" y="456.00" width="3.30" height="17" fill="#55a868"/>
-</g>
-<g><title>G1CollectedHeap::do_collection_pause_at_safepoint_helper | 2 samples | 0.3%</title><rect class="frame" x="1203.75" y="438.00" width="3.30" height="17" fill="#55a868"/>
-</g>
-<g><title>G1YoungCollector::collect | 2 samples | 0.3%</title><rect class="frame" x="1203.75" y="420.00" width="3.30" height="17" fill="#55a868"/>
-</g>
-<g><title>G1YoungCollector::evacuate_initial_collection_set | 1 samples | 0.1%</title><rect class="frame" x="1203.75" y="402.00" width="1.65" height="17" fill="#55a868"/>
-</g>
-<g><title>G1RemSet::merge_heap_roots | 1 samples | 0.1%</title><rect class="frame" x="1203.75" y="384.00" width="1.65" height="17" fill="#55a868"/>
-</g>
-<g><title>G1MergeHeapRootsTask::G1MergeHeapRootsTask | 1 samples | 0.1%</title><rect class="frame" x="1203.75" y="366.00" width="1.65" height="17" fill="#55a868"/>
-</g>
-<g><title>G1YoungCollector::pre_evacuate_collection_set | 1 samples | 0.1%</title><rect class="frame" x="1205.40" y="402.00" width="1.65" height="17" fill="#55a868"/>
-</g>
-<g><title>WorkerThreads::run_task | 1 samples | 0.1%</title><rect class="frame" x="1205.40" y="384.00" width="1.65" height="17" fill="#ef7c84"/>
-</g>
-<g><title>semaphore_wait_trap | 1 samples | 0.1%</title><rect class="frame" x="1205.40" y="366.00" width="1.65" height="17" fill="#88aeee"/>
-</g>
-<g><title>org/openjdk/jmh/runner/ForkedMain.main:86_[j] | 3 samples | 0.4%</title><rect class="frame" x="1207.05" y="618.00" width="4.95" height="17" fill="#f06266"/>
-</g>
-<g><title>org/openjdk/jmh/runner/ForkedRunner.run:72_[j] | 3 samples | 0.4%</title><rect class="frame" x="1207.05" y="600.00" width="4.95" height="17" fill="#7adca4"/>
-</g>
-<g><title>org/openjdk/jmh/runner/BaseRunner.runBenchmarksForked:75_[j] | 3 samples | 0.4%</title><rect class="frame" x="1207.05" y="582.00" width="4.95" height="17" fill="#6edbae"/>
-</g>
-<g><title>org/openjdk/jmh/runner/BaseRunner.doSingle:138_[j] | 3 samples | 0.4%</title><rect class="frame" x="1207.05" y="564.00" width="4.95" height="17" fill="#816bed"/>
-</g>
-<g><title>org/openjdk/jmh/runner/BaseRunner.runBenchmark:233_[j] | 3 samples | 0.4%</title><rect class="frame" x="1207.05" y="546.00" width="4.95" height="17" fill="#70bbef"/>
-</g>
-<g><title>org/openjdk/jmh/runner/BaseRunner.runBenchmark:283_[j] | 3 samples | 0.4%</title><rect class="frame" x="1207.05" y="528.00" width="4.95" height="17" fill="#7aecde"/>
-</g>
-<g><title>org/openjdk/jmh/runner/BenchmarkHandler.runIteration:335_[j] | 1 samples | 0.1%</title><rect class="frame" x="1207.05" y="510.00" width="1.65" height="17" fill="#e683ea"/>
-</g>
-<g><title>org/openjdk/jmh/runner/BenchmarkHandler.startProfilers:255_[j] | 1 samples | 0.1%</title><rect class="frame" x="1207.05" y="492.00" width="1.65" height="17" fill="#e55cc6"/>
-</g>
-<g><title>org/openjdk/jmh/profile/AsyncProfiler.beforeIteration:326_[j] | 1 samples | 0.1%</title><rect class="frame" x="1207.05" y="474.00" width="1.65" height="17" fill="#dba477"/>
-</g>
-<g><title>org/openjdk/jmh/profile/AsyncProfiler.start:334_[j] | 1 samples | 0.1%</title><rect class="frame" x="1207.05" y="456.00" width="1.65" height="17" fill="#71c1db"/>
-</g>
-<g><title>org/openjdk/jmh/profile/AsyncProfiler.execute:433_[j] | 1 samples | 0.1%</title><rect class="frame" x="1207.05" y="438.00" width="1.65" height="17" fill="#73ddc5"/>
-</g>
-<g><title>org/openjdk/jmh/profile/AsyncProfiler$JavaApi.execute:591_[j] | 1 samples | 0.1%</title><rect class="frame" x="1207.05" y="420.00" width="1.65" height="17" fill="#65e8b8"/>
-</g>
-<g><title>org/openjdk/jmh/profile/AsyncProfiler$JavaApi.execute0_[j] | 1 samples | 0.1%</title><rect class="frame" x="1207.05" y="402.00" width="1.65" height="17" fill="#6ae0ee"/>
-</g>
-<g><title>java/lang/Thread.&lt;init&gt;:1216_[j] | 1 samples | 0.1%</title><rect class="frame" x="1207.05" y="384.00" width="1.65" height="17" fill="#df86a8"/>
-</g>
-<g><title>java/lang/Thread.&lt;init&gt;:733_[j] | 1 samples | 0.1%</title><rect class="frame" x="1207.05" y="366.00" width="1.65" height="17" fill="#e965c2"/>
-</g>
-<g><title>java/security/AccessController.getContext:1026_[j] | 1 samples | 0.1%</title><rect class="frame" x="1207.05" y="348.00" width="1.65" height="17" fill="#8d9be0"/>
-</g>
-<g><title>java/security/AccessControlContext.optimize:589_[0] | 1 samples | 0.1%</title><rect class="frame" x="1207.05" y="330.00" width="1.65" height="17" fill="#7ded7a"/>
-</g>
-<g><title>org/openjdk/jmh/runner/BenchmarkHandler.runIteration:345_[j] | 1 samples | 0.1%</title><rect class="frame" x="1208.70" y="510.00" width="1.65" height="17" fill="#91e2c5"/>
-</g>
-<g><title>org/openjdk/jmh/runner/InfraControl.awaitWarmupReady:40_[j] | 1 samples | 0.1%</title><rect class="frame" x="1208.70" y="492.00" width="1.65" height="17" fill="#c44e52"/>
-</g>
-<g><title>org/openjdk/jmh/runner/InfraControlL2.awaitWarmupReady:242_[j] | 1 samples | 0.1%</title><rect class="frame" x="1208.70" y="474.00" width="1.65" height="17" fill="#c44e52"/>
-</g>
-<g><title>java/util/concurrent/CountDownLatch.await:230_[j] | 1 samples | 0.1%</title><rect class="frame" x="1208.70" y="456.00" width="1.65" height="17" fill="#ea9d98"/>
-</g>
-<g><title>java/util/concurrent/locks/AbstractQueuedSynchronizer.acquireSharedInterruptibly:1099_[j] | 1 samples | 0.1%</title><rect class="frame" x="1208.70" y="438.00" width="1.65" height="17" fill="#e4ee7c"/>
-</g>
-<g><title>java/util/concurrent/locks/AbstractQueuedSynchronizer.acquire:754_[j] | 1 samples | 0.1%</title><rect class="frame" x="1208.70" y="420.00" width="1.65" height="17" fill="#5facdc"/>
-</g>
-<g><title>java/util/concurrent/locks/LockSupport.park:221_[j] | 1 samples | 0.1%</title><rect class="frame" x="1208.70" y="402.00" width="1.65" height="17" fill="#9380e6"/>
-</g>
-<g><title>jdk/internal/misc/Unsafe.park_[0] | 1 samples | 0.1%</title><rect class="frame" x="1208.70" y="384.00" width="1.65" height="17" fill="#93e5c5"/>
-</g>
-<g><title>Unsafe_Park | 1 samples | 0.1%</title><rect class="frame" x="1208.70" y="366.00" width="1.65" height="17" fill="#d9e66c"/>
-</g>
-<g><title>Parker::park | 1 samples | 0.1%</title><rect class="frame" x="1208.70" y="348.00" width="1.65" height="17" fill="#ef928a"/>
-</g>
-<g><title>__psynch_cvwait | 1 samples | 0.1%</title><rect class="frame" x="1208.70" y="330.00" width="1.65" height="17" fill="#c16be9"/>
-</g>
-<g><title>org/openjdk/jmh/runner/BenchmarkHandler.runIteration:371_[j] | 1 samples | 0.1%</title><rect class="frame" x="1210.35" y="510.00" width="1.65" height="17" fill="#e1d48c"/>
-</g>
-<g><title>org/openjdk/jmh/runner/InfraControl.awaitWarmdownReady:40_[j] | 1 samples | 0.1%</title><rect class="frame" x="1210.35" y="492.00" width="1.65" height="17" fill="#ec8cb2"/>
-</g>
-<g><title>org/openjdk/jmh/runner/InfraControlL2.awaitWarmdownReady:252_[j] | 1 samples | 0.1%</title><rect class="frame" x="1210.35" y="474.00" width="1.65" height="17" fill="#d68be6"/>
-</g>
-<g><title>java/util/concurrent/CountDownLatch.await:230_[j] | 1 samples | 0.1%</title><rect class="frame" x="1210.35" y="456.00" width="1.65" height="17" fill="#ea9d98"/>
-</g>
-<g><title>java/util/concurrent/locks/AbstractQueuedSynchronizer.acquireSharedInterruptibly:1099_[j] | 1 samples | 0.1%</title><rect class="frame" x="1210.35" y="438.00" width="1.65" height="17" fill="#e4ee7c"/>
-</g>
-<g><title>java/util/concurrent/locks/AbstractQueuedSynchronizer.acquire:754_[j] | 1 samples | 0.1%</title><rect class="frame" x="1210.35" y="420.00" width="1.65" height="17" fill="#5facdc"/>
-</g>
-<g><title>java/util/concurrent/locks/LockSupport.park:221_[j] | 1 samples | 0.1%</title><rect class="frame" x="1210.35" y="402.00" width="1.65" height="17" fill="#9380e6"/>
-</g>
-<g><title>jdk/internal/misc/Unsafe.park_[0] | 1 samples | 0.1%</title><rect class="frame" x="1210.35" y="384.00" width="1.65" height="17" fill="#93e5c5"/>
-</g>
-<g><title>Unsafe_Park | 1 samples | 0.1%</title><rect class="frame" x="1210.35" y="366.00" width="1.65" height="17" fill="#d9e66c"/>
-</g>
-<g><title>Parker::park | 1 samples | 0.1%</title><rect class="frame" x="1210.35" y="348.00" width="1.65" height="17" fill="#ef928a"/>
-</g>
-<g><title>__psynch_cvwait | 1 samples | 0.1%</title><rect class="frame" x="1210.35" y="330.00" width="1.65" height="17" fill="#c16be9"/>
+<g><title>java/util/concurrent/locks/AbstractQueuedSynchronizer$ConditionObject.awaitNanos:1763_[0] | 1 samples | 0.1%</title><rect class="frame" x="1210.21" y="888.00" width="1.79" height="17" fill="#6090df"/>
 </g>
 </svg>

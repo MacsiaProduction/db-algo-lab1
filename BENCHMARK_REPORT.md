@@ -1,148 +1,193 @@
 # Отчёт по JMH-бенчмаркам
 
-**Окружение:** macOS Darwin 25.4.0 · m1 pro · JDK 23.0.2 · `@Fork(1)`
-**JMH:** обычно `@Warmup(2×2s)` + `@Measurement(3×2s)`; для `PerfectHashBenchmark.benchBuild` — `2×1s` + `3×1s`
----
+Этот отчёт привязан к pinned snapshot из `docs/report_manifest.json`. Все числовые таблицы ниже синхронизируются из того же manifest-driven pipeline, что и confidence charts.
+
+**Окружение:** macOS Darwin 25.4.0 · m1 pro · JDK 23.0.2
 
 ## 1. ExtendibleHashTable
 
-Файловая хеш-таблица с отдельным файлом на бакет и позиционным I/O через `FileChannel`.
+Файловая extendible hash table со slotted bucket pages, tombstones и позиционным I/O через `FileChannel`.
 
-### 1.1 Средние задержки (SampleTime, µs/op)
+### 1.1 Средние задержки
 
 ![ExtendibleHashTable — средние задержки](docs/img/ht_latency.png)
 
-| Operation |    1K |  100K | 1M |
-|-----------|------:|------:|---:|
-| get |  3.62 |  3.84 | 4.72 |
-| update |  6.04 |  5.57 | 7.22 |
-| insert |  6.18 |  8.41 | 29.21 |
-| delete | 24.84 | 44.22 | 56.07 |
+<!-- BEGIN GENERATED:HT_LATENCY_TABLE -->
+| Operation | 1K | 100K | 1M |
+| --- | --- | --- | --- |
+| get | 0.83 | 1.37 | 2.32 |
+| update | 1.71 | 2.64 | 3.19 |
+| insert | 2.38 | 3.71 | 11.28 |
+| delete | 5.29 | 7.80 | 12.39 |
+<!-- END GENERATED:HT_LATENCY_TABLE -->
 
- - size-effect виден между `100K` и `1M`: при заполнении половины таблицы рабочее множество bucket-файлов растёт примерно с `~1.6 MB` до `~16 MB`, и это уже заметно по `get`/`insert`/`delete`.
+### 1.1a Доверительные интервалы
+
+CI-режим использует отдельный `HashTableIntervalBenchmark` со split-сценариями; mixed `get/update/insert/delete` остаются только в latency/tail suites.
+
+![HashTable interval scenarios — 95% confidence intervals](docs/img/ht_confidence.png)
+
+<!-- BEGIN GENERATED:HT_CI_TABLE -->
+| Tier | Operation | Mode | N | Mean | 95% CI | rel.err | Gate |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| strict | getHit | avgt | 1M | 1.01 us/op | [1.00, 1.02] us | 0.94% | PASS |
+| strict | getMiss | avgt | 1M | 0.92 us/op | [0.90, 0.93] us | 1.61% | PASS |
+| strict | updateHit | avgt | 1M | 2.65 us/op | [2.63, 2.68] us | 0.85% | PASS |
+| strict | updateMiss | avgt | 1M | 0.91 us/op | [0.90, 0.92] us | 0.91% | PASS |
+| strict | insertOverwrite | avgt | 1M | 2.47 us/op | [2.43, 2.51] us | 1.52% | PASS |
+| strict | insertGrowthNoSplit | ss | 1M | 6.08 us/op | [5.89, 6.27] us | 3.08% | FAIL |
+| strict | deleteDense | ss | 1M | 3.75 us/op | [3.67, 3.82] us | 2.00% | FAIL |
+| diagnostic | insertGrowthSplit | ss | 1M | 19.07 us/op | [16.62, 21.52] us | 12.84% | diagnostic |
+| diagnostic | deleteSparse | ss | 1M | 3.48 us/op | [3.37, 3.59] us | 3.16% | diagnostic |
+<!-- END GENERATED:HT_CI_TABLE -->
+
+Текущий pinned snapshot всё ещё держит основное давление в `insertGrowthNoSplit` и `deleteDense`; остальные strict cases должны оставаться существенно стабильнее mixed baseline.
 
 ### 1.2 Использование дискового пространства
 
+<!-- BEGIN GENERATED:HT_DISK_TABLE -->
 | N | bytes/entry |
-|---|------------:|
-| 1K | 32 |
-| 100K | 32 |
-| 1M | 32 |
+| --- | --- |
+| 1K | 86 |
+| 100K | 129 |
+| 1M | 115 |
+<!-- END GENERATED:HT_DISK_TABLE -->
 
 ### 1.3 Хвосты задержек
 
-| Operation | p50 @ 1M | p99 @ 1M | p99.9 @ 1M | p99.99 @ 1M |
-|-----------|---------:|---------:|-----------:|------------:|
-| get | 4.08 | 9.74 | 47.25 | 873.03 |
-| update | 7.21 | 18.56 | 74.92 | 569.13 |
-| insert | 11.04 | 218.11 | 2 887.29 | 21 754.86 |
-| delete | 47.04 | 111.08 | 1 605.55 | 9 243.37 |
+![HashTable get/insert — персентили](docs/img/ht_percentiles.png)
 
-- `insert` резко тяжелее по хвостам, потому что на больших размерах чаще попадает в split и directory update.
-- `delete` остаётся худшим, потому что почти всегда реально меняет размер bucket-файла.
+<!-- BEGIN GENERATED:HT_TAIL_TABLE -->
+| Operation | p50 @ 1M | p90 @ 1M | p99 @ 1M | p99.99 @ 1M |
+| --- | --- | --- | --- | --- |
+| get | 2.04 | 2.62 | 6.66 | 195.27 |
+| update | 3.25 | 4.46 | 6.29 | 130.16 |
+| insert | 6.04 | 11.41 | 112.33 | 2439.94 |
+| delete | 8.91 | 11.95 | 121.98 | 1219.77 |
+<!-- END GENERATED:HT_TAIL_TABLE -->
 
-### 1.4 Профиль CPU (async-profiler, N=1M)
+### 1.4 Профиль CPU
 
 ![ExtendibleHashTable — профиль CPU](docs/img/ht_cpu_profile.png)
 
-| Operation | Syscalls | User code | JDK | MemCopy | Top hot method |
-|-----------|--------:|----------:|----:|--------:|:---------------|
-| get | 56% | 8% | 31% | 2% | `pread` 23% |
-| insert | 75% | 8% | 14% | 1% | `__unlink` 21%, `pwrite` 20% |
-| update | 64% | 16% | 15% | 3% | `fstat` 21%, `pread` 17% |
-| delete | 87% | 4% | 4% | <1% | `ftruncate` 55% |
-
 ![ExtendibleHashTable.update() — flamegraph](docs/img/ht_update_flamegraph.svg)
-
----
 
 ## 2. RandomProjection LSH
 
-In-memory LSH-индекс для поиска близких 3D-точек на основе random projection hash.
+In-memory LSH-индекс для поиска близких 3D-точек.
 
 ### 2.1 Задержки
 
-| N | ops/ms | µs/op | p50 (µs) | p90 (µs) | p99 (µs) |
-|---|-------:|------:|---------:|---------:|---------:|
-| 1K | 48.1 | 20.80 | 18.37 | 20.45 | 34.11 |
-| 100K | 207.0 | 4.83 | 3.37 | 5.58 | 9.95 |
-| 1M | 23.2 | 43.13 | 39.87 | 55.04 | 81.13 |
+<!-- BEGIN GENERATED:LSH_LATENCY_TABLE -->
+| N | ops/ms | us/op | p50 (us) | p90 (us) | p99 (us) |
+| --- | --- | --- | --- | --- | --- |
+| 1K | 921.7 | 1.08 | 1.08 | 1.17 | 1.42 |
+| 100K | 961.1 | 1.04 | 1.00 | 1.50 | 3.42 |
+| 1M | 85.4 | 11.71 | 12.03 | 16.45 | 22.62 |
+<!-- END GENERATED:LSH_LATENCY_TABLE -->
 
-- `100K` быстрее `1K`, потому что при `N < fullScanThreshold = 4000` уходим в перебор.
-- `1M` резко медленнее `100K`, потому что множество кандидатов становится намного больше, и стоимость уходит в дедупликацию и сортировку.
+### 2.1a Доверительные интервалы
+
+`LshIntervalBenchmark` остаётся CI-only suite для canonical warm-cache query batches.
+
+![LSH findNear — 95% confidence intervals](docs/img/lsh_confidence.png)
+
+<!-- BEGIN GENERATED:LSH_CI_TABLE -->
+| Tier | Operation | Mode | N | Mean | 95% CI | rel.err | Gate |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| strict | findNear | avgt | 1K | 1.05 us/op | [1.04, 1.06] us | 0.84% | PASS |
+| strict | findNear | avgt | 100K | 0.90 us/op | [0.89, 0.92] us | 1.67% | PASS |
+| strict | findNear | avgt | 1M | 11.48 us/op | [11.36, 11.59] us | 0.99% | PASS |
+<!-- END GENERATED:LSH_CI_TABLE -->
 
 ### 2.2 Потребление памяти
 
+<!-- BEGIN GENERATED:LSH_MEMORY_TABLE -->
 | N | bytes/entry |
-|---|------------:|
-| 1K | 1 668 |
-| 100K | 1 073 |
-| 1M | 678 |
+| --- | --- |
+| 1K | 1240 |
+| 100K | 751 |
+| 1M | 327 |
+<!-- END GENERATED:LSH_MEMORY_TABLE -->
 
-С ростом `N` фиксированные расходы на projections, offsets и структуры бакетов амортизируются, поэтому bytes/entry монотонно падает.
+### 2.3 Профиль CPU
 
-### 2.3 Профиль CPU (async-profiler, N=1M)
+![LSH findNear — профиль CPU](docs/img/lsh_cpu_profile.png)
 
 ![RandomProjectionLshIndex.findNear() — flamegraph](docs/img/lsh_find_near_flamegraph.svg)
 
-- Профиль теперь почти целиком JDK/container-bound, а не GC-bound:
-- `HashSet.iterator` 32.6%
-- `HashMap.putVal` 15.5%
-- `HashMap$HashIterator.nextNode` 13.3%
-- `HashMap$Node.<init>` 7.2%,
-- `TimSort` ~5%.
-
----
-
 ## 3. PerfectHashMap
 
-Статическая двухуровневая FKS-таблица: build дорогой, lookup очень быстрый.
+Статическая двухуровневая FKS-таблица: build дорогой, lookup быстрый и предсказуемый.
 
-### 3.1 Время построения
+### 3.1 Build
 
-| N | build time |
-|---|-----------:|
-| 1K | 98.61 ms |
-| 100K | 9.14 s |
-| 1M | 90.84 s |
-
-Масштабирование близко к линейному: при росте на порядок build time тоже растёт примерно на порядок.
+<!-- BEGIN GENERATED:PH_BUILD_TABLE -->
+| N | build time (ms) |
+| --- | --- |
+| 1K | 63.32 |
+| 100K | 5642.74 |
+| 1M | 60867.74 |
+<!-- END GENERATED:PH_BUILD_TABLE -->
 
 ### 3.2 Lookup
 
+<!-- BEGIN GENERATED:PH_LOOKUP_TABLE -->
 | N | ops/ms | ns/op | p50 (ns) | p90 (ns) | p99 (ns) |
-|---|-------:|------:|---------:|---------:|---------:|
-| 1K | 27 559.8 | 36.29 | 42 | 83 | 125 |
-| 100K | 13 114.6 | 76.25 | 42 | 166 | 250 |
-| 1M | 6 512.3 | 153.56 | 208 | 292 | 458 |
+| --- | --- | --- | --- | --- | --- |
+| 1K | 36020.5 | 27.76 | 42 | 42 | 83 |
+| 100K | 21980.9 | 45.49 | 42 | 125 | 209 |
+| 1M | 7759.0 | 128.88 | 125 | 292 | 417 |
+<!-- END GENERATED:PH_LOOKUP_TABLE -->
 
-- Throughput даёт здесь более честное сравнение, чем `SampleTime`, потому что для `1K` и `100K` значения местами упираются в разрешение таймера.
+### 3.2a Доверительные интервалы
+
+`PerfectHash` использует два CI-only suite: `PerfectHashLookupIntervalBenchmark` для steady-state lookup и `PerfectHashBuildIntervalBenchmark` для build path.
+
+![PerfectHash — 95% confidence intervals](docs/img/ph_confidence.png)
+
+**Lookup CI**
+
+<!-- BEGIN GENERATED:PH_LOOKUP_CI_TABLE -->
+| Tier | Operation | Mode | N | Mean | 95% CI | rel.err | Gate |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| strict | lookup | avgt | 1K | 28.77 ns/op | [28.57, 28.98] ns | 0.71% | PASS |
+| strict | lookup | avgt | 100K | 50.39 ns/op | [49.39, 51.39] ns | 1.98% | PASS |
+| strict | lookup | avgt | 1M | 84.79 ns/op | [83.59, 86.00] ns | 1.42% | PASS |
+<!-- END GENERATED:PH_LOOKUP_CI_TABLE -->
+
+**Build CI**
+
+<!-- BEGIN GENERATED:PH_BUILD_CI_TABLE -->
+| Tier | Operation | Mode | N | Mean | 95% CI | rel.err | Gate |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| heavy | build | ss | 1K | 60.26 ms/op | [59.54, 60.97] ms | 1.19% | PASS |
+| heavy | build | ss | 100K | 5695.30 ms/op | [5652.40, 5738.20] ms | 0.75% | PASS |
+| heavy | build | ss | 1M | 61517.20 ms/op | [60387.22, 62647.19] ms | 1.84% | PASS |
+<!-- END GENERATED:PH_BUILD_CI_TABLE -->
 
 ### 3.3 Память и структура
 
+<!-- BEGIN GENERATED:PH_MEMORY_TABLE -->
 | N | heap bytes/entry | total slots | slots/entry |
-|---|-----------------:|------------:|------------:|
-| 1K | 96 | 4 110 | 4.11 |
-| 100K | 74 | 409 484 | 4.095 |
-| 1M | 74 | 4 040 136 | 4.04 |
+| --- | --- | --- | --- |
+| 1K | 100 | 4110 | 4.11 |
+| 100K | 79 | 409484 | 4.09 |
+| 1M | 79 | 4040136 | 4.04 |
+<!-- END GENERATED:PH_MEMORY_TABLE -->
 
-Отношение slots/entry стабилизируется около `4N`, что заметно ниже теоретического потолка `6N`.
-
-### 3.4 Профиль CPU (async-profiler, N=1M)
-
-![PerfectHashMap.lookup() — профиль CPU](docs/img/ph_lookup_cpu.png)
+### 3.4 Профиль CPU
 
 ![PerfectHashMap.lookup() — flamegraph](docs/img/ph_lookup_flamegraph.svg)
-
-- Профиль compute-bound: `PerfectHashMap.hash()` 64.4%, `String.encodeUTF8` 14.5%, `StringCoding.hasNegatives` 9.1%, `Bucket.lookup` 3.1%.
----
 
 ## 4. Сравнение памяти
 
 ![Потребление памяти на запись](docs/img/memory_per_entry.png)
 
+<!-- BEGIN GENERATED:MEMORY_COMPARISON_TABLE -->
 | Structure | 1K | 100K | 1M |
-|-----------|---:|-----:|---:|
-| HashTable (disk) | 32 | 32 | 32 |
-| PerfectHash (heap) | 96 | 74 | 74 |
-| LSH (heap) | 1 668 | 1 073 | 678 |
+| --- | --- | --- | --- |
+| HashTable (disk) | 86 | 129 | 115 |
+| PerfectHash (heap) | 100 | 79 | 79 |
+| LSH (heap) | 1240 | 751 | 327 |
+<!-- END GENERATED:MEMORY_COMPARISON_TABLE -->

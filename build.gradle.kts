@@ -36,6 +36,57 @@ val apDir = layout.buildDirectory.dir("async-profiler")
 val profileDir = layout.buildDirectory.dir("reports/profile")
 val jmhInclude = providers.gradleProperty("jmhInclude").orNull
 val jmhDataSize = providers.gradleProperty("jmhDataSize").orNull
+val jmhResultFile = providers.gradleProperty("jmhResultFile").orNull
+val jmhPreset = providers.gradleProperty("jmhPreset").orNull ?: "default"
+
+data class JmhPreset(
+    val warmupIterations: Int,
+    val measurementIterations: Int,
+    val fork: Int,
+)
+
+val activeJmhPreset = when (jmhPreset) {
+    "quick" -> JmhPreset(
+        warmupIterations = 1,
+        measurementIterations = 3,
+        fork = 1,
+    )
+    "gate" -> JmhPreset(
+        warmupIterations = 5,
+        measurementIterations = 16,
+        fork = 2,
+    )
+    "diag" -> JmhPreset(
+        warmupIterations = 2,
+        measurementIterations = 12,
+        fork = 1,
+    )
+    "lshGate" -> JmhPreset(
+        warmupIterations = 3,
+        measurementIterations = 12,
+        fork = 2,
+    )
+    "phLookupGate" -> JmhPreset(
+        warmupIterations = 5,
+        measurementIterations = 20,
+        fork = 2,
+    )
+    "phBuildGate" -> JmhPreset(
+        warmupIterations = 1,
+        measurementIterations = 5,
+        fork = 1,
+    )
+    "precise" -> JmhPreset(
+        warmupIterations = 3,
+        measurementIterations = 8,
+        fork = 1,
+    )
+    else -> JmhPreset(
+        warmupIterations = 2,
+        measurementIterations = 3,
+        fork = 1,
+    )
+}
 
 if (profile) {
     val apLib = apDir.get().file("lib/libasyncProfiler.dylib").asFile
@@ -109,11 +160,13 @@ if (profile) {
 }
 
 jmh {
-    warmupIterations = 2
-    iterations = 3
-    fork = 1
-    benchmarkMode = listOf("thrpt", "sample")
+    warmupIterations = activeJmhPreset.warmupIterations
+    iterations = activeJmhPreset.measurementIterations
+    fork = activeJmhPreset.fork
     resultFormat = "JSON"
+    if (jmhResultFile != null) {
+        resultsFile.set(file(jmhResultFile))
+    }
     if (jmhInclude != null) {
         includes.add(jmhInclude)
     }

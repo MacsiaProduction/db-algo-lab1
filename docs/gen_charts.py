@@ -1,27 +1,85 @@
 #!/usr/bin/env python3
-"""Generate benchmark report charts from JMH results + profiler outputs."""
+"""Generate benchmark report charts from manifest-driven JMH results + profiler outputs."""
 
+from __future__ import annotations
+
+import argparse
 import collections
 import colorsys
 import hashlib
 import html
 import json
+import math
 import pathlib
+
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import numpy as np
+from matplotlib.patches import Patch
 
-ROOT = pathlib.Path(__file__).resolve().parent.parent
-OUT  = ROOT / "docs" / "img"
+from jmh_report_lib import (
+    COLLAPSED,
+    DEFAULT_MANIFEST_PATH,
+    DEFAULT_REPORT_PATH,
+    OUT,
+    PROF,
+    SIZES,
+    SIZE_LABELS,
+    collect_ci_entries,
+    convert_ms_to_unit,
+    convert_score_to_ms_per_op,
+    extract,
+    extract_aux,
+    gate_status,
+    load_dataset_entries,
+    load_manifest,
+    markdown_table,
+    pick_display_unit,
+    rel_err,
+    relative_error,
+    replace_report_block,
+    require_entry_count,
+    require_sizes,
+    scale_metric,
+    size_to_label,
+)
+
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--manifest",
+        default=str(DEFAULT_MANIFEST_PATH),
+        help="Pinned report manifest with exact benchmark inputs",
+    )
+    parser.add_argument(
+        "--report",
+        default=str(DEFAULT_REPORT_PATH),
+        help="Markdown report to update between generated block markers",
+    )
+    return parser.parse_args()
+
+
+args = parse_args()
+manifest = load_manifest(path=pathlib.Path(args.manifest))
+core_entries = load_dataset_entries(manifest, "core")
+hash_interval_entries = load_dataset_entries(manifest, "hash_table_interval")
+lsh_interval_entries = load_dataset_entries(manifest, "lsh_interval")
+ph_lookup_interval_entries = load_dataset_entries(manifest, "perfect_hash_lookup_interval")
+ph_build_interval_entries = load_dataset_entries(manifest, "perfect_hash_build_interval")
+raw = core_entries
+
 OUT.mkdir(parents=True, exist_ok=True)
-JMH  = ROOT / "build" / "results" / "jmh" / "results.json"
-PROF = ROOT / "build" / "reports" / "profile" / "json"
-COLLAPSED = ROOT / "build" / "reports" / "profile" / "collapsed"
-
-with open(JMH) as f:
-    raw = json.load(f)
+print(
+    "Loaded manifest datasets:"
+    f" core={len(core_entries)},"
+    f" ht_interval={len(hash_interval_entries)},"
+    f" lsh_interval={len(lsh_interval_entries)},"
+    f" ph_lookup_interval={len(ph_lookup_interval_entries)},"
+    f" ph_build_interval={len(ph_build_interval_entries)}"
+)
 
 # ── helpers ──────────────────────────────────────────────────────────
 plt.rcParams.update({
@@ -31,8 +89,7 @@ plt.rcParams.update({
 })
 
 COLORS = ["#4C72B0", "#DD8452", "#55A868", "#C44E52", "#8172B3", "#937860"]
-SIZES = [1_000, 100_000, 1_000_000]
-SIZE_LABELS = ["1K", "100K", "1M"]
+SIZE_LABEL_LIST = [SIZE_LABELS[size] for size in SIZES]
 
 def save(fig, name):
     fig.savefig(OUT / name, bbox_inches="tight", pad_inches=0.15)
@@ -43,9 +100,15 @@ def save_text(name, text):
     (OUT / name).write_text(text, encoding="utf-8")
     print(f"  ✓ {name}")
 
-def extract(bench_suffix, mode):
+def extract(entries_or_suffix, bench_suffix=None, mode=None):
+    if mode is None:
+        entries = raw
+        mode = bench_suffix
+        bench_suffix = entries_or_suffix
+    else:
+        entries = entries_or_suffix
     out = {}
-    for e in raw:
+    for e in entries:
         if e["benchmark"].endswith(bench_suffix) and e["mode"] == mode:
             out[int(e["params"]["dataSize"])] = e
     return out
@@ -311,7 +374,7 @@ if all(has_sizes(data) for data in series.values()):
                     ha="center", va="bottom", fontsize=7)
 
     ax.set_xticks(x + 1.5 * w)
-    ax.set_xticklabels(SIZE_LABELS)
+    ax.set_xticklabels(SIZE_LABEL_LIST)
     ax.set_ylabel("Latency (µs/op)")
     ax.set_title("ExtendibleHashTable — средние задержки")
     ax.legend(loc="upper left", framealpha=0.9)
@@ -446,23 +509,11 @@ ax.set_title("LSH findNear — профиль CPU (N=1M)")
 save(fig, "lsh_cpu_profile.png")
 
 # ═════════════════════════════════════════════════════════════════════
-# Chart 5: Memory per entry (from results.json AuxCounters)
+# Chart 5: Memory per entry (from manifest-selected AuxCounters)
 # ═════════════════════════════════════════════════════════════════════
 print("Chart 5: Memory per entry")
 
-def extract_aux(bench_suffix, counter_name):
-    vals = {}
-    for e in raw:
-        if e["benchmark"].endswith(bench_suffix) and e["mode"] == "thrpt":
-            ds = int(e["params"]["dataSize"])
-            sec = e.get("secondaryMetrics", {})
-            if counter_name in sec:
-                thrpt = e["primaryMetric"]["score"]
-                if thrpt > 0:
-                    vals[ds] = round(sec[counter_name]["score"] / thrpt)
-    return vals
-
-ht_disk = extract_aux("benchDiskBytesPerEntry", "diskBytesPerEntry")
+ht_disk = extract_aux(raw, "benchDiskBytesPerEntry", "diskBytesPerEntry")
 
 def extract_heap(class_prefix, counter_name="heapBytesPerEntry"):
     vals = {}
@@ -485,24 +536,27 @@ lsh_v = [lsh_heap.get(s, 0) for s in SIZES]
 ph_v = [ph_heap.get(s, 0) for s in SIZES]
 print(f"  HT disk: {ht_v}, LSH heap: {lsh_v}, PH heap: {ph_v}")
 
-fig, ax = plt.subplots(figsize=(6, 3.5))
-x = np.arange(len(SIZES))
-w = 0.25
-ax.bar(x - w, ht_v, w, label="HashTable (disk)", color=COLORS[0], edgecolor="white")
-ax.bar(x, ph_v, w, label="PerfectHash (heap)", color=COLORS[2], edgecolor="white")
-ax.bar(x + w, lsh_v, w, label="LSH (heap)", color=COLORS[1], edgecolor="white")
+if all(size in ht_disk for size in SIZES) and all(size in lsh_heap for size in SIZES) and all(size in ph_heap for size in SIZES):
+    fig, ax = plt.subplots(figsize=(6, 3.5))
+    x = np.arange(len(SIZES))
+    w = 0.25
+    ax.bar(x - w, ht_v, w, label="HashTable (disk)", color=COLORS[0], edgecolor="white")
+    ax.bar(x, ph_v, w, label="PerfectHash (heap)", color=COLORS[2], edgecolor="white")
+    ax.bar(x + w, lsh_v, w, label="LSH (heap)", color=COLORS[1], edgecolor="white")
 
-for xi, (h, p, l) in enumerate(zip(ht_v, ph_v, lsh_v)):
-    ax.text(xi - w, h + 15, str(h), ha="center", fontsize=7)
-    ax.text(xi, p + 15, str(p), ha="center", fontsize=7)
-    ax.text(xi + w, l + 15, str(l), ha="center", fontsize=7)
+    for xi, (h, p, l) in enumerate(zip(ht_v, ph_v, lsh_v)):
+        ax.text(xi - w, h + 15, str(h), ha="center", fontsize=7)
+        ax.text(xi, p + 15, str(p), ha="center", fontsize=7)
+        ax.text(xi + w, l + 15, str(l), ha="center", fontsize=7)
 
-ax.set_xticks(x)
-ax.set_xticklabels(SIZE_LABELS)
-ax.set_ylabel("bytes / entry")
-ax.set_title("Потребление памяти на запись")
-ax.legend(fontsize=8, framealpha=0.9)
-save(fig, "memory_per_entry.png")
+    ax.set_xticks(x)
+    ax.set_xticklabels(SIZE_LABEL_LIST)
+    ax.set_ylabel("bytes / entry")
+    ax.set_title("Потребление памяти на запись")
+    ax.legend(fontsize=8, framealpha=0.9)
+    save(fig, "memory_per_entry.png")
+else:
+    print("  WARNING: incomplete memory counters, skipping memory_per_entry.png")
 
 # ═════════════════════════════════════════════════════════════════════
 # Chart 6: HashTable percentiles (get / insert)
@@ -527,7 +581,7 @@ if all(has_sizes(data) for data in tail_series.values()):
                    edgecolor="white", linewidth=0.5)
 
         ax.set_xticks(x + 1.5 * w)
-        ax.set_xticklabels(SIZE_LABELS)
+        ax.set_xticklabels(SIZE_LABEL_LIST)
         ax.set_ylabel("Latency (µs)")
         ax.set_title(f"HashTable {label} — персентили")
         ax.legend(fontsize=7, loc="upper left")
@@ -538,5 +592,388 @@ if all(has_sizes(data) for data in tail_series.values()):
     save(fig, "ht_percentiles.png")
 else:
     print("  WARNING: incomplete HashTable percentile data, skipping ht_percentiles.png")
+
+# ═════════════════════════════════════════════════════════════════════
+# Chart 7: HashTable interval confidence (95% CI from rawData)
+# ═════════════════════════════════════════════════════════════════════
+print("Chart 7: HashTable interval confidence")
+ht_order = [
+    "getHit",
+    "getMiss",
+    "updateHit",
+    "updateMiss",
+    "insertOverwrite",
+    "insertGrowthNoSplit",
+    "deleteDense",
+    "insertGrowthSplit",
+    "deleteSparse",
+]
+ht_tier = {
+    "getHit": "strict",
+    "getMiss": "strict",
+    "updateHit": "strict",
+    "updateMiss": "strict",
+    "insertOverwrite": "strict",
+    "insertGrowthNoSplit": "strict",
+    "deleteDense": "strict",
+    "insertGrowthSplit": "diagnostic",
+    "deleteSparse": "diagnostic",
+}
+
+ht_ci_entries = collect_ci_entries(
+    hash_interval_entries,
+    "dbalgo.hashtable.HashTableIntervalBenchmark.bench",
+    {"avgt", "ss"},
+)
+if ht_ci_entries:
+    sizes = sorted({entry["data_size"] for entry in ht_ci_entries})
+    unit, _ = pick_display_unit([convert_ms_to_unit(entry["score"], "us") for entry in ht_ci_entries])
+    fig, axes = plt.subplots(1, len(sizes), figsize=(max(7, 5.2 * len(sizes)), 4.6), sharey=True)
+    if len(sizes) == 1:
+        axes = [axes]
+
+    for idx, size in enumerate(sizes):
+        ax = axes[idx]
+        subset = [entry for entry in ht_ci_entries if entry["data_size"] == size]
+        subset.sort(key=lambda item: ht_order.index(item["operation"]) if item["operation"] in ht_order else 99)
+        if not subset:
+            continue
+
+        y = np.arange(len(subset))
+        means = [convert_ms_to_unit(entry["score"], unit) for entry in subset]
+        errors = [convert_ms_to_unit(entry["error"], unit) for entry in subset]
+        colors = ["#4C72B0" if ht_tier.get(entry["operation"]) == "strict" else "#DD8452" for entry in subset]
+
+        ax.barh(y, means, color=colors, alpha=0.28, edgecolor="none")
+        ax.errorbar(
+            means,
+            y,
+            xerr=errors,
+            fmt="o",
+            color="#1f1f1f",
+            ecolor="#1f1f1f",
+            elinewidth=1,
+            capsize=3,
+            markersize=4,
+        )
+        for yi, mean, err in zip(y, means, errors):
+            rel = rel_err(mean, err)
+            if math.isfinite(rel):
+                ax.text(mean + err, yi, f"  ±{rel * 100:.2f}%", va="center", fontsize=7)
+
+        if idx == 0:
+            ax.set_yticks(y)
+            ax.set_yticklabels([entry["operation"] for entry in subset], fontsize=8)
+        else:
+            ax.tick_params(axis="y", labelleft=False)
+        ax.set_xlabel(f"Latency ({unit}/op)")
+        ax.set_title(f"N={size_to_label(size)}")
+
+    axes[0].legend(
+        handles=[
+            Patch(facecolor="#4C72B0", alpha=0.28, label="strict"),
+            Patch(facecolor="#DD8452", alpha=0.28, label="diagnostic"),
+        ],
+        loc="lower right",
+        fontsize=8,
+    )
+    fig.suptitle("HashTable interval scenarios — 95% confidence intervals", y=1.02)
+    fig.tight_layout()
+    save(fig, "ht_confidence.png")
+else:
+    print("  WARNING: no HashTable interval entries, skipping ht_confidence.png")
+
+# ═════════════════════════════════════════════════════════════════════
+# Chart 8: LSH confidence (95% CI from rawData)
+# ═════════════════════════════════════════════════════════════════════
+print("Chart 8: LSH confidence")
+lsh_ci = collect_ci_entries(
+    lsh_interval_entries,
+    "dbalgo.lsh.LshIntervalBenchmark.benchFindNear",
+    {"avgt"},
+)
+if lsh_ci:
+    require_entry_count(lsh_ci, set(SIZES), "LSH interval dataset")
+    lsh_ci.sort(key=lambda item: item["data_size"])
+    unit, _ = pick_display_unit([convert_ms_to_unit(entry["score"], "us") for entry in lsh_ci])
+    x = np.arange(len(lsh_ci))
+    means = [convert_ms_to_unit(entry["score"], unit) for entry in lsh_ci]
+    errors = [convert_ms_to_unit(entry["error"], unit) for entry in lsh_ci]
+    labels = [size_to_label(entry["data_size"]) for entry in lsh_ci]
+    modes = [entry["mode"] for entry in lsh_ci]
+
+    fig, ax = plt.subplots(figsize=(6.2, 3.8))
+    ax.errorbar(x, means, yerr=errors, fmt="o-", color="#4C72B0", capsize=4, linewidth=1.5, markersize=5)
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels)
+    ax.set_xlabel("Data size")
+    ax.set_ylabel(f"Latency ({unit}/op)")
+    ax.set_title("LSH findNear — 95% confidence intervals")
+
+    for xi, mean, err, mode in zip(x, means, errors, modes):
+        rel = rel_err(mean, err)
+        ax.text(xi, mean + err, f"±{rel * 100:.2f}% ({mode})", ha="center", va="bottom", fontsize=8)
+
+    save(fig, "lsh_confidence.png")
+else:
+    print("  WARNING: no LSH confidence entries, skipping lsh_confidence.png")
+
+# ═════════════════════════════════════════════════════════════════════
+# Chart 9: PerfectHash confidence (95% CI from rawData)
+# ═════════════════════════════════════════════════════════════════════
+print("Chart 9: PerfectHash confidence")
+ph_lookup = collect_ci_entries(
+    ph_lookup_interval_entries,
+    "dbalgo.perfecthash.PerfectHashLookupIntervalBenchmark.benchLookup",
+    {"avgt"},
+)
+
+ph_build = collect_ci_entries(
+    ph_build_interval_entries,
+    "dbalgo.perfecthash.PerfectHashBuildIntervalBenchmark.benchBuild",
+    {"ss"},
+)
+
+if ph_lookup or ph_build:
+    fig, axes = plt.subplots(1, 2, figsize=(10.4, 3.8))
+
+    if ph_lookup:
+        require_entry_count(ph_lookup, set(SIZES), "PerfectHash lookup interval dataset")
+        ph_lookup.sort(key=lambda item: item["data_size"])
+        unit, _ = pick_display_unit([convert_ms_to_unit(entry["score"], "us") for entry in ph_lookup])
+        x = np.arange(len(ph_lookup))
+        means = [convert_ms_to_unit(entry["score"], unit) for entry in ph_lookup]
+        errors = [convert_ms_to_unit(entry["error"], unit) for entry in ph_lookup]
+        labels = [size_to_label(entry["data_size"]) for entry in ph_lookup]
+        axes[0].errorbar(x, means, yerr=errors, fmt="o-", color="#55A868", capsize=4, linewidth=1.5, markersize=5)
+        axes[0].set_xticks(x)
+        axes[0].set_xticklabels(labels)
+        axes[0].set_xlabel("Data size")
+        axes[0].set_ylabel(f"Latency ({unit}/op)")
+        axes[0].set_title("Lookup")
+        for xi, mean, err in zip(x, means, errors):
+            axes[0].text(xi, mean + err, f"±{rel_err(mean, err) * 100:.2f}%", ha="center", va="bottom", fontsize=8)
+    else:
+        axes[0].set_axis_off()
+        axes[0].text(0.5, 0.5, "No lookup CI data", ha="center", va="center")
+
+    if ph_build:
+        require_entry_count(ph_build, set(SIZES), "PerfectHash build interval dataset")
+        ph_build.sort(key=lambda item: item["data_size"])
+        unit, _ = pick_display_unit([convert_ms_to_unit(entry["score"], "us") for entry in ph_build])
+        x = np.arange(len(ph_build))
+        means = [convert_ms_to_unit(entry["score"], unit) for entry in ph_build]
+        errors = [convert_ms_to_unit(entry["error"], unit) for entry in ph_build]
+        labels = [size_to_label(entry["data_size"]) for entry in ph_build]
+        axes[1].errorbar(x, means, yerr=errors, fmt="o-", color="#C44E52", capsize=4, linewidth=1.5, markersize=5)
+        axes[1].set_xticks(x)
+        axes[1].set_xticklabels(labels)
+        axes[1].set_xlabel("Data size")
+        axes[1].set_ylabel(f"Latency ({unit}/op)")
+        axes[1].set_title("Build")
+        for xi, mean, err in zip(x, means, errors):
+            axes[1].text(xi, mean + err, f"±{rel_err(mean, err) * 100:.2f}%", ha="center", va="bottom", fontsize=8)
+    else:
+        axes[1].set_axis_off()
+        axes[1].text(0.5, 0.5, "No build CI data", ha="center", va="center")
+
+    fig.suptitle("PerfectHash — 95% confidence intervals", y=1.02)
+    fig.tight_layout()
+    save(fig, "ph_confidence.png")
+else:
+    print("  WARNING: no PerfectHash confidence entries, skipping ph_confidence.png")
+
+def metric_score(entry, unit):
+    metric = entry["primaryMetric"]
+    return convert_ms_to_unit(
+        convert_score_to_ms_per_op(metric["score"], metric["scoreUnit"]),
+        unit,
+    )
+
+
+def metric_percentile(entry, percentile, unit):
+    metric = entry["primaryMetric"]
+    raw_value = metric["scorePercentiles"][percentile]
+    return convert_ms_to_unit(
+        convert_score_to_ms_per_op(raw_value, metric["scoreUnit"]),
+        unit,
+    )
+
+
+def format_number(value, unit="", digits=2):
+    suffix = f" {unit}" if unit else ""
+    return f"{value:.{digits}f}{suffix}"
+
+
+def confidence_rows(entries, unit):
+    rows = []
+    for entry in entries:
+        score, error, lo, hi = scale_metric(entry, unit)
+        rows.append([
+            entry["tier"],
+            entry["operation"],
+            entry["mode"],
+            size_to_label(entry["data_size"]),
+            format_number(score, f"{unit}/op"),
+            f"[{lo:.2f}, {hi:.2f}] {unit}",
+            f"{relative_error(entry) * 100:.2f}%",
+            gate_status(entry),
+        ])
+    return rows
+
+
+def build_report_tables():
+    require_sizes(ht_disk, "HashTable disk usage dataset")
+    require_sizes(lsh_heap, "LSH heap usage dataset")
+    require_sizes(ph_heap, "PerfectHash heap usage dataset")
+
+    ht_sample = {suffix: extract(raw, suffix, "sample") for suffix in ["benchGet", "benchUpdate", "benchInsert", "benchDelete"]}
+    for label, values in ht_sample.items():
+        require_sizes(values, f"HashTable {label} sample dataset")
+
+    ht_thrpt = {suffix: extract(raw, suffix, "thrpt") for suffix in ["benchGet", "benchUpdate", "benchInsert", "benchDelete"]}
+    for label, values in ht_thrpt.items():
+        require_sizes(values, f"HashTable {label} throughput dataset")
+
+    lsh_thrpt = extract(raw, "benchRpFindNear", "thrpt")
+    lsh_sample = extract(raw, "benchRpFindNear", "sample")
+    require_sizes(lsh_thrpt, "LSH throughput dataset")
+    require_sizes(lsh_sample, "LSH sample dataset")
+
+    ph_lookup_thrpt = extract(raw, "benchLookup", "thrpt")
+    ph_lookup_sample = extract(raw, "benchLookup", "sample")
+    ph_build_sample = extract(raw, "benchBuild", "sample")
+    require_sizes(ph_lookup_thrpt, "PerfectHash lookup throughput dataset")
+    require_sizes(ph_lookup_sample, "PerfectHash lookup sample dataset")
+    require_sizes(ph_build_sample, "PerfectHash build sample dataset")
+
+    ph_total_slots = extract_aux(raw, "benchStructSize", "totalSlots")
+    ph_top_level = extract_aux(raw, "benchStructSize", "topLevelSize")
+    require_sizes(ph_total_slots, "PerfectHash struct size dataset")
+    require_sizes(ph_top_level, "PerfectHash top-level size dataset")
+
+    blocks = {}
+    blocks["HT_LATENCY_TABLE"] = markdown_table(
+        ["Operation", "1K", "100K", "1M"],
+        [
+            [label] + [format_number(metric_score(values[size], "us"), digits=2) for size in SIZES]
+            for label, values in [
+                ("get", ht_sample["benchGet"]),
+                ("update", ht_sample["benchUpdate"]),
+                ("insert", ht_sample["benchInsert"]),
+                ("delete", ht_sample["benchDelete"]),
+            ]
+        ],
+    )
+    blocks["HT_CI_TABLE"] = markdown_table(
+        ["Tier", "Operation", "Mode", "N", "Mean", "95% CI", "rel.err", "Gate"],
+        confidence_rows(ht_ci_entries, "us"),
+    )
+    blocks["HT_DISK_TABLE"] = markdown_table(
+        ["N", "bytes/entry"],
+        [[size_to_label(size), str(ht_disk[size])] for size in SIZES],
+    )
+    blocks["HT_TAIL_TABLE"] = markdown_table(
+        ["Operation", "p50 @ 1M", "p90 @ 1M", "p99 @ 1M", "p99.99 @ 1M"],
+        [
+            [
+                label,
+                format_number(metric_percentile(values[1_000_000], "50.0", "us"), digits=2),
+                format_number(metric_percentile(values[1_000_000], "90.0", "us"), digits=2),
+                format_number(metric_percentile(values[1_000_000], "99.0", "us"), digits=2),
+                format_number(metric_percentile(values[1_000_000], "99.99", "us"), digits=2),
+            ]
+            for label, values in [
+                ("get", ht_sample["benchGet"]),
+                ("update", ht_sample["benchUpdate"]),
+                ("insert", ht_sample["benchInsert"]),
+                ("delete", ht_sample["benchDelete"]),
+            ]
+        ],
+    )
+
+    blocks["LSH_LATENCY_TABLE"] = markdown_table(
+        ["N", "ops/ms", "us/op", "p50 (us)", "p90 (us)", "p99 (us)"],
+        [
+            [
+                size_to_label(size),
+                format_number(lsh_thrpt[size]["primaryMetric"]["score"], digits=1),
+                format_number(metric_score(lsh_thrpt[size], "us"), digits=2),
+                format_number(metric_percentile(lsh_sample[size], "50.0", "us"), digits=2),
+                format_number(metric_percentile(lsh_sample[size], "90.0", "us"), digits=2),
+                format_number(metric_percentile(lsh_sample[size], "99.0", "us"), digits=2),
+            ]
+            for size in SIZES
+        ],
+    )
+    blocks["LSH_CI_TABLE"] = markdown_table(
+        ["Tier", "Operation", "Mode", "N", "Mean", "95% CI", "rel.err", "Gate"],
+        confidence_rows(lsh_ci, "us"),
+    )
+    blocks["LSH_MEMORY_TABLE"] = markdown_table(
+        ["N", "bytes/entry"],
+        [[size_to_label(size), str(lsh_heap[size])] for size in SIZES],
+    )
+
+    blocks["PH_BUILD_TABLE"] = markdown_table(
+        ["N", "build time (ms)"],
+        [[size_to_label(size), format_number(metric_score(ph_build_sample[size], "ms"), digits=2)] for size in SIZES],
+    )
+    blocks["PH_LOOKUP_TABLE"] = markdown_table(
+        ["N", "ops/ms", "ns/op", "p50 (ns)", "p90 (ns)", "p99 (ns)"],
+        [
+            [
+                size_to_label(size),
+                format_number(ph_lookup_thrpt[size]["primaryMetric"]["score"], digits=1),
+                format_number(metric_score(ph_lookup_thrpt[size], "ns"), digits=2),
+                format_number(metric_percentile(ph_lookup_sample[size], "50.0", "ns"), digits=0),
+                format_number(metric_percentile(ph_lookup_sample[size], "90.0", "ns"), digits=0),
+                format_number(metric_percentile(ph_lookup_sample[size], "99.0", "ns"), digits=0),
+            ]
+            for size in SIZES
+        ],
+    )
+    blocks["PH_LOOKUP_CI_TABLE"] = markdown_table(
+        ["Tier", "Operation", "Mode", "N", "Mean", "95% CI", "rel.err", "Gate"],
+        confidence_rows(ph_lookup, "ns"),
+    )
+    blocks["PH_BUILD_CI_TABLE"] = markdown_table(
+        ["Tier", "Operation", "Mode", "N", "Mean", "95% CI", "rel.err", "Gate"],
+        confidence_rows(ph_build, "ms"),
+    )
+    blocks["PH_MEMORY_TABLE"] = markdown_table(
+        ["N", "heap bytes/entry", "total slots", "slots/entry"],
+        [
+            [
+                size_to_label(size),
+                str(ph_heap[size]),
+                str(ph_total_slots[size]),
+                f"{ph_total_slots[size] / size:.2f}",
+            ]
+            for size in SIZES
+        ],
+    )
+    blocks["MEMORY_COMPARISON_TABLE"] = markdown_table(
+        ["Structure", "1K", "100K", "1M"],
+        [
+            ["HashTable (disk)"] + [str(ht_disk[size]) for size in SIZES],
+            ["PerfectHash (heap)"] + [str(ph_heap[size]) for size in SIZES],
+            ["LSH (heap)"] + [str(lsh_heap[size]) for size in SIZES],
+        ],
+    )
+    return blocks
+
+
+def update_report():
+    print("Report: syncing generated tables")
+    report_path = pathlib.Path(args.report)
+    report = report_path.read_text()
+    for block_name, body in build_report_tables().items():
+        report = replace_report_block(report, block_name, body)
+    report_path.write_text(report)
+    print(f"  ✓ {report_path}")
+
+
+update_report()
 
 print("\nAll charts generated in", OUT)

@@ -1,580 +1,890 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1224" height="698" viewBox="0 0 1224 698">
+<svg xmlns="http://www.w3.org/2000/svg" width="1224" height="608" viewBox="0 0 1224 608">
 <style>text{font-family:Menlo,Consolas,monospace;fill:#1f1f1f}.title{font-size:16px;font-weight:700}.meta{font-size:11px;fill:#555}.frame{stroke:#ffffff;stroke-width:0.5}.label{font-size:11px;dominant-baseline:middle}</style>
 <rect width="100%" height="100%" fill="#fffdf8"/>
 <text class="title" x="12" y="20">RandomProjectionLshIndex.findNear() — flamegraph (N=1M)</text>
-<text class="meta" x="12" y="32">async-profiler collapsed stacks, total samples: 607</text>
-<g><title>java/lang/Thread.run:1575_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="672.00" width="1172.32" height="17" fill="#ee92aa"/>
-<text class="label" x="15.00" y="680.50">java/lang/Thread.run:1575_[j]</text>
+<text class="meta" x="12" y="32">async-profiler collapsed stacks, total samples: 602</text>
+<g><title>java/lang/Thread.run:1575_[j] | 601 samples | 99.8%</title><rect class="frame" x="12.00" y="582.00" width="1198.01" height="17" fill="#ee92aa"/>
+<text class="label" x="15.00" y="590.50">java/lang/Thread.run:1575_[j]</text>
 </g>
-<g><title>java/lang/Thread.runWith:1588_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="654.00" width="1172.32" height="17" fill="#65e1b7"/>
-<text class="label" x="15.00" y="662.50">java/lang/Thread.runWith:1588_[j]</text>
+<g><title>java/lang/Thread.runWith:1588_[j] | 601 samples | 99.8%</title><rect class="frame" x="12.00" y="564.00" width="1198.01" height="17" fill="#65e1b7"/>
+<text class="label" x="15.00" y="572.50">java/lang/Thread.runWith:1588_[j]</text>
 </g>
-<g><title>java/util/concurrent/ThreadPoolExecutor$Worker.run:642_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="636.00" width="1172.32" height="17" fill="#e57863"/>
-<text class="label" x="15.00" y="644.50">java/util/concurrent/ThreadPoolExecutor$Worker.run:642_[j]</text>
+<g><title>java/util/concurrent/ThreadPoolExecutor$Worker.run:642_[j] | 601 samples | 99.8%</title><rect class="frame" x="12.00" y="546.00" width="1198.01" height="17" fill="#e57863"/>
+<text class="label" x="15.00" y="554.50">java/util/concurrent/ThreadPoolExecutor$Worker.run:642_[j]</text>
 </g>
-<g><title>java/util/concurrent/ThreadPoolExecutor.runWorker:1144_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="618.00" width="1172.32" height="17" fill="#e2de6e"/>
-<text class="label" x="15.00" y="626.50">java/util/concurrent/ThreadPoolExecutor.runWorker:1144_[j]</text>
+<g><title>java/util/concurrent/ThreadPoolExecutor.runWorker:1144_[j] | 601 samples | 99.8%</title><rect class="frame" x="12.00" y="528.00" width="1198.01" height="17" fill="#e2de6e"/>
+<text class="label" x="15.00" y="536.50">java/util/concurrent/ThreadPoolExecutor.runWorker:1144_[j]</text>
 </g>
-<g><title>java/util/concurrent/FutureTask.run:317_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="600.00" width="1172.32" height="17" fill="#e0a979"/>
-<text class="label" x="15.00" y="608.50">java/util/concurrent/FutureTask.run:317_[j]</text>
+<g><title>java/util/concurrent/FutureTask.run:317_[j] | 601 samples | 99.8%</title><rect class="frame" x="12.00" y="510.00" width="1198.01" height="17" fill="#e0a979"/>
+<text class="label" x="15.00" y="518.50">java/util/concurrent/FutureTask.run:317_[j]</text>
 </g>
-<g><title>java/util/concurrent/Executors$RunnableAdapter.call:572_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="582.00" width="1172.32" height="17" fill="#686bdb"/>
-<text class="label" x="15.00" y="590.50">java/util/concurrent/Executors$RunnableAdapter.call:572_[j]</text>
+<g><title>java/util/concurrent/Executors$RunnableAdapter.call:572_[j] | 601 samples | 99.8%</title><rect class="frame" x="12.00" y="492.00" width="1198.01" height="17" fill="#686bdb"/>
+<text class="label" x="15.00" y="500.50">java/util/concurrent/Executors$RunnableAdapter.call:572_[j]</text>
 </g>
-<g><title>java/util/concurrent/FutureTask.run:317_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="564.00" width="1172.32" height="17" fill="#e0a979"/>
-<text class="label" x="15.00" y="572.50">java/util/concurrent/FutureTask.run:317_[j]</text>
+<g><title>java/util/concurrent/FutureTask.run:317_[j] | 601 samples | 99.8%</title><rect class="frame" x="12.00" y="474.00" width="1198.01" height="17" fill="#e0a979"/>
+<text class="label" x="15.00" y="482.50">java/util/concurrent/FutureTask.run:317_[j]</text>
 </g>
-<g><title>org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:504_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="546.00" width="1172.32" height="17" fill="#e6e590"/>
-<text class="label" x="15.00" y="554.50">org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:504_[j]</text>
+<g><title>org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:504_[j] | 601 samples | 99.8%</title><rect class="frame" x="12.00" y="456.00" width="1198.01" height="17" fill="#e6e590"/>
+<text class="label" x="15.00" y="464.50">org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:504_[j]</text>
 </g>
-<g><title>org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:527_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="528.00" width="1172.32" height="17" fill="#6befe4"/>
-<text class="label" x="15.00" y="536.50">org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:527_[j]</text>
+<g><title>org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:527_[j] | 601 samples | 99.8%</title><rect class="frame" x="12.00" y="438.00" width="1198.01" height="17" fill="#6befe4"/>
+<text class="label" x="15.00" y="446.50">org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:527_[j]</text>
 </g>
-<g><title>java/lang/reflect/Method.invoke:580_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="510.00" width="1172.32" height="17" fill="#e4da61"/>
-<text class="label" x="15.00" y="518.50">java/lang/reflect/Method.invoke:580_[j]</text>
+<g><title>java/lang/reflect/Method.invoke:580_[j] | 601 samples | 99.8%</title><rect class="frame" x="12.00" y="420.00" width="1198.01" height="17" fill="#e4da61"/>
+<text class="label" x="15.00" y="428.50">java/lang/reflect/Method.invoke:580_[j]</text>
 </g>
-<g><title>jdk/internal/reflect/DirectMethodHandleAccessor.invoke:103_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="492.00" width="1172.32" height="17" fill="#ef7984"/>
-<text class="label" x="15.00" y="500.50">jdk/internal/reflect/DirectMethodHandleAccessor.invoke:103_[j]</text>
+<g><title>jdk/internal/reflect/DirectMethodHandleAccessor.invoke:103_[j] | 601 samples | 99.8%</title><rect class="frame" x="12.00" y="402.00" width="1198.01" height="17" fill="#ef7984"/>
+<text class="label" x="15.00" y="410.50">jdk/internal/reflect/DirectMethodHandleAccessor.invoke:103_[j]</text>
 </g>
-<g><title>jdk/internal/reflect/DirectMethodHandleAccessor.invokeImpl:155_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="474.00" width="1172.32" height="17" fill="#9767df"/>
-<text class="label" x="15.00" y="482.50">jdk/internal/reflect/DirectMethodHandleAccessor.invokeImpl:155_[j]</text>
+<g><title>jdk/internal/reflect/DirectMethodHandleAccessor.invokeImpl:155_[j] | 601 samples | 99.8%</title><rect class="frame" x="12.00" y="384.00" width="1198.01" height="17" fill="#9767df"/>
+<text class="label" x="15.00" y="392.50">jdk/internal/reflect/DirectMethodHandleAccessor.invokeImpl:155_[j]</text>
 </g>
-<g><title>java/lang/invoke/LambdaForm$MH.0x00001fc001025400.invokeExact_MT_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="456.00" width="1172.32" height="17" fill="#deee88"/>
-<text class="label" x="15.00" y="464.50">java/lang/invoke/LambdaForm$MH.0x00001fc001025400.invokeExact_MT_[j]</text>
+<g><title>java/lang/invoke/LambdaForm$MH.0x0000080001025400.invokeExact_MT_[j] | 601 samples | 99.8%</title><rect class="frame" x="12.00" y="366.00" width="1198.01" height="17" fill="#8bdea8"/>
+<text class="label" x="15.00" y="374.50">java/lang/invoke/LambdaForm$MH.0x0000080001025400.invokeExact_MT_[j]</text>
 </g>
-<g><title>java/lang/invoke/LambdaForm$MH.0x00001fc001025000.invoke_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="438.00" width="1172.32" height="17" fill="#625fe2"/>
-<text class="label" x="15.00" y="446.50">java/lang/invoke/LambdaForm$MH.0x00001fc001025000.invoke_[j]</text>
+<g><title>java/lang/invoke/LambdaForm$MH.0x0000080001025000.invoke_[j] | 601 samples | 99.8%</title><rect class="frame" x="12.00" y="348.00" width="1198.01" height="17" fill="#e884b3"/>
+<text class="label" x="15.00" y="356.50">java/lang/invoke/LambdaForm$MH.0x0000080001025000.invoke_[j]</text>
 </g>
-<g><title>java/lang/invoke/DirectMethodHandle$Holder.invokeSpecial_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="420.00" width="1172.32" height="17" fill="#c493e6"/>
-<text class="label" x="15.00" y="428.50">java/lang/invoke/DirectMethodHandle$Holder.invokeSpecial_[j]</text>
+<g><title>java/lang/invoke/DirectMethodHandle$Holder.invokeSpecial_[j] | 601 samples | 99.8%</title><rect class="frame" x="12.00" y="330.00" width="1198.01" height="17" fill="#c493e6"/>
+<text class="label" x="15.00" y="338.50">java/lang/invoke/DirectMethodHandle$Holder.invokeSpecial_[j]</text>
 </g>
-<g><title>dbalgo/lsh/jmh_generated/LshBenchmark_benchRpFindNear_jmhTest.benchRpFindNear_Throughput:84_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="402.00" width="1172.32" height="17" fill="#55a868"/>
-<text class="label" x="15.00" y="410.50">dbalgo/lsh/jmh_generated/LshBenchmark_benchRpFindNear_jmhTest.benchRpFindNear_Throughput:84_[j]</text>
+<g><title>dbalgo/lsh/jmh_generated/LshBenchmark_benchRpFindNear_jmhTest.benchRpFindNear_Throughput:84_[j] | 601 samples | 99.8%</title><rect class="frame" x="12.00" y="312.00" width="1198.01" height="17" fill="#55a868"/>
+<text class="label" x="15.00" y="320.50">dbalgo/lsh/jmh_generated/LshBenchmark_benchRpFindNear_jmhTest.benchRpFindNear_Throughput:84_[j]</text>
 </g>
-<g><title>dbalgo/lsh/jmh_generated/LshBenchmark_benchRpFindNear_jmhTest.benchRpFindNear_thrpt_jmhStub:144_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="384.00" width="1172.32" height="17" fill="#55a868"/>
-<text class="label" x="15.00" y="392.50">dbalgo/lsh/jmh_generated/LshBenchmark_benchRpFindNear_jmhTest.benchRpFindNear_thrpt_jmhStub:144_[j]</text>
+<g><title>dbalgo/lsh/jmh_generated/LshBenchmark_benchRpFindNear_jmhTest.benchRpFindNear_thrpt_jmhStub:144_[j] | 601 samples | 99.8%</title><rect class="frame" x="12.00" y="294.00" width="1198.01" height="17" fill="#55a868"/>
+<text class="label" x="15.00" y="302.50">dbalgo/lsh/jmh_generated/LshBenchmark_benchRpFindNear_jmhTest.benchRpFindNear_thrpt_jmhStub:144_[j]</text>
 </g>
-<g><title>dbalgo/lsh/LshBenchmark.benchRpFindNear:56_[j] | 593 samples | 97.7%</title><rect class="frame" x="12.00" y="366.00" width="1172.32" height="17" fill="#4c72b0"/>
-<text class="label" x="15.00" y="374.50">dbalgo/lsh/LshBenchmark.benchRpFindNear:56_[j]</text>
+<g><title>dbalgo/lsh/LshBenchmark.benchRpFindNear:56_[j] | 601 samples | 99.8%</title><rect class="frame" x="12.00" y="276.00" width="1198.01" height="17" fill="#4c72b0"/>
+<text class="label" x="15.00" y="284.50">dbalgo/lsh/LshBenchmark.benchRpFindNear:56_[j]</text>
 </g>
-<g><title>dbalgo/lsh/RandomProjectionLshIndex.findNear:159_[j] | 292 samples | 48.1%</title><rect class="frame" x="12.00" y="348.00" width="577.27" height="17" fill="#4c72b0"/>
-<text class="label" x="15.00" y="356.50">dbalgo/lsh/RandomProjectionLshIndex.findNear:159_[j]</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.findNear:94_[j] | 300 samples | 49.8%</title><rect class="frame" x="12.00" y="258.00" width="598.01" height="17" fill="#4c72b0"/>
+<text class="label" x="15.00" y="266.50">dbalgo/lsh/RandomProjectionLshIndex.findNear:94_[j]</text>
 </g>
-<g><title>java/util/HashSet.iterator:183_[i] | 210 samples | 34.6%</title><rect class="frame" x="12.00" y="330.00" width="415.16" height="17" fill="#cb8ad9"/>
-<text class="label" x="15.00" y="338.50">java/util/HashSet.iterator:183_[i]</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.collectCandidates:174_[i] | 156 samples | 25.9%</title><rect class="frame" x="12.00" y="240.00" width="310.96" height="17" fill="#4c72b0"/>
+<text class="label" x="15.00" y="248.50">dbalgo/lsh/RandomProjectionLshIndex.collectCan…</text>
 </g>
-<g><title>java/lang/Integer.hashCode:1146_[j] | 12 samples | 2.0%</title><rect class="frame" x="12.00" y="312.00" width="23.72" height="17" fill="#85e36c"/>
+<g><title>java/util/HashMap.get:565_[i] | 15 samples | 2.5%</title><rect class="frame" x="12.00" y="222.00" width="29.90" height="17" fill="#dd8452"/>
 </g>
-<g><title>java/util/HashMap$KeyIterator.next:1629_[i] | 82 samples | 13.5%</title><rect class="frame" x="427.16" y="330.00" width="162.11" height="17" fill="#dd8452"/>
-<text class="label" x="430.16" y="338.50">java/util/HashMap$KeyIt…</text>
+<g><title>java/util/HashMap.getNode:581_[i] | 14 samples | 2.3%</title><rect class="frame" x="12.00" y="204.00" width="27.91" height="17" fill="#dd8452"/>
 </g>
-<g><title>java/util/HashMap$HashIterator.nextNode:1610_[i] | 73 samples | 12.0%</title><rect class="frame" x="427.16" y="312.00" width="144.32" height="17" fill="#dd8452"/>
-<text class="label" x="430.16" y="320.50">java/util/HashMap$Ha…</text>
+<g><title>java/util/HashMap.getNode:576_[i] | 1 samples | 0.2%</title><rect class="frame" x="39.91" y="204.00" width="1.99" height="17" fill="#dd8452"/>
 </g>
-<g><title>java/util/HashMap$HashIterator.nextNode:1604_[i] | 8 samples | 1.3%</title><rect class="frame" x="571.47" y="312.00" width="15.82" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:259_[j] | 1 samples | 0.2%</title><rect class="frame" x="41.90" y="222.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/lsh/RandomProjectionLshIndex.findNear:66_[j] | 179 samples | 29.5%</title><rect class="frame" x="589.27" y="348.00" width="353.87" height="17" fill="#4c72b0"/>
-<text class="label" x="592.27" y="356.50">dbalgo/lsh/RandomProjectionLshIndex.findNear:66_[j]</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.collectCandidates:181_[i] | 105 samples | 17.4%</title><rect class="frame" x="322.96" y="240.00" width="209.30" height="17" fill="#4c72b0"/>
+<text class="label" x="325.96" y="248.50">dbalgo/lsh/RandomProjectionLsh…</text>
 </g>
-<g><title>java/util/AbstractCollection.addAll:338_[j] | 173 samples | 28.5%</title><rect class="frame" x="589.27" y="330.00" width="342.01" height="17" fill="#de72a2"/>
-<text class="label" x="592.27" y="338.50">java/util/AbstractCollection.addAll:338_[j]</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.collectCandidates:175_[i] | 18 samples | 3.0%</title><rect class="frame" x="532.27" y="240.00" width="35.88" height="17" fill="#4c72b0"/>
+<text class="label" x="535.27" y="248.50">dba…</text>
 </g>
-<g><title>java/util/HashSet.add:230_[j] | 173 samples | 28.5%</title><rect class="frame" x="589.27" y="312.00" width="342.01" height="17" fill="#c186d9"/>
-<text class="label" x="592.27" y="320.50">java/util/HashSet.add:230_[j]</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex$IntBag.getSize:305_[i] | 1 samples | 0.2%</title><rect class="frame" x="532.27" y="222.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/HashMap.put:619_[j] | 173 samples | 28.5%</title><rect class="frame" x="589.27" y="294.00" width="342.01" height="17" fill="#dd8452"/>
-<text class="label" x="592.27" y="302.50">java/util/HashMap.put:619_[j]</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.collectCandidates:176_[i] | 12 samples | 2.0%</title><rect class="frame" x="568.15" y="240.00" width="23.92" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/HashMap.putVal:638_[j] | 55 samples | 9.1%</title><rect class="frame" x="589.27" y="276.00" width="108.73" height="17" fill="#dd8452"/>
-<text class="label" x="592.27" y="284.50">java/util/HashM…</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex$IntBag.get:315_[i] | 7 samples | 1.2%</title><rect class="frame" x="568.15" y="222.00" width="13.95" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/LinkedHashMap.newNode:281_[i] | 44 samples | 7.2%</title><rect class="frame" x="589.27" y="258.00" width="86.99" height="17" fill="#dd8452"/>
-<text class="label" x="592.27" y="266.50">java/util/L…</text>
+<g><title>OptoRuntime::new_instance_C | 1 samples | 0.2%</title><rect class="frame" x="582.10" y="222.00" width="1.99" height="17" fill="#9076e6"/>
 </g>
-<g><title>java/util/LinkedHashMap$Entry.&lt;init&gt;:208_[i] | 44 samples | 7.2%</title><rect class="frame" x="589.27" y="240.00" width="86.99" height="17" fill="#dd8452"/>
-<text class="label" x="592.27" y="248.50">java/util/L…</text>
+<g><title>InstanceKlass::allocate_instance | 1 samples | 0.2%</title><rect class="frame" x="582.10" y="204.00" width="1.99" height="17" fill="#dd93ed"/>
 </g>
-<g><title>java/util/HashMap$Node.&lt;init&gt;:289_[i] | 43 samples | 7.1%</title><rect class="frame" x="589.27" y="222.00" width="85.01" height="17" fill="#dd8452"/>
-<text class="label" x="592.27" y="230.50">java/util/H…</text>
+<g><title>MemAllocator::allocate | 1 samples | 0.2%</title><rect class="frame" x="582.10" y="186.00" width="1.99" height="17" fill="#ddb570"/>
 </g>
-<g><title>java/util/HashMap$Node.&lt;init&gt;:290_[i] | 1 samples | 0.2%</title><rect class="frame" x="674.27" y="222.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>MemAllocator::mem_allocate_inside_tlab_slow | 1 samples | 0.2%</title><rect class="frame" x="582.10" y="168.00" width="1.99" height="17" fill="#ec9077"/>
 </g>
-<g><title>java/util/HashMap.newNode:1910_[i] | 4 samples | 0.7%</title><rect class="frame" x="676.25" y="258.00" width="7.91" height="17" fill="#dd8452"/>
+<g><title>G1CardTable::g1_mark_as_young | 1 samples | 0.2%</title><rect class="frame" x="582.10" y="150.00" width="1.99" height="17" fill="#55a868"/>
 </g>
-<g><title>java/util/HashMap.putVal:648_[j] | 31 samples | 5.1%</title><rect class="frame" x="698.00" y="276.00" width="61.29" height="17" fill="#dd8452"/>
-<text class="label" x="701.00" y="284.50">java/ut…</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.collectCandidates:180_[i] | 7 samples | 1.2%</title><rect class="frame" x="592.07" y="240.00" width="13.95" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/HashMap.putVal:670_[j] | 27 samples | 4.4%</title><rect class="frame" x="759.28" y="276.00" width="53.38" height="17" fill="#dd8452"/>
-<text class="label" x="762.28" y="284.50">java/u…</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.collectCandidates:173_[i] | 1 samples | 0.2%</title><rect class="frame" x="606.02" y="240.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/HashMap.resize:712_[j] | 16 samples | 2.6%</title><rect class="frame" x="759.28" y="258.00" width="31.63" height="17" fill="#dd8452"/>
-<text class="label" x="762.28" y="266.50">jav…</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.bandHash:231_[i] | 1 samples | 0.2%</title><rect class="frame" x="606.02" y="222.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>zero_blocks | 3 samples | 0.5%</title><rect class="frame" x="759.28" y="240.00" width="5.93" height="17" fill="#79a5e8"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.collectCandidates:177_[i] | 1 samples | 0.2%</title><rect class="frame" x="608.01" y="240.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/HashMap.resize:714_[j] | 5 samples | 0.8%</title><rect class="frame" x="790.91" y="258.00" width="9.88" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex$SearchScratch.getSeenEpoch:320_[i] | 1 samples | 0.2%</title><rect class="frame" x="608.01" y="222.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/HashMap.resize:717_[j] | 3 samples | 0.5%</title><rect class="frame" x="800.80" y="258.00" width="5.93" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.findNear:108_[j] | 183 samples | 30.4%</title><rect class="frame" x="610.01" y="258.00" width="364.78" height="17" fill="#4c72b0"/>
+<text class="label" x="613.01" y="266.50">dbalgo/lsh/RandomProjectionLshIndex.findNear:108_[j]</text>
 </g>
-<g><title>java/util/HashMap.resize:742_[j] | 2 samples | 0.3%</title><rect class="frame" x="806.73" y="258.00" width="3.95" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 87 samples | 14.5%</title><rect class="frame" x="610.01" y="240.00" width="173.42" height="17" fill="#4c72b0"/>
+<text class="label" x="613.01" y="248.50">dbalgo/lsh/RandomProjecti…</text>
 </g>
-<g><title>java/util/HashMap.resize:727_[j] | 1 samples | 0.2%</title><rect class="frame" x="810.68" y="258.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 46 samples | 7.6%</title><rect class="frame" x="610.01" y="222.00" width="91.69" height="17" fill="#4c72b0"/>
+<text class="label" x="613.01" y="230.50">dbalgo/lsh/R…</text>
 </g>
-<g><title>java/util/HashMap.putVal:641_[j] | 20 samples | 3.3%</title><rect class="frame" x="812.66" y="276.00" width="39.54" height="17" fill="#dd8452"/>
-<text class="label" x="815.66" y="284.50">java…</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 22 samples | 3.7%</title><rect class="frame" x="610.01" y="204.00" width="43.85" height="17" fill="#4c72b0"/>
+<text class="label" x="613.01" y="212.50">dbal…</text>
 </g>
-<g><title>java/util/HashMap.putVal:642_[j] | 18 samples | 3.0%</title><rect class="frame" x="852.20" y="276.00" width="35.58" height="17" fill="#dd8452"/>
-<text class="label" x="855.20" y="284.50">jav…</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 12 samples | 2.0%</title><rect class="frame" x="610.01" y="186.00" width="23.92" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/Integer.equals:1173_[j] | 1 samples | 0.2%</title><rect class="frame" x="852.20" y="258.00" width="1.98" height="17" fill="#e9796d"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 6 samples | 1.0%</title><rect class="frame" x="610.01" y="168.00" width="11.96" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/Integer.equals:1174_[j] | 1 samples | 0.2%</title><rect class="frame" x="854.17" y="258.00" width="1.98" height="17" fill="#eeed66"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 5 samples | 0.8%</title><rect class="frame" x="610.01" y="150.00" width="9.97" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/HashMap.putVal:649_[j] | 17 samples | 2.8%</title><rect class="frame" x="887.78" y="276.00" width="33.61" height="17" fill="#dd8452"/>
-<text class="label" x="890.78" y="284.50">jav…</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 2 samples | 0.3%</title><rect class="frame" x="610.01" y="132.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/HashMap.newNode:1910_[i] | 4 samples | 0.7%</title><rect class="frame" x="887.78" y="258.00" width="7.91" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="610.01" y="114.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/HashMap.putVal:635_[j] | 3 samples | 0.5%</title><rect class="frame" x="921.39" y="276.00" width="5.93" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:273_[j] | 1 samples | 0.2%</title><rect class="frame" x="610.01" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/HashMap.hash:338_[i] | 1 samples | 0.2%</title><rect class="frame" x="927.32" y="276.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.swap:291_[i] | 1 samples | 0.2%</title><rect class="frame" x="610.01" y="78.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/HashMap.putVal:636_[j] | 1 samples | 0.2%</title><rect class="frame" x="929.30" y="276.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="612.00" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/HashMap.resize:712_[j] | 1 samples | 0.2%</title><rect class="frame" x="929.30" y="258.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 1 samples | 0.2%</title><rect class="frame" x="612.00" y="78.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>zero_blocks | 1 samples | 0.2%</title><rect class="frame" x="929.30" y="240.00" width="1.98" height="17" fill="#79a5e8"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="613.99" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/HashMap.get:565_[i] | 5 samples | 0.8%</title><rect class="frame" x="931.28" y="330.00" width="9.88" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="615.99" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/HashMap.getNode:581_[i] | 5 samples | 0.8%</title><rect class="frame" x="931.28" y="312.00" width="9.88" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="615.99" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/lsh/RandomProjectionLshIndex.findNear:163_[j] | 85 samples | 14.0%</title><rect class="frame" x="943.14" y="348.00" width="168.04" height="17" fill="#4c72b0"/>
-<text class="label" x="946.14" y="356.50">dbalgo/lsh/RandomProject…</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:265_[j] | 1 samples | 0.2%</title><rect class="frame" x="619.97" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>kotlin/collections/CollectionsKt___CollectionsKt.sortedWith:1101_[j] | 82 samples | 13.5%</title><rect class="frame" x="943.14" y="330.00" width="162.11" height="17" fill="#cbd98a"/>
-<text class="label" x="946.14" y="338.50">kotlin/collections/Coll…</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 6 samples | 1.0%</title><rect class="frame" x="621.97" y="168.00" width="11.96" height="17" fill="#4c72b0"/>
 </g>
-<g><title>kotlin/collections/ArraysKt___ArraysJvmKt.sortWith:2206_[j] | 82 samples | 13.5%</title><rect class="frame" x="943.14" y="312.00" width="162.11" height="17" fill="#dd8452"/>
-<text class="label" x="946.14" y="320.50">kotlin/collections/Arra…</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 3 samples | 0.5%</title><rect class="frame" x="621.97" y="150.00" width="5.98" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/Arrays.sort:1233_[j] | 82 samples | 13.5%</title><rect class="frame" x="943.14" y="294.00" width="162.11" height="17" fill="#dd8452"/>
-<text class="label" x="946.14" y="302.50">java/util/Arrays.sort:1…</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="621.97" y="132.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.sort:239_[j] | 47 samples | 7.7%</title><rect class="frame" x="943.14" y="276.00" width="92.92" height="17" fill="#dd8452"/>
-<text class="label" x="946.14" y="284.50">java/util/Ti…</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="621.97" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.binarySort:296_[i] | 24 samples | 4.0%</title><rect class="frame" x="943.14" y="258.00" width="47.45" height="17" fill="#dd8452"/>
-<text class="label" x="946.14" y="266.50">java/…</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="623.96" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/lsh/RandomProjectionLshIndex$findNear$$inlined$sortedBy$1.compare:102_[i] | 19 samples | 3.1%</title><rect class="frame" x="943.14" y="240.00" width="37.56" height="17" fill="#4c72b0"/>
-<text class="label" x="946.14" y="248.50">dba…</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="623.96" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>kotlin/comparisons/ComparisonsKt__ComparisonsKt.compareValues:78_[i] | 18 samples | 3.0%</title><rect class="frame" x="943.14" y="222.00" width="35.58" height="17" fill="#ae8cdc"/>
-<text class="label" x="946.14" y="230.50">kot…</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="625.95" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/Double.compareTo:360_[i] | 18 samples | 3.0%</title><rect class="frame" x="943.14" y="204.00" width="35.58" height="17" fill="#87a5e3"/>
-<text class="label" x="946.14" y="212.50">jav…</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 1 samples | 0.2%</title><rect class="frame" x="625.95" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/Double.compareTo:1407_[i] | 18 samples | 3.0%</title><rect class="frame" x="943.14" y="186.00" width="35.58" height="17" fill="#bde862"/>
-<text class="label" x="946.14" y="194.50">jav…</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="627.95" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/Double.compare:1431_[i] | 17 samples | 2.8%</title><rect class="frame" x="943.14" y="168.00" width="33.61" height="17" fill="#90e5a2"/>
-<text class="label" x="946.14" y="176.50">jav…</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="629.94" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/Double.compare:1429_[i] | 1 samples | 0.2%</title><rect class="frame" x="976.74" y="168.00" width="1.98" height="17" fill="#6ddcac"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="631.93" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/lsh/RandomProjectionLshIndex$findNear$$inlined$sortedBy$1.compare:329_[i] | 3 samples | 0.5%</title><rect class="frame" x="980.70" y="240.00" width="5.93" height="17" fill="#4c72b0"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:276_[j] | 1 samples | 0.2%</title><rect class="frame" x="631.93" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.binarySort:300_[i] | 9 samples | 1.5%</title><rect class="frame" x="990.58" y="258.00" width="17.79" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 9 samples | 1.5%</title><rect class="frame" x="633.93" y="186.00" width="17.94" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.binarySort:315_[i] | 9 samples | 1.5%</title><rect class="frame" x="1008.38" y="258.00" width="17.79" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 5 samples | 0.8%</title><rect class="frame" x="633.93" y="168.00" width="9.97" height="17" fill="#4c72b0"/>
 </g>
-<g><title>arrayof_oop_arraycopy | 7 samples | 1.2%</title><rect class="frame" x="1008.38" y="240.00" width="13.84" height="17" fill="#8095da"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 3 samples | 0.5%</title><rect class="frame" x="633.93" y="150.00" width="5.98" height="17" fill="#4c72b0"/>
 </g>
-<g><title>G1BarrierSet::write_region | 2 samples | 0.3%</title><rect class="frame" x="1008.38" y="222.00" width="3.95" height="17" fill="#55a868"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="633.93" y="132.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>_tlv_get_addr | 1 samples | 0.2%</title><rect class="frame" x="1012.33" y="222.00" width="1.98" height="17" fill="#dfc680"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 1 samples | 0.2%</title><rect class="frame" x="633.93" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>G1BarrierSet::write_region | 1 samples | 0.2%</title><rect class="frame" x="1022.21" y="240.00" width="1.98" height="17" fill="#55a868"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="635.92" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.binarySort:283_[i] | 3 samples | 0.5%</title><rect class="frame" x="1026.17" y="258.00" width="5.93" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:273_[j] | 1 samples | 0.2%</title><rect class="frame" x="635.92" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.binarySort:294_[i] | 1 samples | 0.2%</title><rect class="frame" x="1032.10" y="258.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.swap:288_[i] | 1 samples | 0.2%</title><rect class="frame" x="635.92" y="78.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.binarySort:295_[i] | 1 samples | 0.2%</title><rect class="frame" x="1034.08" y="258.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="637.91" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.sort:254_[j] | 16 samples | 2.6%</title><rect class="frame" x="1036.05" y="276.00" width="31.63" height="17" fill="#dd8452"/>
-<text class="label" x="1039.05" y="284.50">jav…</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 1 samples | 0.2%</title><rect class="frame" x="637.91" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.mergeForceCollapse:461_[j] | 16 samples | 2.6%</title><rect class="frame" x="1036.05" y="258.00" width="31.63" height="17" fill="#dd8452"/>
-<text class="label" x="1039.05" y="266.50">jav…</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 1 samples | 0.2%</title><rect class="frame" x="639.91" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.mergeAt:520_[j] | 13 samples | 2.1%</title><rect class="frame" x="1036.05" y="240.00" width="25.70" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="641.90" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.mergeHi:841_[j] | 7 samples | 1.2%</title><rect class="frame" x="1036.05" y="222.00" width="13.84" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:266_[j] | 1 samples | 0.2%</title><rect class="frame" x="641.90" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/lsh/RandomProjectionLshIndex$findNear$$inlined$sortedBy$1.compare:102_[i] | 3 samples | 0.5%</title><rect class="frame" x="1036.05" y="204.00" width="5.93" height="17" fill="#4c72b0"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 3 samples | 0.5%</title><rect class="frame" x="643.89" y="168.00" width="5.98" height="17" fill="#4c72b0"/>
 </g>
-<g><title>kotlin/comparisons/ComparisonsKt__ComparisonsKt.compareValues:78_[i] | 3 samples | 0.5%</title><rect class="frame" x="1036.05" y="186.00" width="5.93" height="17" fill="#ae8cdc"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 2 samples | 0.3%</title><rect class="frame" x="643.89" y="150.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/Double.compareTo:360_[i] | 3 samples | 0.5%</title><rect class="frame" x="1036.05" y="168.00" width="5.93" height="17" fill="#87a5e3"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 2 samples | 0.3%</title><rect class="frame" x="643.89" y="132.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/Double.compareTo:1407_[i] | 3 samples | 0.5%</title><rect class="frame" x="1036.05" y="150.00" width="5.93" height="17" fill="#bde862"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:265_[j] | 1 samples | 0.2%</title><rect class="frame" x="643.89" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/Double.compare:1431_[i] | 3 samples | 0.5%</title><rect class="frame" x="1036.05" y="132.00" width="5.93" height="17" fill="#90e5a2"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="645.89" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/lsh/RandomProjectionLshIndex$findNear$$inlined$sortedBy$1.compare:329_[i] | 1 samples | 0.2%</title><rect class="frame" x="1041.98" y="204.00" width="1.98" height="17" fill="#4c72b0"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="645.89" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.mergeHi:845_[j] | 3 samples | 0.5%</title><rect class="frame" x="1049.89" y="222.00" width="5.93" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="645.89" y="78.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.mergeHi:808_[j] | 1 samples | 0.2%</title><rect class="frame" x="1055.82" y="222.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="647.88" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>G1BarrierSet::write_region | 1 samples | 0.2%</title><rect class="frame" x="1055.82" y="204.00" width="1.98" height="17" fill="#55a868"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 1 samples | 0.2%</title><rect class="frame" x="649.87" y="168.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.mergeHi:848_[j] | 1 samples | 0.2%</title><rect class="frame" x="1057.80" y="222.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 1 samples | 0.2%</title><rect class="frame" x="651.87" y="186.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.mergeHi:870_[j] | 1 samples | 0.2%</title><rect class="frame" x="1059.78" y="222.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 18 samples | 3.0%</title><rect class="frame" x="653.86" y="204.00" width="35.88" height="17" fill="#4c72b0"/>
+<text class="label" x="656.86" y="212.50">dba…</text>
 </g>
-<g><title>java/util/TimSort.mergeAt:500_[j] | 1 samples | 0.2%</title><rect class="frame" x="1061.75" y="240.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 9 samples | 1.5%</title><rect class="frame" x="653.86" y="186.00" width="17.94" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.gallopRight:635_[j] | 1 samples | 0.2%</title><rect class="frame" x="1061.75" y="222.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 5 samples | 0.8%</title><rect class="frame" x="653.86" y="168.00" width="9.97" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.mergeAt:511_[j] | 1 samples | 0.2%</title><rect class="frame" x="1063.73" y="240.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 3 samples | 0.5%</title><rect class="frame" x="653.86" y="150.00" width="5.98" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.gallopLeft:563_[j] | 1 samples | 0.2%</title><rect class="frame" x="1063.73" y="222.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="653.86" y="132.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.mergeAt:518_[j] | 1 samples | 0.2%</title><rect class="frame" x="1065.71" y="240.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="653.86" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.mergeLo:722_[j] | 1 samples | 0.2%</title><rect class="frame" x="1065.71" y="222.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 1 samples | 0.2%</title><rect class="frame" x="653.86" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.sort:245_[j] | 15 samples | 2.5%</title><rect class="frame" x="1067.68" y="276.00" width="29.65" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="655.85" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.mergeCollapse:448_[j] | 15 samples | 2.5%</title><rect class="frame" x="1067.68" y="258.00" width="29.65" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 1 samples | 0.2%</title><rect class="frame" x="655.85" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.mergeAt:520_[j] | 8 samples | 1.3%</title><rect class="frame" x="1067.68" y="240.00" width="15.82" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:273_[j] | 1 samples | 0.2%</title><rect class="frame" x="657.85" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.mergeHi:845_[j] | 4 samples | 0.7%</title><rect class="frame" x="1067.68" y="222.00" width="7.91" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.swap:290_[i] | 1 samples | 0.2%</title><rect class="frame" x="657.85" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.mergeHi:841_[j] | 2 samples | 0.3%</title><rect class="frame" x="1075.59" y="222.00" width="3.95" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:273_[j] | 2 samples | 0.3%</title><rect class="frame" x="659.84" y="150.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/lsh/RandomProjectionLshIndex$findNear$$inlined$sortedBy$1.compare:329_[i] | 1 samples | 0.2%</title><rect class="frame" x="1075.59" y="204.00" width="1.98" height="17" fill="#4c72b0"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.swap:290_[i] | 2 samples | 0.3%</title><rect class="frame" x="659.84" y="132.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.mergeHi:854_[j] | 2 samples | 0.3%</title><rect class="frame" x="1079.55" y="222.00" width="3.95" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="663.83" y="168.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.mergeAt:518_[j] | 7 samples | 1.2%</title><rect class="frame" x="1083.50" y="240.00" width="13.84" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 2 samples | 0.3%</title><rect class="frame" x="663.83" y="150.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.mergeLo:721_[j] | 5 samples | 0.8%</title><rect class="frame" x="1083.50" y="222.00" width="9.88" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="663.83" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/lsh/RandomProjectionLshIndex$findNear$$inlined$sortedBy$1.compare:102_[i] | 4 samples | 0.7%</title><rect class="frame" x="1083.50" y="204.00" width="7.91" height="17" fill="#4c72b0"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="663.83" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>kotlin/comparisons/ComparisonsKt__ComparisonsKt.compareValues:78_[i] | 4 samples | 0.7%</title><rect class="frame" x="1083.50" y="186.00" width="7.91" height="17" fill="#ae8cdc"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 1 samples | 0.2%</title><rect class="frame" x="663.83" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/Double.compareTo:360_[i] | 4 samples | 0.7%</title><rect class="frame" x="1083.50" y="168.00" width="7.91" height="17" fill="#87a5e3"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="665.82" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/Double.compareTo:1407_[i] | 4 samples | 0.7%</title><rect class="frame" x="1083.50" y="150.00" width="7.91" height="17" fill="#bde862"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="665.82" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/Double.compare:1431_[i] | 3 samples | 0.5%</title><rect class="frame" x="1083.50" y="132.00" width="5.93" height="17" fill="#90e5a2"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 1 samples | 0.2%</title><rect class="frame" x="665.82" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/Double.compare:1429_[i] | 1 samples | 0.2%</title><rect class="frame" x="1089.43" y="132.00" width="1.98" height="17" fill="#6ddcac"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="667.81" y="168.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/lsh/RandomProjectionLshIndex$findNear$$inlined$sortedBy$1.compare:329_[i] | 1 samples | 0.2%</title><rect class="frame" x="1091.41" y="204.00" width="1.98" height="17" fill="#4c72b0"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:276_[j] | 1 samples | 0.2%</title><rect class="frame" x="669.81" y="168.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.mergeLo:722_[j] | 1 samples | 0.2%</title><rect class="frame" x="1093.38" y="222.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 6 samples | 1.0%</title><rect class="frame" x="671.80" y="186.00" width="11.96" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.mergeLo:756_[j] | 1 samples | 0.2%</title><rect class="frame" x="1095.36" y="222.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 3 samples | 0.5%</title><rect class="frame" x="671.80" y="168.00" width="5.98" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.gallopLeft:548_[j] | 1 samples | 0.2%</title><rect class="frame" x="1095.36" y="204.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="671.80" y="150.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.sort:234_[j] | 2 samples | 0.3%</title><rect class="frame" x="1097.34" y="276.00" width="3.95" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 1 samples | 0.2%</title><rect class="frame" x="671.80" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.countRunAndMakeAscending:356_[j] | 1 samples | 0.2%</title><rect class="frame" x="1097.34" y="258.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="673.79" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.countRunAndMakeAscending:360_[j] | 1 samples | 0.2%</title><rect class="frame" x="1099.31" y="258.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="673.79" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/lsh/RandomProjectionLshIndex$findNear$$inlined$sortedBy$1.compare:102_[i] | 1 samples | 0.2%</title><rect class="frame" x="1099.31" y="240.00" width="1.98" height="17" fill="#4c72b0"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="673.79" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>kotlin/comparisons/ComparisonsKt__ComparisonsKt.compareValues:78_[i] | 1 samples | 0.2%</title><rect class="frame" x="1099.31" y="222.00" width="1.98" height="17" fill="#ae8cdc"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="673.79" y="78.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/Double.compareTo:360_[i] | 1 samples | 0.2%</title><rect class="frame" x="1099.31" y="204.00" width="1.98" height="17" fill="#87a5e3"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="673.79" y="60.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/Double.compareTo:1407_[i] | 1 samples | 0.2%</title><rect class="frame" x="1099.31" y="186.00" width="1.98" height="17" fill="#bde862"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="675.79" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/Double.compare:1431_[i] | 1 samples | 0.2%</title><rect class="frame" x="1099.31" y="168.00" width="1.98" height="17" fill="#90e5a2"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="675.79" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.sort:230_[j] | 1 samples | 0.2%</title><rect class="frame" x="1101.29" y="276.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:279_[j] | 1 samples | 0.2%</title><rect class="frame" x="675.79" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.&lt;init&gt;:157_[i] | 1 samples | 0.2%</title><rect class="frame" x="1101.29" y="258.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="677.78" y="168.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/reflect/Array.newInstance:76_[i] | 1 samples | 0.2%</title><rect class="frame" x="1101.29" y="240.00" width="1.98" height="17" fill="#8cc1ea"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="677.78" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>zero_blocks | 1 samples | 0.2%</title><rect class="frame" x="1101.29" y="222.00" width="1.98" height="17" fill="#79a5e8"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="677.78" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.sort:244_[j] | 1 samples | 0.2%</title><rect class="frame" x="1103.27" y="276.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="677.78" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/TimSort.pushRun:418_[i] | 1 samples | 0.2%</title><rect class="frame" x="1103.27" y="258.00" width="1.98" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="677.78" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>kotlin/collections/CollectionsKt___CollectionsKt.sortedWith:3879_[j] | 3 samples | 0.5%</title><rect class="frame" x="1105.25" y="330.00" width="5.93" height="17" fill="#be8ce0"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="677.78" y="78.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/ArrayList.toArray:401_[j] | 3 samples | 0.5%</title><rect class="frame" x="1105.25" y="312.00" width="5.93" height="17" fill="#aa82db"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="679.77" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>OptoRuntime::new_array_C | 1 samples | 0.2%</title><rect class="frame" x="1105.25" y="294.00" width="1.98" height="17" fill="#8dc8db"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="679.77" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>InstanceKlass::allocate_objArray | 1 samples | 0.2%</title><rect class="frame" x="1105.25" y="276.00" width="1.98" height="17" fill="#6aec8f"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="679.77" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>CollectedHeap::array_allocate | 1 samples | 0.2%</title><rect class="frame" x="1105.25" y="258.00" width="1.98" height="17" fill="#8f7fe2"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="679.77" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>MemAllocator::allocate | 1 samples | 0.2%</title><rect class="frame" x="1105.25" y="240.00" width="1.98" height="17" fill="#ddb570"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="679.77" y="78.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>MemAllocator::Allocation::notify_allocation | 1 samples | 0.2%</title><rect class="frame" x="1105.25" y="222.00" width="1.98" height="17" fill="#e7a390"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="679.77" y="60.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>AllocTracer::send_allocation_in_new_tlab | 1 samples | 0.2%</title><rect class="frame" x="1105.25" y="204.00" width="1.98" height="17" fill="#e781cc"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="679.77" y="42.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>JfrObjectAllocationSample::send_event | 1 samples | 0.2%</title><rect class="frame" x="1105.25" y="186.00" width="1.98" height="17" fill="#d85c70"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:273_[j] | 1 samples | 0.2%</title><rect class="frame" x="681.77" y="168.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>arrayof_jint_disjoint_arraycopy | 1 samples | 0.2%</title><rect class="frame" x="1107.22" y="294.00" width="1.98" height="17" fill="#aa70eb"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.swap:288_[i] | 1 samples | 0.2%</title><rect class="frame" x="681.77" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>forward_copy_longs | 1 samples | 0.2%</title><rect class="frame" x="1109.20" y="294.00" width="1.98" height="17" fill="#89b6d9"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:266_[j] | 1 samples | 0.2%</title><rect class="frame" x="683.76" y="186.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/lsh/RandomProjectionLshIndex.findNear:158_[j] | 17 samples | 2.8%</title><rect class="frame" x="1111.18" y="348.00" width="33.61" height="17" fill="#4c72b0"/>
-<text class="label" x="1114.18" y="356.50">dba…</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 1 samples | 0.2%</title><rect class="frame" x="685.75" y="186.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/ArrayList.add:497_[j] | 17 samples | 2.8%</title><rect class="frame" x="1111.18" y="330.00" width="33.61" height="17" fill="#ca72e3"/>
-<text class="label" x="1114.18" y="338.50">jav…</text>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="687.75" y="186.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/ArrayList.add:484_[j] | 13 samples | 2.1%</title><rect class="frame" x="1111.18" y="312.00" width="25.70" height="17" fill="#dd6f89"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 3 samples | 0.5%</title><rect class="frame" x="689.74" y="204.00" width="5.98" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/ArrayList.grow:245_[j] | 13 samples | 2.1%</title><rect class="frame" x="1111.18" y="294.00" width="25.70" height="17" fill="#f08e9b"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 2 samples | 0.3%</title><rect class="frame" x="695.72" y="204.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/ArrayList.grow:238_[j] | 13 samples | 2.1%</title><rect class="frame" x="1111.18" y="276.00" width="25.70" height="17" fill="#d0dc7d"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="699.71" y="204.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/Arrays.copyOf:3481_[j] | 13 samples | 2.1%</title><rect class="frame" x="1111.18" y="258.00" width="25.70" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 34 samples | 5.6%</title><rect class="frame" x="701.70" y="222.00" width="67.77" height="17" fill="#4c72b0"/>
+<text class="label" x="704.70" y="230.50">dbalgo/l…</text>
 </g>
-<g><title>zero_blocks | 7 samples | 1.2%</title><rect class="frame" x="1111.18" y="240.00" width="13.84" height="17" fill="#79a5e8"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 15 samples | 2.5%</title><rect class="frame" x="701.70" y="204.00" width="29.90" height="17" fill="#4c72b0"/>
 </g>
-<g><title>OptoRuntime::new_array_C | 1 samples | 0.2%</title><rect class="frame" x="1125.01" y="240.00" width="1.98" height="17" fill="#8dc8db"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 9 samples | 1.5%</title><rect class="frame" x="701.70" y="186.00" width="17.94" height="17" fill="#4c72b0"/>
 </g>
-<g><title>InstanceKlass::allocate_objArray | 1 samples | 0.2%</title><rect class="frame" x="1125.01" y="222.00" width="1.98" height="17" fill="#6aec8f"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 4 samples | 0.7%</title><rect class="frame" x="701.70" y="168.00" width="7.97" height="17" fill="#4c72b0"/>
 </g>
-<g><title>CollectedHeap::array_allocate | 1 samples | 0.2%</title><rect class="frame" x="1125.01" y="204.00" width="1.98" height="17" fill="#8f7fe2"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 3 samples | 0.5%</title><rect class="frame" x="701.70" y="150.00" width="5.98" height="17" fill="#4c72b0"/>
 </g>
-<g><title>MemAllocator::allocate | 1 samples | 0.2%</title><rect class="frame" x="1125.01" y="186.00" width="1.98" height="17" fill="#ddb570"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="701.70" y="132.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>ObjArrayAllocator::initialize | 1 samples | 0.2%</title><rect class="frame" x="1125.01" y="168.00" width="1.98" height="17" fill="#7edc64"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="701.70" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/ArrayList.add:485_[i] | 1 samples | 0.2%</title><rect class="frame" x="1136.88" y="312.00" width="1.98" height="17" fill="#6ae8c6"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:273_[j] | 1 samples | 0.2%</title><rect class="frame" x="703.69" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/lsh/RandomProjectionLshIndex.findNear:62_[j] | 9 samples | 1.5%</title><rect class="frame" x="1144.78" y="348.00" width="17.79" height="17" fill="#4c72b0"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.swap:288_[i] | 1 samples | 0.2%</title><rect class="frame" x="703.69" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/lsh/RandomProjectionLshIndex.computeHash:111_[i] | 9 samples | 1.5%</title><rect class="frame" x="1144.78" y="330.00" width="17.79" height="17" fill="#4c72b0"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="705.69" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/HashMap.putVal:635_[j] | 4 samples | 0.7%</title><rect class="frame" x="1144.78" y="312.00" width="7.91" height="17" fill="#dd8452"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="705.69" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>zero_blocks | 1 samples | 0.2%</title><rect class="frame" x="1152.69" y="312.00" width="1.98" height="17" fill="#79a5e8"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="705.69" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/lsh/RandomProjectionLshIndex.findNear:70_[j] | 6 samples | 1.0%</title><rect class="frame" x="1162.58" y="348.00" width="11.86" height="17" fill="#4c72b0"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 1 samples | 0.2%</title><rect class="frame" x="707.68" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/lsh/RandomProjectionLshIndex$Entry.getPoint:40_[i] | 2 samples | 0.3%</title><rect class="frame" x="1162.58" y="330.00" width="3.95" height="17" fill="#4c72b0"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 4 samples | 0.7%</title><rect class="frame" x="709.67" y="168.00" width="7.97" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/ArrayList.get:428_[i] | 2 samples | 0.3%</title><rect class="frame" x="1166.53" y="330.00" width="3.95" height="17" fill="#82cedc"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 2 samples | 0.3%</title><rect class="frame" x="709.67" y="150.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/lsh/RandomProjectionLshIndex$Point3D.distanceTo:35_[i] | 1 samples | 0.2%</title><rect class="frame" x="1170.48" y="330.00" width="1.98" height="17" fill="#4c72b0"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="713.66" y="150.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/ArrayList.get:429_[i] | 1 samples | 0.2%</title><rect class="frame" x="1172.46" y="330.00" width="1.98" height="17" fill="#d3d97c"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="713.66" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/ArrayList.elementData:412_[i] | 1 samples | 0.2%</title><rect class="frame" x="1172.46" y="312.00" width="1.98" height="17" fill="#79f1dc"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="715.65" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/lsh/RandomProjectionLshIndex.findNear:71_[j] | 5 samples | 0.8%</title><rect class="frame" x="1174.44" y="348.00" width="9.88" height="17" fill="#4c72b0"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="715.65" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/Double.valueOf:924_[i] | 5 samples | 0.8%</title><rect class="frame" x="1174.44" y="330.00" width="9.88" height="17" fill="#da8da1"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="715.65" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>thread_start | 10 samples | 1.6%</title><rect class="frame" x="1184.32" y="672.00" width="19.77" height="17" fill="#e89f63"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="717.65" y="168.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>_pthread_start | 10 samples | 1.6%</title><rect class="frame" x="1184.32" y="654.00" width="19.77" height="17" fill="#e86f99"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 5 samples | 0.8%</title><rect class="frame" x="719.64" y="186.00" width="9.97" height="17" fill="#4c72b0"/>
 </g>
-<g><title>thread_native_entry | 10 samples | 1.6%</title><rect class="frame" x="1184.32" y="636.00" width="19.77" height="17" fill="#71e6df"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 2 samples | 0.3%</title><rect class="frame" x="719.64" y="168.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>Thread::call_run | 10 samples | 1.6%</title><rect class="frame" x="1184.32" y="618.00" width="19.77" height="17" fill="#9ddb88"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="719.64" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>WorkerThread::run | 4 samples | 0.7%</title><rect class="frame" x="1184.32" y="600.00" width="7.91" height="17" fill="#8feade"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="721.63" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>semaphore_wait_trap | 3 samples | 0.5%</title><rect class="frame" x="1184.32" y="582.00" width="5.93" height="17" fill="#88aeee"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="721.63" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>G1BatchedTask::work | 1 samples | 0.2%</title><rect class="frame" x="1190.25" y="582.00" width="1.98" height="17" fill="#55a868"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="721.63" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>G1PostEvacuateCollectionSetCleanupTask2::FreeCollectionSetTask::do_work | 1 samples | 0.2%</title><rect class="frame" x="1190.25" y="564.00" width="1.98" height="17" fill="#55a868"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="723.63" y="168.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>G1CollectedHeap::par_iterate_regions_array | 1 samples | 0.2%</title><rect class="frame" x="1190.25" y="546.00" width="1.98" height="17" fill="#55a868"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="723.63" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>JavaThread::thread_main_inner | 2 samples | 0.3%</title><rect class="frame" x="1192.23" y="600.00" width="3.95" height="17" fill="#ec6c72"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="725.62" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>CompileBroker::compiler_thread_loop | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="582.00" width="1.98" height="17" fill="#cddd8c"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="725.62" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>CompileBroker::invoke_compiler_on_method | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="564.00" width="1.98" height="17" fill="#79b4eb"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="725.62" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>C2Compiler::compile_method | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="546.00" width="1.98" height="17" fill="#64c6de"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 1 samples | 0.2%</title><rect class="frame" x="725.62" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>Compile::Compile | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="528.00" width="1.98" height="17" fill="#e18682"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="727.61" y="168.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>ParseGenerator::generate | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="510.00" width="1.98" height="17" fill="#d169ef"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 1 samples | 0.2%</title><rect class="frame" x="729.61" y="186.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>Parse::Parse | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="492.00" width="1.98" height="17" fill="#8bc7d9"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 13 samples | 2.2%</title><rect class="frame" x="731.60" y="204.00" width="25.91" height="17" fill="#4c72b0"/>
 </g>
-<g><title>Parse::do_all_blocks | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="474.00" width="1.98" height="17" fill="#7de4a1"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 6 samples | 1.0%</title><rect class="frame" x="731.60" y="186.00" width="11.96" height="17" fill="#4c72b0"/>
 </g>
-<g><title>Parse::do_one_block | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="456.00" width="1.98" height="17" fill="#83e3d9"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 4 samples | 0.7%</title><rect class="frame" x="731.60" y="168.00" width="7.97" height="17" fill="#4c72b0"/>
 </g>
-<g><title>Parse::do_call | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="438.00" width="1.98" height="17" fill="#e36ced"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 2 samples | 0.3%</title><rect class="frame" x="731.60" y="150.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>PredictedCallGenerator::generate | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="420.00" width="1.98" height="17" fill="#86a9e9"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:259_[j] | 1 samples | 0.2%</title><rect class="frame" x="731.60" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>ParseGenerator::generate | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="402.00" width="1.98" height="17" fill="#d169ef"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="733.59" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>Parse::Parse | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="384.00" width="1.98" height="17" fill="#8bc7d9"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="733.59" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>Parse::do_all_blocks | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="366.00" width="1.98" height="17" fill="#7de4a1"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:265_[j] | 1 samples | 0.2%</title><rect class="frame" x="733.59" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>Parse::do_one_block | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="348.00" width="1.98" height="17" fill="#83e3d9"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:265_[j] | 1 samples | 0.2%</title><rect class="frame" x="735.59" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>Parse::do_call | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="330.00" width="1.98" height="17" fill="#e36ced"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="737.58" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>Compile::call_generator | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="312.00" width="1.98" height="17" fill="#8a8fee"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:276_[j] | 1 samples | 0.2%</title><rect class="frame" x="737.58" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>InlineTree::ok_to_inline | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="294.00" width="1.98" height="17" fill="#796cdb"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:273_[j] | 1 samples | 0.2%</title><rect class="frame" x="739.57" y="168.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>ciMethod::get_flow_analysis | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="276.00" width="1.98" height="17" fill="#e6779c"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.swap:291_[i] | 1 samples | 0.2%</title><rect class="frame" x="739.57" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>ciTypeFlow::do_flow | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="258.00" width="1.98" height="17" fill="#9bf0e5"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="741.57" y="168.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>ciTypeFlow::flow_types | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="240.00" width="1.98" height="17" fill="#e0958d"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="741.57" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>ciTypeFlow::df_flow_types | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="222.00" width="1.98" height="17" fill="#7dda67"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 2 samples | 0.3%</title><rect class="frame" x="743.56" y="186.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>ciTypeFlow::flow_block | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="204.00" width="1.98" height="17" fill="#91e16d"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="747.55" y="186.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>ciTypeFlow::StateVector::apply_one_bytecode | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="186.00" width="1.98" height="17" fill="#dd789e"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="747.55" y="168.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>ciTypeFlow::StateVector::do_invoke | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="168.00" width="1.98" height="17" fill="#c8ec65"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="749.54" y="168.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>ciBytecodeStream::get_method | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="150.00" width="1.98" height="17" fill="#66bbdf"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="749.54" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>ciEnv::get_method_by_index_impl | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="132.00" width="1.98" height="17" fill="#eee588"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="749.54" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>ciEnv::lookup_method | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="114.00" width="1.98" height="17" fill="#e8c868"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:273_[j] | 1 samples | 0.2%</title><rect class="frame" x="749.54" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>LinkResolver::linktime_resolve_interface_method_or_null | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="96.00" width="1.98" height="17" fill="#91d2e2"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.swap:291_[i] | 1 samples | 0.2%</title><rect class="frame" x="749.54" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>LinkResolver::resolve_interface_method | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="78.00" width="1.98" height="17" fill="#5febd6"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:266_[j] | 1 samples | 0.2%</title><rect class="frame" x="751.53" y="186.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>InstanceKlass::uncached_lookup_method | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="60.00" width="1.98" height="17" fill="#6cdeeb"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 1 samples | 0.2%</title><rect class="frame" x="753.53" y="186.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>InstanceKlass::find_method_index | 1 samples | 0.2%</title><rect class="frame" x="1192.23" y="42.00" width="1.98" height="17" fill="#eb6881"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="755.52" y="186.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>MonitorDeflationThread::monitor_deflation_thread_entry | 1 samples | 0.2%</title><rect class="frame" x="1194.21" y="582.00" width="1.98" height="17" fill="#7f83d9"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 2 samples | 0.3%</title><rect class="frame" x="757.51" y="204.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>PlatformMonitor::wait | 1 samples | 0.2%</title><rect class="frame" x="1194.21" y="564.00" width="1.98" height="17" fill="#bdd882"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 2 samples | 0.3%</title><rect class="frame" x="761.50" y="204.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>WatcherThread::run | 2 samples | 0.3%</title><rect class="frame" x="1196.18" y="600.00" width="3.95" height="17" fill="#85d0db"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="765.49" y="204.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>WatcherThread::sleep | 2 samples | 0.3%</title><rect class="frame" x="1196.18" y="582.00" width="3.95" height="17" fill="#a5f162"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:273_[j] | 1 samples | 0.2%</title><rect class="frame" x="767.48" y="204.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>Monitor::wait_without_safepoint_check | 2 samples | 0.3%</title><rect class="frame" x="1196.18" y="564.00" width="3.95" height="17" fill="#98ec91"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.swap:291_[i] | 1 samples | 0.2%</title><rect class="frame" x="767.48" y="186.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>PlatformMonitor::wait | 2 samples | 0.3%</title><rect class="frame" x="1196.18" y="546.00" width="3.95" height="17" fill="#bdd882"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:266_[i] | 4 samples | 0.7%</title><rect class="frame" x="769.48" y="222.00" width="7.97" height="17" fill="#4c72b0"/>
 </g>
-<g><title>__psynch_cvwait | 2 samples | 0.3%</title><rect class="frame" x="1196.18" y="528.00" width="3.95" height="17" fill="#c16be9"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[i] | 2 samples | 0.3%</title><rect class="frame" x="777.45" y="222.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>ConcurrentGCThread::run | 1 samples | 0.2%</title><rect class="frame" x="1200.14" y="600.00" width="1.98" height="17" fill="#e1b65a"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[i] | 1 samples | 0.2%</title><rect class="frame" x="781.44" y="222.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>G1ConcurrentRefineThread::run_service | 1 samples | 0.2%</title><rect class="frame" x="1200.14" y="582.00" width="1.98" height="17" fill="#55a868"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 84 samples | 14.0%</title><rect class="frame" x="783.43" y="240.00" width="167.44" height="17" fill="#4c72b0"/>
+<text class="label" x="786.43" y="248.50">dbalgo/lsh/RandomProject…</text>
 </g>
-<g><title>G1PrimaryConcurrentRefineThread::wait_for_completed_buffers | 1 samples | 0.2%</title><rect class="frame" x="1200.14" y="564.00" width="1.98" height="17" fill="#55a868"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 52 samples | 8.6%</title><rect class="frame" x="783.43" y="222.00" width="103.65" height="17" fill="#4c72b0"/>
+<text class="label" x="786.43" y="230.50">dbalgo/lsh/Ran…</text>
 </g>
-<g><title>Monitor::wait_without_safepoint_check | 1 samples | 0.2%</title><rect class="frame" x="1200.14" y="546.00" width="1.98" height="17" fill="#98ec91"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 29 samples | 4.8%</title><rect class="frame" x="783.43" y="204.00" width="57.81" height="17" fill="#4c72b0"/>
+<text class="label" x="786.43" y="212.50">dbalgo/…</text>
 </g>
-<g><title>PlatformMonitor::wait | 1 samples | 0.2%</title><rect class="frame" x="1200.14" y="528.00" width="1.98" height="17" fill="#bdd882"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 14 samples | 2.3%</title><rect class="frame" x="783.43" y="186.00" width="27.91" height="17" fill="#4c72b0"/>
 </g>
-<g><title>__psynch_cvwait | 1 samples | 0.2%</title><rect class="frame" x="1200.14" y="510.00" width="1.98" height="17" fill="#c16be9"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 6 samples | 1.0%</title><rect class="frame" x="783.43" y="168.00" width="11.96" height="17" fill="#4c72b0"/>
 </g>
-<g><title>VMThread::run | 1 samples | 0.2%</title><rect class="frame" x="1202.12" y="600.00" width="1.98" height="17" fill="#c969e1"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 2 samples | 0.3%</title><rect class="frame" x="783.43" y="150.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>VMThread::inner_execute | 1 samples | 0.2%</title><rect class="frame" x="1202.12" y="582.00" width="1.98" height="17" fill="#88e5af"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 1 samples | 0.2%</title><rect class="frame" x="783.43" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>VMThread::evaluate_operation | 1 samples | 0.2%</title><rect class="frame" x="1202.12" y="564.00" width="1.98" height="17" fill="#e48cc6"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="785.42" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>VM_Operation::evaluate | 1 samples | 0.2%</title><rect class="frame" x="1202.12" y="546.00" width="1.98" height="17" fill="#6cdb89"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="787.42" y="150.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>VM_G1CollectForAllocation::doit | 1 samples | 0.2%</title><rect class="frame" x="1202.12" y="528.00" width="1.98" height="17" fill="#55a868"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="787.42" y="132.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>G1CollectedHeap::do_collection_pause_at_safepoint | 1 samples | 0.2%</title><rect class="frame" x="1202.12" y="510.00" width="1.98" height="17" fill="#55a868"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 1 samples | 0.2%</title><rect class="frame" x="787.42" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>G1CollectedHeap::do_collection_pause_at_safepoint_helper | 1 samples | 0.2%</title><rect class="frame" x="1202.12" y="492.00" width="1.98" height="17" fill="#55a868"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="789.41" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>G1YoungCollector::collect | 1 samples | 0.2%</title><rect class="frame" x="1202.12" y="474.00" width="1.98" height="17" fill="#55a868"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 1 samples | 0.2%</title><rect class="frame" x="791.40" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>G1YoungCollector::evacuate_initial_collection_set | 1 samples | 0.2%</title><rect class="frame" x="1202.12" y="456.00" width="1.98" height="17" fill="#55a868"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="793.40" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>G1RemSet::merge_heap_roots | 1 samples | 0.2%</title><rect class="frame" x="1202.12" y="438.00" width="1.98" height="17" fill="#55a868"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 5 samples | 0.8%</title><rect class="frame" x="795.39" y="168.00" width="9.97" height="17" fill="#4c72b0"/>
 </g>
-<g><title>G1MergeHeapRootsTask::G1MergeHeapRootsTask | 1 samples | 0.2%</title><rect class="frame" x="1202.12" y="420.00" width="1.98" height="17" fill="#55a868"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="795.39" y="150.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>org/openjdk/jmh/runner/ForkedMain.main:86_[j] | 2 samples | 0.3%</title><rect class="frame" x="1204.09" y="672.00" width="3.95" height="17" fill="#f06266"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="795.39" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>org/openjdk/jmh/runner/ForkedRunner.run:72_[j] | 2 samples | 0.3%</title><rect class="frame" x="1204.09" y="654.00" width="3.95" height="17" fill="#7adca4"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="797.38" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>org/openjdk/jmh/runner/BaseRunner.runBenchmarksForked:75_[j] | 2 samples | 0.3%</title><rect class="frame" x="1204.09" y="636.00" width="3.95" height="17" fill="#6edbae"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="797.38" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>org/openjdk/jmh/runner/BaseRunner.doSingle:138_[j] | 2 samples | 0.3%</title><rect class="frame" x="1204.09" y="618.00" width="3.95" height="17" fill="#816bed"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:266_[j] | 1 samples | 0.2%</title><rect class="frame" x="799.38" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>org/openjdk/jmh/runner/BaseRunner.runBenchmark:233_[j] | 2 samples | 0.3%</title><rect class="frame" x="1204.09" y="600.00" width="3.95" height="17" fill="#70bbef"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 1 samples | 0.2%</title><rect class="frame" x="801.37" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>org/openjdk/jmh/runner/BaseRunner.runBenchmark:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="1204.09" y="582.00" width="3.95" height="17" fill="#7aecde"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="803.36" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>org/openjdk/jmh/runner/BenchmarkHandler.runIteration:335_[j] | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="564.00" width="1.98" height="17" fill="#e683ea"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="803.36" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>org/openjdk/jmh/runner/BenchmarkHandler.startProfilers:255_[j] | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="546.00" width="1.98" height="17" fill="#e55cc6"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 1 samples | 0.2%</title><rect class="frame" x="803.36" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>org/openjdk/jmh/profile/AsyncProfiler.beforeIteration:326_[j] | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="528.00" width="1.98" height="17" fill="#dba477"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 2 samples | 0.3%</title><rect class="frame" x="805.36" y="168.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>org/openjdk/jmh/profile/AsyncProfiler.start:334_[j] | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="510.00" width="1.98" height="17" fill="#71c1db"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="809.34" y="168.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>org/openjdk/jmh/profile/AsyncProfiler.execute:433_[j] | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="492.00" width="1.98" height="17" fill="#73ddc5"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 10 samples | 1.7%</title><rect class="frame" x="811.34" y="186.00" width="19.93" height="17" fill="#4c72b0"/>
 </g>
-<g><title>org/openjdk/jmh/profile/AsyncProfiler$JavaApi.execute:591_[j] | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="474.00" width="1.98" height="17" fill="#65e8b8"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 4 samples | 0.7%</title><rect class="frame" x="811.34" y="168.00" width="7.97" height="17" fill="#4c72b0"/>
 </g>
-<g><title>org/openjdk/jmh/profile/AsyncProfiler$JavaApi.execute0_[0] | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="456.00" width="1.98" height="17" fill="#6cf1bd"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 2 samples | 0.3%</title><rect class="frame" x="811.34" y="150.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>Java_one_profiler_AsyncProfiler_execute0 | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="438.00" width="1.98" height="17" fill="#ece98c"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="811.34" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>Profiler::runInternal | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="420.00" width="1.98" height="17" fill="#c962e3"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="811.34" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>Profiler::start | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="402.00" width="1.98" height="17" fill="#e263f1"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="813.33" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>Profiler::startTimer | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="384.00" width="1.98" height="17" fill="#83a1e4"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="813.33" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>JNIEnv_::NewObject | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="366.00" width="1.98" height="17" fill="#f188b5"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="813.33" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>jni_NewObjectV | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="348.00" width="1.98" height="17" fill="#7fbceb"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:266_[j] | 1 samples | 0.2%</title><rect class="frame" x="813.33" y="78.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>jni_invoke_nonstatic | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="330.00" width="1.98" height="17" fill="#7866e5"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 1 samples | 0.2%</title><rect class="frame" x="815.32" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>JavaCalls::call_helper | 1 samples | 0.2%</title><rect class="frame" x="1204.09" y="312.00" width="1.98" height="17" fill="#b1e470"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="817.32" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>org/openjdk/jmh/runner/BenchmarkHandler.runIteration:354_[j] | 1 samples | 0.2%</title><rect class="frame" x="1206.07" y="564.00" width="1.98" height="17" fill="#db788a"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 4 samples | 0.7%</title><rect class="frame" x="819.31" y="168.00" width="7.97" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/concurrent/ExecutorCompletionService.poll:211_[j] | 1 samples | 0.2%</title><rect class="frame" x="1206.07" y="546.00" width="1.98" height="17" fill="#7ee085"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="819.31" y="150.00" width="3.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/concurrent/LinkedBlockingQueue.poll:460_[j] | 1 samples | 0.2%</title><rect class="frame" x="1206.07" y="528.00" width="1.98" height="17" fill="#75dec4"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="819.31" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/concurrent/locks/AbstractQueuedSynchronizer$ConditionObject.awaitNanos:1763_[j] | 1 samples | 0.2%</title><rect class="frame" x="1206.07" y="510.00" width="1.98" height="17" fill="#e1a37e"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="821.30" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/util/concurrent/locks/LockSupport.parkNanos:269_[j] | 1 samples | 0.2%</title><rect class="frame" x="1206.07" y="492.00" width="1.98" height="17" fill="#d291e2"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="821.30" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>jdk/internal/misc/Unsafe.park_[0] | 1 samples | 0.2%</title><rect class="frame" x="1206.07" y="474.00" width="1.98" height="17" fill="#93e5c5"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="821.30" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>unknown_Java | 2 samples | 0.3%</title><rect class="frame" x="1208.05" y="672.00" width="3.95" height="17" fill="#95e6a4"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="821.30" y="78.00" width="1.99" height="17" fill="#4c72b0"/>
 </g>
-<g><title>forward_copy_longs | 2 samples | 0.3%</title><rect class="frame" x="1208.05" y="654.00" width="3.95" height="17" fill="#89b6d9"/>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="821.30" y="60.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 1 samples | 0.2%</title><rect class="frame" x="823.30" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:279_[j] | 1 samples | 0.2%</title><rect class="frame" x="825.29" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:265_[j] | 1 samples | 0.2%</title><rect class="frame" x="827.28" y="168.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="829.28" y="168.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 2 samples | 0.3%</title><rect class="frame" x="831.27" y="186.00" width="3.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 2 samples | 0.3%</title><rect class="frame" x="835.26" y="186.00" width="3.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="839.24" y="186.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 18 samples | 3.0%</title><rect class="frame" x="841.24" y="204.00" width="35.88" height="17" fill="#4c72b0"/>
+<text class="label" x="844.24" y="212.50">dba…</text>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 8 samples | 1.3%</title><rect class="frame" x="841.24" y="186.00" width="15.95" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 5 samples | 0.8%</title><rect class="frame" x="841.24" y="168.00" width="9.97" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 3 samples | 0.5%</title><rect class="frame" x="841.24" y="150.00" width="5.98" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 2 samples | 0.3%</title><rect class="frame" x="841.24" y="132.00" width="3.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 1 samples | 0.2%</title><rect class="frame" x="841.24" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="843.23" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 1 samples | 0.2%</title><rect class="frame" x="843.23" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 1 samples | 0.2%</title><rect class="frame" x="845.22" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 2 samples | 0.3%</title><rect class="frame" x="847.22" y="150.00" width="3.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="847.22" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="849.21" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="849.21" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="849.21" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="849.21" y="78.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 1 samples | 0.2%</title><rect class="frame" x="849.21" y="60.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 3 samples | 0.5%</title><rect class="frame" x="851.20" y="168.00" width="5.98" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 1 samples | 0.2%</title><rect class="frame" x="851.20" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 1 samples | 0.2%</title><rect class="frame" x="853.20" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="855.19" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:282_[j] | 1 samples | 0.2%</title><rect class="frame" x="855.19" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 4 samples | 0.7%</title><rect class="frame" x="857.18" y="186.00" width="7.97" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 2 samples | 0.3%</title><rect class="frame" x="857.18" y="168.00" width="3.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="857.18" y="150.00" width="3.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:273_[j] | 1 samples | 0.2%</title><rect class="frame" x="857.18" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.swap:290_[i] | 1 samples | 0.2%</title><rect class="frame" x="857.18" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="859.18" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="859.18" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:265_[j] | 1 samples | 0.2%</title><rect class="frame" x="859.18" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="861.17" y="168.00" width="3.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="861.17" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="861.17" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 1 samples | 0.2%</title><rect class="frame" x="861.17" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="863.16" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="863.16" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="863.16" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="863.16" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:265_[j] | 1 samples | 0.2%</title><rect class="frame" x="863.16" y="78.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 2 samples | 0.3%</title><rect class="frame" x="865.16" y="186.00" width="3.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:266_[j] | 1 samples | 0.2%</title><rect class="frame" x="869.14" y="186.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 1 samples | 0.2%</title><rect class="frame" x="871.14" y="186.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="873.13" y="186.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:273_[j] | 1 samples | 0.2%</title><rect class="frame" x="875.12" y="186.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.swap:288_[i] | 1 samples | 0.2%</title><rect class="frame" x="875.12" y="168.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 3 samples | 0.5%</title><rect class="frame" x="877.12" y="204.00" width="5.98" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 2 samples | 0.3%</title><rect class="frame" x="883.10" y="204.00" width="3.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 30 samples | 5.0%</title><rect class="frame" x="887.08" y="222.00" width="59.80" height="17" fill="#4c72b0"/>
+<text class="label" x="890.08" y="230.50">dbalgo/…</text>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 16 samples | 2.7%</title><rect class="frame" x="887.08" y="204.00" width="31.89" height="17" fill="#4c72b0"/>
+<text class="label" x="890.08" y="212.50">dba…</text>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 8 samples | 1.3%</title><rect class="frame" x="887.08" y="186.00" width="15.95" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 2 samples | 0.3%</title><rect class="frame" x="887.08" y="168.00" width="3.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 2 samples | 0.3%</title><rect class="frame" x="891.07" y="168.00" width="3.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 2 samples | 0.3%</title><rect class="frame" x="895.06" y="168.00" width="3.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="895.06" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="897.05" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="897.05" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="897.05" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 1 samples | 0.2%</title><rect class="frame" x="897.05" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="899.04" y="168.00" width="3.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 1 samples | 0.2%</title><rect class="frame" x="899.04" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="901.04" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="901.04" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="901.04" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="901.04" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="901.04" y="78.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="901.04" y="60.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:265_[j] | 1 samples | 0.2%</title><rect class="frame" x="901.04" y="42.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 6 samples | 1.0%</title><rect class="frame" x="903.03" y="186.00" width="11.96" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 5 samples | 0.8%</title><rect class="frame" x="903.03" y="168.00" width="9.97" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 3 samples | 0.5%</title><rect class="frame" x="903.03" y="150.00" width="5.98" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="903.03" y="132.00" width="3.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="903.03" y="114.00" width="3.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="903.03" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 1 samples | 0.2%</title><rect class="frame" x="903.03" y="78.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:282_[j] | 1 samples | 0.2%</title><rect class="frame" x="905.02" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="907.02" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="907.02" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="907.02" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:266_[j] | 1 samples | 0.2%</title><rect class="frame" x="907.02" y="78.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 1 samples | 0.2%</title><rect class="frame" x="909.01" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="911.00" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="911.00" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="911.00" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="911.00" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="911.00" y="78.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="913.00" y="168.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="913.00" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[j] | 1 samples | 0.2%</title><rect class="frame" x="914.99" y="186.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="916.98" y="186.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 9 samples | 1.5%</title><rect class="frame" x="918.98" y="204.00" width="17.94" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 5 samples | 0.8%</title><rect class="frame" x="918.98" y="186.00" width="9.97" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 3 samples | 0.5%</title><rect class="frame" x="918.98" y="168.00" width="5.98" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="918.98" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="920.97" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="920.97" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="920.97" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="920.97" y="96.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="922.96" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 1 samples | 0.2%</title><rect class="frame" x="922.96" y="132.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="922.96" y="114.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="924.96" y="168.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:273_[j] | 1 samples | 0.2%</title><rect class="frame" x="926.95" y="168.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.swap:291_[i] | 1 samples | 0.2%</title><rect class="frame" x="926.95" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 3 samples | 0.5%</title><rect class="frame" x="928.94" y="186.00" width="5.98" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:283_[j] | 2 samples | 0.3%</title><rect class="frame" x="928.94" y="168.00" width="3.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:265_[j] | 1 samples | 0.2%</title><rect class="frame" x="928.94" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="930.94" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:280_[j] | 1 samples | 0.2%</title><rect class="frame" x="932.93" y="168.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[j] | 1 samples | 0.2%</title><rect class="frame" x="932.93" y="150.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:266_[j] | 1 samples | 0.2%</title><rect class="frame" x="934.92" y="186.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:273_[j] | 2 samples | 0.3%</title><rect class="frame" x="936.92" y="204.00" width="3.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.swap:288_[i] | 1 samples | 0.2%</title><rect class="frame" x="936.92" y="186.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.swap:290_[i] | 1 samples | 0.2%</title><rect class="frame" x="938.91" y="186.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:266_[j] | 1 samples | 0.2%</title><rect class="frame" x="940.90" y="204.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[j] | 1 samples | 0.2%</title><rect class="frame" x="942.90" y="204.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[j] | 1 samples | 0.2%</title><rect class="frame" x="944.89" y="204.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:270_[i] | 2 samples | 0.3%</title><rect class="frame" x="946.88" y="222.00" width="3.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:272_[i] | 4 samples | 0.7%</title><rect class="frame" x="950.87" y="240.00" width="7.97" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:266_[i] | 3 samples | 0.5%</title><rect class="frame" x="958.84" y="240.00" width="5.98" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:267_[i] | 3 samples | 0.5%</title><rect class="frame" x="964.82" y="240.00" width="5.98" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:265_[i] | 1 samples | 0.2%</title><rect class="frame" x="970.80" y="240.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.sortResultsByDistance:269_[i] | 1 samples | 0.2%</title><rect class="frame" x="972.80" y="240.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.findNear:111_[j] | 64 samples | 10.6%</title><rect class="frame" x="974.79" y="258.00" width="127.57" height="17" fill="#4c72b0"/>
+<text class="label" x="977.79" y="266.50">dbalgo/lsh/RandomP…</text>
+</g>
+<g><title>java/util/ArrayList.add:497_[i] | 59 samples | 9.8%</title><rect class="frame" x="974.79" y="240.00" width="117.61" height="17" fill="#de5eb2"/>
+<text class="label" x="977.79" y="248.50">java/util/ArrayL…</text>
+</g>
+<g><title>java/lang/Double.valueOf:924_[i] | 2 samples | 0.3%</title><rect class="frame" x="1092.40" y="240.00" width="3.99" height="17" fill="#da8da1"/>
+</g>
+<g><title>OptoRuntime::new_instance_C | 1 samples | 0.2%</title><rect class="frame" x="1092.40" y="222.00" width="1.99" height="17" fill="#9076e6"/>
+</g>
+<g><title>InstanceKlass::allocate_instance | 1 samples | 0.2%</title><rect class="frame" x="1092.40" y="204.00" width="1.99" height="17" fill="#dd93ed"/>
+</g>
+<g><title>MemAllocator::allocate | 1 samples | 0.2%</title><rect class="frame" x="1092.40" y="186.00" width="1.99" height="17" fill="#ddb570"/>
+</g>
+<g><title>MemAllocator::mem_allocate_inside_tlab_slow | 1 samples | 0.2%</title><rect class="frame" x="1092.40" y="168.00" width="1.99" height="17" fill="#ec9077"/>
+</g>
+<g><title>G1HeapRegion::fill_with_dummy_object | 1 samples | 0.2%</title><rect class="frame" x="1092.40" y="150.00" width="1.99" height="17" fill="#55a868"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex$SearchScratch.getResultDistances:323_[i] | 1 samples | 0.2%</title><rect class="frame" x="1096.39" y="240.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.findNear:96_[j] | 31 samples | 5.1%</title><rect class="frame" x="1102.37" y="258.00" width="61.79" height="17" fill="#4c72b0"/>
+<text class="label" x="1105.37" y="266.50">dbalgo/…</text>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.filterMatches:210_[i] | 15 samples | 2.5%</title><rect class="frame" x="1102.37" y="240.00" width="29.90" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.distance:239_[i] | 7 samples | 1.2%</title><rect class="frame" x="1102.37" y="222.00" width="13.95" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.distance:240_[i] | 7 samples | 1.2%</title><rect class="frame" x="1116.32" y="222.00" width="13.95" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.distance:238_[i] | 1 samples | 0.2%</title><rect class="frame" x="1130.27" y="222.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.filterMatches:208_[i] | 10 samples | 1.7%</title><rect class="frame" x="1132.27" y="240.00" width="19.93" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.filterMatches:212_[i] | 5 samples | 0.8%</title><rect class="frame" x="1152.20" y="240.00" width="9.97" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.filterMatches:209_[i] | 1 samples | 0.2%</title><rect class="frame" x="1162.17" y="240.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.findNear:87_[j] | 17 samples | 2.8%</title><rect class="frame" x="1164.16" y="258.00" width="33.89" height="17" fill="#4c72b0"/>
+<text class="label" x="1167.16" y="266.50">dba…</text>
+</g>
+<g><title>java/lang/ThreadLocal.get:172_[i] | 17 samples | 2.8%</title><rect class="frame" x="1164.16" y="240.00" width="33.89" height="17" fill="#67d8aa"/>
+<text class="label" x="1167.16" y="248.50">jav…</text>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.findNear:89_[j] | 5 samples | 0.8%</title><rect class="frame" x="1198.05" y="258.00" width="9.97" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.computeHashes:223_[i] | 5 samples | 0.8%</title><rect class="frame" x="1198.05" y="240.00" width="9.97" height="17" fill="#4c72b0"/>
+</g>
+<g><title>dbalgo/lsh/RandomProjectionLshIndex.findNear:109_[j] | 1 samples | 0.2%</title><rect class="frame" x="1208.01" y="258.00" width="1.99" height="17" fill="#4c72b0"/>
+</g>
+<g><title>java/util/ArrayList.&lt;init&gt;:157_[i] | 1 samples | 0.2%</title><rect class="frame" x="1208.01" y="240.00" width="1.99" height="17" fill="#ea8080"/>
+</g>
+<g><title>zero_blocks | 1 samples | 0.2%</title><rect class="frame" x="1208.01" y="222.00" width="1.99" height="17" fill="#79a5e8"/>
+</g>
+<g><title>thread_start | 1 samples | 0.2%</title><rect class="frame" x="1210.01" y="582.00" width="1.99" height="17" fill="#e89f63"/>
+</g>
+<g><title>_pthread_start | 1 samples | 0.2%</title><rect class="frame" x="1210.01" y="564.00" width="1.99" height="17" fill="#e86f99"/>
+</g>
+<g><title>thread_native_entry | 1 samples | 0.2%</title><rect class="frame" x="1210.01" y="546.00" width="1.99" height="17" fill="#71e6df"/>
+</g>
+<g><title>Thread::call_run | 1 samples | 0.2%</title><rect class="frame" x="1210.01" y="528.00" width="1.99" height="17" fill="#9ddb88"/>
+</g>
+<g><title>WatcherThread::run | 1 samples | 0.2%</title><rect class="frame" x="1210.01" y="510.00" width="1.99" height="17" fill="#85d0db"/>
+</g>
+<g><title>WatcherThread::sleep | 1 samples | 0.2%</title><rect class="frame" x="1210.01" y="492.00" width="1.99" height="17" fill="#a5f162"/>
+</g>
+<g><title>Monitor::wait_without_safepoint_check | 1 samples | 0.2%</title><rect class="frame" x="1210.01" y="474.00" width="1.99" height="17" fill="#98ec91"/>
+</g>
+<g><title>PlatformMonitor::wait | 1 samples | 0.2%</title><rect class="frame" x="1210.01" y="456.00" width="1.99" height="17" fill="#bdd882"/>
+</g>
+<g><title>__gettimeofday | 1 samples | 0.2%</title><rect class="frame" x="1210.01" y="438.00" width="1.99" height="17" fill="#8b7ddf"/>
 </g>
 </svg>

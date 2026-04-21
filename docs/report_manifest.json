@@ -1,0 +1,24 @@
+{
+  "datasets": {
+    "core": [
+      "build/results/jmh/core.json"
+    ],
+    "hash_table_interval": [
+      "build/results/jmh/ht_gate_final_v2.json",
+      "build/results/jmh/ht_diag.json"
+    ],
+    "lsh_interval": [
+      "build/results/jmh/lsh_gate_latest_v2.json",
+      "build/results/jmh/lsh_100k_v3.json",
+      "build/results/jmh/lsh_1m_v3.json"
+    ],
+    "perfect_hash_lookup_interval": [
+      "build/results/jmh/ph_lookup_gate_latest_v2.json",
+      "build/results/jmh/ph_lookup_100k_v4.json",
+      "build/results/jmh/ph_lookup_1m_v4.json"
+    ],
+    "perfect_hash_build_interval": [
+      "build/results/jmh/ph_build_gate_latest.json"
+    ]
+  }
+}

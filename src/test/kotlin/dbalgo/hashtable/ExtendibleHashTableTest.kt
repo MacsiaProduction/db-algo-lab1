@@ -2,6 +2,7 @@ package dbalgo.hashtable
 
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.*
+import java.io.DataInputStream
 import java.nio.file.Files
 import java.nio.file.Path
 
@@ -180,5 +181,96 @@ class ExtendibleHashTableTest {
         val bigValue = ByteArray(8192) { it.toByte() }
         ht.insert("big", bigValue)
         assertArrayEquals(bigValue, ht.get("big"))
+    }
+
+    @Test
+    fun `delete does not shrink bucket file`() {
+        ht.insert("k", ByteArray(512) { 1 })
+        val bucketPath = dir.resolve("bucket_0.dat")
+        val sizeBeforeDelete = Files.size(bucketPath)
+
+        assertTrue(ht.delete("k"))
+
+        assertEquals(sizeBeforeDelete, Files.size(bucketPath))
+    }
+
+    @Test
+    fun `update to smaller payload does not shrink bucket file`() {
+        ht.insert("k", ByteArray(1024) { 7 })
+        val bucketPath = dir.resolve("bucket_0.dat")
+        val sizeBeforeUpdate = Files.size(bucketPath)
+
+        assertTrue(ht.update("k", ByteArray(16) { 3 }))
+
+        assertEquals(sizeBeforeUpdate, Files.size(bucketPath))
+    }
+
+    @Test
+    fun `bucket grows to the next page class`() {
+        ht.insert("k", ByteArray(16) { 1 })
+        val bucketPath = dir.resolve("bucket_0.dat")
+        val initialSize = Files.size(bucketPath)
+
+        val enlargedValue = ByteArray(2_000) { 2 }
+        assertTrue(ht.update("k", enlargedValue))
+
+        val expectedPageClass = expectedPageClass(
+            payloadBytes = "k".toByteArray().size + enlargedValue.size,
+            bucketCapacity = ht.bucketCapacity,
+        )
+        assertEquals(
+            expectedBucketFileSize(expectedPageClass).toLong(),
+            Files.size(bucketPath),
+        )
+        assertTrue(Files.size(bucketPath) > initialSize)
+        assertArrayEquals(enlargedValue, ht.get("k"))
+    }
+
+    @Test
+    fun `delete creates tombstone and insert reuses slot without growing page`() {
+        ht.insert("a", ByteArray(128) { 1 })
+        ht.insert("b", ByteArray(128) { 2 })
+        val bucketPath = dir.resolve("bucket_0.dat")
+        val sizeBeforeDelete = Files.size(bucketPath)
+
+        assertTrue(ht.delete("a"))
+        ht.insert("c", ByteArray(64) { 3 })
+
+        assertEquals(sizeBeforeDelete, Files.size(bucketPath))
+        assertNull(ht.get("a"))
+        assertArrayEquals(ByteArray(128) { 2 }, ht.get("b"))
+        assertArrayEquals(ByteArray(64) { 3 }, ht.get("c"))
+        assertEquals(2, ht.size())
+    }
+
+    @Test
+    fun `versioned directory format is persisted`() {
+        ht.insert("k", "v".toByteArray())
+        ht.close()
+
+        DataInputStream(Files.newInputStream(dir.resolve("_directory.dat"))).use { input ->
+            assertEquals(ExtendibleHashTable.DIRECTORY_MAGIC, input.readInt())
+            assertEquals(ExtendibleHashTable.STORAGE_VERSION, input.readInt())
+        }
+    }
+
+    private fun expectedPageClass(payloadBytes: Int, bucketCapacity: Int): Int {
+        var reserved = ExtendibleHashTable.MIN_BUCKET_RESERVED_BYTES
+        val target = maxOf(
+            ExtendibleHashTable.MIN_BUCKET_RESERVED_BYTES,
+            payloadBytes * bucketCapacity * 2,
+        )
+        while (reserved < target) {
+            reserved *= 2
+        }
+        return reserved
+    }
+
+    private fun expectedBucketFileSize(pageClass: Int): Int {
+        val slotAreaBytes = ht.bucketCapacity * ExtendibleHashTable.SLOT_BYTES
+        return maxOf(
+            ExtendibleHashTable.MIN_BUCKET_RESERVED_BYTES,
+            ExtendibleHashTable.BUCKET_HEADER_BYTES + slotAreaBytes + pageClass,
+        )
     }
 }

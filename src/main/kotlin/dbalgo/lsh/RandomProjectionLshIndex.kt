@@ -1,8 +1,8 @@
 package dbalgo.lsh
 
+import java.util.Random
 import kotlin.math.floor
 import kotlin.math.sqrt
-import java.util.Random
 
 /**
  * LSH на основе p-stable L2 хеширования для поиска близких 3D-точек.
@@ -25,51 +25,92 @@ class RandomProjectionLshIndex(
     private val hashesPerBand = numHashes / numBands
     private val fullScanThreshold = 4_000
 
+    private var size = 0
+    private var ids = arrayOfNulls<String>(16)
+    private var xs = DoubleArray(16)
+    private var ys = DoubleArray(16)
+    private var zs = DoubleArray(16)
+
+    private val projectionX = DoubleArray(numHashes)
+    private val projectionY = DoubleArray(numHashes)
+    private val projectionZ = DoubleArray(numHashes)
+    private val offsets = DoubleArray(numHashes)
+    private val bandBuckets = Array(numBands) { HashMap<Long, IntBag>() }
+    private val searchScratch = ThreadLocal.withInitial { SearchScratch(numHashes) }
+
     init {
         require(numHashes % numBands == 0) { "numHashes должен делиться на numBands" }
         require(binWidth > 0) { "binWidth должен быть положительным" }
+
+        val rng = Random(RANDOM_SEED)
+        for (i in 0 until numHashes) {
+            val vector = randomUnitVector(rng)
+            projectionX[i] = vector.x
+            projectionY[i] = vector.y
+            projectionZ[i] = vector.z
+            offsets[i] = rng.nextDouble() * binWidth
+        }
     }
 
     data class Point3D(val x: Double, val y: Double, val z: Double) {
         fun distanceTo(other: Point3D): Double {
-            val dx = x - other.x; val dy = y - other.y; val dz = z - other.z
+            val dx = x - other.x
+            val dy = y - other.y
+            val dz = z - other.z
             return sqrt(dx * dx + dy * dy + dz * dz)
         }
     }
 
-    private data class Entry(val id: String, val point: Point3D, val hashes: IntArray)
-
-    private val entries = mutableListOf<Entry>()
-    // Случайные единичные векторы для проекций
-    private val projections = Array(numHashes) { randomUnitVector() }
-    // Случайные смещения b_i ~ Uniform[0, binWidth]
-    private val offsets = DoubleArray(numHashes) { rng.nextDouble() * binWidth }
-    // Полосы -> бакет -> список индексов
-    private val bandBuckets = Array(numBands) { HashMap<Long, MutableList<Int>>() }
-
     fun add(id: String, point: Point3D) {
-        val hashes = computeHash(point)
-        val idx = entries.size
-        entries.add(Entry(id, point, hashes))
+        ensureCapacity(size + 1)
+        ids[size] = id
+        xs[size] = point.x
+        ys[size] = point.y
+        zs[size] = point.z
+
+        val scratch = searchScratch.get()
+        scratch.ensureCapacity(size + 1)
+        computeHashes(point.x, point.y, point.z, scratch.queryHashes)
         for (band in 0 until numBands) {
-            val bh = bandHash(hashes, band)
-            bandBuckets[band].getOrPut(bh) { mutableListOf() }.add(idx)
+            val bandHash = bandHash(scratch.queryHashes, band)
+            bandBuckets[band].getOrPut(bandHash, ::IntBag).add(size)
         }
+        size++
     }
 
     /** Ищет точки ближе maxDistance к заданной. */
     fun findNear(query: Point3D, maxDistance: Double): List<Pair<String, Double>> {
-        val hashes = computeHash(query)
-        val candidates = HashSet<Int>()
-        for (band in 0 until numBands) {
-            val bh = bandHash(hashes, band)
-            bandBuckets[band][bh]?.let { candidates.addAll(it) }
+        if (size == 0) {
+            return emptyList()
         }
-        val pool = if (entries.size <= fullScanThreshold) entries.indices.toHashSet() else candidates
-        return pool.mapNotNull { idx ->
-            val dist = query.distanceTo(entries[idx].point)
-            if (dist <= maxDistance) entries[idx].id to dist else null
-        }.sortedBy { it.second }
+
+        val scratch = searchScratch.get()
+        scratch.ensureCapacity(size)
+        computeHashes(query.x, query.y, query.z, scratch.queryHashes)
+
+        val candidateCount = if (size <= fullScanThreshold) {
+            size
+        } else {
+            collectCandidates(scratch)
+        }
+        val resultCount = filterMatches(
+            candidateIds = scratch.candidateIds,
+            candidateCount = candidateCount,
+            fullScan = size <= fullScanThreshold,
+            query = query,
+            maxDistance = maxDistance,
+            scratch = scratch,
+        )
+        if (resultCount == 0) {
+            return emptyList()
+        }
+
+        sortResultsByDistance(scratch.resultIds, scratch.resultDistances, 0, resultCount - 1)
+        val result = ArrayList<Pair<String, Double>>(resultCount)
+        for (i in 0 until resultCount) {
+            result += ids[scratch.resultIds[i]]!! to scratch.resultDistances[i]
+        }
+        return result
     }
 
     /** Все пары точек с расстоянием <= maxDistance. */
@@ -80,60 +121,230 @@ class RandomProjectionLshIndex(
         for (band in bandBuckets) {
             for (bucket in band.values) {
                 if (bucket.size < 2) continue
-                for (i in bucket.indices) for (j in i + 1 until bucket.size) {
-                    val a = bucket[i]; val b = bucket[j]
-                    candidatePairs.add((minOf(a, b).toLong() shl 32) or maxOf(a, b).toLong())
+                for (i in 0 until bucket.size) {
+                    for (j in i + 1 until bucket.size) {
+                        val a = bucket[i]
+                        val b = bucket[j]
+                        candidatePairs.add((minOf(a, b).toLong() shl 32) or maxOf(a, b).toLong())
+                    }
                 }
             }
         }
-        if (entries.size <= fullScanThreshold) {
-            for (i in 0 until entries.size) for (j in i + 1 until entries.size) {
-                candidatePairs.add((i.toLong() shl 32) or j.toLong())
+        if (size <= fullScanThreshold) {
+            for (i in 0 until size) {
+                for (j in i + 1 until size) {
+                    candidatePairs.add((i.toLong() shl 32) or j.toLong())
+                }
             }
         }
         for (pair in candidatePairs) {
             val a = (pair ushr 32).toInt()
             val b = (pair and 0xFFFF_FFFFL).toInt()
-            val dist = entries[a].point.distanceTo(entries[b].point)
-            if (dist <= maxDistance) result.add(Triple(entries[a].id, entries[b].id, dist))
+            val dist = distance(queryX = xs[a], queryY = ys[a], queryZ = zs[a], pointIndex = b)
+            if (dist <= maxDistance) {
+                result += Triple(ids[a]!!, ids[b]!!, dist)
+            }
         }
         return result
     }
 
-    fun size() = entries.size
+    fun size() = size
 
-    /**
-     * p-stable L2: hash_i(p) = floor((dot(p, r_i) + b_i) / w).
-     * Точки с малым расстоянием имеют близкие проекции → часто одинаковый бин.
-     * В отличие от SimHash нет ограничения в 2^bitsPerBand уникальных значений.
-     */
-    private fun computeHash(p: Point3D): IntArray {
-        return IntArray(numHashes) { i ->
-            val (rx, ry, rz) = projections[i]
-            val proj = p.x * rx + p.y * ry + p.z * rz
-            floor((proj + offsets[i]) / binWidth).toInt()
+    private fun collectCandidates(scratch: SearchScratch): Int {
+        var epoch = scratch.epoch + 1
+        if (epoch == Int.MAX_VALUE) {
+            scratch.seenEpoch.fill(0)
+            epoch = 1
+        }
+        scratch.epoch = epoch
+
+        var candidateCount = 0
+        for (band in 0 until numBands) {
+            val bandHash = bandHash(scratch.queryHashes, band)
+            val bucket = bandBuckets[band][bandHash] ?: continue
+            for (i in 0 until bucket.size) {
+                val candidateId = bucket[i]
+                if (scratch.seenEpoch[candidateId] == epoch) {
+                    continue
+                }
+                scratch.seenEpoch[candidateId] = epoch
+                scratch.candidateIds[candidateCount++] = candidateId
+            }
+        }
+        return candidateCount
+    }
+
+    private fun filterMatches(
+        candidateIds: IntArray,
+        candidateCount: Int,
+        fullScan: Boolean,
+        query: Point3D,
+        maxDistance: Double,
+        scratch: SearchScratch,
+    ): Int {
+        var resultCount = 0
+        if (fullScan) {
+            for (index in 0 until size) {
+                val distance = distance(query.x, query.y, query.z, index)
+                if (distance <= maxDistance) {
+                    scratch.resultIds[resultCount] = index
+                    scratch.resultDistances[resultCount] = distance
+                    resultCount++
+                }
+            }
+            return resultCount
+        }
+
+        for (i in 0 until candidateCount) {
+            val candidateId = candidateIds[i]
+            val distance = distance(query.x, query.y, query.z, candidateId)
+            if (distance <= maxDistance) {
+                scratch.resultIds[resultCount] = candidateId
+                scratch.resultDistances[resultCount] = distance
+                resultCount++
+            }
+        }
+        return resultCount
+    }
+
+    private fun computeHashes(x: Double, y: Double, z: Double, out: IntArray) {
+        for (i in 0 until numHashes) {
+            val projection = x * projectionX[i] + y * projectionY[i] + z * projectionZ[i]
+            out[i] = floor((projection + offsets[i]) / binWidth).toInt()
         }
     }
 
     /** Хеш полосы — комбинирует hashesPerBand целых значений в один Long. */
     private fun bandHash(hashes: IntArray, band: Int): Long {
-        var h = 1000003L
+        var hash = 1_000_003L
         val start = band * hashesPerBand
         for (i in start until start + hashesPerBand) {
-            h = h * 1000003L xor hashes[i].toLong()
+            hash = hash * 1_000_003L xor hashes[i].toLong()
         }
-        return h
+        return hash
+    }
+
+    private fun distance(queryX: Double, queryY: Double, queryZ: Double, pointIndex: Int): Double {
+        val dx = queryX - xs[pointIndex]
+        val dy = queryY - ys[pointIndex]
+        val dz = queryZ - zs[pointIndex]
+        return sqrt(dx * dx + dy * dy + dz * dz)
+    }
+
+    private fun ensureCapacity(required: Int) {
+        if (required <= ids.size) {
+            return
+        }
+        var next = ids.size
+        while (next < required) {
+            next *= 2
+        }
+        ids = ids.copyOf(next)
+        xs = xs.copyOf(next)
+        ys = ys.copyOf(next)
+        zs = zs.copyOf(next)
+    }
+
+    private fun sortResultsByDistance(ids: IntArray, distances: DoubleArray, left: Int, right: Int) {
+        if (left >= right) {
+            return
+        }
+        var i = left
+        var j = right
+        val pivot = distances[(left + right) ushr 1]
+        while (i <= j) {
+            while (distances[i] < pivot) {
+                i++
+            }
+            while (distances[j] > pivot) {
+                j--
+            }
+            if (i <= j) {
+                swap(ids, i, j)
+                swap(distances, i, j)
+                i++
+                j--
+            }
+        }
+        if (left < j) {
+            sortResultsByDistance(ids, distances, left, j)
+        }
+        if (i < right) {
+            sortResultsByDistance(ids, distances, i, right)
+        }
+    }
+
+    private fun swap(values: IntArray, i: Int, j: Int) {
+        if (i == j) return
+        val tmp = values[i]
+        values[i] = values[j]
+        values[j] = tmp
+    }
+
+    private fun swap(values: DoubleArray, i: Int, j: Int) {
+        if (i == j) return
+        val tmp = values[i]
+        values[i] = values[j]
+        values[j] = tmp
+    }
+
+    private data class UnitVector(val x: Double, val y: Double, val z: Double)
+
+    private class IntBag {
+        private var values = IntArray(8)
+        var size: Int = 0
+            private set
+
+        fun add(value: Int) {
+            if (size == values.size) {
+                values = values.copyOf(values.size * 2)
+            }
+            values[size++] = value
+        }
+
+        operator fun get(index: Int): Int = values[index]
+    }
+
+    private class SearchScratch(hashCount: Int) {
+        val queryHashes = IntArray(hashCount)
+        var seenEpoch = IntArray(16)
+        var candidateIds = IntArray(16)
+        var resultIds = IntArray(16)
+        var resultDistances = DoubleArray(16)
+        var epoch: Int = 0
+
+        fun ensureCapacity(entryCount: Int) {
+            if (seenEpoch.size < entryCount) {
+                seenEpoch = seenEpoch.copyOf(growTo(entryCount, seenEpoch.size))
+            }
+            if (candidateIds.size < entryCount) {
+                candidateIds = candidateIds.copyOf(growTo(entryCount, candidateIds.size))
+            }
+            if (resultIds.size < entryCount) {
+                val next = growTo(entryCount, resultIds.size)
+                resultIds = resultIds.copyOf(next)
+                resultDistances = resultDistances.copyOf(next)
+            }
+        }
+
+        private fun growTo(required: Int, current: Int): Int {
+            var next = maxOf(16, current)
+            while (next < required) {
+                next *= 2
+            }
+            return next
+        }
     }
 
     companion object {
-        private val rng = Random(0xA15C0DE)
+        private const val RANDOM_SEED = 0xA15C0DEL
 
-        private fun randomUnitVector(): Triple<Double, Double, Double> {
+        private fun randomUnitVector(rng: Random): UnitVector {
             val x = rng.nextGaussian()
             val y = rng.nextGaussian()
             val z = rng.nextGaussian()
             val len = sqrt(x * x + y * y + z * z)
-            return Triple(x / len, y / len, z / len)
+            return UnitVector(x / len, y / len, z / len)
         }
     }
 }
