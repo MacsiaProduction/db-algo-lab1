@@ -472,10 +472,17 @@ open class HashTableIntervalBenchmark {
         }
     }
 
-    private fun scenarioPrewarmKeys(): Array<String> = when {
-        scenario.spec.stringBatch != null -> stringBatch(scenario.spec.stringBatch)
-        scenario.spec.insertBatch != null -> insertBatch(scenario.spec.insertBatch).map { it.key }.toTypedArray()
-        else -> emptyArray()
+    private fun scenarioPrewarmKeys(): Array<String> {
+        val spec = scenario.spec
+        val stringBatch = spec.stringBatch
+        if (stringBatch != null) {
+            return stringBatch(stringBatch)
+        }
+        val insertBatch = spec.insertBatch
+        if (insertBatch != null) {
+            return insertBatch(insertBatch).map { it.key }.toTypedArray()
+        }
+        return emptyArray()
     }
 
     private fun buildHalfFilledSnapshot(dir: Path) {

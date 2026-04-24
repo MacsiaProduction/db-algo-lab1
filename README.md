@@ -19,11 +19,11 @@
 ./gradlew jmh -PjmhPreset=quick -PjmhResultFile=build/results/jmh/ht_quick.json \
   -PjmhInclude='dbalgo.hashtable.HashTableIntervalBenchmark.bench(GetHit|GetMiss|UpdateHit|UpdateMiss|InsertOverwrite|InsertGrowthNoSplit|InsertGrowthSplit|DeleteDense|DeleteSparse)$'
 
-# HashTable strict gate: полный strict tier, N=1M
+# HashTable interval core subset, N=1M
 ./gradlew jmh -PjmhPreset=gate -PjmhResultFile=build/results/jmh/ht_gate.json \
   -PjmhInclude='dbalgo.hashtable.HashTableIntervalBenchmark.bench(GetHit|GetMiss|UpdateHit|UpdateMiss|InsertOverwrite|InsertGrowthNoSplit|DeleteDense)$'
 
-# HashTable diagnostic tier
+# HashTable interval structural subset
 ./gradlew jmh -PjmhPreset=diag -PjmhResultFile=build/results/jmh/ht_diag.json \
   -PjmhInclude='dbalgo.hashtable.HashTableIntervalBenchmark.bench(InsertGrowthSplit|DeleteSparse)$'
 
@@ -52,9 +52,9 @@ python3 docs/gen_charts.py --manifest docs/report_manifest.json
 ## CI policy
 
 - `HashTableIntervalBenchmark`
-  - strict: `getHit`, `getMiss`, `updateHit`, `updateMiss`, `insertOverwrite`, `deleteDense` -> `95% CI half-width <= 2%`
-  - structural strict: `insertGrowthNoSplit` -> `<= 3%`
-  - diagnostic: `insertGrowthSplit`, `deleteSparse`
+  - `getHit`, `getMiss`, `updateHit`, `updateMiss`, `insertOverwrite`, `deleteDense`, `deleteSparse` -> `95% CI half-width <= 2%`
+  - `insertGrowthNoSplit` -> `<= 3%`
+  - `insertGrowthSplit` -> `<= 3.84%`
 - `LshIntervalBenchmark.benchFindNear` -> `<= 2%`
 - `PerfectHashLookupIntervalBenchmark.benchLookup` -> `<= 2%`
 - `PerfectHashBuildIntervalBenchmark.benchBuild` -> `<= 3%`

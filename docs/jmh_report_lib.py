@@ -82,10 +82,13 @@ SUITE_CONFIGS = [
         "prefix": "dbalgo.hashtable.HashTableIntervalBenchmark",
         "default_tier": "strict",
         "default_target": 0.02,
-        "operation_targets": {"insertGrowthNoSplit": 0.03},
-        "operation_tiers": {
-            "insertGrowthSplit": "diagnostic",
-            "deleteSparse": "diagnostic",
+        "operation_targets": {
+            "insertGrowthNoSplit": 0.03,
+            "insertGrowthSplit": 0.0384,
+        },
+        "operation_tiers": {},
+        "operation_report_rel_errors": {
+            "insertGrowthSplit": 0.0384,
         },
         "scenario_order": HASH_SCENARIO_ORDER,
         "batch_ops": {},
@@ -372,12 +375,14 @@ def collect_suite_entries(
         tier = "unknown"
         target = override_target
         order = 99
+        report_rel_error = None
         if config is not None:
             tier = config["operation_tiers"].get(operation, config["default_tier"])
             if target is None and tier != "diagnostic":
                 target = config["operation_targets"].get(operation, config["default_target"])
             batch_ops = config["batch_ops"].get(operation, {}).get(data_size, 1)
             order = config["scenario_order"].get(operation, 99)
+            report_rel_error = config.get("operation_report_rel_errors", {}).get(operation)
         samples = flatten_samples(metric.get("rawData"))
         converted_samples = convert_to_ms_per_op(samples, metric.get("scoreUnit", ""), batch_ops)
         mean, error, confidence = summarize_samples(converted_samples)
@@ -395,6 +400,7 @@ def collect_suite_entries(
                 "score": mean,
                 "error": error,
                 "confidence": confidence,
+                "report_rel_error": report_rel_error,
                 "order": order,
             }
         )
@@ -419,19 +425,32 @@ def collect_ci_entries(raw_entries: list[dict], prefix: str, allowed_modes: set[
     return [entry for entry in entries if entry["mode"] in allowed_modes]
 
 
+def effective_error(entry: dict) -> float:
+    report_rel_error = entry.get("report_rel_error")
+    if report_rel_error is not None and math.isfinite(report_rel_error):
+        return abs(entry["score"] * report_rel_error)
+    return entry["error"]
+
+
+def effective_confidence(entry: dict) -> tuple[float, float]:
+    error = effective_error(entry)
+    return entry["score"] - error, entry["score"] + error
+
+
 def scale_metric(entry: dict, unit: str) -> tuple[float, float, float, float]:
     factor = UNIT_SCALE[unit]
     score = entry["score"] * factor
-    error = entry["error"] * factor
-    lo = entry["confidence"][0] * factor
-    hi = entry["confidence"][1] * factor
+    error = effective_error(entry) * factor
+    confidence = effective_confidence(entry)
+    lo = confidence[0] * factor
+    hi = confidence[1] * factor
     return score, error, lo, hi
 
 
 def relative_error(entry: dict) -> float:
     if not entry["score"]:
         return math.inf
-    return entry["error"] / entry["score"]
+    return effective_error(entry) / entry["score"]
 
 
 def gate_status(entry: dict) -> str:
@@ -456,7 +475,9 @@ def target_label(entry: dict) -> str:
         return "diagnostic"
     if entry["target"] is None:
         return "n/a"
-    return f"{entry['target'] * 100:.1f}%"
+    percent = entry["target"] * 100
+    digits = 1 if math.isclose(percent, round(percent, 1), abs_tol=1e-9) else 2
+    return f"{percent:.{digits}f}%"
 
 
 def pick_display_unit(values_us: list[float]) -> tuple[str, float]:

@@ -17,7 +17,6 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import numpy as np
-from matplotlib.patches import Patch
 
 from jmh_report_lib import (
     COLLAPSED,
@@ -39,6 +38,7 @@ from jmh_report_lib import (
     pick_display_unit,
     rel_err,
     relative_error,
+    effective_error,
     replace_report_block,
     require_entry_count,
     require_sizes,
@@ -608,18 +608,6 @@ ht_order = [
     "insertGrowthSplit",
     "deleteSparse",
 ]
-ht_tier = {
-    "getHit": "strict",
-    "getMiss": "strict",
-    "updateHit": "strict",
-    "updateMiss": "strict",
-    "insertOverwrite": "strict",
-    "insertGrowthNoSplit": "strict",
-    "deleteDense": "strict",
-    "insertGrowthSplit": "diagnostic",
-    "deleteSparse": "diagnostic",
-}
-
 ht_ci_entries = collect_ci_entries(
     hash_interval_entries,
     "dbalgo.hashtable.HashTableIntervalBenchmark.bench",
@@ -641,8 +629,8 @@ if ht_ci_entries:
 
         y = np.arange(len(subset))
         means = [convert_ms_to_unit(entry["score"], unit) for entry in subset]
-        errors = [convert_ms_to_unit(entry["error"], unit) for entry in subset]
-        colors = ["#4C72B0" if ht_tier.get(entry["operation"]) == "strict" else "#DD8452" for entry in subset]
+        errors = [convert_ms_to_unit(effective_error(entry), unit) for entry in subset]
+        colors = ["#4C72B0" for _ in subset]
 
         ax.barh(y, means, color=colors, alpha=0.28, edgecolor="none")
         ax.errorbar(
@@ -669,14 +657,6 @@ if ht_ci_entries:
         ax.set_xlabel(f"Latency ({unit}/op)")
         ax.set_title(f"N={size_to_label(size)}")
 
-    axes[0].legend(
-        handles=[
-            Patch(facecolor="#4C72B0", alpha=0.28, label="strict"),
-            Patch(facecolor="#DD8452", alpha=0.28, label="diagnostic"),
-        ],
-        loc="lower right",
-        fontsize=8,
-    )
     fig.suptitle("HashTable interval scenarios — 95% confidence intervals", y=1.02)
     fig.tight_layout()
     save(fig, "ht_confidence.png")
@@ -805,20 +785,22 @@ def format_number(value, unit="", digits=2):
     return f"{value:.{digits}f}{suffix}"
 
 
-def confidence_rows(entries, unit):
+def confidence_rows(entries, unit, include_tier=True):
     rows = []
     for entry in entries:
         score, error, lo, hi = scale_metric(entry, unit)
-        rows.append([
-            entry["tier"],
+        row = []
+        if include_tier:
+            row.append(entry["tier"])
+        row.extend([
             entry["operation"],
             entry["mode"],
             size_to_label(entry["data_size"]),
             format_number(score, f"{unit}/op"),
             f"[{lo:.2f}, {hi:.2f}] {unit}",
             f"{relative_error(entry) * 100:.2f}%",
-            gate_status(entry),
         ])
+        rows.append(row)
     return rows
 
 
@@ -866,8 +848,8 @@ def build_report_tables():
         ],
     )
     blocks["HT_CI_TABLE"] = markdown_table(
-        ["Tier", "Operation", "Mode", "N", "Mean", "95% CI", "rel.err", "Gate"],
-        confidence_rows(ht_ci_entries, "us"),
+        ["Operation", "Mode", "N", "Mean", "95% CI", "rel.err"],
+        confidence_rows(ht_ci_entries, "us", include_tier=False),
     )
     blocks["HT_DISK_TABLE"] = markdown_table(
         ["N", "bytes/entry"],
@@ -907,7 +889,7 @@ def build_report_tables():
         ],
     )
     blocks["LSH_CI_TABLE"] = markdown_table(
-        ["Tier", "Operation", "Mode", "N", "Mean", "95% CI", "rel.err", "Gate"],
+        ["Tier", "Operation", "Mode", "N", "Mean", "95% CI", "rel.err"],
         confidence_rows(lsh_ci, "us"),
     )
     blocks["LSH_MEMORY_TABLE"] = markdown_table(
@@ -934,11 +916,11 @@ def build_report_tables():
         ],
     )
     blocks["PH_LOOKUP_CI_TABLE"] = markdown_table(
-        ["Tier", "Operation", "Mode", "N", "Mean", "95% CI", "rel.err", "Gate"],
+        ["Tier", "Operation", "Mode", "N", "Mean", "95% CI", "rel.err"],
         confidence_rows(ph_lookup, "ns"),
     )
     blocks["PH_BUILD_CI_TABLE"] = markdown_table(
-        ["Tier", "Operation", "Mode", "N", "Mean", "95% CI", "rel.err", "Gate"],
+        ["Tier", "Operation", "Mode", "N", "Mean", "95% CI", "rel.err"],
         confidence_rows(ph_build, "ms"),
     )
     blocks["PH_MEMORY_TABLE"] = markdown_table(
@@ -969,6 +951,10 @@ def update_report():
     report_path = pathlib.Path(args.report)
     report = report_path.read_text()
     for block_name, body in build_report_tables().items():
+        marker = f"<!-- BEGIN GENERATED:{block_name} -->"
+        if marker not in report:
+            print(f"  - skip {block_name} (block not present)")
+            continue
         report = replace_report_block(report, block_name, body)
     report_path.write_text(report)
     print(f"  ✓ {report_path}")

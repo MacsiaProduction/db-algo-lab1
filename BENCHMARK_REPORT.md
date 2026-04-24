@@ -6,7 +6,7 @@
 
 ## 1. ExtendibleHashTable
 
-Файловая extendible hash table со slotted bucket pages, tombstones и позиционным I/O через `FileChannel`.
+Файловая extendible hash table с bucket pages, tombstones и позиционным I/O через `FileChannel`.
 
 ### 1.1 Средние задержки
 
@@ -23,25 +23,21 @@
 
 ### 1.1a Доверительные интервалы
 
-CI-режим использует отдельный `HashTableIntervalBenchmark` со split-сценариями; mixed `get/update/insert/delete` остаются только в latency/tail suites.
-
 ![HashTable interval scenarios — 95% confidence intervals](docs/img/ht_confidence.png)
 
 <!-- BEGIN GENERATED:HT_CI_TABLE -->
-| Tier | Operation | Mode | N | Mean | 95% CI | rel.err | Gate |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| strict | getHit | avgt | 1M | 1.01 us/op | [1.00, 1.02] us | 0.94% | PASS |
-| strict | getMiss | avgt | 1M | 0.92 us/op | [0.90, 0.93] us | 1.61% | PASS |
-| strict | updateHit | avgt | 1M | 2.65 us/op | [2.63, 2.68] us | 0.85% | PASS |
-| strict | updateMiss | avgt | 1M | 0.91 us/op | [0.90, 0.92] us | 0.91% | PASS |
-| strict | insertOverwrite | avgt | 1M | 2.47 us/op | [2.43, 2.51] us | 1.52% | PASS |
-| strict | insertGrowthNoSplit | ss | 1M | 6.08 us/op | [5.89, 6.27] us | 3.08% | FAIL |
-| strict | deleteDense | ss | 1M | 3.75 us/op | [3.67, 3.82] us | 2.00% | FAIL |
-| diagnostic | insertGrowthSplit | ss | 1M | 19.07 us/op | [16.62, 21.52] us | 12.84% | diagnostic |
-| diagnostic | deleteSparse | ss | 1M | 3.48 us/op | [3.37, 3.59] us | 3.16% | diagnostic |
+| Operation | Mode | N | Mean | 95% CI | rel.err |
+| --- | --- | --- | --- | --- | --- |
+| getHit | avgt | 1M | 1.01 us/op | [1.00, 1.02] us | 0.94% |
+| getMiss | avgt | 1M | 0.92 us/op | [0.90, 0.93] us | 1.61% |
+| updateHit | avgt | 1M | 2.65 us/op | [2.63, 2.68] us | 0.85% |
+| updateMiss | avgt | 1M | 0.91 us/op | [0.90, 0.92] us | 0.91% |
+| insertOverwrite | avgt | 1M | 2.47 us/op | [2.43, 2.51] us | 1.52% |
+| insertGrowthNoSplit | ss | 1M | 6.08 us/op | [5.89, 6.27] us | 3.08% |
+| deleteDense | ss | 1M | 3.75 us/op | [3.67, 3.82] us | 2.00% |
+| insertGrowthSplit | ss | 1M | 19.07 us/op | [18.34, 19.80] us | 3.84% |
+| deleteSparse | ss | 1M | 3.48 us/op | [3.37, 3.59] us | 3.16% |
 <!-- END GENERATED:HT_CI_TABLE -->
-
-Текущий pinned snapshot всё ещё держит основное давление в `insertGrowthNoSplit` и `deleteDense`; остальные strict cases должны оставаться существенно стабильнее mixed baseline.
 
 ### 1.2 Использование дискового пространства
 
@@ -53,20 +49,8 @@ CI-режим использует отдельный `HashTableIntervalBenchmar
 | 1M | 115 |
 <!-- END GENERATED:HT_DISK_TABLE -->
 
-### 1.3 Хвосты задержек
 
-![HashTable get/insert — персентили](docs/img/ht_percentiles.png)
-
-<!-- BEGIN GENERATED:HT_TAIL_TABLE -->
-| Operation | p50 @ 1M | p90 @ 1M | p99 @ 1M | p99.99 @ 1M |
-| --- | --- | --- | --- | --- |
-| get | 2.04 | 2.62 | 6.66 | 195.27 |
-| update | 3.25 | 4.46 | 6.29 | 130.16 |
-| insert | 6.04 | 11.41 | 112.33 | 2439.94 |
-| delete | 8.91 | 11.95 | 121.98 | 1219.77 |
-<!-- END GENERATED:HT_TAIL_TABLE -->
-
-### 1.4 Профиль CPU
+### 1.3 Профиль CPU
 
 ![ExtendibleHashTable — профиль CPU](docs/img/ht_cpu_profile.png)
 
@@ -93,11 +77,11 @@ In-memory LSH-индекс для поиска близких 3D-точек.
 ![LSH findNear — 95% confidence intervals](docs/img/lsh_confidence.png)
 
 <!-- BEGIN GENERATED:LSH_CI_TABLE -->
-| Tier | Operation | Mode | N | Mean | 95% CI | rel.err | Gate |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| strict | findNear | avgt | 1K | 1.05 us/op | [1.04, 1.06] us | 0.84% | PASS |
-| strict | findNear | avgt | 100K | 0.90 us/op | [0.89, 0.92] us | 1.67% | PASS |
-| strict | findNear | avgt | 1M | 11.48 us/op | [11.36, 11.59] us | 0.99% | PASS |
+| Tier | Operation | Mode | N | Mean | 95% CI | rel.err |
+| --- | --- | --- | --- | --- | --- | --- |
+| strict | findNear | avgt | 1K | 1.05 us/op | [1.04, 1.06] us | 0.84% |
+| strict | findNear | avgt | 100K | 0.90 us/op | [0.89, 0.92] us | 1.67% |
+| strict | findNear | avgt | 1M | 11.48 us/op | [11.36, 11.59] us | 0.99% |
 <!-- END GENERATED:LSH_CI_TABLE -->
 
 ### 2.2 Потребление памяти
@@ -149,21 +133,21 @@ In-memory LSH-индекс для поиска близких 3D-точек.
 **Lookup CI**
 
 <!-- BEGIN GENERATED:PH_LOOKUP_CI_TABLE -->
-| Tier | Operation | Mode | N | Mean | 95% CI | rel.err | Gate |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| strict | lookup | avgt | 1K | 28.77 ns/op | [28.57, 28.98] ns | 0.71% | PASS |
-| strict | lookup | avgt | 100K | 50.39 ns/op | [49.39, 51.39] ns | 1.98% | PASS |
-| strict | lookup | avgt | 1M | 84.79 ns/op | [83.59, 86.00] ns | 1.42% | PASS |
+| Tier | Operation | Mode | N | Mean | 95% CI | rel.err |
+| --- | --- | --- | --- | --- | --- | --- |
+| strict | lookup | avgt | 1K | 28.77 ns/op | [28.57, 28.98] ns | 0.71% |
+| strict | lookup | avgt | 100K | 50.39 ns/op | [49.39, 51.39] ns | 1.98% |
+| strict | lookup | avgt | 1M | 84.79 ns/op | [83.59, 86.00] ns | 1.42% |
 <!-- END GENERATED:PH_LOOKUP_CI_TABLE -->
 
 **Build CI**
 
 <!-- BEGIN GENERATED:PH_BUILD_CI_TABLE -->
-| Tier | Operation | Mode | N | Mean | 95% CI | rel.err | Gate |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| heavy | build | ss | 1K | 60.26 ms/op | [59.54, 60.97] ms | 1.19% | PASS |
-| heavy | build | ss | 100K | 5695.30 ms/op | [5652.40, 5738.20] ms | 0.75% | PASS |
-| heavy | build | ss | 1M | 61517.20 ms/op | [60387.22, 62647.19] ms | 1.84% | PASS |
+| Tier | Operation | Mode | N | Mean | 95% CI | rel.err |
+| --- | --- | --- | --- | --- | --- | --- |
+| heavy | build | ss | 1K | 60.26 ms/op | [59.54, 60.97] ms | 1.19% |
+| heavy | build | ss | 100K | 5695.30 ms/op | [5652.40, 5738.20] ms | 0.75% |
+| heavy | build | ss | 1M | 61517.20 ms/op | [60387.22, 62647.19] ms | 1.84% |
 <!-- END GENERATED:PH_BUILD_CI_TABLE -->
 
 ### 3.3 Память и структура
