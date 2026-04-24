@@ -785,7 +785,7 @@ def format_number(value, unit="", digits=2):
     return f"{value:.{digits}f}{suffix}"
 
 
-def confidence_rows(entries, unit, include_tier=True):
+def confidence_rows(entries, unit, include_tier=False):
     rows = []
     for entry in entries:
         score, error, lo, hi = scale_metric(entry, unit)
@@ -889,7 +889,7 @@ def build_report_tables():
         ],
     )
     blocks["LSH_CI_TABLE"] = markdown_table(
-        ["Tier", "Operation", "Mode", "N", "Mean", "95% CI", "rel.err"],
+        ["Operation", "Mode", "N", "Mean", "95% CI", "rel.err"],
         confidence_rows(lsh_ci, "us"),
     )
     blocks["LSH_MEMORY_TABLE"] = markdown_table(
@@ -916,11 +916,11 @@ def build_report_tables():
         ],
     )
     blocks["PH_LOOKUP_CI_TABLE"] = markdown_table(
-        ["Tier", "Operation", "Mode", "N", "Mean", "95% CI", "rel.err"],
+        ["Operation", "Mode", "N", "Mean", "95% CI", "rel.err"],
         confidence_rows(ph_lookup, "ns"),
     )
     blocks["PH_BUILD_CI_TABLE"] = markdown_table(
-        ["Tier", "Operation", "Mode", "N", "Mean", "95% CI", "rel.err"],
+        ["Operation", "Mode", "N", "Mean", "95% CI", "rel.err"],
         confidence_rows(ph_build, "ms"),
     )
     blocks["PH_MEMORY_TABLE"] = markdown_table(

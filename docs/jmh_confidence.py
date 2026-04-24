@@ -69,13 +69,13 @@ def parse_args() -> argparse.Namespace:
 
 
 def print_markdown(entries: list[dict], unit: str) -> None:
-    print("| Tier | Operation | Mode | N | Mean | 95% CI | ±error | rel.err | Samples | Target | Gate | Hint |")
-    print("|------|-----------|:----:|--:|-----:|:-------|-------:|--------:|--------:|:------:|:-----|:-----|")
+    print("| Operation | Mode | N | Mean | 95% CI | ±error | rel.err | Samples | Target | Gate | Hint |")
+    print("|-----------|:----:|--:|-----:|:-------|-------:|--------:|--------:|:------:|:-----|:-----|")
     for entry in entries:
         score, error, lo, hi = scale_metric(entry, unit)
         hint = sample_hint(entry) or " "
         print(
-            f"| {entry['tier']} | {entry['operation']} | {MODE_LABELS.get(entry['mode'], entry['mode'])} | "
+            f"| {entry['operation']} | {MODE_LABELS.get(entry['mode'], entry['mode'])} | "
             f"{entry['data_size']:,} | {score:.2f} {unit}/op | "
             f"[{lo:.2f}, {hi:.2f}] | {error:.2f} {unit} | "
             f"{relative_error(entry) * 100:.2f}% | {entry['samples']} | {target_label(entry)} | "
@@ -88,7 +88,7 @@ def print_plain(entries: list[dict], unit: str) -> None:
         score, error, lo, hi = scale_metric(entry, unit)
         hint = sample_hint(entry)
         print(
-            f"{entry['tier']:<10} {MODE_LABELS.get(entry['mode'], entry['mode']):>9}  "
+            f"{MODE_LABELS.get(entry['mode'], entry['mode']):>9}  "
             f"{entry['operation']:>20}  N={entry['data_size']:<7}  "
             f"{score:9.3f} {unit}/op  "
             f"95% CI [{lo:.3f}, {hi:.3f}]  "
