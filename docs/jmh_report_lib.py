@@ -161,7 +161,15 @@ def normalize_operation(name: str) -> str:
 
 
 def size_to_label(size: int) -> str:
-    return SIZE_LABELS.get(size, f"{size:,}")
+    if size in SIZE_LABELS:
+        return SIZE_LABELS[size]
+    if size >= 1_000_000 and size % 1_000_000 == 0:
+        return f"{size // 1_000_000}M"
+    if size >= 1_000_000 and size % 500_000 == 0:
+        return f"{size / 1_000_000:.1f}M"
+    if size >= 1_000 and size % 1_000 == 0:
+        return f"{size // 1_000}K"
+    return f"{size:,}"
 
 
 def as_float(value: object) -> float | None:

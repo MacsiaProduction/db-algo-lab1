@@ -19,6 +19,11 @@
     ],
     "perfect_hash_build_interval": [
       "build/results/jmh/ph_build_gate_latest.json"
+    ],
+    "lookup_scaling": [
+      "build/results/lookup_scaling_lsh_1k_1m_step_10k.json",
+      "build/results/lookup_scaling_ph_log_1k_50m.json",
+      "build/results/lookup_scaling_ph_log_1k_50m_median5.json"
     ]
   }
 }

@@ -62,13 +62,48 @@ def parse_args():
     return parser.parse_args()
 
 
+def resolve_manifest_path(root, path_value):
+    candidate = pathlib.Path(path_value)
+    return candidate if candidate.is_absolute() else root / candidate
+
+
+def load_lookup_scaling_dataset(manifest, root):
+    dataset_paths = manifest.get("datasets", {}).get("lookup_scaling", [])
+    if not dataset_paths:
+        return {"ramBudgetBytes": None, "perfectHash": [], "lsh": []}
+
+    merged = {"perfectHash": {}, "lsh": {}}
+    ram_budget_bytes = None
+    for path_value in dataset_paths:
+        path = resolve_manifest_path(root, path_value)
+        if not path.exists():
+            raise FileNotFoundError(f"Lookup scaling dataset references missing file: {path}")
+        payload = json.loads(path.read_text())
+        budget = payload.get("ramBudgetBytes")
+        if budget is not None:
+            ram_budget_bytes = int(budget)
+        for series_name in merged:
+            for point in payload.get(series_name, []):
+                merged[series_name][int(point["dataSize"])] = point
+
+    out = {
+        series_name: [merged[series_name][size] for size in sorted(merged[series_name])]
+        for series_name in merged
+    }
+    out["ramBudgetBytes"] = ram_budget_bytes
+    return out
+
+
 args = parse_args()
-manifest = load_manifest(path=pathlib.Path(args.manifest))
+manifest_path = pathlib.Path(args.manifest).resolve()
+project_root = manifest_path.parent.parent
+manifest = load_manifest(path=manifest_path)
 core_entries = load_dataset_entries(manifest, "core")
 hash_interval_entries = load_dataset_entries(manifest, "hash_table_interval")
 lsh_interval_entries = load_dataset_entries(manifest, "lsh_interval")
 ph_lookup_interval_entries = load_dataset_entries(manifest, "perfect_hash_lookup_interval")
 ph_build_interval_entries = load_dataset_entries(manifest, "perfect_hash_build_interval")
+lookup_scaling = load_lookup_scaling_dataset(manifest, project_root)
 raw = core_entries
 
 OUT.mkdir(parents=True, exist_ok=True)
@@ -78,7 +113,8 @@ print(
     f" ht_interval={len(hash_interval_entries)},"
     f" lsh_interval={len(lsh_interval_entries)},"
     f" ph_lookup_interval={len(ph_lookup_interval_entries)},"
-    f" ph_build_interval={len(ph_build_interval_entries)}"
+    f" ph_build_interval={len(ph_build_interval_entries)},"
+    f" lookup_scaling(ph={len(lookup_scaling['perfectHash'])}, lsh={len(lookup_scaling['lsh'])})"
 )
 
 # ── helpers ──────────────────────────────────────────────────────────
@@ -90,6 +126,7 @@ plt.rcParams.update({
 
 COLORS = ["#4C72B0", "#DD8452", "#55A868", "#C44E52", "#8172B3", "#937860"]
 SIZE_LABEL_LIST = [SIZE_LABELS[size] for size in SIZES]
+PH_LOOKUP_PROFILE_SIZE = 50_000_000
 
 def save(fig, name):
     fig.savefig(OUT / name, bbox_inches="tight", pad_inches=0.15)
@@ -99,6 +136,27 @@ def save(fig, name):
 def save_text(name, text):
     (OUT / name).write_text(text, encoding="utf-8")
     print(f"  ✓ {name}")
+
+def render_missing_chart(name, title, message):
+    fig, ax = plt.subplots(figsize=(6, 2.5))
+    ax.set_axis_off()
+    ax.text(0.5, 0.6, title, ha="center", va="center", fontsize=12, fontweight="bold")
+    ax.text(0.5, 0.42, message, ha="center", va="center", fontsize=9, color="#555555")
+    save(fig, name)
+
+def render_missing_svg(name, title, message):
+    save_text(
+        name,
+        "\n".join([
+            '<?xml version="1.0" encoding="UTF-8"?>',
+            '<svg xmlns="http://www.w3.org/2000/svg" width="1224" height="160" viewBox="0 0 1224 160">',
+            '<style>text{font-family:Menlo,Consolas,monospace;fill:#1f1f1f}.title{font-size:16px;font-weight:700}.meta{font-size:12px;fill:#555}</style>',
+            '<rect width="100%" height="100%" fill="#fffdf8"/>',
+            f'<text class="title" x="24" y="56">{html.escape(title)}</text>',
+            f'<text class="meta" x="24" y="84">{html.escape(message)}</text>',
+            '</svg>',
+        ]),
+    )
 
 def extract(entries_or_suffix, bench_suffix=None, mode=None):
     if mode is None:
@@ -116,6 +174,138 @@ def extract(entries_or_suffix, bench_suffix=None, mode=None):
 
 def has_sizes(data):
     return all(size in data for size in SIZES)
+
+
+def format_latency_for_annotation(value, unit):
+    digits = 1 if unit == "ns" else 2
+    return f"{value:.{digits}f} {unit}/op"
+
+
+def format_total_ram_label(total_bytes):
+    gib = total_bytes / (1024 ** 3)
+    if gib >= 1:
+        return f"{gib:.2f} GiB"
+    return f"{total_bytes / (1024 ** 2):.0f} MiB"
+
+
+def tick_indices(count, target=14):
+    if count <= target:
+        return list(range(count))
+    step = math.ceil((count - 1) / (target - 1))
+    indices = list(range(0, count, step))
+    if indices[-1] != count - 1:
+        indices.append(count - 1)
+    return indices
+
+
+def render_lsh_lookup_scaling_chart(points, out_name, ram_budget_bytes):
+    if not points:
+        print(f"  WARNING: no lookup scaling data, skipping {out_name}")
+        return
+
+    sizes = np.array([point["dataSize"] for point in points], dtype=float)
+    latency_values = np.array([
+        convert_ms_to_unit(point["latencyNsPerOp"] / 1_000_000.0, "us")
+        for point in points
+    ])
+    ram_values_mib = np.array([point["totalHeapBytes"] / (1024 ** 2) for point in points], dtype=float)
+    candidate_values = np.array([point.get("avgCandidateCount", math.nan) for point in points], dtype=float)
+
+    fig, (ax_latency, ax_candidates, ax_ram) = plt.subplots(
+        3,
+        1,
+        figsize=(14, 9.2),
+        sharex=True,
+        gridspec_kw={"height_ratios": [1.0, 1.0, 0.9]},
+    )
+
+    ax_latency.plot(
+        sizes,
+        latency_values,
+        linewidth=1.3,
+        color="#4C72B0",
+        label="Latency (us/op)",
+    )
+    ax_candidates.plot(
+        sizes,
+        candidate_values,
+        linewidth=1.3,
+        color="#8172B3",
+        label="Avg checked candidates / lookup",
+    )
+
+    ax_ram.plot(
+        sizes,
+        ram_values_mib,
+        linewidth=1.3,
+        linestyle="--",
+        color="#C44E52",
+        label="Total RAM (MiB)",
+    )
+
+    mark_indices = tick_indices(len(points), target=12)
+    for idx in mark_indices:
+        ax_latency.scatter(sizes[idx], latency_values[idx], color="#4C72B0", s=22, zorder=3)
+        ax_candidates.scatter(sizes[idx], candidate_values[idx], color="#8172B3", s=22, zorder=3)
+        ax_ram.scatter(sizes[idx], ram_values_mib[idx], color="#C44E52", s=22, zorder=3)
+
+    tick_idx = tick_indices(len(points), target=16)
+    ax_ram.set_xticks([sizes[idx] for idx in tick_idx])
+    ax_ram.set_xticklabels([size_to_label(int(sizes[idx])) for idx in tick_idx], rotation=45, ha="right")
+    ax_latency.set_ylabel("Latency (us/op)", color="#4C72B0")
+    ax_candidates.set_ylabel("Avg checked candidates", color="#8172B3")
+    ax_ram.set_ylabel("Total RAM (MiB)", color="#C44E52")
+    ax_latency.tick_params(axis="y", colors="#4C72B0")
+    ax_candidates.tick_params(axis="y", colors="#8172B3")
+    ax_ram.tick_params(axis="y", colors="#C44E52")
+    ax_ram.set_xlabel("Data size")
+    ax_latency.set_title("LSH findNear — dense lookup scaling")
+    for ax in [ax_latency, ax_candidates, ax_ram]:
+        ax.grid(True, axis="y")
+        ax.grid(False, axis="x")
+        ax.legend(loc="upper left", framealpha=0.9)
+    fig.tight_layout()
+    save(fig, out_name)
+
+
+def render_perfect_hash_lookup_scaling_chart(points, out_name, ram_budget_bytes):
+    if not points:
+        print(f"  WARNING: no lookup scaling data, skipping {out_name}")
+        return
+
+    sizes = np.array([point["dataSize"] for point in points], dtype=float)
+    latency_values = np.array([
+        convert_ms_to_unit(point["latencyNsPerOp"] / 1_000_000.0, "ns")
+        for point in points
+    ])
+    ram_values_gib = np.array([point["totalHeapBytes"] / (1024 ** 3) for point in points], dtype=float)
+
+    fig, (ax_latency, ax_ram) = plt.subplots(
+        2,
+        1,
+        figsize=(11, 6.8),
+        sharex=True,
+        gridspec_kw={"height_ratios": [1.1, 1.0]},
+    )
+    ax_latency.plot(sizes, latency_values, marker="o", linewidth=1.8, color="#55A868", label="Latency (ns/op)")
+    ax_ram.plot(sizes, ram_values_gib, marker="s", linewidth=1.8, linestyle="--", color="#DD8452", label="Total RAM (GiB)")
+
+    ax_latency.set_xscale("log")
+    ax_ram.set_xscale("log")
+    ax_ram.set_xticks(sizes)
+    ax_ram.set_xticklabels([size_to_label(int(size)) for size in sizes], rotation=45, ha="right")
+    ax_latency.set_ylabel("Latency (ns/op)", color="#55A868")
+    ax_ram.set_ylabel("Total RAM (GiB)", color="#DD8452")
+    ax_latency.tick_params(axis="y", colors="#55A868")
+    ax_ram.tick_params(axis="y", colors="#DD8452")
+    ax_ram.set_xlabel("Data size (log scale)")
+    ax_latency.set_title("PerfectHash lookup — logarithmic scaling")
+    for ax in [ax_latency, ax_ram]:
+        ax.grid(True, axis="y")
+        ax.grid(True, axis="x", alpha=0.18)
+        ax.legend(loc="upper left", framealpha=0.9)
+    fig.tight_layout()
+    save(fig, out_name)
 
 
 # ── Flamegraph renderer (from async-profiler collapsed stacks) ─────
@@ -338,17 +528,23 @@ def get_cat_val(prof, cat):
 # Flamegraphs: representative CPU stacks from collapsed profiles
 # ═════════════════════════════════════════════════════════════════════
 print("Flamegraphs: rendering SVGs from collapsed stacks")
-for bench_name, out_name, title in [
+for bench_name, out_name, title, data_size in [
     ("dbalgo.hashtable.HashTableBenchmark.benchUpdate", "ht_update_flamegraph.svg",
-     "ExtendibleHashTable.update() — flamegraph (N=1M)"),
+     "ExtendibleHashTable.update() — flamegraph (N=1M)", 1_000_000),
     ("dbalgo.lsh.LshBenchmark.benchRpFindNear", "lsh_find_near_flamegraph.svg",
-     "RandomProjectionLshIndex.findNear() — flamegraph (N=1M)"),
+     "RandomProjectionLshIndex.findNear() — flamegraph (N=1M)", 1_000_000),
     ("dbalgo.perfecthash.PerfectHashBenchmark.benchLookup", "ph_lookup_flamegraph.svg",
-     "PerfectHashMap.lookup() — flamegraph (N=1M)"),
+     "PerfectHashMap.lookup() — flamegraph (N=50M)", PH_LOOKUP_PROFILE_SIZE),
 ]:
-    collapsed = load_collapsed(bench_name)
+    collapsed = load_collapsed(bench_name, data_size=data_size)
     if collapsed is not None:
         render_flamegraph(collapsed, out_name, title)
+    elif out_name == "ph_lookup_flamegraph.svg":
+        render_missing_svg(
+            out_name,
+            "PerfectHashMap.lookup() — flamegraph (N=50M)",
+            "Run the 50M profiled JMH command, then regenerate charts.",
+        )
 
 
 # ═════════════════════════════════════════════════════════════════════
@@ -429,7 +625,7 @@ save(fig, "ht_cpu_profile.png")
 # ═════════════════════════════════════════════════════════════════════
 print("Chart 3: PerfectHash lookup CPU (from JFR)")
 ph_prefix = "dbalgo.perfecthash.PerfectHashBenchmark"
-lookup_cats, lookup_methods, ln = load_profile(f"{ph_prefix}.benchLookup")
+lookup_cats, lookup_methods, ln = load_profile(f"{ph_prefix}.benchLookup", data_size=PH_LOOKUP_PROFILE_SIZE)
 print(f"  {ln} samples, top: {dict(list(lookup_methods.items())[:5])}")
 
 def group_ph_lookup(methods):
@@ -455,24 +651,31 @@ def group_ph_lookup(methods):
 
 ph_groups = group_ph_lookup(lookup_methods)
 
-fig, ax = plt.subplots(figsize=(6, 2.5))
-ph_labels = list(ph_groups.keys())
-ph_vals = list(ph_groups.values())
-ph_cols = ["#4C72B0", "#DD8452", "#55A868", "#C44E52", "#CCCCCC"]
+if ln == 0:
+    render_missing_chart(
+        "ph_lookup_cpu.png",
+        "PerfectHashMap.lookup() — профиль CPU (N=50M)",
+        "Run the 50M profiled JMH command, then regenerate charts.",
+    )
+else:
+    fig, ax = plt.subplots(figsize=(6, 2.5))
+    ph_labels = list(ph_groups.keys())
+    ph_vals = list(ph_groups.values())
+    ph_cols = ["#4C72B0", "#DD8452", "#55A868", "#C44E52", "#CCCCCC"]
 
-y = np.arange(len(ph_labels))
-bars = ax.barh(y, ph_vals, color=ph_cols[:len(ph_labels)], edgecolor="white",
-               linewidth=0.5, height=0.6)
-for bar, v in zip(bars, ph_vals):
-    ax.text(bar.get_width() + 1, bar.get_y() + bar.get_height() / 2,
-            f"{v:.0f}%", va="center", fontsize=9)
-ax.set_yticks(y)
-ax.set_yticklabels(ph_labels)
-ax.set_xlabel("% CPU time")
-ax.set_title("PerfectHashMap.lookup() — профиль CPU (N=1M)")
-ax.set_xlim(0, max(ph_vals) * 1.15)
-ax.invert_yaxis()
-save(fig, "ph_lookup_cpu.png")
+    y = np.arange(len(ph_labels))
+    bars = ax.barh(y, ph_vals, color=ph_cols[:len(ph_labels)], edgecolor="white",
+                   linewidth=0.5, height=0.6)
+    for bar, v in zip(bars, ph_vals):
+        ax.text(bar.get_width() + 1, bar.get_y() + bar.get_height() / 2,
+                f"{v:.0f}%", va="center", fontsize=9)
+    ax.set_yticks(y)
+    ax.set_yticklabels(ph_labels)
+    ax.set_xlabel("% CPU time")
+    ax.set_title("PerfectHashMap.lookup() — профиль CPU (N=50M)")
+    ax.set_xlim(0, max(ph_vals) * 1.15)
+    ax.invert_yaxis()
+    save(fig, "ph_lookup_cpu.png")
 
 # ═════════════════════════════════════════════════════════════════════
 # Chart 4: LSH CPU profile (pie from JFR)
@@ -763,6 +966,29 @@ if ph_lookup or ph_build:
 else:
     print("  WARNING: no PerfectHash confidence entries, skipping ph_confidence.png")
 
+# ═════════════════════════════════════════════════════════════════════
+# Chart 10: Detailed lookup scaling (latency + RAM)
+# ═════════════════════════════════════════════════════════════════════
+print("Chart 10: Detailed lookup scaling")
+if lookup_scaling["lsh"]:
+    render_lsh_lookup_scaling_chart(
+        points=lookup_scaling["lsh"],
+        out_name="lsh_lookup_detail.png",
+        ram_budget_bytes=lookup_scaling["ramBudgetBytes"],
+    )
+else:
+    print("  WARNING: no LSH lookup scaling dataset, skipping lsh_lookup_detail.png")
+
+if lookup_scaling["perfectHash"]:
+    render_perfect_hash_lookup_scaling_chart(
+        points=lookup_scaling["perfectHash"],
+        out_name="ph_lookup_detail.png",
+        ram_budget_bytes=lookup_scaling["ramBudgetBytes"],
+    )
+else:
+    print("  WARNING: no PerfectHash lookup scaling dataset, skipping ph_lookup_detail.png")
+
+
 def metric_score(entry, unit):
     metric = entry["primaryMetric"]
     return convert_ms_to_unit(
@@ -801,6 +1027,39 @@ def confidence_rows(entries, unit, include_tier=False):
             f"{relative_error(entry) * 100:.2f}%",
         ])
         rows.append(row)
+    return rows
+
+
+def lsh_lookup_scaling_rows(points):
+    rows = []
+    for point in points:
+        rows.append([
+            size_to_label(int(point["dataSize"])),
+            format_number(
+                convert_ms_to_unit(point["latencyNsPerOp"] / 1_000_000.0, "us"),
+                "us/op",
+                digits=2,
+            ),
+            format_total_ram_label(point["totalHeapBytes"]),
+            format_number(point.get("avgCandidateCount", math.nan), digits=1),
+            format_number(point.get("avgMatchCount", math.nan), digits=1),
+        ])
+    return rows
+
+
+def perfect_hash_lookup_scaling_rows(points):
+    rows = []
+    for point in points:
+        rows.append([
+            size_to_label(int(point["dataSize"])),
+            format_number(
+                convert_ms_to_unit(point["latencyNsPerOp"] / 1_000_000.0, "ns"),
+                "ns/op",
+                digits=1,
+            ),
+            format_total_ram_label(point["totalHeapBytes"]),
+            point.get("source", "actual"),
+        ])
     return rows
 
 
@@ -896,6 +1155,11 @@ def build_report_tables():
         ["N", "bytes/entry"],
         [[size_to_label(size), str(lsh_heap[size])] for size in SIZES],
     )
+    if lookup_scaling["lsh"]:
+        blocks["LSH_LOOKUP_DETAIL_TABLE"] = markdown_table(
+            ["N", "latency", "total RAM", "avg checked candidates", "avg matches"],
+            lsh_lookup_scaling_rows(lookup_scaling["lsh"]),
+        )
 
     blocks["PH_BUILD_TABLE"] = markdown_table(
         ["N", "build time (ms)"],
@@ -935,6 +1199,11 @@ def build_report_tables():
             for size in SIZES
         ],
     )
+    if lookup_scaling["perfectHash"]:
+        blocks["PH_LOOKUP_DETAIL_TABLE"] = markdown_table(
+            ["N", "latency", "total RAM", "source"],
+            perfect_hash_lookup_scaling_rows(lookup_scaling["perfectHash"]),
+        )
     blocks["MEMORY_COMPARISON_TABLE"] = markdown_table(
         ["Structure", "1K", "100K", "1M"],
         [

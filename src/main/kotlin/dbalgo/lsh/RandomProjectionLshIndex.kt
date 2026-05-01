@@ -20,10 +20,10 @@ import kotlin.math.sqrt
 class RandomProjectionLshIndex(
     private val numHashes: Int = 64,
     private val numBands: Int = 8,
-    private val binWidth: Double = 5.0
+    private val binWidth: Double = 5.0,
+    private val fullScanThreshold: Int = 4_000,
 ) {
     private val hashesPerBand = numHashes / numBands
-    private val fullScanThreshold = 4_000
 
     private var size = 0
     private var ids = arrayOfNulls<String>(16)
@@ -41,6 +41,7 @@ class RandomProjectionLshIndex(
     init {
         require(numHashes % numBands == 0) { "numHashes должен делиться на numBands" }
         require(binWidth > 0) { "binWidth должен быть положительным" }
+        require(fullScanThreshold >= 0) { "fullScanThreshold должен быть неотрицательным" }
 
         val rng = Random(RANDOM_SEED)
         for (i in 0 until numHashes) {
@@ -61,6 +62,12 @@ class RandomProjectionLshIndex(
         }
     }
 
+    data class NearSearchStats(
+        val results: List<Pair<String, Double>>,
+        val candidateCount: Int,
+        val matchCount: Int,
+    )
+
     fun add(id: String, point: Point3D) {
         ensureCapacity(size + 1)
         ids[size] = id
@@ -68,11 +75,10 @@ class RandomProjectionLshIndex(
         ys[size] = point.y
         zs[size] = point.z
 
-        val scratch = searchScratch.get()
-        scratch.ensureCapacity(size + 1)
-        computeHashes(point.x, point.y, point.z, scratch.queryHashes)
+        val queryHashes = searchScratch.get().queryHashes
+        computeHashes(point.x, point.y, point.z, queryHashes)
         for (band in 0 until numBands) {
-            val bandHash = bandHash(scratch.queryHashes, band)
+            val bandHash = bandHash(queryHashes, band)
             bandBuckets[band].getOrPut(bandHash, ::IntBag).add(size)
         }
         size++
@@ -80,8 +86,12 @@ class RandomProjectionLshIndex(
 
     /** Ищет точки ближе maxDistance к заданной. */
     fun findNear(query: Point3D, maxDistance: Double): List<Pair<String, Double>> {
+        return findNearWithStats(query, maxDistance).results
+    }
+
+    fun findNearWithStats(query: Point3D, maxDistance: Double): NearSearchStats {
         if (size == 0) {
-            return emptyList()
+            return NearSearchStats(emptyList(), candidateCount = 0, matchCount = 0)
         }
 
         val scratch = searchScratch.get()
@@ -102,7 +112,7 @@ class RandomProjectionLshIndex(
             scratch = scratch,
         )
         if (resultCount == 0) {
-            return emptyList()
+            return NearSearchStats(emptyList(), candidateCount = candidateCount, matchCount = 0)
         }
 
         sortResultsByDistance(scratch.resultIds, scratch.resultDistances, 0, resultCount - 1)
@@ -110,7 +120,7 @@ class RandomProjectionLshIndex(
         for (i in 0 until resultCount) {
             result += ids[scratch.resultIds[i]]!! to scratch.resultDistances[i]
         }
-        return result
+        return NearSearchStats(result, candidateCount = candidateCount, matchCount = resultCount)
     }
 
     /** Все пары точек с расстоянием <= maxDistance. */

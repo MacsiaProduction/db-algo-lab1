@@ -14,6 +14,8 @@ kotlin {
     jvmToolchain(23)
 }
 
+val mainSourceSet = the<org.gradle.api.tasks.SourceSetContainer>().named("main")
+
 dependencies {
     implementation("org.jetbrains:annotations:24.1.0")
     testImplementation(kotlin("test"))
@@ -38,6 +40,46 @@ val jmhInclude = providers.gradleProperty("jmhInclude").orNull
 val jmhDataSize = providers.gradleProperty("jmhDataSize").orNull
 val jmhResultFile = providers.gradleProperty("jmhResultFile").orNull
 val jmhPreset = providers.gradleProperty("jmhPreset").orNull ?: "default"
+val jmhMaxHeap = providers.gradleProperty("jmhMaxHeap").orNull
+val lookupScalingOutput = providers.gradleProperty("lookupScalingOutput").orNull
+    ?: "build/results/lookup_scaling.json"
+val lookupScalingDataSizes = providers.gradleProperty("lookupScalingDataSizes").orNull
+val lookupScalingRamBudgetGiB = providers.gradleProperty("lookupScalingRamBudgetGiB").orNull
+    ?: "10"
+val lookupScalingSeries = providers.gradleProperty("lookupScalingSeries").orNull
+    ?: "all"
+val lookupScalingWarmupRepetitions = providers.gradleProperty("lookupScalingWarmupRepetitions").orNull
+    ?: "2"
+val lookupScalingMeasurementRepetitions = providers.gradleProperty("lookupScalingMeasurementRepetitions").orNull
+    ?: "10"
+val lookupScalingPointRepetitions = providers.gradleProperty("lookupScalingPointRepetitions").orNull
+    ?: "1"
+val lookupScalingMaxHeap = providers.gradleProperty("lookupScalingMaxHeap").orNull
+    ?: "32g"
+val java23Launcher = javaToolchains.launcherFor {
+    languageVersion.set(JavaLanguageVersion.of(23))
+}
+
+tasks.register<JavaExec>("lookupScaling") {
+    group = "benchmark"
+    description = "Runs the detailed lookup scaling benchmark runner for PerfectHash and LSH"
+    dependsOn(tasks.named("classes"))
+    classpath = mainSourceSet.get().runtimeClasspath
+    mainClass.set("dbalgo.report.LookupScalingRunnerKt")
+    javaLauncher.set(java23Launcher)
+    maxHeapSize = lookupScalingMaxHeap
+    args(
+        "--output", lookupScalingOutput,
+        "--ram-budget-gib", lookupScalingRamBudgetGiB,
+        "--series", lookupScalingSeries,
+        "--warmup-repetitions", lookupScalingWarmupRepetitions,
+        "--measurement-repetitions", lookupScalingMeasurementRepetitions,
+        "--point-repetitions", lookupScalingPointRepetitions,
+    )
+    if (lookupScalingDataSizes != null) {
+        args("--sizes", lookupScalingDataSizes)
+    }
+}
 
 data class JmhPreset(
     val warmupIterations: Int,
@@ -180,5 +222,8 @@ jmh {
         val libPath = apDir.get().file("lib/libasyncProfiler.dylib").asFile.absolutePath
         val outDir = profileDir.get().asFile.absolutePath
         profilers.add("async:libPath=$libPath;output=jfr;dir=$outDir")
+    }
+    if (jmhMaxHeap != null) {
+        jvmArgsAppend.add("-Xmx$jmhMaxHeap")
     }
 }

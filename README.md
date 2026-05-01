@@ -39,6 +39,38 @@
 ./gradlew jmh -PjmhPreset=phBuildGate -PjmhResultFile=build/results/jmh/ph_build_ci.json \
   -PjmhInclude='dbalgo.perfecthash.PerfectHashBuildIntervalBenchmark.benchBuild$'
 
+# Detailed lookup scaling (LSH: 1K + 10K..1M; PerfectHash: log scale 1K..50M)
+./gradlew lookupScaling
+
+# Dense LSH lookup scaling only
+./gradlew lookupScaling -PlookupScalingSeries=lsh \
+  -PlookupScalingOutput=build/results/lookup_scaling_lsh_1k_1m_step_10k.json
+
+# PerfectHash logarithmic lookup scaling only
+./gradlew lookupScaling -PlookupScalingSeries=perfecthash \
+  -PlookupScalingOutput=build/results/lookup_scaling_ph_log_1k_50m.json \
+  -PlookupScalingMaxHeap=32g
+
+# PerfectHash lookup CPU profile for the report graph, N=50M
+./gradlew jmh -Pprofile -PjmhPreset=precise -PjmhDataSize=50000000 \
+  -PjmhMaxHeap=32g \
+  -PjmhInclude='dbalgo.perfecthash.PerfectHashBenchmark.benchLookup$'
+
+# Short smoke run with explicit sizes
+./gradlew lookupScaling -PlookupScalingSeries=lsh -PlookupScalingDataSizes=1000,10000,20000
+
+# Detailed lookup scaling with a custom RAM budget line
+./gradlew lookupScaling -PlookupScalingRamBudgetGiB=8
+
+# Detailed lookup scaling with custom retry counts
+./gradlew lookupScaling -PlookupScalingMeasurementRepetitions=15 -PlookupScalingWarmupRepetitions=3
+
+# Detailed PerfectHash lookup scaling with median across repeated point rebuilds
+./gradlew lookupScaling -PlookupScalingSeries=perfecthash \
+  -PlookupScalingOutput=build/results/lookup_scaling_ph_log_1k_50m_median5.json \
+  -PlookupScalingMaxHeap=32g \
+  -PlookupScalingPointRepetitions=5
+
 # Manifest-driven confidence summaries
 python3 docs/jmh_confidence.py --manifest docs/report_manifest.json --prefix dbalgo.hashtable.HashTableIntervalBenchmark --unit us --markdown
 python3 docs/jmh_confidence.py --manifest docs/report_manifest.json --prefix dbalgo.lsh.LshIntervalBenchmark --unit us --markdown
@@ -66,6 +98,8 @@ python3 docs/gen_charts.py --manifest docs/report_manifest.json
 `docs/gen_charts.py`:
 
 - строит `ht_confidence.png`, `lsh_confidence.png`, `ph_confidence.png`
+- строит `lsh_lookup_detail.png` и `ph_lookup_detail.png` из `lookup_scaling` dataset
+  с latency, total RAM и LSH candidate-count diagnostics
 - обновляет таблицы в `BENCHMARK_REPORT.md` между generated block markers
 - падает, если в pinned snapshot нет обязательного dataset или обязательного размера
 
