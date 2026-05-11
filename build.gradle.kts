@@ -36,6 +36,7 @@ val profile = project.hasProperty("profile")
 val apVersion = "4.0"
 val apDir = layout.buildDirectory.dir("async-profiler")
 val profileDir = layout.buildDirectory.dir("reports/profile")
+val profileEvent = providers.gradleProperty("profileEvent").orNull ?: "cpu"
 val jmhInclude = providers.gradleProperty("jmhInclude").orNull
 val jmhDataSize = providers.gradleProperty("jmhDataSize").orNull
 val jmhResultFile = providers.gradleProperty("jmhResultFile").orNull
@@ -131,21 +132,43 @@ val activeJmhPreset = when (jmhPreset) {
 }
 
 if (profile) {
-    val apLib = apDir.get().file("lib/libasyncProfiler.dylib").asFile
+    val osName = System.getProperty("os.name").lowercase()
+    val apPlatform = when {
+        osName.contains("linux") -> "linux-x64"
+        osName.contains("mac") || osName.contains("darwin") -> "macos"
+        else -> error("Unsupported async-profiler platform: $osName")
+    }
+    val apArchiveExt = if (apPlatform == "macos") "zip" else "tar.gz"
+    val apLibName = if (apPlatform == "macos") "libasyncProfiler.dylib" else "libasyncProfiler.so"
+    val apLib = apDir.get().file("lib/$apLibName").asFile
     val jfrconv = apDir.get().file("bin/jfrconv").asFile
 
     val downloadAsyncProfiler by tasks.registering {
-        description = "Downloads async-profiler $apVersion for macOS"
+        description = "Downloads async-profiler $apVersion for the current OS"
         outputs.file(apLib)
         onlyIf { !apLib.exists() }
         doLast {
             val url = "https://github.com/async-profiler/async-profiler/releases/" +
-                "download/v$apVersion/async-profiler-$apVersion-macos.zip"
-            val zipFile = temporaryDir.resolve("ap.zip")
-            project.exec { commandLine("curl", "-fSL", "-o", zipFile.absolutePath, url) }
-            project.exec { commandLine("unzip", "-qo", zipFile.absolutePath, "-d", temporaryDir.absolutePath) }
+                "download/v$apVersion/async-profiler-$apVersion-$apPlatform.$apArchiveExt"
+            val archiveFile = temporaryDir.resolve("ap.$apArchiveExt")
+            project.exec { commandLine("curl", "-fSL", "-o", archiveFile.absolutePath, url) }
+            val archiveTree = if (apArchiveExt == "zip") {
+                zipTree(archiveFile)
+            } else {
+                tarTree(resources.gzip(archiveFile))
+            }
             project.copy {
-                from(temporaryDir.resolve("async-profiler-$apVersion-macos"))
+                from(archiveTree.matching {
+                    include("async-profiler-$apVersion-$apPlatform/**")
+                }) {
+                    eachFile {
+                        relativePath = org.gradle.api.file.RelativePath(
+                            true,
+                            *relativePath.segments.drop(1).toTypedArray(),
+                        )
+                    }
+                    includeEmptyDirs = false
+                }
                 into(apDir)
             }
         }
@@ -219,9 +242,15 @@ jmh {
         )
     }
     if (profile) {
-        val libPath = apDir.get().file("lib/libasyncProfiler.dylib").asFile.absolutePath
+        val osName = System.getProperty("os.name").lowercase()
+        val apLibName = if (osName.contains("mac") || osName.contains("darwin")) {
+            "libasyncProfiler.dylib"
+        } else {
+            "libasyncProfiler.so"
+        }
+        val libPath = apDir.get().file("lib/$apLibName").asFile.absolutePath
         val outDir = profileDir.get().asFile.absolutePath
-        profilers.add("async:libPath=$libPath;output=jfr;dir=$outDir")
+        profilers.add("async:libPath=$libPath;event=$profileEvent;output=jfr;dir=$outDir")
     }
     if (jmhMaxHeap != null) {
         jvmArgsAppend.add("-Xmx$jmhMaxHeap")

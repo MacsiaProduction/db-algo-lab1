@@ -31,7 +31,7 @@ open class LshBenchmark {
         val rt = Runtime.getRuntime()
         System.gc(); System.gc()
         val heapBefore = rt.totalMemory() - rt.freeMemory()
-        rpIndex = RandomProjectionLshIndex(numHashes = 64, numBands = 8)
+        rpIndex = RandomProjectionLshIndex(numHashes = 64, numBands = 8, fullScanThreshold = 0)
         val points = Array(dataSize) {
             RandomProjectionLshIndex.Point3D(
                 rng.nextDouble() * 100,

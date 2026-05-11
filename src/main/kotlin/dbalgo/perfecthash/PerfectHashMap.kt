@@ -174,11 +174,28 @@ class PerfectHashMap<V : Any> private constructor(
         private fun hashUtf8(text: String, seed: Long, m: Int): Int {
             var hash = seed xor FNV_OFFSET_BASIS
             var index = 0
-            while (index < text.length) {
+            val length = text.length
+            while (index < length) {
+                val ch = text[index]
+                if (ch.code < 0x80) {
+                    hash = (hash xor ch.code.toByte().toLong()) * FNV_PRIME
+                    index++
+                    continue
+                }
+                hash = hashUtf8SlowPath(text, hash, index, length)
+                break
+            }
+            return ((hash and Long.MAX_VALUE) % m).toInt()
+        }
+
+        private fun hashUtf8SlowPath(text: String, initialHash: Long, startIndex: Int, length: Int): Long {
+            var hash = initialHash
+            var index = startIndex
+            while (index < length) {
                 val ch = text[index]
                 when {
                     ch.code < 0x80 -> {
-                        hash = updateHash(hash, ch.code)
+                        hash = (hash xor ch.code.toByte().toLong()) * FNV_PRIME
                     }
                     ch.code < 0x800 -> {
                         hash = updateHash(hash, 0xC0 or (ch.code ushr 6))
@@ -207,7 +224,7 @@ class PerfectHashMap<V : Any> private constructor(
                 }
                 index++
             }
-            return ((hash and Long.MAX_VALUE) % m).toInt()
+            return hash
         }
 
         private fun updateHash(hash: Long, byteValue: Int): Long {
@@ -235,6 +252,9 @@ class PerfectHashMap<V : Any> private constructor(
         val slotCount: Int get() = m
 
         fun lookup(key: String): Any? {
+            if (m == 1) {
+                return if (keys[0] == key) values[0] else null
+            }
             val hash = hashUtf8(key, seed, m)
             return if (keys[hash] == key) values[hash] else null
         }

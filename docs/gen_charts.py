@@ -463,11 +463,11 @@ def classify_frame(frame):
         pkg = pkg.get("name", "")
     mname = method.get("name", "")
 
-    if lib_name.startswith("libsystem_"):
+    if lib_name.startswith("libsystem_") or lib_name in ("libc.so.6", "libpthread.so.0"):
         return "Syscalls"
     if "G1" in mname or "gc" in mname.lower() or "GC" in lib_name:
         return "GC"
-    if lib_name == "libjvm.dylib" and any(kw in mname for kw in
+    if lib_name in ("libjvm.dylib", "libjvm.so") and any(kw in mname for kw in
             ["G1", "gc", "GC", "mark", "scrub", "evacuate", "collect", "young", "concurrent"]):
         return "GC"
     if "arraycopy" in mname or "copyOf" in mname:
@@ -477,7 +477,7 @@ def classify_frame(frame):
         return "User code"
     if pkg_norm.startswith(("java.", "jdk.", "sun.", "kotlin.", "org.openjdk.jmh")):
         return "JDK"
-    if lib_name in ("libjvm.dylib", "libjli.dylib"):
+    if lib_name in ("libjvm.dylib", "libjvm.so", "libjli.dylib", "libjli.so"):
         return "JVM"
     return "Other"
 

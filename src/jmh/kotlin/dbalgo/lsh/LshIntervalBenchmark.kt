@@ -34,7 +34,7 @@ open class LshIntervalBenchmark {
     @Setup(Level.Trial)
     fun setupTrial() {
         val rng = Random(123L)
-        index = RandomProjectionLshIndex(numHashes = 64, numBands = 8)
+        index = RandomProjectionLshIndex(numHashes = 64, numBands = 8, fullScanThreshold = 0)
         repeat(dataSize) { indexValue ->
             index.add(
                 "pt_${indexValue.toString().padStart(8, '0')}",
