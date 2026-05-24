@@ -3,139 +3,233 @@
 <style>text{font-family:Menlo,Consolas,monospace;fill:#1f1f1f}.title{font-size:16px;font-weight:700}.meta{font-size:11px;fill:#555}.frame{stroke:#ffffff;stroke-width:0.5}.label{font-size:11px;dominant-baseline:middle}</style>
 <rect width="100%" height="100%" fill="#fffdf8"/>
 <text class="title" x="12" y="20">PerfectHashMap.lookup() — flamegraph (N=50M)</text>
-<text class="meta" x="12" y="32">async-profiler collapsed stacks, total samples: 1589</text>
-<g><title>java/lang/Thread.run:1575_[j] | 1588 samples | 99.9%</title><rect class="frame" x="12.00" y="456.00" width="1199.24" height="17" fill="#ee92aa"/>
+<text class="meta" x="12" y="32">async-profiler collapsed stacks, total samples: 1475</text>
+<g><title>java/lang/Thread.run:1575_[j] | 1457 samples | 98.8%</title><rect class="frame" x="12.00" y="456.00" width="1185.36" height="17" fill="#ee92aa"/>
 <text class="label" x="15.00" y="464.50">java/lang/Thread.run:1575_[j]</text>
 </g>
-<g><title>java/lang/Thread.runWith:1588_[j] | 1588 samples | 99.9%</title><rect class="frame" x="12.00" y="438.00" width="1199.24" height="17" fill="#65e1b7"/>
+<g><title>java/lang/Thread.runWith:1588_[j] | 1457 samples | 98.8%</title><rect class="frame" x="12.00" y="438.00" width="1185.36" height="17" fill="#65e1b7"/>
 <text class="label" x="15.00" y="446.50">java/lang/Thread.runWith:1588_[j]</text>
 </g>
-<g><title>java/util/concurrent/ThreadPoolExecutor$Worker.run:642_[j] | 1588 samples | 99.9%</title><rect class="frame" x="12.00" y="420.00" width="1199.24" height="17" fill="#e57863"/>
+<g><title>java/util/concurrent/ThreadPoolExecutor$Worker.run:642_[j] | 1457 samples | 98.8%</title><rect class="frame" x="12.00" y="420.00" width="1185.36" height="17" fill="#e57863"/>
 <text class="label" x="15.00" y="428.50">java/util/concurrent/ThreadPoolExecutor$Worker.run:642_[j]</text>
 </g>
-<g><title>java/util/concurrent/ThreadPoolExecutor.runWorker:1144_[j] | 1588 samples | 99.9%</title><rect class="frame" x="12.00" y="402.00" width="1199.24" height="17" fill="#e2de6e"/>
+<g><title>java/util/concurrent/ThreadPoolExecutor.runWorker:1144_[j] | 1457 samples | 98.8%</title><rect class="frame" x="12.00" y="402.00" width="1185.36" height="17" fill="#e2de6e"/>
 <text class="label" x="15.00" y="410.50">java/util/concurrent/ThreadPoolExecutor.runWorker:1144_[j]</text>
 </g>
-<g><title>java/util/concurrent/FutureTask.run:317_[j] | 1588 samples | 99.9%</title><rect class="frame" x="12.00" y="384.00" width="1199.24" height="17" fill="#e0a979"/>
+<g><title>java/util/concurrent/FutureTask.run:317_[j] | 1456 samples | 98.7%</title><rect class="frame" x="12.00" y="384.00" width="1184.54" height="17" fill="#e0a979"/>
 <text class="label" x="15.00" y="392.50">java/util/concurrent/FutureTask.run:317_[j]</text>
 </g>
-<g><title>java/util/concurrent/Executors$RunnableAdapter.call:572_[j] | 1588 samples | 99.9%</title><rect class="frame" x="12.00" y="366.00" width="1199.24" height="17" fill="#686bdb"/>
+<g><title>java/util/concurrent/Executors$RunnableAdapter.call:572_[j] | 1456 samples | 98.7%</title><rect class="frame" x="12.00" y="366.00" width="1184.54" height="17" fill="#686bdb"/>
 <text class="label" x="15.00" y="374.50">java/util/concurrent/Executors$RunnableAdapter.call:572_[j]</text>
 </g>
-<g><title>java/util/concurrent/FutureTask.run:317_[j] | 1588 samples | 99.9%</title><rect class="frame" x="12.00" y="348.00" width="1199.24" height="17" fill="#e0a979"/>
+<g><title>java/util/concurrent/FutureTask.run:317_[j] | 1456 samples | 98.7%</title><rect class="frame" x="12.00" y="348.00" width="1184.54" height="17" fill="#e0a979"/>
 <text class="label" x="15.00" y="356.50">java/util/concurrent/FutureTask.run:317_[j]</text>
 </g>
-<g><title>org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:504_[j] | 1588 samples | 99.9%</title><rect class="frame" x="12.00" y="330.00" width="1199.24" height="17" fill="#e6e590"/>
+<g><title>org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:504_[j] | 1456 samples | 98.7%</title><rect class="frame" x="12.00" y="330.00" width="1184.54" height="17" fill="#e6e590"/>
 <text class="label" x="15.00" y="338.50">org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:504_[j]</text>
 </g>
-<g><title>org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:527_[j] | 1588 samples | 99.9%</title><rect class="frame" x="12.00" y="312.00" width="1199.24" height="17" fill="#6befe4"/>
+<g><title>org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:527_[j] | 1456 samples | 98.7%</title><rect class="frame" x="12.00" y="312.00" width="1184.54" height="17" fill="#6befe4"/>
 <text class="label" x="15.00" y="320.50">org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call:527_[j]</text>
 </g>
-<g><title>java/lang/reflect/Method.invoke:580_[j] | 1588 samples | 99.9%</title><rect class="frame" x="12.00" y="294.00" width="1199.24" height="17" fill="#e4da61"/>
+<g><title>java/lang/reflect/Method.invoke:580_[j] | 1456 samples | 98.7%</title><rect class="frame" x="12.00" y="294.00" width="1184.54" height="17" fill="#e4da61"/>
 <text class="label" x="15.00" y="302.50">java/lang/reflect/Method.invoke:580_[j]</text>
 </g>
-<g><title>jdk/internal/reflect/DirectMethodHandleAccessor.invoke:103_[j] | 1588 samples | 99.9%</title><rect class="frame" x="12.00" y="276.00" width="1199.24" height="17" fill="#ef7984"/>
+<g><title>jdk/internal/reflect/DirectMethodHandleAccessor.invoke:103_[j] | 1456 samples | 98.7%</title><rect class="frame" x="12.00" y="276.00" width="1184.54" height="17" fill="#ef7984"/>
 <text class="label" x="15.00" y="284.50">jdk/internal/reflect/DirectMethodHandleAccessor.invoke:103_[j]</text>
 </g>
-<g><title>jdk/internal/reflect/DirectMethodHandleAccessor.invokeImpl:155_[j] | 1588 samples | 99.9%</title><rect class="frame" x="12.00" y="258.00" width="1199.24" height="17" fill="#9767df"/>
+<g><title>jdk/internal/reflect/DirectMethodHandleAccessor.invokeImpl:155_[j] | 1456 samples | 98.7%</title><rect class="frame" x="12.00" y="258.00" width="1184.54" height="17" fill="#9767df"/>
 <text class="label" x="15.00" y="266.50">jdk/internal/reflect/DirectMethodHandleAccessor.invokeImpl:155_[j]</text>
 </g>
-<g><title>java/lang/invoke/LambdaForm$MH.0x00007efe9b026000.invokeExact_MT_[j] | 1588 samples | 99.9%</title><rect class="frame" x="12.00" y="240.00" width="1199.24" height="17" fill="#d96eb4"/>
-<text class="label" x="15.00" y="248.50">java/lang/invoke/LambdaForm$MH.0x00007efe9b026000.invokeExact_MT_[j]</text>
+<g><title>java/lang/invoke/LambdaForm$MH.0x00003ff001025400.invokeExact_MT_[j] | 1456 samples | 98.7%</title><rect class="frame" x="12.00" y="240.00" width="1184.54" height="17" fill="#88f1e8"/>
+<text class="label" x="15.00" y="248.50">java/lang/invoke/LambdaForm$MH.0x00003ff001025400.invokeExact_MT_[j]</text>
 </g>
-<g><title>java/lang/invoke/LambdaForm$MH.0x00007efe9b025c00.invoke_[j] | 1588 samples | 99.9%</title><rect class="frame" x="12.00" y="222.00" width="1199.24" height="17" fill="#dde693"/>
-<text class="label" x="15.00" y="230.50">java/lang/invoke/LambdaForm$MH.0x00007efe9b025c00.invoke_[j]</text>
+<g><title>java/lang/invoke/LambdaForm$MH.0x00003ff001025000.invoke_[j] | 1456 samples | 98.7%</title><rect class="frame" x="12.00" y="222.00" width="1184.54" height="17" fill="#86d9d6"/>
+<text class="label" x="15.00" y="230.50">java/lang/invoke/LambdaForm$MH.0x00003ff001025000.invoke_[j]</text>
 </g>
-<g><title>java/lang/invoke/DirectMethodHandle$Holder.invokeSpecial_[j] | 1588 samples | 99.9%</title><rect class="frame" x="12.00" y="204.00" width="1199.24" height="17" fill="#c493e6"/>
+<g><title>java/lang/invoke/DirectMethodHandle$Holder.invokeSpecial_[j] | 1456 samples | 98.7%</title><rect class="frame" x="12.00" y="204.00" width="1184.54" height="17" fill="#c493e6"/>
 <text class="label" x="15.00" y="212.50">java/lang/invoke/DirectMethodHandle$Holder.invokeSpecial_[j]</text>
 </g>
-<g><title>dbalgo/perfecthash/jmh_generated/PerfectHashBenchmark_benchLookup_jmhTest.benchLookup_Throughput:84_[j] | 1588 samples | 99.9%</title><rect class="frame" x="12.00" y="186.00" width="1199.24" height="17" fill="#55a868"/>
+<g><title>dbalgo/perfecthash/jmh_generated/PerfectHashBenchmark_benchLookup_jmhTest.benchLookup_Throughput:84_[j] | 1456 samples | 98.7%</title><rect class="frame" x="12.00" y="186.00" width="1184.54" height="17" fill="#55a868"/>
 <text class="label" x="15.00" y="194.50">dbalgo/perfecthash/jmh_generated/PerfectHashBenchmark_benchLookup_jmhTest.benchLookup_Throughput:84_[j]</text>
 </g>
-<g><title>dbalgo/perfecthash/jmh_generated/PerfectHashBenchmark_benchLookup_jmhTest.benchLookup_thrpt_jmhStub:144_[j] | 1586 samples | 99.8%</title><rect class="frame" x="12.00" y="168.00" width="1197.73" height="17" fill="#55a868"/>
+<g><title>dbalgo/perfecthash/jmh_generated/PerfectHashBenchmark_benchLookup_jmhTest.benchLookup_thrpt_jmhStub:144_[j] | 1456 samples | 98.7%</title><rect class="frame" x="12.00" y="168.00" width="1184.54" height="17" fill="#55a868"/>
 <text class="label" x="15.00" y="176.50">dbalgo/perfecthash/jmh_generated/PerfectHashBenchmark_benchLookup_jmhTest.benchLookup_thrpt_jmhStub:144_[j]</text>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashBenchmark.benchLookup:52_[j] | 1585 samples | 99.7%</title><rect class="frame" x="12.00" y="150.00" width="1196.98" height="17" fill="#4c72b0"/>
-<text class="label" x="15.00" y="158.50">dbalgo/perfecthash/PerfectHashBenchmark.benchLookup:52_[j]</text>
+<g><title>dbalgo/perfecthash/PerfectHashBenchmark.benchLookup:52_[i] | 1456 samples | 98.7%</title><rect class="frame" x="12.00" y="150.00" width="1184.54" height="17" fill="#4c72b0"/>
+<text class="label" x="15.00" y="158.50">dbalgo/perfecthash/PerfectHashBenchmark.benchLookup:52_[i]</text>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashMap.lookup:14_[i] | 1483 samples | 93.3%</title><rect class="frame" x="12.00" y="132.00" width="1119.95" height="17" fill="#4c72b0"/>
+<g><title>dbalgo/perfecthash/PerfectHashMap.lookup:14_[i] | 1427 samples | 96.7%</title><rect class="frame" x="12.00" y="132.00" width="1160.95" height="17" fill="#4c72b0"/>
 <text class="label" x="15.00" y="140.50">dbalgo/perfecthash/PerfectHashMap.lookup:14_[i]</text>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashMap$Bucket.lookup:256_[i] | 795 samples | 50.0%</title><rect class="frame" x="12.00" y="114.00" width="600.38" height="17" fill="#4c72b0"/>
-<text class="label" x="15.00" y="122.50">dbalgo/perfecthash/PerfectHashMap$Bucket.lookup:256_[i]</text>
+<g><title>dbalgo/perfecthash/PerfectHashMap$Bucket.lookup:238_[i] | 1350 samples | 91.5%</title><rect class="frame" x="12.00" y="114.00" width="1098.31" height="17" fill="#4c72b0"/>
+<text class="label" x="15.00" y="122.50">dbalgo/perfecthash/PerfectHashMap$Bucket.lookup:238_[i]</text>
 </g>
-<g><title>kotlin/jvm/internal/Intrinsics.areEqual:169_[i] | 9 samples | 0.6%</title><rect class="frame" x="12.00" y="96.00" width="6.80" height="17" fill="#6e83eb"/>
+<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.access$hashUtf8:19_[j] | 32 samples | 2.2%</title><rect class="frame" x="12.00" y="96.00" width="26.03" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/String.equals:1947_[i] | 5 samples | 0.3%</title><rect class="frame" x="12.00" y="78.00" width="3.78" height="17" fill="#b87be2"/>
+<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:178_[j] | 14 samples | 0.9%</title><rect class="frame" x="12.00" y="78.00" width="11.39" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/String.equals:1950_[i] | 4 samples | 0.3%</title><rect class="frame" x="15.78" y="78.00" width="3.02" height="17" fill="#ddba76"/>
+<g><title>java/lang/String.charAt:1629_[i] | 13 samples | 0.9%</title><rect class="frame" x="12.00" y="60.00" width="10.58" height="17" fill="#75dbb3"/>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashMap$Bucket.lookup:255_[i] | 501 samples | 31.5%</title><rect class="frame" x="612.38" y="114.00" width="378.35" height="17" fill="#4c72b0"/>
-<text class="label" x="615.38" y="122.50">dbalgo/perfecthash/PerfectHashMap$Bucket.lookup:255_[i]</text>
+<g><title>java/lang/StringLatin1.charAt:47_[i] | 13 samples | 0.9%</title><rect class="frame" x="12.00" y="42.00" width="10.58" height="17" fill="#e8c96c"/>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashMap$Bucket.lookup:259_[i] | 83 samples | 5.2%</title><rect class="frame" x="990.73" y="114.00" width="62.68" height="17" fill="#4c72b0"/>
-<text class="label" x="993.73" y="122.50">dbalgo/…</text>
+<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:210_[j] | 6 samples | 0.4%</title><rect class="frame" x="23.39" y="78.00" width="4.88" height="17" fill="#4c72b0"/>
 </g>
-<g><title>kotlin/jvm/internal/Intrinsics.areEqual:169_[i] | 33 samples | 2.1%</title><rect class="frame" x="990.73" y="96.00" width="24.92" height="17" fill="#6e83eb"/>
+<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:208_[j] | 5 samples | 0.3%</title><rect class="frame" x="28.27" y="78.00" width="4.07" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/String.equals:1950_[i] | 25 samples | 1.6%</title><rect class="frame" x="990.73" y="78.00" width="18.88" height="17" fill="#ddba76"/>
+<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:180_[j] | 3 samples | 0.2%</title><rect class="frame" x="32.34" y="78.00" width="2.44" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/String.equals:1947_[i] | 8 samples | 0.5%</title><rect class="frame" x="1009.61" y="78.00" width="6.04" height="17" fill="#b87be2"/>
+<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:181_[j] | 3 samples | 0.2%</title><rect class="frame" x="34.78" y="78.00" width="2.44" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashMap$Bucket.lookup:258_[i] | 77 samples | 4.8%</title><rect class="frame" x="1053.41" y="114.00" width="58.15" height="17" fill="#4c72b0"/>
-<text class="label" x="1056.41" y="122.50">dbalgo/…</text>
+<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.updateHash:215_[i] | 3 samples | 0.2%</title><rect class="frame" x="34.78" y="60.00" width="2.44" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.access$hashUtf8:19_[i] | 70 samples | 4.4%</title><rect class="frame" x="1053.41" y="96.00" width="52.86" height="17" fill="#4c72b0"/>
-<text class="label" x="1056.41" y="104.50">dbalgo…</text>
+<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:175_[j] | 1 samples | 0.1%</title><rect class="frame" x="37.22" y="78.00" width="0.81" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:181_[i] | 26 samples | 1.6%</title><rect class="frame" x="1053.41" y="78.00" width="19.63" height="17" fill="#4c72b0"/>
+<g><title>dbalgo/perfecthash/PerfectHashMap$Bucket.lookup:239_[i] | 11 samples | 0.7%</title><rect class="frame" x="1110.31" y="114.00" width="8.95" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:188_[i] | 18 samples | 1.1%</title><rect class="frame" x="1073.04" y="78.00" width="13.59" height="17" fill="#4c72b0"/>
+<g><title>dbalgo/perfecthash/PerfectHashMap.lookup:13_[j] | 21 samples | 1.4%</title><rect class="frame" x="1172.95" y="132.00" width="17.08" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:179_[i] | 15 samples | 0.9%</title><rect class="frame" x="1086.64" y="78.00" width="11.33" height="17" fill="#4c72b0"/>
+<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.access$hashUtf8:19_[j] | 20 samples | 1.4%</title><rect class="frame" x="1172.95" y="114.00" width="16.27" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/String.charAt:1629_[i] | 12 samples | 0.8%</title><rect class="frame" x="1086.64" y="60.00" width="9.06" height="17" fill="#75dbb3"/>
+<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:177_[j] | 9 samples | 0.6%</title><rect class="frame" x="1172.95" y="96.00" width="7.32" height="17" fill="#4c72b0"/>
 </g>
-<g><title>java/lang/StringLatin1.charAt:47_[i] | 12 samples | 0.8%</title><rect class="frame" x="1086.64" y="42.00" width="9.06" height="17" fill="#e8c96c"/>
+<g><title>java/lang/String.length:1593_[i] | 9 samples | 0.6%</title><rect class="frame" x="1172.95" y="78.00" width="7.32" height="17" fill="#df6484"/>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:182_[i] | 9 samples | 0.6%</title><rect class="frame" x="1097.97" y="78.00" width="6.80" height="17" fill="#4c72b0"/>
+<g><title>java/lang/String.coder:4911_[i] | 2 samples | 0.1%</title><rect class="frame" x="1172.95" y="60.00" width="1.63" height="17" fill="#62deae"/>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:175_[i] | 1 samples | 0.1%</title><rect class="frame" x="1104.76" y="78.00" width="0.76" height="17" fill="#4c72b0"/>
+<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:178_[j] | 8 samples | 0.5%</title><rect class="frame" x="1180.27" y="96.00" width="6.51" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:180_[i] | 1 samples | 0.1%</title><rect class="frame" x="1105.52" y="78.00" width="0.76" height="17" fill="#4c72b0"/>
+<g><title>java/lang/String.charAt:1629_[i] | 8 samples | 0.5%</title><rect class="frame" x="1180.27" y="78.00" width="6.51" height="17" fill="#75dbb3"/>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashMap.lookup:13_[i] | 46 samples | 2.9%</title><rect class="frame" x="1131.95" y="132.00" width="34.74" height="17" fill="#4c72b0"/>
-<text class="label" x="1134.95" y="140.50">dba…</text>
+<g><title>java/lang/StringLatin1.charAt:47_[i] | 8 samples | 0.5%</title><rect class="frame" x="1180.27" y="60.00" width="6.51" height="17" fill="#e8c96c"/>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.access$hashUtf8:19_[i] | 46 samples | 2.9%</title><rect class="frame" x="1131.95" y="114.00" width="34.74" height="17" fill="#4c72b0"/>
-<text class="label" x="1134.95" y="122.50">dba…</text>
+<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:180_[j] | 2 samples | 0.1%</title><rect class="frame" x="1186.78" y="96.00" width="1.63" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:181_[i] | 15 samples | 0.9%</title><rect class="frame" x="1131.95" y="96.00" width="11.33" height="17" fill="#4c72b0"/>
+<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:208_[j] | 1 samples | 0.1%</title><rect class="frame" x="1188.41" y="96.00" width="0.81" height="17" fill="#4c72b0"/>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:179_[i] | 8 samples | 0.5%</title><rect class="frame" x="1143.28" y="96.00" width="6.04" height="17" fill="#4c72b0"/>
+<g><title>java/util/concurrent/FutureTask.run:325_[j] | 1 samples | 0.1%</title><rect class="frame" x="1196.54" y="384.00" width="0.81" height="17" fill="#70dade"/>
 </g>
-<g><title>java/lang/String.charAt:1629_[i] | 5 samples | 0.3%</title><rect class="frame" x="1143.28" y="78.00" width="3.78" height="17" fill="#75dbb3"/>
+<g><title>java/util/concurrent/FutureTask.set:285_[j] | 1 samples | 0.1%</title><rect class="frame" x="1196.54" y="366.00" width="0.81" height="17" fill="#eb70de"/>
 </g>
-<g><title>java/lang/StringLatin1.charAt:47_[i] | 5 samples | 0.3%</title><rect class="frame" x="1143.28" y="60.00" width="3.78" height="17" fill="#e8c96c"/>
+<g><title>java/util/concurrent/FutureTask.finishCompletion:434_[j] | 1 samples | 0.1%</title><rect class="frame" x="1196.54" y="348.00" width="0.81" height="17" fill="#985ce3"/>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:177_[i] | 7 samples | 0.4%</title><rect class="frame" x="1149.32" y="96.00" width="5.29" height="17" fill="#4c72b0"/>
+<g><title>java/util/concurrent/ExecutorCompletionService$QueueingFuture.done:122_[0] | 1 samples | 0.1%</title><rect class="frame" x="1196.54" y="330.00" width="0.81" height="17" fill="#eda082"/>
 </g>
-<g><title>java/lang/String.length:1593_[i] | 7 samples | 0.4%</title><rect class="frame" x="1149.32" y="78.00" width="5.29" height="17" fill="#df6484"/>
+<g><title>thread_start | 16 samples | 1.1%</title><rect class="frame" x="1197.36" y="456.00" width="13.02" height="17" fill="#e89f63"/>
 </g>
-<g><title>java/lang/String.coder:4911_[i] | 2 samples | 0.1%</title><rect class="frame" x="1149.32" y="60.00" width="1.51" height="17" fill="#62deae"/>
+<g><title>_pthread_start | 16 samples | 1.1%</title><rect class="frame" x="1197.36" y="438.00" width="13.02" height="17" fill="#e86f99"/>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:180_[i] | 7 samples | 0.4%</title><rect class="frame" x="1154.61" y="96.00" width="5.29" height="17" fill="#4c72b0"/>
+<g><title>thread_native_entry | 16 samples | 1.1%</title><rect class="frame" x="1197.36" y="420.00" width="13.02" height="17" fill="#71e6df"/>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:188_[i] | 7 samples | 0.4%</title><rect class="frame" x="1159.89" y="96.00" width="5.29" height="17" fill="#4c72b0"/>
+<g><title>Thread::call_run | 16 samples | 1.1%</title><rect class="frame" x="1197.36" y="402.00" width="13.02" height="17" fill="#9ddb88"/>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:178_[i] | 1 samples | 0.1%</title><rect class="frame" x="1165.18" y="96.00" width="0.76" height="17" fill="#4c72b0"/>
+<g><title>WatcherThread::run | 12 samples | 0.8%</title><rect class="frame" x="1197.36" y="384.00" width="9.76" height="17" fill="#85d0db"/>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashMap$Companion.hashUtf8:183_[i] | 1 samples | 0.1%</title><rect class="frame" x="1165.93" y="96.00" width="0.76" height="17" fill="#4c72b0"/>
+<g><title>WatcherThread::sleep | 10 samples | 0.7%</title><rect class="frame" x="1197.36" y="366.00" width="8.14" height="17" fill="#a5f162"/>
 </g>
-<g><title>dbalgo/perfecthash/jmh_generated/PerfectHashBenchmark_benchLookup_jmhTest.benchLookup_thrpt_jmhStub:146_[j] | 2 samples | 0.1%</title><rect class="frame" x="1209.73" y="168.00" width="1.51" height="17" fill="#55a868"/>
+<g><title>Monitor::wait_without_safepoint_check | 10 samples | 0.7%</title><rect class="frame" x="1197.36" y="348.00" width="8.14" height="17" fill="#98ec91"/>
 </g>
-<g><title>unknown_Java | 1 samples | 0.1%</title><rect class="frame" x="1211.24" y="456.00" width="0.76" height="17" fill="#95e6a4"/>
+<g><title>PlatformMonitor::wait | 10 samples | 0.7%</title><rect class="frame" x="1197.36" y="330.00" width="8.14" height="17" fill="#bdd882"/>
 </g>
-<g><title>dbalgo/perfecthash/PerfectHashBenchmark.benchLookup:52_[j] | 1 samples | 0.1%</title><rect class="frame" x="1211.24" y="438.00" width="0.76" height="17" fill="#4c72b0"/>
+<g><title>__psynch_cvwait | 9 samples | 0.6%</title><rect class="frame" x="1197.36" y="312.00" width="7.32" height="17" fill="#c16be9"/>
+</g>
+<g><title>_pthread_cond_wait | 1 samples | 0.1%</title><rect class="frame" x="1204.68" y="312.00" width="0.81" height="17" fill="#88ddde"/>
+</g>
+<g><title>PeriodicTask::real_time_tick | 2 samples | 0.1%</title><rect class="frame" x="1205.49" y="366.00" width="1.63" height="17" fill="#dc67b4"/>
+</g>
+<g><title>ConcurrentGCThread::run | 2 samples | 0.1%</title><rect class="frame" x="1207.12" y="384.00" width="1.63" height="17" fill="#e1b65a"/>
+</g>
+<g><title>G1ConcurrentRefineThread::run_service | 2 samples | 0.1%</title><rect class="frame" x="1207.12" y="366.00" width="1.63" height="17" fill="#55a868"/>
+</g>
+<g><title>G1PrimaryConcurrentRefineThread::track_usage | 1 samples | 0.1%</title><rect class="frame" x="1207.12" y="348.00" width="0.81" height="17" fill="#55a868"/>
+</g>
+<g><title>G1ConcurrentRefine::threads_do | 1 samples | 0.1%</title><rect class="frame" x="1207.12" y="330.00" width="0.81" height="17" fill="#55a868"/>
+</g>
+<g><title>ThreadTotalCPUTimeClosure::do_thread | 1 samples | 0.1%</title><rect class="frame" x="1207.12" y="312.00" width="0.81" height="17" fill="#7de6e7"/>
+</g>
+<g><title>os::thread_cpu_time | 1 samples | 0.1%</title><rect class="frame" x="1207.12" y="294.00" width="0.81" height="17" fill="#ef7d9a"/>
+</g>
+<g><title>G1PrimaryConcurrentRefineThread::wait_for_completed_buffers | 1 samples | 0.1%</title><rect class="frame" x="1207.93" y="348.00" width="0.81" height="17" fill="#55a868"/>
+</g>
+<g><title>Monitor::wait_without_safepoint_check | 1 samples | 0.1%</title><rect class="frame" x="1207.93" y="330.00" width="0.81" height="17" fill="#98ec91"/>
+</g>
+<g><title>PlatformMonitor::wait | 1 samples | 0.1%</title><rect class="frame" x="1207.93" y="312.00" width="0.81" height="17" fill="#bdd882"/>
+</g>
+<g><title>__psynch_cvwait | 1 samples | 0.1%</title><rect class="frame" x="1207.93" y="294.00" width="0.81" height="17" fill="#c16be9"/>
+</g>
+<g><title>JavaThread::thread_main_inner | 2 samples | 0.1%</title><rect class="frame" x="1208.75" y="384.00" width="1.63" height="17" fill="#ec6c72"/>
+</g>
+<g><title>JvmtiAgentThread::start_function_wrapper | 1 samples | 0.1%</title><rect class="frame" x="1208.75" y="366.00" width="0.81" height="17" fill="#c480e4"/>
+</g>
+<g><title>Profiler::timerLoop | 1 samples | 0.1%</title><rect class="frame" x="1208.75" y="348.00" width="0.81" height="17" fill="#d88cf1"/>
+</g>
+<g><title>FlightRecorder::timerTick | 1 samples | 0.1%</title><rect class="frame" x="1208.75" y="330.00" width="0.81" height="17" fill="#d9627e"/>
+</g>
+<g><title>Recording::cpuMonitorCycle | 1 samples | 0.1%</title><rect class="frame" x="1208.75" y="312.00" width="0.81" height="17" fill="#b587d9"/>
+</g>
+<g><title>OS::getProcessCpuTime | 1 samples | 0.1%</title><rect class="frame" x="1208.75" y="294.00" width="0.81" height="17" fill="#dd8d7b"/>
+</g>
+<g><title>getrusage | 1 samples | 0.1%</title><rect class="frame" x="1208.75" y="276.00" width="0.81" height="17" fill="#e59e77"/>
+</g>
+<g><title>MonitorDeflationThread::monitor_deflation_thread_entry | 1 samples | 0.1%</title><rect class="frame" x="1209.56" y="366.00" width="0.81" height="17" fill="#7f83d9"/>
+</g>
+<g><title>Monitor::wait_without_safepoint_check | 1 samples | 0.1%</title><rect class="frame" x="1209.56" y="348.00" width="0.81" height="17" fill="#98ec91"/>
+</g>
+<g><title>PlatformMonitor::wait | 1 samples | 0.1%</title><rect class="frame" x="1209.56" y="330.00" width="0.81" height="17" fill="#bdd882"/>
+</g>
+<g><title>__psynch_cvwait | 1 samples | 0.1%</title><rect class="frame" x="1209.56" y="312.00" width="0.81" height="17" fill="#c16be9"/>
+</g>
+<g><title>org/openjdk/jmh/runner/ForkedMain.main:86_[j] | 2 samples | 0.1%</title><rect class="frame" x="1210.37" y="456.00" width="1.63" height="17" fill="#f06266"/>
+</g>
+<g><title>org/openjdk/jmh/runner/ForkedRunner.run:72_[j] | 2 samples | 0.1%</title><rect class="frame" x="1210.37" y="438.00" width="1.63" height="17" fill="#7adca4"/>
+</g>
+<g><title>org/openjdk/jmh/runner/BaseRunner.runBenchmarksForked:75_[j] | 2 samples | 0.1%</title><rect class="frame" x="1210.37" y="420.00" width="1.63" height="17" fill="#6edbae"/>
+</g>
+<g><title>org/openjdk/jmh/runner/BaseRunner.doSingle:138_[j] | 2 samples | 0.1%</title><rect class="frame" x="1210.37" y="402.00" width="1.63" height="17" fill="#816bed"/>
+</g>
+<g><title>org/openjdk/jmh/runner/BaseRunner.runBenchmark:233_[j] | 2 samples | 0.1%</title><rect class="frame" x="1210.37" y="384.00" width="1.63" height="17" fill="#70bbef"/>
+</g>
+<g><title>org/openjdk/jmh/runner/BaseRunner.runBenchmark:283_[j] | 2 samples | 0.1%</title><rect class="frame" x="1210.37" y="366.00" width="1.63" height="17" fill="#7aecde"/>
+</g>
+<g><title>org/openjdk/jmh/runner/BenchmarkHandler.runIteration:335_[j] | 1 samples | 0.1%</title><rect class="frame" x="1210.37" y="348.00" width="0.81" height="17" fill="#e683ea"/>
+</g>
+<g><title>org/openjdk/jmh/runner/BenchmarkHandler.startProfilers:255_[j] | 1 samples | 0.1%</title><rect class="frame" x="1210.37" y="330.00" width="0.81" height="17" fill="#e55cc6"/>
+</g>
+<g><title>org/openjdk/jmh/profile/AsyncProfiler.beforeIteration:326_[j] | 1 samples | 0.1%</title><rect class="frame" x="1210.37" y="312.00" width="0.81" height="17" fill="#dba477"/>
+</g>
+<g><title>org/openjdk/jmh/profile/AsyncProfiler.start:334_[j] | 1 samples | 0.1%</title><rect class="frame" x="1210.37" y="294.00" width="0.81" height="17" fill="#71c1db"/>
+</g>
+<g><title>org/openjdk/jmh/profile/AsyncProfiler.execute:433_[j] | 1 samples | 0.1%</title><rect class="frame" x="1210.37" y="276.00" width="0.81" height="17" fill="#73ddc5"/>
+</g>
+<g><title>org/openjdk/jmh/profile/AsyncProfiler$JavaApi.execute:591_[j] | 1 samples | 0.1%</title><rect class="frame" x="1210.37" y="258.00" width="0.81" height="17" fill="#65e8b8"/>
+</g>
+<g><title>org/openjdk/jmh/profile/AsyncProfiler$JavaApi.execute0_[0] | 1 samples | 0.1%</title><rect class="frame" x="1210.37" y="240.00" width="0.81" height="17" fill="#6cf1bd"/>
+</g>
+<g><title>Java_one_profiler_AsyncProfiler_execute0 | 1 samples | 0.1%</title><rect class="frame" x="1210.37" y="222.00" width="0.81" height="17" fill="#ece98c"/>
+</g>
+<g><title>Profiler::runInternal | 1 samples | 0.1%</title><rect class="frame" x="1210.37" y="204.00" width="0.81" height="17" fill="#c962e3"/>
+</g>
+<g><title>Profiler::start | 1 samples | 0.1%</title><rect class="frame" x="1210.37" y="186.00" width="0.81" height="17" fill="#e263f1"/>
+</g>
+<g><title>Profiler::startTimer | 1 samples | 0.1%</title><rect class="frame" x="1210.37" y="168.00" width="0.81" height="17" fill="#83a1e4"/>
+</g>
+<g><title>jni_FindClass | 1 samples | 0.1%</title><rect class="frame" x="1210.37" y="150.00" width="0.81" height="17" fill="#69e65f"/>
+</g>
+<g><title>find_class_from_class_loader | 1 samples | 0.1%</title><rect class="frame" x="1210.37" y="132.00" width="0.81" height="17" fill="#b785de"/>
+</g>
+<g><title>SystemDictionary::resolve_or_fail | 1 samples | 0.1%</title><rect class="frame" x="1210.37" y="114.00" width="0.81" height="17" fill="#9a7eea"/>
+</g>
+<g><title>SystemDictionary::resolve_instance_class_or_null | 1 samples | 0.1%</title><rect class="frame" x="1210.37" y="96.00" width="0.81" height="17" fill="#85ef85"/>
+</g>
+<g><title>java_lang_ClassLoader::non_reflection_class_loader | 1 samples | 0.1%</title><rect class="frame" x="1210.37" y="78.00" width="0.81" height="17" fill="#ef9d8d"/>
+</g>
+<g><title>org/openjdk/jmh/runner/BenchmarkHandler.runIteration:354_[j] | 1 samples | 0.1%</title><rect class="frame" x="1211.19" y="348.00" width="0.81" height="17" fill="#db788a"/>
+</g>
+<g><title>java/util/concurrent/ExecutorCompletionService.poll:211_[j] | 1 samples | 0.1%</title><rect class="frame" x="1211.19" y="330.00" width="0.81" height="17" fill="#7ee085"/>
+</g>
+<g><title>java/util/concurrent/LinkedBlockingQueue.poll:460_[j] | 1 samples | 0.1%</title><rect class="frame" x="1211.19" y="312.00" width="0.81" height="17" fill="#75dec4"/>
+</g>
+<g><title>java/util/concurrent/locks/AbstractQueuedSynchronizer$ConditionObject.awaitNanos:1757_[j] | 1 samples | 0.1%</title><rect class="frame" x="1211.19" y="294.00" width="0.81" height="17" fill="#887dd9"/>
+</g>
+<g><title>java/util/concurrent/locks/AbstractQueuedSynchronizer$ConditionObject.canReacquire:1591_[0] | 1 samples | 0.1%</title><rect class="frame" x="1211.19" y="276.00" width="0.81" height="17" fill="#60eb84"/>
 </g>
 </svg>

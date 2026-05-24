@@ -185,7 +185,8 @@ def format_total_ram_label(total_bytes):
     gib = total_bytes / (1024 ** 3)
     if gib >= 1:
         return f"{gib:.2f} GiB"
-    return f"{total_bytes / (1024 ** 2):.0f} MiB"
+    mib = total_bytes / (1024 ** 2)
+    return f"{round(mib)} MiB"
 
 
 def tick_indices(count, target=14):
@@ -287,7 +288,7 @@ def render_perfect_hash_lookup_scaling_chart(points, out_name, ram_budget_bytes)
         sharex=True,
         gridspec_kw={"height_ratios": [1.1, 1.0]},
     )
-    ax_latency.plot(sizes, latency_values, marker="o", linewidth=1.8, color="#55A868", label="Latency (ns/op)")
+    ax_latency.plot(sizes, latency_values, marker="o", linewidth=1.8, color="#55A868", label="Average latency (ns/op)")
     ax_ram.plot(sizes, ram_values_gib, marker="s", linewidth=1.8, linestyle="--", color="#DD8452", label="Total RAM (GiB)")
 
     ax_latency.set_xscale("log")
@@ -299,7 +300,8 @@ def render_perfect_hash_lookup_scaling_chart(points, out_name, ram_budget_bytes)
     ax_latency.tick_params(axis="y", colors="#55A868")
     ax_ram.tick_params(axis="y", colors="#DD8452")
     ax_ram.set_xlabel("Data size (log scale)")
-    ax_latency.set_title("PerfectHash lookup — logarithmic scaling")
+    ax_latency.set_title("PerfectHash lookup — logarithmic scaling (average latency)")
+    ax_latency.set_ylim(bottom=0)
     for ax in [ax_latency, ax_ram]:
         ax.grid(True, axis="y")
         ax.grid(True, axis="x", alpha=0.18)
@@ -1217,16 +1219,25 @@ def build_report_tables():
 
 def update_report():
     print("Report: syncing generated tables")
-    report_path = pathlib.Path(args.report)
-    report = report_path.read_text()
-    for block_name, body in build_report_tables().items():
-        marker = f"<!-- BEGIN GENERATED:{block_name} -->"
-        if marker not in report:
-            print(f"  - skip {block_name} (block not present)")
+    blocks = build_report_tables()
+    primary_path = pathlib.Path(args.report)
+    candidate_paths = [primary_path]
+    draft_path = primary_path.parent / "DRAFT_REPORT.md"
+    if draft_path.exists() and draft_path != primary_path:
+        candidate_paths.append(draft_path)
+    for report_path in candidate_paths:
+        if not report_path.exists():
+            print(f"  - skip {report_path} (file not found)")
             continue
-        report = replace_report_block(report, block_name, body)
-    report_path.write_text(report)
-    print(f"  ✓ {report_path}")
+        report = report_path.read_text()
+        updated = report
+        for block_name, body in blocks.items():
+            marker = f"<!-- BEGIN GENERATED:{block_name} -->"
+            if marker not in updated:
+                continue
+            updated = replace_report_block(updated, block_name, body)
+        report_path.write_text(updated)
+        print(f"  ✓ {report_path}")
 
 
 update_report()

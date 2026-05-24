@@ -11,16 +11,14 @@
       "build/results/jmh/lsh_gate_latest_v2.json"
     ],
     "perfect_hash_lookup_interval": [
-      "build/results/jmh/ph_lookup_gate_latest_v2.json"
+      "build/results/jmh/ph_lookup_gate_post_opt.json"
     ],
     "perfect_hash_build_interval": [
       "build/results/jmh/ph_build_gate_latest.json"
     ],
     "lookup_scaling": [
       "build/results/lookup_scaling_lsh_1k_1m_step_10k.json",
-      "build/results/lookup_scaling_ph_log_1k_50m_median5.json",
-      "build/results/lookup_scaling_ph_100m_median2.json",
-      "build/results/lookup_scaling_ph_150m_median5.json"
+      "build/results/lookup_scaling_ph_clean_1m_50m.json"
     ]
   }
 }
