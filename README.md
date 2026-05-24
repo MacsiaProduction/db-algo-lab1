@@ -9,6 +9,14 @@
 ## Быстрый старт
 
 ```bash
+# Smoke check (~1 min)
+./run_light.sh
+
+# PH transition-zone scaling + report refresh
+./run_all.sh
+```
+
+```bash
 # Unit tests
 ./gradlew test
 

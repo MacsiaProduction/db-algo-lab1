@@ -1,5 +1,8 @@
+import org.gradle.kotlin.dsl.support.serviceOf
+import org.gradle.process.ExecOperations
+
 plugins {
-    kotlin("jvm") version "2.3.20-RC2"
+    kotlin("jvm") version "2.3.21"
     id("me.champeau.jmh") version "0.7.3"
 }
 
@@ -151,7 +154,9 @@ if (profile) {
             val url = "https://github.com/async-profiler/async-profiler/releases/" +
                 "download/v$apVersion/async-profiler-$apVersion-$apPlatform.$apArchiveExt"
             val archiveFile = temporaryDir.resolve("ap.$apArchiveExt")
-            project.exec { commandLine("curl", "-fSL", "-o", archiveFile.absolutePath, url) }
+            serviceOf<ExecOperations>().exec {
+                commandLine("curl", "-fSL", "-o", archiveFile.absolutePath, url)
+            }
             val archiveTree = if (apArchiveExt == "zip") {
                 zipTree(archiveFile)
             } else {
@@ -191,7 +196,7 @@ if (profile) {
             jfrFiles.forEach { jfr ->
                 val name = jfr.parentFile.name
                 logger.lifecycle("  $name → flame graph + collapsed + JSON")
-                project.exec {
+                serviceOf<ExecOperations>().exec {
                     commandLine(
                         jfrconv.absolutePath, "--cpu", "--lines",
                         "-o", "html",
@@ -199,7 +204,7 @@ if (profile) {
                         flamegraphDir.resolve("$name.html").absolutePath
                     )
                 }
-                project.exec {
+                serviceOf<ExecOperations>().exec {
                     commandLine(
                         jfrconv.absolutePath, "--cpu", "--lines",
                         "-o", "collapsed",
@@ -207,7 +212,7 @@ if (profile) {
                         collapsedDir.resolve("$name.txt").absolutePath
                     )
                 }
-                project.exec {
+                serviceOf<ExecOperations>().exec {
                     commandLine("jfr", "print", "--json", "--stack-depth", "64", jfr.absolutePath)
                     standardOutput = jsonDir.resolve("$name.json").outputStream()
                 }
